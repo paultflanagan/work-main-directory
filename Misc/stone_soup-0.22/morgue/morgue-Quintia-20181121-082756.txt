@@ -1,0 +1,213 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+105 Quintia the Slasher (level 4, -1/38 HPs)
+             Began as a Draconian Warper on Nov 21, 2018.
+             Killed from afar by an orc wizard (4 damage)
+             ... with a magic dart
+             ... on level 3 of the Dungeon.
+             The game lasted 00:07:50 (2270 turns).
+
+Quintia the Slasher (Draconian Warper)              Turns: 2270, Time: 00:07:51
+
+Health: -1/38      AC:  5    Str: 13    XL:     4   Next: 53%
+Magic:  3/7        EV: 13    Int: 13    God:    
+Gold:   107        SH:  0    Dex: 12    Spells: 2/7 levels left
+
+rFire    . . .     SeeInvis .   a - +0 falchion
+rCold    . . .     Gourm    .   (no shield)
+rNeg     + . .     Faith    .   (armour unavailable)
+rPois    .         Spirit   .   (helmet restricted)
+rElec    .         Reflect  .   (no cloak)
+rCorr    .         Harm     .   (no gloves)
+MR       .....                  (no boots)
+Stlth    +.........             (no amulet)
+HPRegen  0.12/turn              j - ring of positive energy
+MPRegen  0.10/turn              t - +2 ring of slaying
+
+@: confused
+A: unfitting armour, cold-blooded, AC +5
+a: no special abilities
+
+
+You were on level 3 of the Dungeon.
+You were not hungry.
+
+You visited 1 branch of the dungeon, and saw 3 of its levels.
+
+You collected 107 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +0 falchion (weapon)
+Missiles
+ b - 130 stones
+ d - 5 tomahawks of dispersal
+ i - 7 javelins
+ q - 2 throwing nets (quivered)
+ y - 6 tomahawks of returning
+Jewellery
+ j - a ring of positive energy (left hand)
+ t - a +2 ring of slaying (right hand)
+Scrolls
+ c - a scroll of blinking
+ g - 2 scrolls of identify {unknown}
+ h - a scroll of magic mapping {unknown}
+ l - 2 scrolls of enchant armour {unknown}
+ m - a scroll of random uselessness {unknown}
+ p - a scroll of amnesia
+ u - 3 scrolls of fear {unknown}
+Potions
+ e - 3 potions of resistance {unknown}
+ k - a potion of magic {unknown}
+ n - 2 potions of berserk rage {unknown}
+ o - a potion of degeneration {unknown}
+ r - a potion of invisibility {unknown}
+ s - a potion of haste {unknown}
+ v - a potion of heal wounds {unknown}
+ w - a potion of ambrosia {unknown}
+Comestibles
+ f - 6 rations
+ x - 4 chunks of flesh
+
+
+   Skills:
+ + Level 3.2 Fighting
+ + Level 3.2 Long Blades
+ + Level 0.8 Throwing
+ + Level 2.9 Dodging
+ + Level 0.6 Stealth
+ + Level 2.2 Spellcasting
+ + Level 3.1 Translocations
+
+
+You had 2 spell levels left.
+You knew the following spells:
+
+ Your Spells              Type           Power        Failure   Level  Hunger
+a - Shroud of Golubria    Chrm/Tloc      #.........   21%         2    ###....
+b - Gell's Gravitas       Tloc           #.........   21%         3    ####...
+
+Your spell library contained the following spells:
+
+ Spells                   Type           Power        Failure   Level  Hunger
+ Blink                    Tloc           N/A          11%         2    ###....
+ Lesser Beckoning         Tloc           #.........   21%         3    ####...
+ Teleport Other           Tloc           #.......     21%         3    ####...
+ Passage of Golubria      Tloc           N/A          56%         4    #####..
+
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (3/15)            
+
+Altars:
+
+
+Innate Abilities, Weirdness & Mutations
+
+Your plain brown scales are hard. (AC +5)
+You cannot fit into any form of body armour.
+You are cold-blooded and may be slowed by cold attacks.
+
+
+Message History
+
+You hit something. Something hits you.
+* * * LOW HITPOINT WARNING * * *
+You hit something.
+You hear some strange, mumbled words.
+You are confused.
+Your shroud begins to fray at the edges.
+You hear some strange, mumbled words.
+Something tries to affect you, but you resist.
+You miss something.
+Your shroud bends something's attack away.
+You hear some strange, mumbled words.
+You are more confused.
+You are too injured to fight recklessly!
+You miss something. Something hits you.
+* * * LOW HITPOINT WARNING * * *
+Your shroud falls apart!
+You hear some strange, mumbled words.
+A magic dart appears from out of thin air!
+The magic dart hits you!
+You die...
+
+     #......#.#.#     ##
+ ############.#.#     #.
+ #........)...#.#     #.
+  .####.....###.#     #.
+      #.###.# #.#     #.
+     ##.###.# #.#     #.
+     #....#.# #.#######+
+     #....#.#   ........
+     #....#.#   ........
+     #....#.#   ........
+     #.@..#.#    ######'
+     #..{...#         #.
+     ##)#.###         #.
+.?..(.()#.#           #.
+........#.#           #.
+........#.#           #.
+........#.#           #.
+........#.+           #.
+........###           #.
+........#             #.
+               ########.
+
+
+There were no monsters in sight!
+
+Vanquished Creatures
+  3 adders
+  2 oozes
+  A worm (D:3)
+  4 dart slugs
+  A leopard gecko (D:3)
+  4 orcs (D:3)
+  7 giant cockroaches
+  3 goblins
+  7 hobgoblins
+  6 bats
+  2 frilled lizards
+  6 kobolds
+  9 rats
+55 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | Quintia the Draconian Warper began the quest for the Orb.
+     0 | D:1      | Reached XP level 1. HP: 17/17 MP: 3/3
+   396 | D:1      | Reached XP level 2. HP: 25/25 MP: 5/5
+   405 | D:1      | Learned a level 2 spell: Shroud of Golubria
+   931 | D:2      | Reached XP level 3. HP: 28/30 MP: 6/6
+   941 | D:2      | Learned a level 3 spell: Gell's Gravitas
+  1854 | D:3      | Reached XP level 4. HP: 37/37 MP: 7/7
+  2270 | D:3      | Killed from afar by an orc wizard
+
+Skill      XL: |  1  2  3  4 |
+---------------+-------------+-----
+Long Blades    |        3    |  3.2
+Fighting       |           3 |  3.2
+Throwing       |             |  0.8
+Dodging        |             |  2.9
+Stealth        |             |  0.6
+Spellcasting   |             |  2.2
+Translocations |             |  3.1
+
+Action                   |  1- 3 |  4- 6 || total
+-------------------------+-------+-------++-------
+Melee: Falchion          |   133 |    53 ||   186
+       Tailslap          |     7 |     6 ||    13
+ Cast: Shroud of Golubri |       |     5 ||     5
+       Gell's Gravitas   |       |     1 ||     1
+  Use: Scroll            |     2 |       ||     2
+ Stab: Sleeping          |     1 |       ||     1
+  Eat: Chunk             |     3 |     2 ||     5
+Armor: Skin              |    42 |    15 ||    57
+Dodge: Dodged            |    95 |    29 ||   124
+Rpst.: Falchion          |    27 |    13 ||    40
+

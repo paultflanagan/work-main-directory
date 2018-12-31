@@ -1,0 +1,324 @@
+Salazitor
+
+Level 1 of the Dungeon
+(0, 0, D:1)
+  a +2 short sword of holy wrath
+(5, 50, D:1)
+  a cursed -2 club
+(15, -2, D:1)
+  a +0 club
+  5 stones
+(15, -1, D:1)
+  a +0 club
+(15, 13, D:1)
+  a +0 club
+  3 stones
+(18, 10, D:1)
+  a +0 dagger
+(20, -1, D:1)
+  2 stones
+(20, 9, D:1)
+  2 stones
+(23, 43, D:1)
+  a +0 short sword
+(33, 10, D:1)
+  25 stones
+(43, 26, D:1)
+  a +0 club
+(53, 24, D:1)
+  a +1 dagger of draining
+(55, 25, D:1)
+  a stone
+(56, 25, D:1)
+  a stone
+(59, 25, D:1)
+  a +0 club
+
+Level 2 of the Dungeon
+(18, 44, D:2)
+  15 poisoned needles
+(19, 39, D:2)
+  21 sling bullets
+(20, 35, D:2)
+  6 stones
+(28, 47, D:2)
+  a +0 hunting sling
+(31, 33, D:2)
+  19 stones
+(31, 48, D:2)
+  20 arrows
+(32, 29, D:2)
+  3 stones
+(32, 45, D:2)
+  a +0 short sword
+(33, 2, D:2)
+  10 poisoned needles
+(34, 30, D:2)
+  a stone
+(36, 32, D:2)
+  a stone
+(39, 19, D:2)
+  a +0 whip
+(55, 37, D:2)
+  24 stones
+(61, 36, D:2)
+  a stone
+(61, 38, D:2)
+  a stone
+(61, 39, D:2)
+  a stone
+(62, 13, D:2)
+  23 stones
+(62, 34, D:2)
+  a +0 club
+  a +0 hunting sling
+  22 stones
+(68, 11, D:2)
+  a +0 chain mail
+
+Level 3 of the Dungeon
+(0, 0, D:3)
+  a +0 club
+(14, 7, D:3)
+  a +0 centaur barding
+(25, -48, D:3)
+  a +0 flail
+(29, -27, D:3)
+  21 stones
+(30, -42, D:3)
+  a +0 hunting sling
+(45, -54, D:3)
+  a +0 blowgun
+  5 poisoned needles
+(45, 1, D:3)
+  15 sling bullets
+(46, -29, D:3)
+  a +0 mace
+  a +0 animal skin
+  a +0 dagger
+  a +0 club
+(46, -17, D:3)
+  a +0 club
+  a +0 leather armour
+  a +0 mace
+  a cursed +0 robe
+  a +0 mace
+  a +0 ring mail
+  a +0 leather armour
+  a +0 dagger
+  a +0 leather armour
+(47, -54, D:3)
+  a poisoned needle
+(48, -32, D:3)
+  a +0 club
+(50, -54, D:3)
+  a poisoned needle
+(54, 4, D:3)
+  a +0 dagger
+  5 stones
+
+Level 4 of the Dungeon
+(0, 0, D:4)
+  a +0 helmet
+(2, 0, D:4)
+  a cursed +0 leather armour
+(11, -1, D:4)
+  a +0 flail
+  a +0 chain mail
+(12, -1, D:4)
+  a cursed +0 club
+(15, -5, D:4)
+  a +0 dagger
+  a +0 robe
+(16, -18, D:4)
+  a +0 giant spiked club
+(17, -29, D:4)
+  11 poisoned needles
+(22, -16, D:4)
+  a +0 quarterstaff
+(28, -37, D:4)
+  a +0 mace
+(33, -37, D:4)
+  a +0 shortbow
+  15 arrows
+(44, -28, D:4)
+  20 stones
+
+Level 5 of the Dungeon
+(7, 10, D:5)
+  a +0 scythe
+  a +0 robe
+(11, 8, D:5)
+  15 arrows
+(26, 40, D:5)
+  22 bolts
+(31, 34, D:5)
+  17 stones
+(34, 30, D:5)
+  a +0 giant spiked club
+(42, 42, D:5)
+  a +0 giant club
+(46, 12, D:5)
+  15 stones
+(50, 50, D:5)
+  a +0 hand axe
+  a tomahawk
+(50, 51, D:5)
+  a tomahawk
+(51, 28, D:5)
+  a +0 helmet
+(51, 53, D:5)
+  a tomahawk
+
+Level 6 of the Dungeon
+(4, 20, D:6)
+  a +0 robe
+(7, 21, D:6)
+  a +0 leather armour
+(9, 26, D:6)
+  a +0 spear
+  a +0 ring mail
+(18, 20, D:6)
+  a cursed +0 trident
+(19, 2, D:6)
+  a +0 falchion
+(20, 20, D:6)
+  a cursed +0 scimitar
+  a +0 robe
+  a +0 mace
+  a +0 robe
+  a +1 battleaxe
+  a +0 robe
+  a cursed +4 spear
+  a +0 robe
+(21, -15, D:6)
+  a +0 leather armour
+(26, 8, D:6)
+  a ration
+(28, 8, D:6)
+  a potion of cancellation
+(41, -15, D:6)
+  a throwing net
+(50, -21, D:6)
+  14 stones
+(51, -8, D:6)
+  a +0 buckler
+(53, 2, D:6)
+  a +0 whip of freezing
+  a +0 robe
+(54, -2, D:6)
+  a +0 dagger of flaming
+
+Level 7 of the Dungeon
+(0, 0, D:7)
+  a +0 hunting sling
+(1, -1, D:7)
+  2 arrows
+(1, 24, D:7)
+  2 throwing nets
+(2, -6, D:7)
+  a +0 shortbow
+  9 arrows
+(2, 20, D:7)
+  19 stones
+(5, 21, D:7)
+  the ring "Emuath" {Fire rPois Int+2}
+    [ring of fire]
+    
+    It enhances your fire magic.
+    It affects your intelligence (+2).
+    It protects you from fire.
+    It makes you vulnerable to cold.
+    It protects you from poison.
+(7, 0, D:7)
+  a +0 dagger
+  a +0 ring mail
+(8, 24, D:7)
+  25 arrows
+(11, 24, D:7)
+  15 bolts
+(15, 23, D:7)
+  a +0 dagger
+  a +0 robe
+(16, 18, D:7)
+  an arrow
+(16, 19, D:7)
+  an arrow
+(16, 22, D:7)
+  a +0 shortbow
+  14 arrows
+  a +0 leather armour
+  a +0 mace
+  a +0 leather armour
+(16, 24, D:7)
+  an arrow
+(16, 26, D:7)
+  an arrow
+(20, 17, D:7)
+  a +0 robe
+(23, 2, D:7)
+  17 poisoned needles
+(49, 17, D:7)
+  12 stones
+(51, 14, D:7)
+  a +0 hunting sling
+
+Level 8 of the Dungeon
+(0, 0, D:8)
+  a +0 shortbow
+  21 arrows
+(1, 1, D:8)
+  25 arrows
+(10, 13, D:8)
+  a +0 short sword
+  14 stones
+(10, 16, D:8)
+  a potion of degeneration
+(16, 5, D:8)
+  a +0 rapier
+  4 stones
+(16, 7, D:8)
+  a +0 giant club
+  a +0 giant club
+  a two-headed ogre skeleton
+(22, 28, D:8)
+  a +0 shortbow
+  18 arrows
+(24, -20, D:8)
+  a +0 shortbow
+  19 arrows
+(28, -15, D:8)
+  9 poisoned needles
+(29, 17, D:8)
+  a cursed +0 leather armour
+(33, 22, D:8)
+  a potion of degeneration
+(33, 39, D:8)
+  a +0 whip
+  10 stones
+(43, 26, D:8)
+  23 poisoned needles
+(44, 2, D:8)
+  a -3 ring of slaying
+(46, 19, D:8)
+  9 sling bullets
+(57, 2, D:8)
+  a +0 robe
+
+Level 9 of the Dungeon
+(0, 0, D:9)
+  a howler monkey skeleton
+(6, -8, D:9)
+  16 arrows
+(8, -1, D:9)
+  the +2 robe of the King {rF+ Str+3}
+    It affects your strength (+3).
+    It protects you from fire.
+(8, 6, D:9)
+  a +0 falchion
+  (unseen)
+(8, 9, D:9)
+  a sack of spiders
+(10, -17, D:9)
+  16 gold pieces
+

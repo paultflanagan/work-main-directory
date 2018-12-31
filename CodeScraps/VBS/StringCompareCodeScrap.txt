@@ -1,0 +1,17 @@
+BaselineSG3 = FileBase.ReadAll
+FileBase.Close
+Set FileBase = Nothing
+Set FSOBase = Nothing
+
+
+Dim FSOCheck, FileCheck, iCounter
+Set FSOCheck = CreateObject("Scripting.FileSystemObject") 
+Set iCounter = 0
+
+Do
+	iCounter = iCounter + 1
+	wait(10)
+	Set FileCheck = FSOCheck.OpenTextFile("C:\3rdSafeguard.txt", 1) ' 1 = ForReading
+	DupesInDB = FileCheck.ReadAll
+	FileCheck.Close
+Loop While ((StrComp(DupesInDB, BaselineSG3) <> 0) OR (iCounter < 6))

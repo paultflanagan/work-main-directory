@@ -1,0 +1,269 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+Grishum the Fighter (Ogre Berserker)                Turns: 5978, Time: 00:25:16
+
+Health: 93/97      AC:  7    Str: 25    XL:     9   Next: 61%
+Magic:  9/9        EV: 12    Int:  8    God:    Trog [****..]
+Gold:   507        SH:  5    Dex:  9    Spells: 8/8 levels left
+
+rFire    . . .     SeeInvis .   w - +2 flail (protect)
+rCold    . . .     Gourm    .   (no shield)
+rNeg     . . .     Faith    .   b - +0 animal skin
+rPois    .         Spirit   .   (helmet restricted)
+rElec    .         Reflect  +   (no cloak)
+rCorr    .         Harm     .   (gloves unavailable)
+MR       +....                  (boots unavailable)
+Stlth    +.........             D - +5 amulet of reflection
+HPRegen  0.26/turn              B - ring of protection from magic
+MPRegen  0.11/turn              g - +4 ring of protection
+
+@: no status effects
+A: large, unfitting armour, tough skin 1
+a: Berserk, Trog's Hand, Brothers in Arms, Renounce Religion
+
+
+You are on level 7 of the Dungeon.
+You worship Trog.
+Trog is greatly pleased with you.
+You are completely stuffed.
+
+You have visited 1 branch of the dungeon, and seen 7 of its levels.
+
+You have collected 507 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +1 mace
+ w - a +2 flail of protection (weapon)
+Missiles
+ m - 273 stones (quivered)
+Armour
+ b - a +0 animal skin (worn)
+Jewellery
+ e - an uncursed ring of fire
+ g - a +4 ring of protection (right hand)
+ z - an uncursed amulet of the gourmand
+ B - a ring of protection from magic (left hand)
+ D - a +5 amulet of reflection (around neck)
+Wands
+ i - a wand of paralysis (23)
+ s - a wand of polymorph (6)
+Scrolls
+ d - a scroll of random uselessness
+ h - 4 scrolls of remove curse
+ j - 4 scrolls of identify
+ k - 3 scrolls of enchant weapon
+ q - 2 scrolls labeled HIOMUT ILAGUMN
+ t - 4 scrolls labeled CIEFUATAVE
+ x - a scroll labeled TERONKU KYWEASCH
+ y - 2 scrolls labeled YDWY IMEAXEAM
+ A - a scroll labeled KIXYG OSAW
+ C - a scroll labeled EMUMPIGECH
+Potions
+ l - an emerald potion
+ n - 2 fuming pink potions
+ o - 2 blue potions
+ p - a glowing emerald potion
+ r - a fuming white potion
+ u - 3 potions of heal wounds
+ v - a purple potion
+Comestibles
+ c - 13 rations
+ f - 15 chunks of flesh
+
+
+   Skills:
+ * Level 8.6 Fighting
+ * Level 8.2 Maces & Flails
+ * Level 3.7 Throwing
+ * Level 6.6 Dodging
+
+
+You have 8 spell levels left.
+You don't know any spells.
+Your spell library is empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (7/15)             Temple (0/1) D:5         
+
+Altars:
+Cheibriados
+Elyvilon
+Fedhas
+Makhleb
+Okawaru
+Ru
+Sif Muna
+Uskayaw
+Wu Jian
+Xom
+Yredelemnul
+
+Shops:
+D:4 (   D:7 :
+
+
+Innate Abilities, Weirdness & Mutations
+
+You are too large for most types of armour.
+You have tough skin. (AC +1)
+
+
+Message History
+
+Found a scroll labeled HIOMUT ILAGUMN and a fuming pink potion.
+The giant cockroach barely misses you.
+You sock the giant cockroach!
+Your weapon exudes an aura of protection.
+You kill the giant cockroach!
+Trog accepts your kill.
+No target in view!
+h - 4 scrolls of remove curse (gained 1)
+q - 2 scrolls labeled HIOMUT ILAGUMN (gained 1)
+Found a square ruby amulet.
+n - 2 fuming pink potions (gained 1)
+D - a square ruby amulet
+Put on which piece of jewellery? (? for menu, Esc to quit)
+Okay, then.
+As you read the scroll of identify, it crumbles to dust.
+D - a +5 amulet of reflection
+Put on which piece of jewellery? (? for menu, Esc to quit)
+You remove your amulet of the gourmand.
+D - a +5 amulet of reflection (around neck)
+Saving game... please wait.
+
+          #.#
+          #.#
+          #.#
+          #.#
+          #.#
+   ########.#
+####........#########
+................@...#
+####.##############.#
+####.#
+<....#
+######
+
+
+There are no monsters in sight!
+
+Vanquished Creatures
+  A hornet (D:7)
+  Sigmund (D:3)
+  Edmund (D:4)
+  A sky beast (D:5)
+  2 orc warriors
+  An ice beast (D:3)
+  2 phantoms
+  A centaur (D:5)
+  3 bullfrogs
+  A gnoll sergeant (D:6)
+  2 water moccasin zombies
+  A scorpion (D:6)
+  6 killer bees (D:7)
+  A howler monkey (D:4)
+  A bullfrog zombie (D:5)
+  2 crimson imps
+  2 hounds
+  2 orc priests
+  5 orc wizards
+  An iguana (D:4)
+  4 worker ants
+  A hound skeleton (D:6)
+  A worker ant zombie (D:6)
+  5 gnolls (D:6)
+  7 adders
+  3 shadow imps
+  An ooze (D:4)
+  An adder skeleton (D:4)
+  8 worms
+  7 dart slugs
+  3 leopard geckos
+  16 orcs
+  7 bats
+  6 giant cockroaches
+  4 goblins
+  12 hobgoblins
+  23 jackals
+  3 quokkas
+  8 frilled lizards
+  11 kobolds
+  A leopard gecko zombie (D:5)
+  A quokka skeleton (D:4)
+  A quokka zombie (D:6)
+  10 rats
+181 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | Grishum the Ogre Berserker began the quest for the Orb.
+     0 | D:1      | Reached XP level 1. HP: 24/24 MP: 1/1
+   169 | D:1      | Reached XP level 2. HP: 32/32 MP: 2/2
+   419 | D:1      | Reached XP level 3. HP: 40/40 MP: 3/3
+   427 | D:1      | Reached ** piety under Trog
+   927 | D:2      | Found a shimmering altar of Xom.
+   961 | D:2      | Reached XP level 4. HP: 49/49 MP: 4/4
+  1571 | D:3      | Noticed an ice beast
+  1584 | D:3      | Reached skill level 5 in Fighting
+  1584 | D:3      | Reached XP level 5. HP: 34/57 MP: 5/5
+  1607 | D:3      | HP: 4/85 [ice beast (21)]
+  1611 | D:3      | Killed an ice beast
+  1611 | D:3      | Reached skill level 1 in Throwing
+  1611 | D:3      | Reached XP level 6. HP: 6/66 MP: 6/6
+  1620 | D:3      | Reached *** piety under Trog
+  1981 | D:3      | Noticed Sigmund
+  2007 | D:3      | Killed Sigmund
+  2246 | D:3      | Reached XP level 7. HP: 72/72 MP: 7/7
+  2255 | D:3      | Reached skill level 5 in Maces & Flails
+  2451 | D:3      | Found a snail-covered altar of Cheibriados.
+  3035 | D:4      | Found Cela's Antique Weapon Shop.
+  3115 | D:4      | Noticed Edmund
+  3129 | D:4      | Killed Edmund
+  3169 | D:4      | Reached skill level 5 in Dodging
+  3641 | D:4      | Reached XP level 8. HP: 53/84 MP: 8/8
+  3909 | D:5      | Entered Level 5 of the Dungeon
+  4239 | D:5      | Found a staircase to the Ecumenical Temple.
+  4396 | D:5      | Reached **** piety under Trog
+  4925 | D:6      | Reached XP level 9. HP: 36/94 MP: 9/9
+  5023 | D:6      | Noticed a dagger
+  5023 | D:6      | Noticed a dagger
+  5024 | D:6      | Found a hide-covered altar of Uskayaw.
+  5307 | D:7      | Noticed a hornet
+  5312 | D:7      | Paralysed by a hornet for 2 turns
+  5322 | D:7      | Killed a hornet
+  5635 | D:7      | Found an ornate altar of the Wu Jian Council.
+  5638 | D:7      | Found a basalt altar of Yredelemnul.
+  5639 | D:7      | Found a sacrificial altar of Ru.
+  5642 | D:7      | Found a deep blue altar of Sif Muna.
+  5642 | D:7      | Found a blossoming altar of Fedhas.
+  5648 | D:7      | Found an iron altar of Okawaru.
+  5649 | D:7      | Found a white marble altar of Elyvilon.
+  5650 | D:7      | Found a burning altar of Makhleb.
+  5858 | D:7      | Found Goluaw's Book Shop.
+
+Skill      XL: |  1  2  3  4  5  6  7  8  9 |
+---------------+----------------------------+-----
+Maces & Flails |     3     4        5  7  8 |  8.2
+Dodging        |     3           4  5     6 |  6.6
+Fighting       |           5        6  7  8 |  8.6
+Throwing       |              1     2  3    |  3.7
+
+Action                   |  1- 3 |  4- 6 |  7- 9 || total
+-------------------------+-------+-------+-------++-------
+Melee: Mace              |   140 |   122 |   145 ||   407
+       Unarmed           |       |       |     6 ||     6
+       Flail             |       |       |   302 ||   302
+Throw: Stone             |       |    27 |    17 ||    44
+Invok: Berserk           |       |     3 |     5 ||     8
+       Trog's Hand       |       |     1 |     1 ||     2
+  Use: Potion            |       |     3 |     3 ||     6
+       Scroll            |       |       |     4 ||     4
+  Eat: Chunk             |       |     8 |    32 ||    40
+Armor: Animal skin       |    95 |    82 |   243 ||   420
+Dodge: Dodged            |    88 |   133 |   287 ||   508
+

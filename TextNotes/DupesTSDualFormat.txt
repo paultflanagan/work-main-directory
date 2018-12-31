@@ -1,0 +1,1095 @@
+Dupes Troubleshooting: Dual Format
+
+23-Aug-2018
+"Dupes in database not validated"
+
+Location of LogResult call in question:
+	VerifyEmail_App_Quarantine_DualFormat, line 45
+
+Logic statement determining call to LogResult:
+	If DupesInDB = BaselineSG3 Then
+		'Return Success statement
+	Else
+		'Return Failure statement
+	End If
+
+Location of DupesInDB Declaration:
+	VerifyEmail_App_Quarantine_DualFormat, line 34
+		Dim DupesInDB
+Location of DupesInDB Initialization:
+	VerifyEmail_App_Quarantine_DualFormat, line 39
+		DupesInDB = Readfile("C:\logfile.txt")
+
+Location of BaselineSG3 Declaration:
+	VerifyEmail_App_Quarantine_DualFormat, line 35
+		Dim BaselineSG3
+Location of BaselineSG3 Initialization:
+	VerifyEmail_App_Quarantine_DualFormat, line 40
+		BaselineSG3 = Readfile("C:\baseline_dualformat.txt")
+
+Content of C:\logfile.txt as of 3:30PM
+	Nonexistent!
+
+'the file does not exist as of the end of the program. Is it deleted at some point in the program? Is it ever created?
+'Note: there is another variable, FileName, declared and initialized in the same code blocks as DupesInDB and BaselineSG3, however it is never used again in the rest of this file.
+
+'the only other mention of logfile.txt is commented out, a function call of [objFSO.DeleteFile("C:\logfile.txt"), DeleteReadOnly)]
+
+Solution: after looking through one of the batch files called in that action, we realized that the filename being written to hadn't been updated. That is, the updated batch file was creating a logfile with a different name, but the UFT code hadn't been updated to match.
+
+
+
+
+24-Aug-2018
+"Email is not received"
+
+Location of LogResult call in question:
+	VerifyEmail_App_Quarantine_DualFormat, line 17
+
+Logic statement determining call to LogResult:
+	If InStr ( 1, EntireString, ExpectedString, vbTextCompare) Then
+		'Return Success statement
+	Else
+		'Return Failure statement
+	End If 
+
+Solution: the script ran a python file to generate EntireString from Outlook, but Python had not been installed
+
+
+
+27-Aug-2018
+Issue: files are not being moved from C: drive into Y: drive.
+
+Errors exist in .vbs and .bat attempts to move file from "C:\Automation\ReportFramework\Test_Results\Project_Report_duplicatecheck.txt" to ""Y:\jenkins\workspace\Automation\UniSeries\8.4.0\SVT\Duplicate Check Report\Project_Report_duplicatecheck.txt"
+
+Possibility: syntax of move/copy command calls are incorrect
+	I'm not as familiar with .vbs, but if I can get it to work in the .bat without changing the parameters, then I'll know it's something wrong with the syntax in the .vbs
+
+	After making sure that the syntax of the batch command was correct (running the .bat independently, i.e. outside of jenkins), I still was getting errors for both.
+
+Possibility: jenkins is having difficulty recognizing/interacting with the Y: drive
+	If I could swap the command so that it directed the output to stay within the C: drive, and jenkins ran it successfully, I think this would prove this to be the issue.
+		is there an easy / quick way to verify this short of editing it and then running the whole jenkins process? 
+		I believe there is, I'll try it before I ask Paul for help.
+	Paul told me to do it a different way: add a quick command at the end of the UFT script itself, invoking a copy command to get the file where we need it to be, and then temporarily deleting the batch commands at the end of the jenkins script.
+	Did that, am currently waiting for the results machine to clear up and process my request, which will hopefully work properly send me an email with an attachment
+		machine appears to be currently stuck on a test that has been running for over 16 hours. Ask Paul what to do, shut it down?
+
+
+29-Aug-2018
+Issues with most recent run:
+	End results:	Email was sent out, but with no attachment
+			.pdf generation script slipped and was unable to complete.
+			After running PDFGen script again, result was unexpected:
+				has twice the normal amount of entries
+				listed start time as 8/28/2018 16:59, end time 8/29/2018 8:28 - 15 hour "run time", and appears to not have most recent test, which ended 9:17
+				seems to be a combination of the 2 previous tests before the most recent one?? Data files used by processes are off by one?
+			Back on paultest1, the results- and Project_Report.txt files are updated, but Project_Report_duplicatecheck.txt is not
+				Project_Report_duplicatecheck.txt has the same unexpected contents as the .pdf
+				potentially, since the run from yesterday was aborted, the data was still in the system and wasn't flushed out?
+					by why wouldn't the data have been removed at the start of the next run? have we not fully implemented that change?
+
+
+PaulTest1 issue:
+Did NOT overwrite the Results.txt in C:\Automation\Duplicate Check, just appended.
+	*Need to edit so that it clears out and creates a fresh results.txt file automatically* (ToDoForDupes #7)
+	program is doomed to fail...
+BUT maybe I can just cut out the first bit and manually run through it to generate the desired .pdf..?
+Attempting...
+	Edited out the incorrect text in results.txt...	Check
+	running C:\results.vbs...			old results.txt successfully deleted
+	running C:\results.bat...			new results.txt successfully copied from C:\Automation\Duplicate Check to C:\Automation\ReportFramework\Test_Results
+	PreprocessGuardianResults_dualformat.vbs...	new Project_Report.txt successfully created
+	RenameLatestTXTtoduplicatecheck.vbs...		new Project_Report_duplicatecheck.txt successfully created
+	Final_results.bat...				file successfully transferred to engsec830qa
+	AddDataToProject_ReportsAndGeneratePDF_[etc]...	.pdf successfully generated
+... Attempt Successful
+
++++++++++++
+06-Sep-2018
++++++++++++
+//Picking up from where I left off in DailyLog.txt
+
+Results /*Of Test 7.2.4*/:
+	Guardian navigation successful
+	Output procedure full success (Complete Run, all results files generated, email sent with .pdf attachment)
+	Test Summary:
+		Run Time:	00:07:05
+		Success Totals:	11/12
+		Failed Cases:	10
+	Cool, I'm almost tempted to get my hopes up
+	Let's take a look at Test Case 10 and see what's up.
+
+Test Case 10: 
+Database Validation	Validate dupes in database	Dupes in database not validated
+
+Location of LogResult call in question:	VerifyEmail_App_Quarantine_DualFormat, line 58
+	I believe I've dealt with this particular call before at least once, let's see if I can find what I did then
+
+I did work with this section of code before, but the solution was something different. 
+	Review:	Compares two text files C:\3rdSafeguard.txt and C:\baseline_dualformat.txt
+			baseline is the hard coded expected result, 3rdSafeguard is the one generated and modified by the script
+		if they are equal, passes the test. Otherwise, fails the test.
+I've checked the files compared by the if statement, and they appear to be similar.
+In fact, I went ahead and took out the logic test in question from the script and ran it, and it showed that the comparison should have been true, at least with the current versions of the data files.
+Is 3rdSafeguard.txt modified after the test?
+I think what I'll want to do first is add a msgbox and check on the state of the files before the test.
+	man there's gotta be a more elegant way to troubleshoot.
+Maybe I could ask Paul about the breakpoint in UFT first?
+
+Ended up going with a simple msgbox command and ran from the top
+
+Running Test 8...
+Results:
+	Guardian navigation successful
+	Reached msgbox line, examined file state, ran isolated test, all appeared to check out, continued.
+	Output procedure full success
+	Test Summary:
+		Run Time:	00:08:19
+		Success Totals:	10/12
+		Failed Cases:	9, 10
+Test Case 9:
+Email Validation	Validate the email	Email is not received
+
+
+In the end we worked with Josh to tweak the python code (C:\Automation\Duplicate Check\EmailScrapper.py and relevant applications to function the way we needed them to
+	uncommented one line, changed trust center settings (we forgot to do so, the DupesSetupDoc already called for that step)
+Trying again, expecting this to fix Case 9, I suppose it as a chance to fix Case 10.
+
+Running Test 9...
+Results:
+	Got an error of some kind and I didn't close it fast enough. Test halted afterwards
+	Running again.
+
+Running Test 9.1...
+Results:
+	Guardian navigation successful
+	Realized I forgot to take out the msgbox command, still seemed to be in order at that point
+	Output procedure full success
+	Test Summary:
+		Run Time:	00:09:40
+		Success Totals:	11/12
+		Failed Cases:	10
+
+So 9 has been fixed, it would seem. Running one more test just to confirm.
+I'll leave in the msgbox line for now
+
+Running Test 9.2...
+	Guardian navigation successful
+	Appears to be in order at msgbox flag
+		At the time of the python script running there are no emails in the outlook inbox
+		Maybe this is just a one time fluke, but maybe it does have to do with the emails not being sent at the synced time?
+		Nevertheless, as I'm checking the results.txt in this time, there were other errors (might be why it was taking so long to run)
+		I will allow this to run to completion, mark down what else went wrong, and run again in the hopes that they go better next time so I can isolate this variable
+		I'll fix those after I fix this
+	Output procedure full success
+	Test Summary:
+		Run Time:	00:18:43
+		Success Totals:	9/12
+		Failed Cases:	7, 8, 10
+			It'd be funny if what I'm doing here is unravelling the threads of duct tape the original coder put together while trying to get 10 to work
+			Now that I'm trying to do it in this updated way, I'm working my way down, so that I can build it back up
+Test Case 7:
+Dual Format Use Case	End the Second Lot	Lot ends without a Duplicate Dialog
+
+Test Case 8:
+Second User Entry dialog for Override Quarantine	Enter second signature	Second User Entry dialog does not appear
+
+//Note: not trying to fix these here, just documenting them before moving on
+//Although, first impression, I would guess that a failure in 7 guarantees a failure in 8
+//Would a N/A flag be more appropriate for that situation? Eh, probably would not be as clean that way
+
+	Running again in the hopes that 7 and 8 will pass this time.
+
+Running Test 9.2.1...
+Results:
+	Got the error that Paul told me to keep an eye out for, called him over and added code that should help the script handle it
+	Re-running.
+
+Running Test 9.2.2...
+//Maybe I should only list results if it gets to any
+	Would not interact with Guardian. Attempting to stop.
+
+Running Test 9.2.3...
+	COM Surrogate crashed. Twice. Realized we had two Guardian instances opened. Resetting system then trying again
+	Side note: I think the subject lines for the final results emails sent out by Jenkins are off by one? the 75% successful test said 92%, and the current, aborted one said 75%.
+
+Running Test 9.2.4...
+
+.
+.
+.
+
+
+After a lot of testing and breaking down in order to build back up, I appear to be back where I started, several hours later.
+I think that by now 7 and 8 are secured, but by the end of the day, 2, 3, and 5 were Failed, in addition to 10.
+
+I guess this reinforces the narrative of poking the unstable tower of duct tape, though, so that's cool I guess.
+
++++++++++++
+07-Sep-2018
++++++++++++
+
+Running Test... uh... let's say 10?..
+Results:
+	Went through fine
+	Output procedure failed at engsec830qa since EXCEL.exe was open
+	Test Summary:
+		Run Time:	00:10:41
+		Success Totals:	11/12
+		Failed Cases:	10
+
+So 2, 3, and 5 decided to work. Cool. I'll just hope it was a random connection hiccup
+	although shouldn't the code be robust enough to handle something like that...
+We added a code snippet at the beginning of engsec830qa's script to delete any instance of EXCEL.exe first to avoid that snag
+
+Still getting puzzling results for Case 10, even after we updated the comparison from a straight (DupesInDB = BaselineSG3) to (StrComp(DupesInDB, BaselineSG3) = 0)
+	which is annoying
+That is, Case 10 returns a failure, even though running the exact same logic test manually gives a pass.
+
+Running Test 11...
+Results
+	(Going to assume that the standard case is guardian playing nicely and stop recording it, at least for now)
+	got up to flag, ran manual test, returned a pass
+	Test Summary:
+		Run Time:	00:11:08
+		Success Totals:	11/12
+		Failed Cases:	10
+cooool
+
+Adding more msgbox commands, to give us a better idea of what the contents of the compared variables are 
+next we could try setting both variables to "abc" and see if it still returns a failure
+
+Running Test 12...
+Results:
+	Got up to msgbox lines, then something interesting!
+		had the first check as "msgbox(DupesInDB)" to show us what the contents of the compared strings were, and it was blank!
+	shows that it's an issue with writing the data of the text file into the variable
+	suspect that it has to do with conficting object names, potentially
+		the file system objects are both called "fso", in the body of the script and in the body of the ReadFile function.
+		additionally, the whole management of the FileSystemObjects in this part of the script was way too messy, with weird names and a missing object close.
+	Test Summary:
+		Run Time:	00:13:13
+		Success Totals:	11/12
+		Failed Cases:	10
+We renamed the fso in the script body to "FileObject", updated the rest of the calls in the rest of the script, cleaned up the management of that object, and ran again
+Ready to run again
+
+Running Test 13...
+Results:
+	nope, still got an empty result for the first box.
+	Test Summary:
+		Run Time:	00:12:34
+		Success Totals:	11/12
+		Failed Cases:	10
+
+So I guess it's something else, but I definitely feel like we're getting close. 
+Trying adding another msgbox command, this one will be: msgbox(Readfile("C:\3rdSafeguard.txt"))
+	just to see if it's the ReadFile that doesn't work because an FSO is already open, regardless of the name
+Actually, maybe that's it, and maybe that's what I should try first: closing out FileObject as soon as it is no longer needed
+maybe it doesn't matter what it's called, it's just that one is already open and that confuses it (?)
+worth a shot, I'll just do that first, and if that doesn't work, then I'll try the additional msgbox command.
+Luckily, the last time FileObject is used is before any of the ReadFile calls, so I don't have to worry about re-opening it.
+FSO close moved. Ready for next run.
+
+Running Test 14...
+Results:
+	Guardian froze up
+Refreshing system, starting again
+
+Running Test 14.1...
+Results:
+	came across a connection error on AI21, did not hit retry, I hit retry for it
+		may have to tweak what's in the object repository
+	Version registry manager crashed. Hopefully a fluke.
+Trying again.
+
+Running Test 14.1.1...
+Results:
+	nope
+	Test Summary:
+		Run Time:	00:10:51
+		Success Totals:	11/12
+		Failed Cases:	10
+now going to try to do without the calls to the function libraries and just putting all the code right there in the body of the script
+
+Running Test 15...
+Results:
+	This run, it did not make the dupes.
+	maybe a fluke
+	aborted the test
+
+We suspect now that the issue may just be another timing error
+	the sg3.bat and sg3.sql are sorta just set off and not monitored: the DupesInDB may be empty because the .bat and .sql are not done writing to it
+	we've added a do while loop that waits for the text in the generated file to match the base one, or for a minute.
+	not personally a huge fan of this solution, since it assumes that the generated file will always eventually be correct.
+		but, all we need right now is a solution, even if it isn't a clean one
+
+checked Results.txt before we reset. Failed cases were 7 and 8
+
+Running Test 16...
+Results:
+	msgbox reports that 3rdSafeguard.txt is populated by the time of the comparison!
+	100% success!
+	Test Summary:
+		Run Time:	00:12:01
+		Success Totals:	12/12
+		Failed Cases:	n/a
+Removing msgbox commands and running again for consistency check
+
+Running Test 17...
+Results:
+	Bugged out during Guardian navigation :(
+Refreshing and trying again.
+
+Running Test 17.1...
+Results:
+	Froze up again.
+
+I guess it just wanted to give us one good run before it died?
+Maybe it's a simple matter of resetting the system
+Resetting and trying again.
+
+Running Test 17.1.1...
+Results:
+	Skipped over navigation to the purge option window.
+	Aborted.
+Trying again
+
+Running Test 17.1.2...
+Results:
+	Froze.
+	Aborted.
+I'm convinced that it just doesn't want to behave at this point. Trying again on Monday.
+ok wait after PC input tablet broke it zoomed ahead seriously what does that thing do other than hold back the script and slow it down
+	honestly it's like weighted training clothes or something
+version registry manager crashed
+froze
+this is annoying, i'm just going to set it up and leave
+
+
++++++++++++
+10-Sep-2018
++++++++++++
+Refreshed system, starting new test
+
+Running Test 17.1.3...
+Results:
+	After over 5 minutes of slow responsiveness and attempting to get itself to Administration;Purge Production Data
+	RDP Clip Monitor has stopped working (8:12:15)
+		Closed, non fatal?
+	Now is not moving itself to Lines and Products;Products
+		I'll give it a few minutes.
+			If it isn't moving itself by then, it won't be able to for the rest of the test.
+	8:14:07 - has skipped the second movement step.
+		Restarting test without closing Guardian or TIPS (i.e. only running ScriptForceQuit.bat)
+
+Running Test 17.1.4...
+Results:
+	Instantly started itself off, navigating through menus properly.
+/*
+* Am I correctly noticing that it always seems to have trouble navigating Guardian on its first run after being rebooted?
+* I suppose I'll ask someone, maybe just wait until Paul gets back Wednesday.
+*/
+	I believe that I noticed it automatically pressing the "Retry" button on the connection error messages again, this time for the GetGtin lot.
+	Test Summary: Full Pass (00:10:51)
+Re-running new test.
+
+Running Test 18...
+Results:
+	Timed out
+	After checking Results.txt, saw that it failed tests 7 and 8
+		this is why I was hesitant about our waiting solution for case 10. If a previous test fails (in this case, dupes were not detected, therefore no emails were sent(?)) and it got stuck in the wait-for-strings-to-match loop.
+		hang on it might not have been the case 10 wait that froze things up
+		no wait yeah it was, what happened (I think) was:
+			1. The software did not detect any dupes (fail case 7)
+			2. The dupes quarantine window never appeared, so was never completed (fail case 8)
+			3. No emails were sent 
+				So then what about case 9?
+				I don't think the scripts are built to handle to completion the event where emails are not sent
+			4. ... Timed out in its attempt to read the non-existent Email_1.txt?
+				That would explain why it never even checked case 9?
+		I think it might have gotten stuck there. Let's check the python script?
+	EmailScrapper.log: most recent entry - the one from this test - showed no emails in outlook
+		I believe this confirms my suspicion:
+The Testing scripts appear to not be built to handle beyond a case where the software fails to detect the duplicates.
+	Should I attempt to make it handle them?
+	Does it make sense to?
+		Once it is our own software which fails, wouldn't that become the priority fix, warranting an immediate closure so that we may fix our own program?
+		Am I even sure that it was our software that caused cases 7 and 8 to fail?
+What was the cause of the failed duplicate check? 
+	*Could* it have been anything other than our own software, given that each previous test case was a success?
+
+I suppose, now that I have at least enough understanding to document what I think happened, it would be best for me to not think about it too much more and just run the test again.
+	If it resurfaces, only then is it worth worrying about, at least, in this moment.
+
+Running Test 18.1...
+Results:
+	Email text files were generated this time, implying a success of cases 7 and 8
+	It seemed to have been having issues navigating Guardian towards the end, where it closes everything out (I think), but the results were processed successfully with 100%, so I guess I just missed seeing it.
+	Test Summary: Full Pass (00:10:54)
+Starting new test
+	//I'm not actually sure what I'm supposed to keep running until? It seems stable, despite a few errors here and there, which seem to be beyond my understanding of the system.
+	//Are those what I need to be focusing on? 
+	//I guess I'll keep running until I get the next failure.
+
+Running Test 19...
+Results:
+	Script failed to navigate Guardian
+		hahaa, speak of the devil. 
+		Again, this is another one of the small group of bugs which only occasionally comes up, which is fatal, and which I can't determine what causes it.
+		I guess one idea could be to simply document them
+			but that seems like not much to do for two whole days
+			nevertheless, documentation is rarely a bad idea
+		how about I begin to document them as best as I can, and then once one reappears, I compare what happened each time to see if I can tell why it happened, find the consistencies.
+Creating DupesBugWatch.txt
+Starting New Test
+
+Running Test 20...
+Results:
+	Navigated Guardian Successfully (DBW Entry 1)
+	Encountered DBW Entry 2.
+		Why doesn't it even get up to logging test case 9?
+Starting new test
+
+Running Test 21...
+Results:
+	Vision Simulator was not opened at start? Maybe not an issue?
+	No DBW-1
+	No DBW-2
+	Email sent, but no results .pdf generated!
+		Damn I thought I fixed this.
+		Turns out I forgot to add a /f tag to the EXCEL.exe taskkill command in the .pdf generation .vbs script.
+	Test Summary: 	Full Pass (00:11:43)
+Starting again
+
+Running Test 22...
+Results:
+	DBW-1: absent
+	DBW-2: present
+	Failure due to DBW-2 (Timeout)
+
+Running Test 23...
+Results:
+	DBW-1: absent
+	I messed something up with the TIPS setup. Refreshing and retrying.
+
+Running Test 23.1...
+Results:
+	DBW-1: absent
+	DBW-2: present
+	Failure due to DBW-2 (Aborted)
+My attempts to access the code responsible for the actual duplicate checking aren't getting anywhere.
+Just going to restart the system and try again.
+
+Running Test 24...
+Results:
+	DBW-1: present
+	Failure due to DBW-1 (Aborted)
+Similar issue with previous error: attempts are fruitless.
+Retrying.
+
+Running Test 25...
+Results:
+	DBW-1: present
+	Failure due to DBW-1 (Aborted)
+
+Running Test 26...
+Results:
+	DBW-1: absent
+	Audit log failed (?)
+	"Audit Log Error: -2147023174	The RPC server is unavailable"
+	Aborted. Retrying
+
+Running Test 26.1...
+Results:
+	DBW-1: absent
+	Same failure.
+	Aborted. Refreshing, Retrying.
+
+Running Test 26.1.1...
+Results:
+	"Tablet PC Input Panel accessory has stopped working"
+	DBW-1: absent
+	DBW-2: absent
+	Test Summary:	Full Pass (00:11:09)
+And then, just like that, it decides to work again, after like five hours of bugs.
+I have no idea what I did, if anything,
+I have no idea why it passed this time and not any of the previous times
+This is fun
+
+Running Test 27...
+Results:
+	DBW-1: absent
+	DBW-2: present
+	Failure due to DBW-2 (Aborted)
+And after that one success it's back to bugging out
+sure
+Going to jump to the part where I refresh the system
+"Can't close Ips Engine."
+TipsKillAll.bat
+Running Again.
+
+Running Test 28...
+Results:
+	DBW-1: absent
+	DBW-2: absent
+	Test Summary:	Full Pass (00:11:32)
+Running Again.
+
+Running Test 29...
+Results:
+	DBW-1: absent
+	DBW-2: present
+	Failure due to DBW-2 (Aborted)
+
+To try when I get back tomorrow:
+	examine TipsKillAll.bat
+	examine log after running TipsKillAll.bat on PaulTest3
+	see if I can isolate which still running process causes DBW-2, if it is one of them
+	potentially: simply ensure that the process in question is refreshed each time the scripts are run (?)
+
++++++++++++
+11-Sep-2018
++++++++++++
+Killed scripts but not TIPS.
+Running again
+
+Running test 30...
+Results:
+	DBW-1: absent
+	IPS: IpsEngine error "MINOR": 'LotCode' is not a valid property
+	Then, old Expected/Received errors.
+	Aborted, retrying
+
+Running Test 30.1...
+Results:
+	"IpsEngine has stopped working"
+		evidently not a fatal crash??
+	DBW-1: absent
+	an independent "IpsEngine" window appeared this time
+	Same Expected/Received error
+	Aborted
+This time, I'll just close the TIPS window.
+	no issue (i.e. no error messages popped up while attempting to close)
+The next time it crashes, I'll run the TipsKillAll and note which programs are closed.
+
+Running Test 30.2...
+Results:
+	DBW-1: absent
+	Expected/Received Error again!!!
+Let's try TipsKillAll..?
+I stopped the scripts, closed out of the lots, and exited TIPS through the screen manager.
+Programs still active, stopped by TipsKillAll:
+	"VisionSimulator.exe" with PID 5360
+
+You know, let's try one more time and then just restart the box
+
+Running Test 30.3...
+Results:
+	DBW-1: absent
+	DBW-2: absent
+	Test Summary: Full Pass (00:11:15)
+...interesting. I'll try running again, and if it doesn't work, I'll kill any remaining VisSim and try again.
+
+Running Test 31...
+Results:
+	DBW-1: absent
+	DBW-2: absent
+	Test Summary: Full Pass (00:11:15)
+ok sure
+still no sign of an open "VisionSimulator.exe" in task manager.
+
+Running Test 32...
+Results:
+	DBW-1: absent
+	DBW-2: absent
+	Test Summary: Full Pass (00:11:33)
+Moving to next run
+
+Running Test 33...
+Results:
+	DBW-1: absent
+	DBW-2: present
+	Failure due to DBW-2 (Aborted)
+exited out of the visibly open "VisionSimulator.exe" instance
+still see a "VisionSimulator.exe" open in Task Manager
+Attempted to manually close screen manager
+	"Can't Close Ips Engine"
+looking in Task Manager, I see that "IpsEngine.exe" is also still running.
+Going to try running TipsKillAll.bat and see what else was still open:
+	VisionSimulator.exe
+	IpsEngine.exe
+	AuditLog.exe
+Hadn't seen AuditLog before, although I would think that it wouldn't have anything to do with not detecting dupes?
+	potentially? if it does a check to the log output to check if any errors are reported?
+Going to run again. Next time I get DBW-2, I'll close one by one to see if any of these is causing the problem. (checking if the bug is repeated)
+
+Running Test 34...
+Results:
+	DBW-1: absent
+	DBW-2: absent
+	Test Summary: Full Pass (00:11:08)
+	Tracked Processes?:	AuditLog.exe	IpsEngine.exe
+Starting new run
+
+Running Test 35...
+Results:
+	DBW-1: absent
+	DBW-2: absent
+	Test Summary: Full Pass (00:11:34)
+	Tracked Processes?:	AuditLog.exe	IpsEngine.exe	
+Based on these past two results, it would seem as if the problem was coming from VisionSimulator.exe
+	as in, it is freezing up, which stops it from closing itself
+but it is still possible that vissim is not the issue, and that it would close itself naturally, but it just hadn't gotten to that part of the script yet
+I suppose the only way to know is to wait for another DBW-2 and try closing only the different Tracked Processes.
+	hilarious how the one time I want this bug it won't show up
+Probably going to test in order of VisionSimulator.exe, IpsEngine.exe, and then AuditLog.exe
+	My guess is that it is IpsEngine.exe. Would it make sense to test that first or last?
+
+Running Test 36...
+Results:
+	DBW-1:	absent
+	DBW-2:	present
+	Failure due to DBW-2 (Aborted)
+	Tracked Processes?:	AuditLog.exe	IpsEngine.exe	VisionSimulator.exe
+Closing VisionSimulator.exe via Task Manager
+Starting new run
+
+Running Test 37...
+Results:
+	A bit slow to start, froze for a little over a minute
+	DBW-1:	absent
+	"IPS Engine Stop
+		The following condition(s) have stopped the line:
+			IPS\SptLotInfo: Advisor Connection Error"
+	Stopped for a bit, seems to have picked up again, though
+	Just kidding, "ItemsCreated=0" over and over in the PrintLog
+Indicative of something wrong with IpsEngine.exe (or AuditLog.exe), but not enough of a result
+Aborting and starting new run.
+
+Running Test 37.1...
+Results:
+	DBW-1:	absent
+		Again, slow to start.
+	I think I may have messed something up while trying to resize the PrintLog, but we'll see I guess
+	Aborted.
+Not working again, I'll try again in case it was my fault
+Closed VisionSimulator.exe again, just for consistency
+
+Running Test 37.2...
+Results:
+	DBW-1:	absent
+	"Audit Log Error: -2147023174
+	The RPC server is unavailable."
+	Script continues
+	Same error,
+	"Audit Log has stopped working"
+	
+	Machine froze up
+	Aborted.
+Hm, maybe this means that VisionSimulator was not the correct thing to close
+	Probably (?) showing that it was not what caused the problem
+Attempting to close out of TIPS...
+	"Can't close Ips Engine"
+Running full TipsKillAll.bat...
+Remaining Processes:
+	VisionSimulator.exe
+	menuman.exe
+	IpsEngine.exe
+OK, so next time I get DBW-2, I'll kill just IpsEngine, and until then I'll track menuman.exe, and stop tracking VisSim
+Starting new run.
+
+Running Test 38...
+Results:
+	DBW-1:	absent
+	DBW-2:	absent
+	Test Summary: Full Pass (00:09:56)
+	Tracked Processes?:	AuditLog.exe	IpsEngine.exe	menuman.exe
+Starting new run, waiting for DBW-2.
+
+Running Test 38.1...
+Results:
+	DBW-1:	absent
+	DBW-2:	present
+	Test Summary: Failure due to DBW-2 (Aborted)
+	Tracked Processes?:	AuditLog.exe	IpsEngine.exe	menuman.exe
+	Additionally, got a failure on test case 1. I'll keep an eye on that.
+Killing IpsEngine.exe via Task Manager
+Accidentally exited out of TIPS too, that may have ensured success.
+Starting new run
+
+Running Test 38.2...
+Results:
+	DBW-1:	absent
+	DBW-2:	absent
+	Test Summary:	Full Pass (00:11:08)
+	Tracked Processes?:	AuditLog.exe	IpsEngine.exe	menuman.exe
+		Not sure if it makes sense to still bother keeping track of these (even moreso on a passed run), but w/e
+Starting new Run
+
+Running Test 38.3...
+Results:
+	DBW-1:	absent
+	"IPS Engine Stop" - GetGtin lot
+	Test Summary:	Failed due to undocumented bug (Aborted)
+	Tracked Processes?:	AuditLog.exe	IpsEngine.exe	menuman.exe
+Closing lot, exiting, 
+"Can't Close Ips Engine"
+killall, 
+VisionSimulator.exe,	IpsEngine.exe,	AuditLog.exe
+start new run
+
+Running Test 38.4...
+Results:
+	DBW-1:	absent
+	DBW-2:	absent
+	Test Summary:	Full Pass (00:11:03)
+	Tracked Processes?:	AuditLog.exe	IpsEngine.exe	menuman.exe
+Starting new run
+
+Running Test 38.5...
+Results:
+	DBW-1:	absent
+	DBW-2:	present
+	Test Summary:	Failed due to DBW-2 (Aborted)
+	Tracked Processes?:	AuditLog.exe	IpsEngine.exe	menuman.exe
+Killed IpsEngine.exe via Task Manager
+Starting new run
+
+Running Test 38.6...
+Results:
+	DBW-1:	absent
+	DBW-2:	absent
+	Test Summary:	Full Pass (00:11:39)
+	Tracked Processes?:	AuditLog.exe	IpsEngine.exe	menuman.exe
+Results:
+	DBW-1:	absent
+	Vision Simulator did not open
+	Encountered Expected/Received error
+	Test Summary:	Failed due to undocumented bug (Aborted)
+	Tracked Processes?:	AuditLog.exe	IpsEngine.exe	menuman.exe
+This time, running the .exe I closed from D:\Tips\Bin to make sure it's open for the test.
+	Probably shouldn't have to do this, but doing it anyway because why not
+Starting new run
+
+Running Test 38.7...
+Results:
+	DBW-1:	absent
+	same error. Vision Simulator still not open
+Opening VS manually. Starting new run.
+
+Running Test 38.8...
+Results:
+	still nothing good
+Exiting Screen Manager
+TipsKillAll
+	VisionSimulator.exe
+Starting new run
+
+Running Test 38.9...
+Results:
+	DBW-1:	absent
+	DBW-2:	absent
+	Test Summary:	
+	Tracked Processes?:	AuditLog.exe	IpsEngine.exe	menuman.exe
+Starting new run
+
+Running Test 38.10...
+Results:
+	DBW-1:	absent
+	DBW-2:	present
+	Test Summary:	Failed due to DBW-2 (Aborted)
+	Tracked Processes?:	AuditLog.exe	IpsEngine.exe	menuman.exe
+At this point I'm not even sure what the next step would be. It no longer feels like I'm making progress along this route.
+Closed out Screen manager and Guardian
+TipsKillAll
+	none
+Starting new run
+
+Running Test 38.11...
+Results:
+	DBW-1:	absent
+	Device Manager	Audit Log Error: -2147021732	No More threads can be created in the system (???)
+	Got all the way up to the Gtin lot, but it appears to be stuck trying to do the Duplicate Serial Number Check
+	Results text file says that it has already failed the check, though. Maybe this one is a timeout?
+	Test Summary:	Failed I guess
+It's getting a bit sluggish. Maybe time for a reset depending on how this next test goes
+So in the setup for the next run, when I tried to close out the current lot it gave the duplicate dialog.
+Maybe it is as simple as not giving it enough time to run though?
+If so, then the issue would actually arise before 7, not between 8 and 9.
+Taking a look at the code before trying again.
+
+Not sure. Starting next run
+
+Running Test 38.12...
+Results:
+	DBW-1:	absent
+	DBW-2:	absent
+	Test Summary:	Full Pass (00:10:41)
+	Tracked Processes?:	AuditLog.exe	IpsEngine.exe	menuman.exe
+Starting next run
+
+Running Test 38.13...
+Results:
+	DBW-1:	absent
+	DBW-2:	present
+	Test Summary:	Failed due to DBW-2 (Aborted)
+	Tracked Processes?:	AuditLog.exe	IpsEngine.exe	menuman.exe
+I don't think it has ever not worked after a full exit (close Screen Manager, run TipsKillAll)
+Full Exit
+"Can't close Ips Engine"
+Trying again
+
+Running Test 39...
+Results:
+	DBW-1:	absent
+	DBW-2:	absent
+	Test Summary:	Full Pass (00:11:07)
+Full Exit
+Starting next run
+
+Running Test 40...
+Results:
+	DBW-1:	present
+	Test Summary:	Failed due to DBW-1 (Aborted)
+dang, haven't seen that one in a while
+Full Tips Reset
+Starting next run
+
+Running Test 40.1...
+Results:
+	DBW-1:	absent
+	DBW-2:	absent
+	Test Summary:	Full Pass (00:10:33)
+Full Tips Reset
+
+Running Test 40.2...
+Results:
+	DBW-1:	absent
+	DBW-2:	absent
+	Test Summary:	Full Pass (00:11:10)
+Shutting down system for the night
+
+
++++++++++++
+01-Oct-2018
++++++++++++
+Back again
+
+Returning to previous tests to make sure they still work
+I was hoping that it wouldn't take too long, that it would only take a run or two each, so I started in my DailyLog.txt.
+... I was incorrect.
+
+[From 28-Sep-2018]
+
+1.	Screen Manager > Timeout on starting Pallet Controller
+	Trying again
+2.	Same error.
+	Restarting System
+	Paul says that, although it is failing now, Pallet Controller is not used at all for the tests I want to run, so I don't need to worry about it.
+3.	Same error, clicking through and allowing test to continue.
+	Guardian > "Login Failed for user: qa"
+		I believe this is because the Server architecture (including for DupeServer) was updated recently, and DupeServer has not been powered on since then
+		Waiting for server to power up, and then I'll get back into it.
+4.	Interestingly, the Pallet Controller error did not appear this time.
+		Perhaps had to do with the server being down?
+	It's been stuck on "Starting Guardian" for a while now, and, according to the print log, has not even begun its attempt to login yet, after over five minutes.
+	Opening UFT to check on where it is stuck
+	"Failed to Start the Test Application"
+	Aborting
+	GrdCfgMgr_StartLogin worked fine when run manually.
+	Starting again.
+5.	Again, no Pallet Controller error.
+	Guardian opened with no issue.
+	"No random numbers block detected!"
+	Aborting
+	"IpsEngine error "MINOR":	no Random SPT Numbers block has been detected!"
+	Maybe a purging issue?
+	Retrying, I guess.
+6.	Purge was successful
+	Same issue with Numbers block
+	May have been something wrong with importing the files in the beginning, I'll keep a closer eye on it.
+	Aborting, trying again.
+7.	It appears to start and end the Setup_AI02AI21 immediately.
+	I'll check inside to the code and see why that may be.
+	Aborting.
+	Upon opening FT_DualFormat_Driver (which contains the scripts responsible for loading the data), I see that it is missing some Object Repositories.
+		Why is the default search location for repositories and libraries always in C:\Duplicate Check\Shared\, not in C:\Automation\Shared\?
+	The machine is being so sluggish right now.
+	Finally finished associating all the correct object repository locations
+	Going to attempt to manually run the script direct from UFT to see if it runs properly.
+	Actually, it may not work that way since I don't know how to properly input the correct parameters required.
+	Just going to run another test.
+	Might want to reset the box, considering how slow it's been.
+	Starting new test.
+8.	Had a small hiccup regarding logging in to TIPS, but other than that, seems to have loaded AI02AI21 without issue.
+	It got up to the second user entry confirmation for quarantining the second lot and froze.
+	I'm guessing it's another object repository I need to either re-associate or assign the proper file location.
+	Aborting
+	Figured out I had to have associated the Advisor_V2 repository
+		There should really be a list of repos needed for each test.
+	Associated the additional repository to StartLot and EndLot.
+	Running Again
+//	It seems as if this procedure has decided to take way too long (my whole morning), and may have warranted its own log, or at least a record on the DualFormat log.
+//		I anticipate the other tests to take less time to verify, given their greater recency
+//		... although I could be wrong again...
+9.	Appears to be stuck on "Starting Guardian" again.
+	Last time I just aborted and retried, and the issue went away, so I still don't have a fix for this.
+	Noticed the same message, "Failed to start the test application" hiding underneath other windows.
+	I just hit Ok and then the login proceeded just fine.
+		Is it throwing an error when it shouldn't?
+		Is it not waiting long enough for Guardian to start up?
+		Is it not waiting for the correct flag to signal that Guardian ought to be ready?
+		I should take time to examine this if this run fails, perhaps ask Paul or Alex about it.
+//  Side note:	it appears as if, after several runs of generating .pdfs, 830QA becomes flooded with spent CMD shells (haha "spent shells" get it) which are used to attempt to close excel.exe and then are left open.
+//				I should probably add in code to automatically clean out the shell once its code has been fired off (ahahaha).
+	Timed out, appeared to be stuck in the script which waits for the results from the python script in the Emails folder.
+	did not see the emails?
+	Were the emails sent at all?
+	Running again
+10.	Similar issue with "Failed to start the test application", but then continued fine.
+	"Host process failed"???
+	skipped over the data purge section, aborting and retrying.
+11.	Skipped data purge again. Aborting, retrying.
+12.	Purged successfully.
+	Lot Quarantined successfully
+	Stuck in email poll
+	Aborting and Retrying
+13.	Purge successful
+	No emails
+	Aborting
+	Alex suggested that each time he took out the email polling code, the emails were sent no problem.
+	Trying that for this next run.
+14.	Successes, second user entry confirmed
+	Appears to have still not received the emails.
+	Stuck on navigation to "Lines and Products;Products"?
+	Navigated for it.
+	Final result, failed on the email validation test, since no emails were received.
+	New Test
+15.	Does not appear to be navigating Guardian.
+	Aborting
+	Starting new Test
+16.	Before the guardian completed logging in:	"RD Clip monitor stopped working" or something.
+	Appears to be working fine afterwards
+	Successful quarantine.
+	Did not get stuck navigating through beginning or end of script this time.
+	Same issue, results and final file states show that emails were never received.
+	Checking the Guardian notification logs.
+	
+[From Today]
+
+17.	"Login Error	Login failed for user: qa"
+	need to open DupeServer back up I suppose
+	Aborting
+	DupeServer was open...
+	Restarting DupeServer.
+	Works now.
+	Starting next test
+18.	Login, Guardian Navigation, and Purging complete.
+	No luck, still no email validation
+	Trying once again to confirm
+19.	Same issue
+	"SQL Server Agent" was closed in the Management Studio on DupeServer?
+	Starting it up, trying again.
+20.	Nope, that didn't fix it.
+	Hmmmmm, Opened the Emails folder on Dev01\C:\Automation\Duplicate Check\, and there were 25 email text files, all dated from today, timestamped during the last test run(!?!)
+		The contents of 16 of them were notification emails for duplicate detection, 5 of which were dated themselves from today
+		The other 11 were dated from 28-09-2018
+			The remaining 9 were "State set to: Lot Closed" for various lot numbers, which I don't think I've seen before
+	Checking the scrapper log...
+	The first two logs reported 0 and 0 for the email count, but then the most recent, at 09:52:42, reported 25 and 1.
+	Let's clear out both the emails folder and the scrapper log, then try again
+	Files Cleared
+	Starting new test
+21.	Ok, so I am now seeing the emails in the folder correctly, and the scrapper log is showing the right data, but the final results are still incorrect
+	I'm guessing I need to tweak the polling script and get it to wait in the proper way.
+	Checking in GetGTIN>VerifyEmail UFT script...
+	We had removed the polling scripts after trying out Alex's voodoo fix where he'd had the emails work but only when he removed polling routines.
+	Adding it back in
+	Starting new test.
+22.	Full success!
+	Running again for consistency
+23.	Failed on email detection
+	The emails were there, but the first email is one of those "State set to: Closed" ones I hadn't seen before today.
+	Do I need to maybe edit the email generation rules to only send one for the dupe detection, and not for this Lot State Change trigger?
+	I don't want to mess with Server settings without someone's permission, so I'll ask Paul about it and look around in the meantime
+	Talked about it with Paul, Alex, and Josh, one solution could be to make the UFT section for the test more complex, and search through each generated Email text file
+	On the other hand, the additional email we receive doesn't appear to give very useful information, and may even give redundant information
+	Paul will talk with someone who is in charge of the product software and ask about that email and its intended purpose
+	Meanwhile I'll run a few more times to see if the result is consistent, and if Paul isn't back by then, begin to work on that more complex version of the script.
+	Starting new test.
+24.	The Lot state update was still sent, but this time it was the second email detected by the scrapper (out of three), and the correct email was in Email_1
+	Paul says to go ahead and add the script to check each of the generated email files.
+	Full pass otherwise, as expected.
+	Adding the cycling script to GetGTIN>VerifyEmail UFT script...
+	Starting new test
+25.	Got caught up on something while navigating Guardian (... dang...)
+	Aborting
+	Starting new test
+26.	Not caught on Guardian.
+	Emails generated, Email_1 is the incorrect email, Email_2 is correct.
+	Test failed
+	only 10 test cases reported instead of 12
+	Probing the cycling script first
+	Modified to probably work now.
+	Trying again
+27.	Everything appears to have worked fine, but the results generator did not work.
+	Manually piping it through.
+	Full pass (apart from the .pdf generator randomly breaking...)
+	Trying a few more times...
+	Next test
+28.	The Email_1 and _2 files refer to a lot which, according to the ID #, appears to have been created at 13:17:36, which I believe was a part of the last test
+		This includes the unwanted Lot State Closed email
+	Email_3, on the other hand, refers to a lot which appears to have been created at 13:43:07, which is likely the one from this current test.
+	I think I should ask Paul about this when I get a chance.
+	No issue with .pdf generation
+	Full Clear
+	2 more tests
+29.	I took a second to check the outlook inbox and I see two emails still in the Duplicate Check inbox
+	They are timestamped from the previous test, at the same time as Email_3 from the last run (13:43:07)
+		I suspect that I will see a similar pattern, with the first two emails (Email_1 and _2) being from the previous test
+		And then only Email_3 will be from this test (technically the first email generated from this run)
+			The second two emails generated from this run will be left over, and will become Email_1 and _2 for the next run
+	This is indicative of a problem, with the results of the email validation test being off by one, essentially.
+	Additionally, it would appear as if this would show that the EmailScrapper.py script only waits to receive one email, and then takes every email in the inbox and puts it into a text file
+	Ideally, it would wait for the software to finish giving notification emails and then scrape and output.
+	This method of taking the first new email and leaving the other two behind is what causes the off-by-one quirk
+	Can't think of a clean way to fix this off the top of my head, I'll ask Paul about it once I get the last result.
+	Full Pass
+	As I expected, Email_1 and _2 have timestamps from the previous test (13:43:07) and Email_3 is from the most recent test (13:59:31)
+	As well, checking the current Duplicate Check inbox shows two more emails, stamped at the same time as Email_3.
+	I'm going to delete these two emails now. I anticipate only getting one Email text file in the EMail folder this time
+		This would show that the EmailScrapper only waits for the first email before continuing.
+	Interestingly, this time, Email_1 was the wrong email and Email_2 was the correct one (usually it has been the other way around).
+	1 more test
+30.	I forgot to delete the two emails
+		I'll just run another test while I wait for Paul to respond, and do it that time.
+	Full Clear
+	Running again to test the emails quirk
+31.	Deleted the two emails
+	I believe the software does indeed send out the notification emails in a burst.
+	It may work to tell the python script to wait for the first email, wait one more minute, and then output the hopefully 3 emails in the inbox.
+	Although, looking at the script now (might just be because I don't know python well) it does not appear to have any instruction to wait for an email to be received
+		the closest thing I see is a "time.sleep(5)"
+	How does it always have the first but not the second two emails? Are they not sent in a burst?
+	I'll have to take a closer look at the actual emails' timestamps.
+	Yep, only 1 email file in the Emails folder.
+	Full Clear
+	And, as expected, there are two emails with the same body timestamp as the other.
+	They all appear to have been received within one minute of each other, like in a burst as I first suspected.
+	I'm not sure why, or how, the EmailScrapper is consistently only catching the first email, when it doesn't appear to have any trigger waiting for an email to be received.
+	
+    I modified the EmailScrapper code and made a version that waits until a minute has passed without receiving an email before stopping, which should fix the issue I'd been seeing
+    I've titled it "EmailScrapperPoll.py", and I'll add it to the UFT script, and then run a final test.
+32. Got stuck Selecting a Provisioning File the first time, Manual Provisioning Entry, something with selecting the .xml from the "Open" window
+    Aborting
+33. Got to the first lot OK
+    Made it to the new email script.
+    Got the first by itself
+    Got the second and third simultaneously
+    Now it should wait an additional minute before continuing
+    Worked fine
+    Full Pass
+
+Set to run nightly at 01.

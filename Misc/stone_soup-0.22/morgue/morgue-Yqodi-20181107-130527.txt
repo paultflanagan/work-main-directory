@@ -1,0 +1,183 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+39 Yqodi the Caller (level 3, 0/24 HPs)
+             Began as a Merfolk Summoner on Nov 7, 2018.
+             Slain by a goblin
+             ... wielding a +2 dagger of holy wrath
+              (2 damage)
+             ... on level 2 of the Dungeon.
+             The game lasted 00:10:46 (1431 turns).
+
+Yqodi the Caller (Merfolk Summoner)                 Turns: 1431, Time: 00:10:47
+
+Health: 0/24       AC:  3    Str:  9    XL:     3   Next: 45%
+Magic:  1/6        EV: 13    Int: 14    God:    
+Gold:   38         SH:  0    Dex: 14    Spells: 4/7 levels left
+
+rFire    . . .     SeeInvis .   (no weapon)
+rCold    . . .     Gourm    .   (no shield)
+rNeg     . . .     Faith    .   a - +0 robe
+rPois    .         Spirit   .   (no helmet)
+rElec    .         Reflect  .   (no cloak)
+rCorr    .         Harm     .   d - +0 pair of gloves
+MR       .....                  (no boots)
+Stlth    ++........             (no amulet)
+HPRegen  0.08/turn              (no ring)
+MPRegen  0.10/turn              (no ring)
+
+@: very slightly contaminated
+A: change form in water, swift swim, stealthy swim
+a: no special abilities
+
+
+You were on level 2 of the Dungeon.
+You were hungry.
+
+You visited 1 branch of the dungeon, and saw 2 of its levels.
+
+You collected 38 gold pieces.
+
+Inventory:
+
+Armour
+ a - a +0 robe (worn)
+ d - a +0 pair of gloves (worn)
+ i - a +0 plate armour
+Scrolls
+ b - a scroll of identify {unknown}
+ e - a scroll of enchant weapon
+ g - a scroll of remove curse {unknown}
+ h - a scroll of teleportation {unknown}
+Potions
+ j - a potion of curing
+Comestibles
+ c - 3 rations
+
+
+   Skills:
+ + Level 3.2 Dodging
+ + Level 2.2 Stealth
+ + Level 0.2 Unarmed Combat
+ + Level 2.5 Spellcasting
+ + Level 4.5 Summonings
+
+
+You had 4 spell levels left.
+You knew the following spells:
+
+ Your Spells              Type           Power        Failure   Level  Hunger
+a - Summon Small Mammal   Summ           ##..         3%          1    #......
+b - Call Imp              Summ           ##......     5%          2    ###....
+
+Your spell library contained the following spells:
+
+ Spells                   Type           Power        Failure   Level  Hunger
+ Call Canine Familiar     Summ           ##......     11%         3    ###....
+ Summon Guardian Golem    Hex/Summ       #.......     26%         3    ###....
+ Summon Ice Beast         Ice/Summ       #.......     65%         4    #####..
+ Summon Lightning Spire   Summ/Air       #.......     65%         4    #####..
+
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (2/15)            
+
+Altars:
+
+Message History
+
+Confirm with . or Enter, or press ? or * to list all spells.
+You are feeling hungry.
+The goblin hits your rat with a dagger.
+Your rat bites the goblin. The goblin hits your rat with a dagger.
+Your rat dies!
+Your rat's corpse disappears in a puff of smoke!
+You closely miss the goblin. The goblin completely misses you.
+You hit the goblin but do no damage.
+The goblin hits you with a dagger of holy wrath.
+* * * LOW HITPOINT WARNING * * *
+The goblin closely misses you.
+You hit the goblin but do no damage. The goblin hits you but does no damage. x2
+You closely miss the goblin.
+The goblin hits you with a dagger of holy wrath.
+* * * LOW HITPOINT WARNING * * *
+The goblin barely misses you.
+You barely miss the goblin. The goblin hits you but does no damage. x2
+You hit the goblin but do no damage.
+The goblin hits you with a dagger of holy wrath.
+You die...
+
+.......?..##
+.5####...##
+5(.......$#
+###########
+#
+#
+#
+####
+...#
+..<#####################
+....ws..†..wsggg@g......
+..(#####################
+...#
+...#
+...#
+####
+
+
+You could see a worm, a giant cockroach, 2 hobgoblins and 2 goblins.
+
+Vanquished Creatures
+  A bat (D:1)
+  A kobold (D:2)
+  A rat (D:1)
+3 creatures vanquished.
+
+Vanquished Creatures (collateral kills)
+  An adder (D:2)
+  2 oozes (D:1)
+  A worm (D:2)
+  2 dart slugs (D:1)
+  3 leopard geckos
+  4 bats
+  A giant cockroach (D:2)
+  2 goblins (D:1)
+  2 hobgoblins (D:1)
+  3 jackals (D:1)
+  2 frilled lizards (D:1)
+  9 kobolds
+  3 rats
+35 creatures vanquished.
+
+Grand Total: 38 creatures vanquished
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | Yqodi the Merfolk Summoner began the quest for the Orb.
+     0 | D:1      | Reached XP level 1. HP: 13/13 MP: 3/3
+   315 | D:1      | Reached XP level 2. HP: 18/19 MP: 1/5
+   319 | D:1      | Learned a level 2 spell: Call Imp
+   999 | D:1      | Reached XP level 3. HP: 20/24 MP: 2/6
+  1431 | D:2      | Slain by a goblin
+
+Skill      XL: |  1  2  3 |
+---------------+----------+-----
+Dodging        |        3 |  3.2
+Stealth        |          |  2.2
+Unarmed Combat |          |  0.2
+Spellcasting   |          |  2.5
+Summonings     |          |  4.5
+
+Action                   || total
+-------------------------++-------
+Melee: Unarmed           ||    26
+ Cast: Summon Small Mamm ||    55
+       Call Imp          ||    15
+  Use: Scroll            ||     1
+       Potion            ||     1
+  Eat: Chunk             ||     3
+Armor: Robe              ||    44
+Dodge: Dodged            ||    94
+

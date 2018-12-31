@@ -1,0 +1,106 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+0 Bellanimi the Conjurer (level 1, 10/10 HPs)
+             Began as a Deep Elf Conjurer on Nov 6, 2018.
+             Got out of the dungeon alive.
+             The game lasted 00:00:09 (3 turns).
+
+Bellanimi the Conjurer (Deep Elf Conjurer)             Turns: 3, Time: 00:00:10
+
+Health: 10/10      AC:  2    Str:  5    XL:     1   Next: 0%
+Magic:  6/6        EV: 13    Int: 19    God:    
+Gold:   0          SH:  0    Dex: 15    Spells: 5/6 levels left
+
+rFire    . . .     SeeInvis .   (no weapon)
+rCold    . . .     Gourm    .   (no shield)
+rNeg     . . .     Faith    .   a - +0 robe
+rPois    .         Spirit   .   (no helmet)
+rElec    .         Reflect  .   (no cloak)
+rCorr    .         Harm     .   (no gloves)
+MR       .....                  (no boots)
+Stlth    ++........             (no amulet)
+HPRegen  0.03/turn              (no ring)
+MPRegen  0.10/turn              (no ring)
+
+@: no status effects
+A: no striking features
+a: no special abilities
+
+
+You escaped.
+You were not hungry.
+
+You visited 1 branch of the dungeon, and saw 1 of its levels.
+
+Inventory:
+
+Armour
+ a - a +0 robe (worn)
+Comestibles
+ c - a ration
+
+
+   Skills:
+ + Level 2.4 Dodging
+ + Level 2.4 Stealth
+ + Level 3.0 Spellcasting
+ + Level 4.3 Conjurations
+
+
+You had 5 spell levels left.
+You knew the following spells:
+
+ Your Spells              Type           Power        Failure   Level  Hunger
+a - Magic Dart            Conj           ###.         2%          1    None
+
+Your spell library contained the following spells:
+
+ Spells                   Type           Power        Failure   Level  Hunger
+ Searing Ray              Conj           ###...       3%          2    ##.....
+ Dazzling Spray           Conj/Hex       ##....       19%         3    ###....
+ Iskenderun's Mystic Bla  Conj           ###.....     26%         4    ####...
+ Force Lance              Conj/Tloc      ##......     52%         4    ####...
+ Fulminant Prism          Conj/Hex       ##........   52%         4    ####...
+
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (1/15)            
+
+Altars:
+
+Message History
+
+Welcome, Bellanimi the Deep Elf Conjurer.
+It is said that the Orb of Zot exists deep within this dungeon.
+Press ? for a list of commands and other information.
+Found the elf skeleton of Bellanimi.
+Found a staircase leading out of the dungeon.
+Unknown command.
+There is a staircase leading out of the dungeon here.
+Are you sure you want to leave the Dungeon? This will make you lose the game! 
+Uppercase [Y]es or [N]o only, please.
+Are you sure you want to leave the Dungeon? This will make you lose the game! 
+You have escaped!
+
+###########
+#.........#
+#...###...#
+#.@.#÷#...+
+#...###...#
+#.........#
+###########
+
+
+There were no monsters in sight!
+
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | Bellanimi the Deep Elf Conjurer began the quest for the
+                  | Orb.
+     0 | D:1      | Reached XP level 1. HP: 10/10 MP: 6/6
+     3 | D:$      | Got out of the dungeon alive.
+

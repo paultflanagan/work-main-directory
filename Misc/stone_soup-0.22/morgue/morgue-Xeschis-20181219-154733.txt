@@ -1,0 +1,318 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+2666 Xeschis the Basher (level 9, 0/48 HPs)
+             Began as a Gargoyle Gladiator on Dec 19, 2018.
+             Was an Elder of Lugonu.
+             Slain by a troll (3 damage)
+             ... on level 9 of the Dungeon.
+             The game lasted 00:24:06 (5967 turns).
+
+Xeschis the Basher (Gargoyle Gladiator)             Turns: 5967, Time: 00:24:07
+
+Health: 0/48       AC: 15    Str: 18    XL:     9   Next: 63%
+Magic:  9/9        EV: 17    Int: 11    God:    Lugonu [****..]
+Gold:   406        SH:  0    Dex: 19    Spells: 8/8 levels left
+
+rFire    . . .     SeeInvis .   i - +0 morningstar
+rCold    . . .     Gourm    .   (no shield)
+rNeg     + + .     Faith    .   g - +0 ring mail
+rPois    8         Spirit   .   c - +0 helmet
+rElec    +         Reflect  .   n - +0 cloak
+rCorr    .         Harm     .   l - +0 pair of gloves
+MR       .....     Rnd*Tele +   s - +0 pair of boots
+Stlth    ++........             (no amulet)
+HPRegen  0.16/turn              o - ring of positive energy
+MPRegen  0.11/turn              m - ring of flight
+
+@: agile, about to teleport, flying
+A: big wings, clever 1, negative energy resistance 1, electricity resistance,
+teleportitis 1, unbreathing, petrification resistance, rot immunity, AC +6
+a: Stop Flying, Depart the Abyss, Bend Space, Banish, Corrupt, Renounce Religion
+
+
+You were on level 9 of the Dungeon.
+You worshipped Lugonu.
+Lugonu was greatly pleased with you.
+You were not hungry.
+
+You visited 1 branch of the dungeon, and saw 8 of its levels.
+
+You collected 406 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +0 flail
+ i - a +0 morningstar (weapon)
+Missiles
+ d - 2 throwing nets (quivered)
+ u - 22 arrows
+Armour
+ b - a +0 leather armour
+ c - a +0 helmet (worn)
+ g - a +0 ring mail (worn)
+ k - a +0 chain mail
+ l - a +0 pair of gloves (worn)
+ n - a +0 cloak (worn)
+ s - a +0 pair of boots (worn)
+Jewellery
+ m - a ring of flight (right hand)
+ o - a ring of positive energy (left hand)
+Wands
+ e - a wand of enslavement (15)
+Scrolls
+ h - a scroll of identify
+ j - a scroll of noise
+ q - a scroll of amnesia {unknown}
+ r - 4 scrolls of remove curse
+ t - 2 scrolls of teleportation
+ w - a scroll of fog {unknown}
+ x - a scroll of immolation {unknown}
+ y - a scroll of blinking {unknown}
+Potions
+ p - a potion of haste
+Comestibles
+ f - 10 rations
+ v - 5 chunks of flesh
+
+
+   Skills:
+ - Level 2.1 Fighting
+ + Level 12.8 Maces & Flails
+ - Level 1.7 Throwing
+ - Level 2.4 Dodging
+
+
+You had 8 spell levels left.
+You didn't know any spells.
+Your spell library was empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (7/15)             Temple (0/1) D:5         
+
+Altars:
+Cheibriados
+Dithmenos
+Fedhas
+Gozag
+Okawaru
+Qazlal
+Sif Muna
+Uskayaw
+Wu Jian
+Yredelemnul
+Zin
+Lugonu
+
+Shops:
+D:6 %%[
+
+Annotations:
+D:4 3 runed doors, Tronkkor's ghost, amateur HOFi
+D:7 1 transporter, Dowan; Duvessa; Gertrixnas's ghost, amateur DrCj
+
+
+Innate Abilities, Weirdness & Mutations
+
+You are resistant to torment.
+Your stone body is resilient. (AC +6)
+You are immune to poison.
+You resist negative energy. (rN+)
+You are resistant to electric shocks. (rElec)
+You can survive without breathing.
+You are immune to petrification.
+You are immune to rotting.
+Your large and strong wings let you fly indefinitely.
+Your mind is acute. (Int +2)
+You are occasionally teleported next to monsters.
+
+
+Message History
+
+You closely miss the troll. The troll closely misses you. The troll claws you
+The troll misses you.
+You barely miss the troll.
+You hit the troll.
+The troll is lightly wounded.
+The troll closely misses you. The troll claws you but does no damage. x2
+You hit the troll but do no damage.
+The troll is lightly wounded.
+The troll misses you. The troll claws you.
+* * * LOW HITPOINT WARNING * * *
+The troll barely misses you.
+You barely miss the troll.
+The troll is lightly wounded.
+The troll closely misses you. The troll claws you!
+* * * LOW HITPOINT WARNING * * *
+The troll claws you but does no damage.
+You see here a ring mail.
+As you read the scroll of teleportation, it crumbles to dust.
+You feel strangely unstable. The troll bites you.
+You die...
+
+                 ..
+           #.####.
+           #.....#
+               #)#
+           #.# #)#
+           #.# #.#
+           #.# #.#
+           #.# #.#
+           #.# #.#
+           #.# #T#
+           #.# #@#
+#   ########.###.#
+#####............#
+......#......#####
+#######.######
+#     #.#
+      #.#
+      #.#
+      #.#
+      #.#
+      #.#
+
+
+You could see a troll.
+
+Vanquished Creatures
+  A two-headed ogre (D:5)
+  3 yaks (D:9)
+  A phantom (D:4)
+  A sky beast (D:6)
+  3 ogres
+  3 bullfrogs
+  2 scorpions (D:5)
+  A water moccasin skeleton (D:6)
+  3 wights (D:9)
+  A howler monkey (D:4)
+  A crimson imp (D:5)
+  A bullfrog zombie (D:6)
+  2 hounds
+  A jelly (D:6)
+  2 bullfrog skeletons
+  Ijyb (D:4)
+  6 worker ants
+  A killer bee zombie (D:5)
+  A hound skeleton (D:4)
+  A worker ant zombie (D:6)
+  3 gnolls (D:5)
+  2 howler monkey skeletons
+  5 adders
+  3 shadow imps
+  An ooze (D:3)
+  5 worms
+  3 dart slugs
+  6 leopard geckos
+  14 orcs
+  A ball python (D:2)
+  7 giant cockroaches
+  5 goblins
+  8 hobgoblins
+  5 jackals
+  7 kobolds
+  2 quokkas
+  10 bats
+  5 frilled lizards
+  A jackal zombie (D:5)
+  A quokka skeleton (D:6)
+  12 rats
+142 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | Xeschis the Gargoyle Gladiator began the quest for the Orb.
+     0 | D:1      | Reached XP level 1. HP: 12/12 MP: 1/1
+    90 | D:1      | Reached XP level 2. HP: 12/17 MP: 2/2
+   360 | D:1      | Reached skill level 4 in Maces & Flails
+   436 | D:1      | Reached XP level 3. HP: 21/21 MP: 3/3
+   775 | D:2      | Found an iron altar of Okawaru.
+   775 | D:2      | Found a faded altar of an unknown god.
+   780 | D:2      | Found a basalt altar of Yredelemnul.
+   787 | D:2      | Became a worshipper of Lugonu the Unformed
+   787 | D:2      | Reached * piety under Lugonu
+   787 | D:2      | Reached ** piety under Lugonu
+   790 | D:2      | Found a stormy altar of Qazlal.
+   792 | D:2      | Found a snail-covered altar of Cheibriados.
+  1223 | D:2      | Reached XP level 4. HP: 20/26 MP: 4/4
+  1570 | D:3      | Reached skill level 5 in Maces & Flails
+  1801 | D:3      | Found a faded altar of an unknown god.
+  1950 | D:3      | Found a blossoming altar of Fedhas.
+  2299 | D:4      | Found the +8 orange crystal plate armour {Archmagi, Int+3
+                  | Clar}
+  2359 | D:4      | HP: 1/26 [jackal (1)]
+  2379 | D:4      | Reached *** piety under Lugonu
+  2389 | D:4      | Reached XP level 5. HP: 25/30 MP: 5/5
+  2407 | D:4      | Found a runed gate.
+  2408 | D:4      | Found a runed gate.
+  2409 | D:4      | Found a runed gate.
+  2411 | D:4      | Noticed Tronkkor's ghost (amateur HOFi)
+  2491 | D:4      | Noticed Ijyb
+  2546 | D:4      | Killed Ijyb
+  2600 | D:4      | Reached skill level 6 in Maces & Flails
+  2724 | D:4      | Gained mutation: Your large and strong wings let you fly
+                  | indefinitely. [potion of mutation]
+  2724 | D:4      | Gained mutation: You are occasionally teleported next to
+                  | monsters. [potion of mutation]
+  2724 | D:4      | Gained mutation: Your mind is acute. (Int +2) [potion of
+                  | mutation]
+  2727 | D:4      | HP: 1/30 [worker ant (3)]
+  2939 | D:4      | Found a deep blue altar of Sif Muna.
+  3009 | D:4      | Reached XP level 6. HP: 25/35 MP: 6/6
+  3049 | D:4      | Noticed a phantom
+  3141 | D:4      | Killed a phantom
+  3141 | D:4      | Reached skill level 7 in Maces & Flails
+  3776 | D:5      | Entered Level 5 of the Dungeon
+  3815 | D:5      | Reached XP level 7. HP: 18/40 MP: 7/7
+  4073 | D:5      | Found an ornate altar of the Wu Jian Council.
+  4100 | D:5      | Reached skill level 8 in Maces & Flails
+  4248 | D:5      | Found an opulent altar of Gozag.
+  4483 | D:5      | Found a staircase to the Ecumenical Temple.
+  4545 | D:5      | Reached skill level 9 in Maces & Flails
+  4597 | D:5      | Reached XP level 8. HP: 35/44 MP: 8/8
+  4740 | D:5      | Noticed a two-headed ogre
+  4753 | D:5      | Killed a two-headed ogre
+  4753 | D:5      | Reached skill level 11 in Maces & Flails
+  5101 | D:6      | Found a shadowy altar of Dithmenos.
+  5119 | D:6      | Reached XP level 9. HP: 23/48 MP: 9/9
+  5204 | D:6      | Found Hastrukiq's Food Emporium.
+  5207 | D:6      | Found Covomp's Antique Armour Boutique.
+  5239 | D:6      | Found Onutoff's Food Emporium.
+  5278 | D:6      | Reached **** piety under Lugonu
+  5518 | D:6      | Found a hide-covered altar of Uskayaw.
+  5523 | D:6      | Found a glowing silver altar of Zin.
+  5714 | D:7      | Found a transporter.
+  5736 | D:7      | Noticed Gertrixnas's ghost (amateur DrCj)
+  5765 | D:7      | Noticed Duvessa
+  5765 | D:7      | Noticed Dowan
+  5821 | D:7      | You are sucked into a shaft for 2 floors!
+  5825 | D:9      | Reached skill level 12 in Maces & Flails
+  5926 | D:9      | Noticed a troll
+  5967 | D:9      | Slain by a troll
+
+Skill      XL: |  1  2  3  4  5  6  7  8  9 |
+---------------+----------------------------+-----
+Maces & Flails |     4     5  6  7  9 11 12 | 12.8
+Fighting       |                            |  2.1
+Throwing       |                            |  1.7
+Dodging        |                            |  2.4
+
+Action                   |  1- 3 |  4- 6 |  7- 9 || total
+-------------------------+-------+-------+-------++-------
+Melee: Flail             |   153 |   288 |    15 ||   456
+       Morningstar       |       |       |   254 ||   254
+Throw: Throwing net      |     1 |       |     1 ||     2
+Invok: Bend Space        |       |     1 |       ||     1
+ Abil: Fly               |       |       |     1 ||     1
+  Use: Potion            |       |    10 |     1 ||    11
+       Scroll            |       |     5 |     1 ||     6
+ Stab: Sleeping          |     1 |       |       ||     1
+       Held in net/web   |       |       |     2 ||     2
+  Eat: Chunk             |     1 |     9 |     7 ||    17
+Armor: Leather armour    |    80 |   132 |       ||   212
+       Ring mail         |       |       |   109 ||   109
+Dodge: Dodged            |   149 |   220 |   136 ||   505
+

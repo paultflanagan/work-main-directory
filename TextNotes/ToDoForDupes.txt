@@ -1,0 +1,38 @@
+
+1.  move all cleanup (for everything) to start of test (note Paul disabled the purging of emails for troubleshooting as it was running at end of test which left nothing to see, Look at email library function calls).  
+2.  have test prep itself, launch application, log in.  Rather than have user have to start test on screen X or Y, just make the automation do it  
+3.  Lot start catch loss in connection and retry
+4.  refactor code to remove hard wait commands, look for existence of objects when possible
+5.  get the code to auto grab the machine name for GuardianSummary_dualformat.txt
+6.  add a fix to the .pdf generation skipping quirk
+7.  modify results generation to check for results.txt in Automation, delete it if it exists, and then create a new, empty results.txt to be written to by the LogResult calls
+8.  BURN all of the extraneous folders
+9.  Make the .pdf generator run more smoothly, i.e. add pauses to make sure the script doesn't try to run everything all at once.
+10. throw the command line connector to jenkins from engsec830qa into the beginning
+11. Potentially add a cleanup routine that cleans up C:\Automation\Duplicate Check\Emails
+12. Poll inbox for existence of emails
+13. Cut out the email deleting code and put it at the beginning of the script order. "EmailDelete.py"
+13. Clean up all the commented dead code
+14. Recombine EmailOpen.py and EmailScrapper.py
+15. Do clean-up for the Report script, namely be sure to murder outlook process
+16. Is the generated subject line for the final results email off by one?
+17. Find out a way to catalog all the different errors we need to be able to catch
+	Loss in connection after lot start
+	IPS tengine to put up a stop message
+	know how to code around it, but it will be more effort than we want
+18. Copypaste the retry script into Gtin
+19. Get it to kill the qtPrintLog too
+
+
+
+Missing Objects:
+    DualFormat_AI21 - EndLot (Line 25):
+        C:\Automation\Shared\Repositories\AdvisorObjects.tsr
+        'Window("Menu").WinButton("Lot Control")'
+        
+    DualFormat_GetGTIN - EndLot_QuarantineDualFormat (Line 49):
+        C:\Automation\Shared\Repositories\AdvisorObjects.tsr
+        'Window("Menu").WinButton("Products")'
+        
+    [Many Places]
+        'objWindow.SwfButton("btnClose")'

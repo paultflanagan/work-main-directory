@@ -1,0 +1,172 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+19 Piqaaqu the Gusty (level 2, -2/20 HPs)
+             Began as a Draconian Air Elementalist on Nov 12, 2018.
+             Slain by a gnoll
+             ... wielding a +0 halberd
+              (4 damage)
+             ... on level 1 of the Dungeon.
+             The game lasted 00:03:01 (355 turns).
+
+Piqaaqu the Gusty (Draconian Air Elementalist)       Turns: 355, Time: 00:03:02
+
+Health: -2/20      AC:  4    Str: 10    XL:     2   Next: 55%
+Magic:  0/5        EV: 12    Int: 15    God:    
+Gold:   53         SH:  0    Dex: 11    Spells: 4/5 levels left
+
+rFire    . . .     SeeInvis .   c - +0 whip
+rCold    . . .     Gourm    .   (no shield)
+rNeg     . . .     Faith    .   (armour unavailable)
+rPois    .         Spirit   .   (helmet restricted)
+rElec    .         Reflect  .   (no cloak)
+rCorr    .         Harm     .   (no gloves)
+MR       .....                  (no boots)
+Stlth    ++........             (no amulet)
+HPRegen  0.06/turn              (no ring)
+MPRegen  0.09/turn              (no ring)
+
+@: no status effects
+A: unfitting armour, cold-blooded, AC +4
+a: no special abilities
+
+
+You were on level 1 of the Dungeon.
+You were not hungry.
+
+You visited 1 branch of the dungeon, and saw 1 of its levels.
+
+You collected 53 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ c - a +0 whip (weapon)
+Scrolls
+ d - a scroll of fear {unknown}
+ e - a scroll of amnesia {unknown}
+Comestibles
+ a - 7 chunks of flesh
+ b - 3 rations
+
+
+   Skills:
+ * Level 1.9 Dodging
+ + Level 2.0 Stealth
+ + Level 2.2 Spellcasting
+ + Level 1.2 Conjurations
+ + Level 3.3 Air Magic
+
+
+You had 4 spell levels left.
+You knew the following spells:
+
+ Your Spells              Type           Power        Failure   Level  Hunger
+a - Shock                 Conj/Air       #...         9%          1    #......
+
+Your spell library contained the following spells:
+
+ Spells                   Type           Power        Failure   Level  Hunger
+ Swiftness                Chrm/Air       #.......     16%         2    ###....
+ Static Discharge         Conj/Air       #.......     26%         3    ###....
+ Airstrike                Air            ##........   47%         4    #####..
+ Lightning Bolt           Conj/Air       #.........   93%         5    ######.
+
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (1/15)            
+
+Altars:
+
+
+Innate Abilities, Weirdness & Mutations
+
+Your plain brown scales are hard. (AC +4)
+You cannot fit into any form of body armour.
+You are cold-blooded and may be slowed by cold attacks.
+
+
+Message History
+
+Aiming: Shock (safe; 9% risk of failure)
+Press: ? - help, Shift-Dir - straight line, f - gnoll
+Aim: a gnoll, wielding a halberd (resting)
+The zap hits the gnoll.
+The gnoll is lightly wounded.
+The gnoll shouts!
+The gnoll barely misses you.
+The gnoll closely misses you.
+The gnoll hits you from afar with a halberd!
+Ouch! That really hurt!
+* * * LOW HITPOINT WARNING * * *
+Casting: Shock (safe; 9% risk of failure)
+Confirm with . or Enter, or press ? or * to list all spells.
+Aiming: Shock (safe; 9% risk of failure)
+Press: ? - help, Shift-Dir - straight line, f/p - gnoll
+Aim: a gnoll, wielding a halberd (lightly wounded)
+The zap hits the gnoll.
+The gnoll is heavily wounded.
+The gnoll hits you from afar with a halberd.
+You die...
+
+##.###..###     #...#....
+.......## #######.....#
+........###.....#....#
+.....................#
+.......####......[...#
+................#....#
+.........##.....#....# .
+.......#........#....#..
+#####..####.............
+#   ##..####.##......#..
+###  ##.......g.@...##..
+..#######........####
+#...(.÷.......####
+..#..####.#......
+.....####.#.#####          #####
+.....##.....#            ###...##
+...........##  #####    ##.......
+...........# ###...######........
+......#..#.###.......##......(...
+...........##..........##........
+.....##.##..#....<....####.......
+
+
+You could see a gnoll.
+
+Vanquished Creatures
+  An ooze (D:1)
+  2 giant cockroaches (D:1)
+  2 hobgoblins (D:1)
+  4 jackals (D:1)
+  3 bats (D:1)
+  A rat (D:1)
+13 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | Piqaaqu the Draconian Air Elementalist began the quest for
+                  | the Orb.
+     0 | D:1      | Reached XP level 1. HP: 14/14 MP: 3/3
+   199 | D:1      | Reached XP level 2. HP: 14/20 MP: 1/5
+   355 | D:1      | Slain by a gnoll
+
+Skill      XL: |  1  2 |
+---------------+-------+-----
+Stealth        |     2 |  2.0
+Dodging        |       |  1.9
+Spellcasting   |       |  2.2
+Conjurations   |       |  1.2
+Air Magic      |       |  3.3
+
+Action                   || total
+-------------------------++-------
+Melee: Whip              ||    33
+       Unarmed           ||     7
+       Tailslap          ||     3
+ Cast: Shock             ||    23
+Armor: Skin              ||    21
+Dodge: Dodged            ||    52
+

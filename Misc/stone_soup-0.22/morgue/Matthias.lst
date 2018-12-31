@@ -1,0 +1,278 @@
+Matthias
+
+Level 1 of the Dungeon
+(0, 0, D:1)
+  a short sword
+(5, -2, D:1)
+  a club
+(14, -12, D:1)
+  a club
+(17, -4, D:1)
+  a ring mail
+(18, 18, D:1)
+  a club
+(38, 4, D:1)
+  a hunting sling
+(42, -9, D:1)
+  a robe
+(58, -1, D:1)
+  a dagger
+
+Level 2 of the Dungeon
+(0, 0, D:2)
+  a leather armour
+(3, -20, D:2)
+  a dagger
+(8, 2, D:2)
+  a mace
+(9, 4, D:2)
+  a ring mail
+(15, 8, D:2)
+  a club
+(19, 7, D:2)
+  a dagger
+(26, 4, D:2)
+  a short sword
+(31, 26, D:2)
+  a dagger
+(32, 7, D:2)
+  a dagger
+  a club
+(35, -5, D:2)
+  a club
+(40, 13, D:2)
+  a spear
+(43, 0, D:2)
+  a robe
+(46, -20, D:2)
+  a dagger
+(58, 2, D:2)
+  a quarterstaff of chaos
+(60, 1, D:2)
+  a mace
+
+Level 3 of the Dungeon
+(0, 0, D:3)
+  a club
+  a club
+  a club
+(0, 3, D:3)
+  a club
+  a club
+  a club
+(0, 4, D:3)
+  a club
+  a club
+  a club
+(1, 1, D:3)
+  a club
+  a club
+(7, 4, D:3)
+  a club
+(8, -44, D:3)
+  a long sword
+(8, 4, D:3)
+  a club
+(10, -9, D:3)
+  a club
+(18, 6, D:3)
+  a club
+(19, 5, D:3)
+  a club
+(20, -1, D:3)
+  a club
+(24, -22, D:3)
+  a war axe
+(27, -4, D:3)
+  a club
+(29, -4, D:3)
+  a club
+(32, -11, D:3)
+  a dagger
+  a whip
+  a club
+  an uncursed short sword
+  an uncursed blowgun
+  6 poisoned needles
+(33, -11, D:3)
+  a club
+  a club
+(34, -11, D:3)
+  an enchanted halberd
+  a poisoned needle
+(35, 2, D:3)
+  a dagger
+(37, 5, D:3)
+  a club
+  a mace
+  a club
+  a club
+(38, -1, D:3)
+  a club
+(38, 1, D:3)
+  a club
+(38, 2, D:3)
+  a club
+(39, -1, D:3)
+  a club
+(44, -16, D:3)
+  a leather armour
+(48, 4, D:3)
+  a whip
+(49, 1, D:3)
+  a club
+  a club
+(49, 4, D:3)
+  a flail
+  a ring mail
+(63, -41, D:3)
+  a club
+
+Level 4 of the Dungeon
+(0, 0, D:4)
+  a whip
+(0, 1, D:4)
+  a spear
+(1, 1, D:4)
+  a spear
+(4, 2, D:4)
+  a whip
+  a leather armour
+(8, 39, D:4)
+  8 poisoned needles
+(11, -9, D:4)
+  a dagger
+  a leather armour
+  a short sword
+  a leather armour
+  a club
+  a ring mail
+  a dagger of draining
+  a robe
+  a flail of crushing
+  a hand axe
+  a flail
+  a leather armour
+  a club
+  a chain mail
+(11, -7, D:4)
+  a dagger
+  a robe
+(64, 50, D:4)
+  a trident
+
+Level 5 of the Dungeon
+(25, 8, D:5)
+  a glowing hunting sling
+(29, 10, D:5)
+  a shield
+(30, -3, D:5)
+  a scale mail
+(30, 11, D:5)
+  a club
+  a scale mail
+(44, 9, D:5)
+  a crystal short sword
+
+Level 6 of the Dungeon
+(0, 0, D:6)
+  a dagger
+(5, -26, D:6)
+  a rapier
+(6, -24, D:6)
+  a long sword
+  a robe
+  a short sword
+  a robe
+  an enchanted trident
+  a robe
+(7, -24, D:6)
+  an enchanted trident
+  a glowing robe
+(10, -24, D:6)
+  a giant club
+(13, -10, D:6)
+  a hat
+(15, 11, D:6)
+  a trident
+(22, 14, D:6)
+  a ring mail
+(32, 10, D:6)
+  a spear
+(33, 10, D:6)
+  a whip
+  a whip
+(46, 2, D:6)
+  a mace
+
+Level 7 of the Dungeon
+(23, 16, D:7)
+  a chain mail
+(26, -6, D:7)
+  a dagger
+  a robe
+(26, 11, D:7)
+  a dagger
+(28, -4, D:7)
+  a whip
+  a whip
+(28, -3, D:7)
+  a war axe
+(30, -14, D:7)
+  a trident
+  a chain mail
+(30, -13, D:7)
+  a tomahawk
+  a falchion
+  a leather armour
+(30, -12, D:7)
+  an enchanted dagger
+  a trident of venom
+(31, -13, D:7)
+  a chain mail
+  a vampiric short sword
+  a tomahawk
+  a ring mail
+(36, -5, D:7)
+  a leather armour
+(37, 14, D:7)
+  a throwing net
+(38, -13, D:7)
+  a hand axe
+(38, -12, D:7)
+  9 poisoned needles
+(39, -3, D:7)
+  12 bolts
+(49, -6, D:7)
+  a quarterstaff
+
+Level 8 of the Dungeon
+[Shop] Fuggits's Weapon Shop
+  14 arrows (33 gold)
+  20 stones (24 gold)
+  a +0 dagger (24 gold)
+  28 stones (33 gold)
+  7 javelins (67 gold)
+  a +0 war axe (42 gold)
+  a +0 lajatang (180 gold)
+  a +1 scimitar of flaming (170 gold)
+  4 needles of frenzy (19 gold)
+(13, 7, D:8)
+  an enchanted mace
+  a leather armour
+(13, 8, D:8)
+  a dagger
+  a robe
+(16, -5, D:8)
+  a war axe
+(22, 6, D:8)
+  a hand axe
+  a leather armour
+  a trident
+(23, 5, D:8)
+  a war axe
+  a flail
+  a plate armour
+(27, -4, D:8)
+  a giant spiked club
+

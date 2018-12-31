@@ -1,0 +1,74 @@
+Personal Git Notes
+
+Standard flow for git:
+    Setting up local git repository
+        git init
+            Sets up working directory as a git repository. Creates .git\ directory
+            
+	Syncing with remote repository
+		** Options: Cloning, Pulling, and Fetching. All achieve the same general end state (Local Repository is compatible with Remote Repository), they just get there different ways with particular smaller details. **
+		cloning (git clone = git remote add + git pull):
+			
+(clone)			git clone [remote repo url]
+				scenario:	no existing local repo, want a local copy of remote repo
+				result:		local repo now points to remote repo (as origin) with all files of origin (think: git remote add, git fetch, and git merge all in one)
+		pulling (git pull = git fetch + git merge):
+            //N.B.: this is the most likely choice when setting up repos in the DupesCheck Machines' C drives.
+(add+pull)		git remote add [target remote repo's intended tag] [remote repo url] + git pull [RemRepoTag]
+				scenario:	existing local repo (with new / non-conflicting files), want to get files of remote repo stored in local repo
+				result:		local repo now points to remote repo (as designated tag) with all its files in addition to old files (git pull = git fetch + git merge)
+		fetching (just grabbing the files and letting the LRepo look at them):
+(add+(fetch+merge))	git remote add [target remote repo's intended tag] [remote repo url] + git fetch [RemRepoTag] + <version resolution> + (git checkout master +) git merge [branch]
+				scenario:	existing local repo (with conflicting editions of files), want to get files of RemRepo on LocRepo while resolving conflicts
+				result:		LRepo points to RRepo via tag, LRepo contains all of RRepo's files with your chosen versions of parallel files
+
+				
+	Staging new files
+		Once files have been removed, created, or modified, they must be staged with the git add command
+			git add [filepath, accepts blobs]
+		(imagine LRepo is "add"-ing symbols of the environment changes (not the files themselves) to a set and arranging them so that they are visible to the machine)
+		 "It may be helpful to think of [the add command] more as “add precisely this content to the next commit” rather than “add this file to the project”" - Pro Git book
+	Committing new and edited files
+		After 'the stage has been set', the repository is prepared for its next snapshot, taken with the git commit command
+			git commit <-m '[commit comment]'>
+		(as if LRepo is taking the environment state and "commit"-ting it to memory)
+	Pushing latest commit (the "snapshot") to the RRepo
+		Once you have finished updating snapshots, you can export your changes to the RRepo, and attempt to apply the same changes to it, through git push.
+			git push [RRepo (tag or url)] [branch to export]
+		(like taking the collection of snapshots and "push"-ing it on top of the ones stored in the RRepo)
+        
+   
+   
+Steps for getting on a box with changes but has not been synced with RRepo before
+    Set up as LRepo
+        git init
+        
+    Connect to RRepo
+        git remote add origin http://enggit.systech-int.local:10080/paul.flanagan/UniSeriesQADuplicateCheck.git     //Or whatever repo
+    
+    Fetch the files in the RRepo
+        git fetch origin
+        
+    Checkout just .gitignore and OutputCleanup.bat first
+        git checkout origin/master ./.gitignore
+        git checkout origin/master ./OutputCleanup.bat
+     
+    <Run OutputCleanup.bat>
+    
+    Stage the local files
+        git add .
+    
+    <Resolve version disputes>
+    
+    
+    
+    
+... Actually, it's way easier to just 
+    create a dummy LRepo, 
+    clone the RRepo, 
+    copy files over manually to the cloned repo, 
+    and then add/commit/push. 
+        Just make sure to start with a connected LRepo from now on
+        
+git fetch
+    

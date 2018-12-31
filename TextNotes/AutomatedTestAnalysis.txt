@@ -1,0 +1,2063 @@
+Automated Test Analysis
+
+===========
+09-Oct-2018
+===========
+Created this document today, copying over notes on the subject from previous entries in DailyLog.txt
+
+
+// Start of Copied Entries
+
+// From 02-Oct-2018
+The script which I set up to run automatically last night did not do well
+I'm pretty sure it was because the script which I had running when I left froze and interfered with the automatic one.
+
+
+// From 03-Oct-2018
+Runs from last night did not go off since I closed the Jenkins agent on DEV01 and forgot to turn it back on.
+
+
+// From 04-Oct-2018
+As for results from last night's testing, they are underwhelming.
+    Only two results emails, both of them without an attachment
+    Timestamped at 2:44 and 3:12, which would appear to make them from InLotCancelDecom and 740011
+    No email from DualFormat
+Checked console output on Jenkins. DualFormat shown as aborted, InLotCancelDecom and 740011 shown as failed.
+It would appear as if DualFormat timed out during the TIPS_DiagnosticPrepare step
+    As a result, UFT was still tied up when the time for the other two tests to run came, so they were unable to run.
+    
+This seems like a problem that ought to be fixed, and one which potentially has an easy solution
+    Referring to the fact that a failure in one test dooms the successes of any following tests, that is
+        I have no idea why it froze during TIPS startup yet.
+We could start each Jenkins job with a command to kill any lingering instances of UFT before the rest of the code starts running
+
+
+// From 05-Oct-2018
+Overnight tests: we got the same issue as last time.
+Timed out during the GrdCfgMgr_StartLogin step of the first test, rest of tests were unable to access UFT and failed.
+I should ask Paul about it over Skype when he gets online (he's working from home today).
+The issue has only ever occurred during overnight testing (I can't reproduce it during the day). 
+The only idea I have so far would be just to add a call to ScriptForcequit.bat to the beginning of every test
+    although that would be less a solution and more a way of cleaning up
+    
+    
+// From 08-Oct-2018
+Overnight tests ran over the weekend, but I got a lot of errors still.
+DualFormat:
+    2/3 success, 00:01:15 run time
+    Appears to have had the same issue: got to the Diagnostic Screen Manager and was unable to proceed
+        At least the TipsKillAll call was able to stop it from preventing the other two tests
+InLotCancelDecom:
+    12/22 success, 00:58:01 run time
+    Failed every test regarding the import of data
+        No Idea why... Navigation of Guardian issue?
+7.40.011:
+    14/42, 14/43 success, 00:58:54, 00:58:44 run time
+    Like in the previous test, all attempts to import data failed.
+        Whatever's wrong with ILCD may be wrong with this.
+
+Forgot to remove most recent artificial breakpoint
+    probably partially explains why the overnight 7.40.011 tests were failing
+    But there's so much wrong with 7.40.011 that I doubt it's the only thing.
+    
+    
+// From 09-Oct-2018
+Same Results from last night's runs: first aborted, second two full of errors.
+    Also, I may have mixed up which test the 2/3 result from last time belonged to
+DualFormat:
+    Aborted, no final results to speak of
+        Build timed out (after 30 minutes). Marking the build as aborted.
+            Time-out during TIPS_DiagnosticPrepare.vbs step.
+InLotCancelDecom:
+    2/3 success, 00:01:16 run time
+        C:\TIPSDiagnostic_Prepare.vbs(36, 2) ((null)): The remote procedure call failed.
+            qtApp.Test.Run (null), True
+                an issue with UFT?
+                I'm not 100% sure how these bits of code work, probably worth bringing it up.
+        C:\Automation\Duplicate Check\RunInLotCancelDecom.vbs(131, 2) mscorlib: The remote procedure call failed. (Exception from HRESULT: 0x800706BE)
+            qtApp.Test.Run (null), True
+                same thing?
+7.40.011:
+    22/59 success, 01:32:20 run time
+        C:\SetupEnv.vbs(10, 1) ((null)): 0x80131505
+            Set qtApp = CreateObject("QuickTest.Application")
+                More qtApp things. Probably worth looking into and making sure I understand how it works.
+
+No luck looking within the UFT Help window, but I did find a very useful website:
+https://admhelp.microfocus.com/uft/en/14.00/AutomationObjectModel/QuickTest~Application.html
+
+qtApp - instance of CreateObject("QuickTest.Application")
+    CreateObject() - function native to VBScript
+        CreateObject(servername.typename, Optional location)
+            servername (QuickTest): The name of the application that provides the object
+            typename (Application): The type/class of the object
+            location (Omitted): Where to create the object
+    QuickTest.Application - The UFT application's object type. Used for running of scripts.
+
+qtApp.Test (QuickTest.Application.Test), Object - The Open Test or Business component
+    qtApp.Test.Run - Runs the Open test and creates results in the specified file or ALM path
+        Run(Optional ResultsOptions, Optional WaitOnReturn, Optional Parameters)
+            ResultsOptions ((null)): Determines how test results are processed (Location, Test name, etc.)
+            WaitOnReturn (True): Determines whether the Test.Run statement waits until end of run before continuing automation script
+            Parameters (Omitted): the parameters collection containing the values you want to pass to the test or component.
+            
+qtApp.Open (QuickTest.Application.Open), Method - Opens an existing test
+    Open(TestPath, Optional OpenInReadOnlyMode, Optional SaveCurrent)
+        TestPath (strAdvisorTest): Full path of the test to open
+        OpenInReadOnlyMode (True): Indicates whether to open the test in read-only mode
+        SaveCurrent (Omitted): Indicates whether to save changes for currently opened document before opening specified test.
+
+// End of Copied Entries
+
+Found some potential things to try online, like running dcomcnfg, going to DCOM Config, finding QuickTest, Properties > Identity and setting an auto user
+    Not sure if it will work
+However, more importantly I realized how to get a Jenkins Autorun at any time of the day, so I might have an easier time isolating the issues now.
+
+Tried autorunning the InLotCancelDecom
+    started fine, no errors in the Console, but got stuck for 25 minutes somewhere in the main script.
+    Aborting
+Trying autorun tests on DualFormat from now on, since it is simpler.
+    Started up no issue
+    Finished flawlessly.
+    
+Attempting to autorun after locking out my computer...
+    Error Reproduced!!!
+    Cool. So it gets the error if there is no computer logged in and running an instance of ENGADVDEV01 through remote desktop.
+What if I leave my desktop logged in, but close out my Remote Desktop session?
+    It appears to have the same effect.
+    
+So what I have to do now is figure out how to get the script to run while I'm here and the Remote Desktop window is closed.
+Opening it back up after 10 minutes did not kick-start it, I'm guessing it has skipped ahead, and I shouldn't bother trying to catch up.
+Aborting
+
+
+===========
+10-Oct-2018
+===========
+Last night's results are the same: broken.
+
+Josh and Paul advice:
+Set up as a service?
+    is more likely to crash
+Simulated desktop?
+
+
+One crazy idea we'd had was mounting the DEV01 machine onto a Virtual Machine which is maintained by the server and always technically open
+One such machine is the DUPESERVER box, so I threw a Remote Desktop instance pointed to DEV01 onto it and closed out of my DUPESERVER connection
+Early tests seem promising!
+    Closed out of DUPESERVER remote connection, set up an autotest to go off soon afterwards, and it ran to completion successfully.
+Leaving it set up in that way for tonight's tests.
+
+
+===========
+11-Oct-2018
+===========
+It would appear as if Screen Manager crashed during last night's tests.
+Similar results, first one timed out, second two had the same "Remote procedure call failed" messages.
+Running for a complete run on the tests
+
+DualFormat:
+1.  SPT Error, no available numbers
+2.  Full Clear, 00:10:10 run time
+
+InLotCancelDecom:
+1.  My laptop entered hibernation after sitting for too long and I think it interrupted the test, since it's been sitting inactive for 10 minutes.
+2.  It happened again. Why does the computer keep going to sleep.
+3.  It is potentially getting stuck in the same spot each time.
+        I'm going to jump back into DupesTSInLotCancelDecom, I think.
+        
+        
+===========
+12-Oct-2018
+===========
+DF test keeps timing out on the Screen Manager step no matter what, it seems
+    Which is especially weird, since ILCD has the exact same step, but has no issues with it.
+Could it perhaps have to do with DF being the first test of the night?
+I think I'll try rotating the times of DF and ILCD to see what happens
+    If ILCD still completes and DF still aborts, then I'll know it's something even weirder.
+    
+    
+===========
+16-Oct-2018
+===========
+Obtained some interesting results from last night's tests.
+the numbers:
+
+DualFormat:
+	Run Time:		00:01:15    Start: 02:28, End: 02:29
+	Success Totals:	5/5 (/12)
+	Failed Cases:	none
+    
+ILCD:
+	Run Time:		00:35:23    Start: 02:28, End: 03:03
+	Success Totals:	24/29 (/24)
+	Failed Cases:	11, 23, 24, 25, 26 (6, 18, 19, 20, 21?)
+    
+740011:
+	Run Time:		00:36:34    Start: 03:13, End: 03:49
+	Success Totals:	60/61
+	Failed Cases:	43
+
+It would appear as if the some (5?) of the tests from DualFormat got shifted over to ILCD??
+    How would that happen? Isn't the results file cleared between tests?
+Also, what happened to two of the test cases from DF?
+Did I mess up the automated timing on Jenkins? It seems as if their run times were overlapped.
+Doesn't look like it:
+    DualFormat: H 02 * * *
+    ILCD:       H 01 * * *
+    740011:     H 03 * * *
+    
+Why did ILCD not start until 2:28??
+
+I do see some error messages, too.
+
+Hang on, the console timestamps don't line up with the test results.
+According to the console, ILCD was indeed commenced at 01:44:00, but it hit a snag at 01:44:47 while opening Screen Manager.
+!!! It seems like that one issue pattern I had been noticing, where the first test always fails to open Screen Manager, was correct
+Other errors:
+DualFormat:
+    02:30:04 - C:\RunDualFormat.vbs(90, 2) mscorlib: The remote procedure call failed. (Exception from HRESULT: 0x800706BE)
+        During cscript "C:\RunDualFormat.vbs" step, started 02:27:10
+ILCD:
+    02:25:01 - C:\TIPSDiagnostic_Prepare.vbs(36, 2) ((null)): The remote procedure call failed.
+        During cscript "C:\TIPSDiagnostic_Prepare.vbs" step, started 01:44:47
+    02:30:04 - C:\GrdCfgMgr_StartLogin.vbs(10, 1) ((null)): 0x80131505
+        During cscript "C:\GrdCfgMgr_StartLogin.vbs" step, started 02:25:01
+740011:
+    No errors.
+
+Great, so now 740011 is the best behaved of the three, who could have guessed.
+Did all of these errors have to do with the overlapped tests, then?
+How can I fix this? Why does the first test of the night routinely fail to initiate Screen Manager?
+
+Well, I *can* think of a band-aid solution, and I think that those aren't as repulsive in this line of work as I thought they might be.
+    At least temporarily, until I can figure out a fix, and while I am trying to work on other issues.
+    And if anyone asks, as long as I am able to explain everything I know about the setup they shouldn't give me too much trouble for it.
+Band-aid solution idea:
+    Add a dummy test to the beginning of the night, before all the others, that just attempts to open Diagnostic TIPS.
+    
+Created the DummyTestPrep job, with only ScriptForcequit.bat, SetupEnv.vbs, GrdCfgMgr_StartLogin.vbs, and TIPSDiagnostic_Prepare.vbs, in that order.
+Set it to run at midnight, and moved DualFormat and ILCD back to 1:00 and 2:00, respectively.
+    with any luck, this will absorb the failure without consequence and the other tests will run better.
+    
+    
+===========
+17-Oct-2018
+===========
+I was not lucky. Only two emails generated, one from 3:27 with no attachment, and one from 6:29 with a 36% pass .pdf.
+That one email:
+740011:
+	Run Time:		02:55:56    Start: 03:30, End: 06:26
+	Success Totals:	20/56 (/61)
+	Failed Cases:	All Import_* tests (3-11, 17-25, 31-39, 45-53)
+    Missing Cases:  Initial Lot use case                            (12),
+                    1stSafeGuard off, 2SG on use case               (27), 
+                    Quarantined Dupes use case                      (42), 
+                    Database Validation                             (43), 
+                    Dataname excluded from duplicate check use case (58)
+                        (Basically, all the VE_A tests were missing)
+
+There's a message on DEV01 that reads "HP Unified Functional Testing has stopped working"
+On DEV06: "PalletGetSSCCNumber: 707: Request for Initial Block of SPT numbers cannot be satisfied. Requested 21 and received from Guardian 0!"
+Also, looking at the Print Log on the machine, it appears to have been running nonstop from 03:28:05 to 06:26:30.
+Let's check the console output on Jenkins to see what we find.
+
+There appear to have been similar errors across last night's test, most of them having to do with trying to open UFT.
+DummyTestPrep:
+    00:21:00 - Job start
+    00:30:24 - C:\SetupEnv.vbs(10, 1) ((null)): 0x80131505
+        during cscript "C:\SetupEnv.vbs" 
+    00:35:44 - C:\GrdCfgMgr_StartLogin.vbs(10, 1) ((null)): 0x80131505
+        during cscript "C:\GrdCfgMgr_StartLogin.vbs" 
+    00:40:46 - C:\TIPSDiagnostic_Prepare.vbs(10, 1) ((null)): 0x80131505
+        during cscript "C:\TIPSDiagnostic_Prepare.vbs"
+    00:40:46 - Job end ("Finished: SUCCESS")
+DualFormat:
+    01:25:00 - Job start
+    01:30:00 - C:\SetupEnv.vbs(10, 1) ((null)): 0x80131505
+        during cscript "C:\SetupEnv.vbs" 
+    01:35:03 - C:\TIPSDiagnostic_Prepare.vbs(10, 1) ((null)): 0x80131505
+        during cscript "C:\TIPSDiagnostic_Prepare.vbs"
+    01:40:05 - C:\GrdCfgMgr_StartLogin.vbs(10, 1) ((null)): 0x80131505
+        during cscript "C:\GrdCfgMgr_StartLogin.vbs" 
+    01:55:00 - Build timed out (after 30 minutes). Marking the build as aborted.
+        during cscript "C:\RunDualFormat.vbs" 
+    01:55:00 - Job end ("Finished: ABORTED")
+ILCD:
+    02:44:00 - Job start
+    03:12:00 - C:\TIPSDiagnostic_Prepare.vbs(36, 2) ((null)): The remote procedure call failed. 
+        during cscript "C:\TIPSDiagnostic_Prepare.vbs" 
+    03:17:05 - C:\GrdCfgMgr_StartLogin.vbs(11, 1) mscorlib: The communication object, System.ServiceModel.Channels.ServiceChannel, cannot be used for communication because it is in the Faulted state.
+        during cscript "C:\GrdCfgMgr_StartLogin.vbs" 
+    03:27:04 - C:\Automation\Duplicate Check\RunInLotCancelDecom.vbs(10, 1) QtpAutomationAgent: Timeout waiting for opening QTP.
+        during cscript "C:\Automation\Duplicate Check\RunInLotCancelDecom.vbs" 
+    03:27:04 - The system cannot find the file specified.
+        during COPY "C:\Automation\Duplicate Check\Results.txt" "C:\Automation\ReportFramework\Test_Results\" 
+    03:27:04 - Job end ("Finished: FAILURE")
+740011:
+    03:12:00 - Job start
+    03:17:03 - C:\SetupEnv.vbs(10, 1) ((null)): 0x80131505
+        during cscript "C:\SetupEnv.vbs" 
+    03:22:04 - C:\GrdCfgMgr_StartLogin.vbs(11, 1) QtpAutomationAgent: Timeout waiting for opening QTP.
+        during cscript "C:\GrdCfgMgr_StartLogin.vbs" 
+    *Note:   cscript "C:\OlderAdvisorTest_740011.vbs"  starts at 03:22:04 but ends at 06:26:36
+    06:26:37 - Job end ("Finished: SUCCESS")
+    
+The code for the three preparatory .vbs scripts are identical apart from the one line (17) where it calls the UFT process.
+13 Total errors:
+10/13 of the errors occurred in the [Prep].vbs scripts
+    7/10(/13) of those errors were on [Prep].vbs line 10
+        7/7 were a weird "((null)): 0x80131505" pointer thing.
+    2/10(/13) of those errors were on [Prep].vbs line 11
+        1 was something about System.ServiceModel.Channels.ServiceChannel being in a faulted state
+        1 was a timeout waiting for QTP
+    1 of those was a "remote procedure call failed" on line 36.
+2/13 of the errors were script timeouts
+1 was the result generation not finding a result file after a failed test.
+
+[Prep].vbs line 10:
+Set qtApp = CreateObject("QuickTest.Application") ' Create the Application object
+
+All of these appear to have to do with QTP in one way or another.
+
+
+===========
+18-Oct-2018
+===========
+Last night's tests appear to have run somewhat properly, surprisingly.
+    That is, each one generated an email with a .pdf attachment
+Let's examine the .pdf contents and then check the logs.
+
+DualFormat Results:
+	Run Time:		00:18:45
+	Success Totals:	12/12
+	Failed Cases:	none
+    
+ILCD Results:
+	Run Time:		00:24:58
+	Success Totals:	16/19 (/24)
+	Failed Cases:	6, 18, 19
+    Missing Cases:  Email Validation                                (20),
+                    Database Validation                             (21),
+                    Set_DuplicateSafeguards (SG1 = ON)              (22),
+                    Set_DuplicateSafeguards (SG2 = ON)              (23),
+                    Disable_Numbers                                 (24)
+                    
+740011 Results:
+	Run Time:		00:39:20
+	Success Totals:	59/61
+	Failed Cases:	42, 43
+    
+DummyTestPrep:
+    00:21:00 - Job start
+    00:51:00 - Build timed out (after 30 minutes). Marking the build as aborted.
+        during "cscript "C:\GrdCfgMgr_StartLogin.vbs"
+    00:51:00 - Job end ("Finished: ABORTED")
+DualFormat:
+    01:25:00 - Job start
+    01:51:41 - Job end ("Finished: SUCCESS")
+ILCD:
+    02:44:00 - Job start
+    03:12:00 - C:\Automation\Duplicate Check\RunInLotCancelDecom.vbs(107, 2) ((null)): The remote procedure call failed.
+        during script "C:\Automation\Duplicate Check\RunInLotCancelDecom.vbs"
+    03:12:00 - Job end ("Finished: SUCCESS")
+740011:
+    03:12:00 - Job start
+    03:52:49 - Job end ("Finished: SUCCESS")
+    
+RunInLotCancelDecom.vbs(107,2):
+    "qtApp.Test.Run (null), True ' Run the test and wait for completion"
+    
+So, the unfortunate bit is that it doesn't tell me which line was responsible for making the call to that function when it crashed
+I can assume it was the second one, since it appears as if the results stopped before whichever VE_A was coming up 
+However, I don't have much of an idea for how to approach resolving this - I feel like I just don't have enough data to work with.  
+
+
+===========
+19-Oct-2018
+===========
+Similar results as last time, nothing appears to have blown up too bad
+
+DualFormat Results:
+	Run Time:		00:10:03
+	Success Totals:	12/12
+	Failed Cases:	none
+    
+ILCD Results:
+	Run Time:		00:25:50
+	Success Totals:	18/23 (/24)
+	Failed Cases:	FT_Notifications                                (6),
+                    Single Item Decom Use Case                      (18),
+                    FT_Notifications                                (19),
+                    Email Validation                                (20),
+                    Database Validation                             (21)
+    Missing Cases:  Quarantined Dupes Use Case                      (20)
+    
+740011 Results:
+	Run Time:		00:31:12
+	Success Totals:	58/61
+	Failed Cases:	Email Validation                                (27),
+                    Email Validation                                (42),
+                    Database Validation                             (43)
+                    
+It's encouraging that DualFormat has worked the past few nights.
+ILCD is experiencing the same issues I have noticed during the day
+I have no idea why 740011 failed an additional test case, but I'm not happy about it.
+
+
+===========
+22-Oct-2018
+===========
+I've got results from each test for each of the three days of overnight testing, which is a good sign.
+It also means that the review will take extra time.
+I think it makes sense to do chronological as opposed to grouping up by test type.
+
+Evening of 19-Oct-2018:
+DualFormat Results:
+	Run Time:		00:07:37
+	Success Totals:	12/12
+	Failed Cases:	none
+ILCD Results:
+	Run Time:		00:24:05
+	Success Totals:	17/19 (/24)
+	Failed Cases:	Single Item Decom Use case                      (18),
+                    FT_Notifications                                (19)
+    Missing Cases:  Email Validation                                (20),
+                    Database Validation                             (21),
+                    Set_DuplicateSafeguards (SG1 = ON)              (22),
+                    Set_DuplicateSafeguards (SG2 = ON)              (23),
+                    Disable_Numbers                                 (24)
+740011 Results:
+	Run Time:		00:17:27
+	Success Totals:	32/41 (/61)
+	Failed Cases:	Import_Range                                    (33-35),
+                    Import_FullyRandomList                          (36-38),
+                    Import_AnimalHealth                             (39),
+                    Import_PartialRandomList                        (40-41)
+    Missing Cases:  All cases after 41, starting with Quarantine Dupes Use case.
+                    
+I take back what I said about these being promising results...
+I'll finish recording these emails and then get into what might be affecting the tests.
+
+Evening of 20-Oct-2018:
+DualFormat Results:
+	Run Time:		00:09:40
+	Success Totals:	12/12
+	Failed Cases:	none
+ILCD Results:
+	Run Time:		00:23:55
+	Success Totals:	17/19 (/24)
+	Failed Cases:	Single Item Decom Use case                      (18),
+                    FT_Notifications                                (19)
+    Missing Cases:  Email Validation                                (20),
+                    Database Validation                             (21),
+                    Set_DuplicateSafeguards (SG1 = ON)              (22),
+                    Set_DuplicateSafeguards (SG2 = ON)              (23),
+                    Disable_Numbers                                 (24)
+740011 Results:
+	Run Time:		00:18:48
+	Success Totals:	32/41 (/61)
+	Failed Cases:	Import_Range                                    (33-35),
+                    Import_FullyRandomList                          (36-38),
+                    Import_AnimalHealth                             (39),
+                    Import_PartialRandomList                        (40-41)
+    Missing Cases:  All cases after 41, starting with Quarantine Dupes Use case.
+    
+Evening of 21-Oct-2018:
+DualFormat Results:
+	Run Time:		00:09:31
+	Success Totals:	12/12
+	Failed Cases:	none
+ILCD Results:
+	Run Time:		00:24:21
+	Success Totals:	16/19 (/24)
+	Failed Cases:	FT_Notifications                                (6),
+                    Single Item Decom Use Case                      (18),
+                    FT_Notifications                                (19)
+    Missing Cases:  Email Validation                                (20),
+                    Database Validation                             (21),
+                    Set_DuplicateSafeguards (SG1 = ON)              (22),
+                    Set_DuplicateSafeguards (SG2 = ON)              (23),
+                    Disable_Numbers                                 (24)
+740011 Results:
+	Run Time:		00:17:25
+	Success Totals:	32/41 (/61)
+	Failed Cases:	Import_Range                                    (33-35),
+                    Import_FullyRandomList                          (36-38),
+                    Import_AnimalHealth                             (39),
+                    Import_PartialRandomList                        (40-41)
+    Missing Cases:  All cases after 41, starting with Quarantine Dupes Use case.
+    
+So it's looking like we got some consistency at least. I like to think it would have been worse if each of the tests had failed in unique ways.
+Dual Format is showing to be consistently successful still (hooray), and the other two tests are breaking at the trouble spots from last week.
+
+Interestingly, the DummyTestPrep did not appear to encounter any errors over the weekend.
+Has the issue where the first test of the evening crashes gone away?
+I won't remove it yet, but I will keep an eye on it for now.
+ was spokkeeeeeeeeentight otherwise vhance that he wouldd br inclinde o jsut speak jos ming anyway this was not goof t-got yhatpoeaples because but then he said 
+
+I have since realized why the 740011 results were so weird: we had modified the code for mid-test troubleshooting and hadn't reverted it since.
+
+
+===========
+23-Oct-2018
+===========
+Got good results again today. DF and 740011 were properly formatted and everything, but ILCD was missing a few steps again.
+Also, it looks like the DummyTestPrep job finished with no errors again.
+
+DualFormat Results:
+	Run Time:		00:07:30
+	Success Totals:	12/12
+	Failed Cases:	none
+
+ILCD Results:
+	Run Time:		00:24:10
+	Success Totals:	17/19 (/24)
+	Failed Cases:   18, 19
+    Missing Cases:  20, 21, 22, 23, 24
+    
+740011 Results:
+	Run Time:		00:32:40
+	Success Totals:	61/61
+	Failed Cases:	none
+    
+As for why ILCD is missing the last of its test cases, I have noticed the same error message present in last night's and the weekend's runs:
+    "C:\Automation\Duplicate Check\RunInLotCancelDecom.vbs(107, 2) ((null)): The remote procedure call failed."
+        During the "cscript "C:\Automation\Duplicate Check\RunInLotCancelDecom.vbs"" step
+What does this mean? What is breaking? Why is it breaking consistently? 
+Let's check the wrapper .vbs script.
+
+So, line 107 is just:
+    "qtApp.Test.Run (null), True"
+which means something over the course of he entire test failed.
+I may have to make use of the print log to fix this.
+Maybe set up the night tests to just append to a shared log file as opposed to clearing it out or something.
+
+
+===========
+24-Oct-2018
+===========
+All tests went through, but DF had janky results, with only 6 total cases and 4 of them passing
+Running again gave a full clear, though, so I won't worry about it too much for now.
+
+DualFormat Results:
+	Run Time:		00:06:07
+	Success Totals:	4/6 (/12)
+	Failed Cases:	2, 3
+    Missing Cases:  FT_DualFormat_Driver                            (4),
+                    Dual Format Use Case                            (6),
+                    Dual Format Use Case                            (7),
+                    Second User Entry dialog for Override Quarantine(8),
+                    Quarantined Dupes use case                      (9),
+                    Database Validation                             (10)
+
+ILCD Results:
+	Run Time:		00:24:17
+	Success Totals:	16/19 (/24)
+	Failed Cases:	6, 18, 19
+    Missing Cases:  20, 21, 22, 23, 24
+    
+740011 Results:
+	Run Time:		00:33:33
+	Success Totals:	60/61
+	Failed Cases:	43
+    
+There were actually no error lines in the console log, which is upsetting, because it suggests that the console log output does not correlate directly with the issues
+    or at least that it can't always detect them, which is still annoying.
+    
+    
+===========
+25-Oct-2018
+===========
+First two tests broke, seems like Screen Manager failed to open properly.
+Also, IpsEngine was open when I got in this morning, and the task bar was missing.
+I've reset the box. I'll record last night's results while it boots up.
+
+DualFormat Results:
+    Test auto-aborted.
+    
+ILCD Results:
+	Run Time:		00:00:39
+	Success Totals:	5/5 (/24)
+	Failed Cases:	none
+    Missing Cases:  6-24
+
+740011 Results:
+	Run Time:		00:35:28
+	Success Totals:	65/66 (/61)
+	Failed Cases:	48 (43)
+    
+based on the way the timestamps on the .pdfs line up, it looks like ILCD did not start until 3:12, and completed at 3:13.
+740011 also started at 3:12, and appears to have forcefully closed ILCD and picked up (only 5 of?) its remaining cases.
+
+Looking at console logs:
+
+DummyTestPrep:
+    00:21:00 - Job start
+    00:21:44 - Job end ("Finished: SUCCESS")
+DualFormat:
+    01:25:00 - Job start
+    01:55:00 - Build timed out (after 30 minutes). Marking the build as aborted.
+        during cscript "C:\TIPSDiagnostic_Prepare.vbs"
+    01:55:00 - Job end ("Finished: ABORTED")
+ILCD:
+    02:44:00 - Job start
+    03:12:00 - C:\TIPSDiagnostic_Prepare.vbs(36, 2) ((null)): The remote procedure call failed. 
+        during cscript "C:\TIPSDiagnostic_Prepare.vbs" (02:44:06)
+    03:17:02 - C:\Automation\Duplicate Check\RunInLotCancelDecom.vbs(107, 2) mscorlib: The remote procedure call failed. (Exception from HRESULT: 0x800706BE)
+        during cscript "C:\Automation\Duplicate Check\RunInLotCancelDecom.vbs" 
+    03:17:03 - Job end ("Finished: SUCCESS")
+740011:
+    03:12:00 - Job start
+    03:48:31 - Job end ("Finished: SUCCESS")
+    
+Yeah, so Screen manager was crashing. 
+The reason that the cases got moved over was because ILCD was about to time out ((28/30) minutes), but then 740011 started.
+
+
+===========
+26-Oct-2018
+===========
+Results were disappointing. Only two emails received, only one had a .pdf attachment. 
+I looked into the test report machine, and it looked like the script just didn't run (?)
+I ran the test again and got a result.
+
+DualFormat Results:
+    ... none...
+    
+ILCD Results:
+	Run Time:		00:20:25
+	Success Totals:	16/21 (/24)
+	Failed Cases:	Import_Range                                    (3),
+                    FT_Notifications                                (14),
+                    Single Item Decom Use Case                      (15),
+                    Email Validation                                (17),
+                    Database Validation                             (18)
+    Missing Cases:  Set_DuplicateSafeGuards                         (22),
+                    Set_DuplicateSafeGuards                         (23),
+                    Disable_Numbers                                 (24)
+                    
+740011 Results:
+	Run Time:		00:31:24
+	Success Totals:	59/61
+	Failed Cases:	Email Validation                                (42), 
+                    Database Validation                             (43)
+    3rdSafeguard:   0 items
+    
+Console Logs:
+DummyTestPrep:
+    00:21:00 - Job start
+    00:22:23 - Job end ("Finished: SUCCESS")
+DualFormat:
+    01:25:00 - Job start
+    01:55:00 - Build timed out (after 30 minutes). Marking the build as aborted.
+        during cscript "C:\TIPSDiagnostic_Prepare.vbs" 
+    01:55:00 - Job end ("Finished: ABORTED")
+ILCD:
+    02:44:00 - Job start
+    03:05:56 - Job end ("Finished: SUCCESS")
+740011:
+    03:12:00 - Job start
+    03:44:09 - Job end ("Finished: SUCCESS")
+    
+Screen manager only failed during DualFormat this time. No idea why.
+It's looking like DummyTestPrep isn't doing too much to prevent failures all of a sudden...
+
+
+===========
+29-Oct-2018
+===========
+Bad results from weekend testing. No results on the box itself to check
+I will try another attempt to run while I check the console logs.
+
+This run bombed out as well
+Oh, I think it was because I had one of the excel files open on my laptop
+    That's dumb
+Closing it and trying again.
+
+Looking through the console logs, I see the same issue causing the failures:
+    03:12:43 C:\OlderAdvisorTest_740011.vbs(194, 3) ((null)): The DataTable.ImportSheet operation failed. 
+    03:12:43 Cannot open the C:\Automation\Duplicate Check\FT_Provisioning_Driver\PreLot_Good.xls file because it is already open in another application.
+I guess I will just have to remember to always close out of those when I run tests.
+
+Same results as Thursday night otherwise:
+DF timed out at the Screen Manager setup each time
+ILCD got results, but I haven't been working on that, so they had some failures.
+
+
+===========
+30-Oct-2018
+===========
+Tests went poorly last night. Ended up crashing and freezing, task bar disappeared.
+Tried running tests for the hell of it
+"WMVCore.DLL is missing from your computer"
+    what
+Let's see if I can find that file, I guess.
+Found it, threw it in System32, and I'm gonna try again.
+Screen Manager never opened. Trying next
+    Full Clear.
+ILCD running has been messy, moving over to its own file.
+
+
+===========
+31-Oct-2018
+===========
+Last night tests were crashed and frozen again
+Restarting the machine and uninstalling Microsoft Office in an attempt to free up more memory.
+Running each test only once
+DualFormat:
+    "GuardianSPTConfig.EXE - Bad Image  C:\Windows\system32\WMVCore.DLL is either not designed to run on Windows or it contains an error..."
+    That doesn't count, trying again.
+    skipped Screen manager this time
+        like without any fuss either, it just didn't even try to open it.
+    trying again
+    full clear
+ILCD:
+    Full clear
+740011:
+    Went well until result generation, where the report job just didn't do anything and sat inactive
+    reran report job
+    typical clear, only fail was with the section we want to rework later.
+    
+    
+===========
+01-Nov-2018
+===========
+Tests from last night appear to have run to completion and in a timely manner.
+However, no .pdfs attached to any of them
+Checking the report script?
+    No errors, lingering files or anything...
+Checking for result.txt from most recent test...
+Oh, you know what it probably was: I'd modified the result file copy script to not delete each QTPrintLog.txt between tests.
+turned out I formatted the TYPE command incorrectly.
+
+Quick check-ins:
+DualFormat:
+    Full clear (00:06:11)
+ILCD:
+    Full clear (00:13:00)
+740011:
+    42 pass, 43 fail (Expected Case 2) (00:29:47)
+    
+    
+===========
+02-Nov-2018
+===========
+Tests bombed out, open in Guardian but not logged in, no task bar. 
+
+
+===========
+05-Nov-2018
+===========
+Many results, decent number of them were good.
+I'd forgotten to remove an extra timed run for ILCD, so I had an extra run of that one each day at 3:05.
+
+from 03-Nov-2018:
+Dual Format:
+Results:
+	Run Time:		00:08:07
+	Success Totals:	12/12
+	Failed Cases:	none
+
+In Lot Cancel Decom:
+Results:
+	Run Time:		00:12:41
+	Success Totals:	24/24
+	Failed Cases:	none
+
+7.40.011:
+Results:
+	Run Time:		00:31:12
+	Success Totals:	59/61
+	Failed Cases:	27, 43      (Known "2ndSafeguard failure" issue)
+    
+In Lot Cancel Decom part 2:
+Results:
+	Run Time:		00:13:00
+	Success Totals:	24/24
+	Failed Cases:	none
+
+from 04-Nov-2018:    
+Dual Format:
+Results:
+	Run Time:		00:07:15
+	Success Totals:	9/12
+	Failed Cases:	7, 8, 10
+    (Looks like dupes were not detected that time?)
+    
+Dual Format part 2(??):
+Results:
+	Run Time:		00:08:13
+	Success Totals:	12/12
+	Failed Cases:	none
+    (This one started at the same time as the previous one. Was it just a fluke pre-send?)
+    
+In Lot Cancel Decom:
+Results:
+	Run Time:		00:12:51
+	Success Totals:	24/24
+	Failed Cases:	none
+    
+7.40.011:
+Results:
+	Run Time:		00:31:07
+	Success Totals:	59/61
+	Failed Cases:	27, 43      (Known "2ndSafeguard failure" issue)
+    
+8.1.7 (First one?):
+Results:
+	Run Time:		09:28:34
+	Success Totals:	17/53 (/61)
+	Failed Cases:	All of the Guardian Import steps, and missing the last couple steps
+    (Not an impressive first run. It seems as if Guardian crashed.)
+    
+from 05-Nov-2018:
+7.40.011:
+Results:
+	Run Time:		00:18:04
+	Success Totals:	2/10
+	Failed Cases:	Import steps, and most of the steps...
+    (Reinforces suspicion that Guardian crashed.)
+    
+
+===========
+07-Nov-2018
+===========
+First night of testing after embiggening the data sets for 7.40.011 and 8.1.7.
+
+Check-ins:
+Dual Format:
+Results:
+	Run Time:		00:06:08
+	Success Totals:	12/12
+	Failed Cases:	none
+    
+In Lot Cancel Decom:
+Results:
+	Run Time:		00:11:21
+	Success Totals:	24/24
+	Failed Cases:	none
+    
+7.40.011:
+Results:
+	Run Time:		00:35:15
+	Success Totals:	26/26 (/61)
+	Failed Cases:	none
+    Missing Cases:  27-61
+    
+8.1.7:
+Results:
+	Run Time:		01:20:44
+	Success Totals:	40/59 (/61)
+	Failed Cases:	All import steps up to 3rd Lot 
+                        (3-11, 17-25)
+                    41
+    Missing Cases:  12, 27  (Both email validations, from 1st and 2nd lot)
+    
+It looks like 7.40.011 got cut off by 8.1.7 and then that messed up 8.1.7's importing.
+
+
+===========
+08-Nov-2018
+===========
+Tests bombed out, won't bother noting them
+
+
+===========
+09-Nov-2018
+===========
+I made a big change to the tests yesterday, so the tests were off, as I expected.
+
+
+===========
+12-Nov-2018
+===========
+Tests were surprisingly successful over the weekend. Full clears up until this morning, where it looks like something may have crashed
+The only thing weird with the successful tests was that the 7.40.011 and 8.1.7 tests only had 60 tests, not 61.
+    If I'm reading the results correctly, I think it's the verification of the 2nd lot results
+    It might just be some error popping up that I'll have to resolve in the UFT script
+    
+    
+===========
+13-Nov-2018
+===========
+Tests all passed 100%, which is good, but 740011 and 817 still lost one of their tests.
+
+Check ins:
+Dual Format:
+Results:
+	Run Time:		00:08:03
+	Success Totals:	12/12
+	Failed Cases:	none
+
+In Lot Cancel Decom:
+Results:
+	Run Time:		00:10:55
+	Success Totals:	24/24
+	Failed Cases:	none
+
+7.40.011:
+Results:
+	Run Time:		01:47:27
+	Success Totals:	60/60 (/61)
+	Failed Cases:	none
+    Missing Cases:  27 (2ndSafeguard Check)
+    
+8.1.7:
+Results:
+	Run Time:		01:41:23
+	Success Totals:	60/60 (/61)
+	Failed Cases:	none
+    Missing Cases:  27 (2ndSafeguard Check)
+    
+Still missing the last test. I'll continue to work on figuring that out today
+
+
+===========
+14-Nov-2018
+===========
+Second two tests bombed, I'll look into it.
+
+Check ins:
+Dual Format:
+Results:
+	Run Time:		00:08:05
+	Success Totals:	12/12
+	Failed Cases:	none
+    
+In Lot Cancel Decom:
+Results:
+	Run Time:		00:11:28
+	Success Totals:	24/24
+	Failed Cases:	none
+
+    
+===========
+15-Nov-2018
+===========
+Something happened to last night's tests, I'm going to blame it on running 8.2.11.
+
+Check ins:
+Dual Format Results:
+	Run Time:		00:08:03
+	Success Totals:	9/10 (/12)
+	Failed Cases:	Second User Entry dialog for Override Quarantine    (10)
+    Missing Cases:  11, 12
+    
+In Lot Cancel Decom Results:
+	Run Time:		00:10:04
+	Success Totals:	23/24
+	Failed Cases:	Email Validation                                    (8)
+    
+7.40.011 Results:
+	Run Time:		01:03:23
+	Success Totals:	58/61
+	Failed Cases:	Import_FullyRandomList [Carton]                     (21),
+                    Email Validation [Lot 2]                            (27),
+                    Email Validation [Lot 4]                            (58)
+                    
+8.1.7 Results:
+	Run Time:		01:03:52
+	Success Totals:	58/61
+	Failed Cases:	Import_FullyRandomList [Carton]                     (21),
+                    Email Validation [Lot 2]                            (27),
+                    Email Validation [Lot 4]                            (58)
+
+Different results today. I'll take a quick look at the print logs but if I can't find anything I'll chalk it up to the 8.2.11 test.
+
+
+===========
+16-Nov-2018
+===========
+Last night's tests bombed out. 
+Not too great, moving on
+
+
+===========
+19-Nov-2018
+===========
+Tests seemed to have worked from over the weekend
+
+
+//  From night of 16-Nov-2018
+Dual Format Results:
+	Run Time:		00:08:03
+	Success Totals:	12/12
+	Failed Cases:	none
+    
+In Lot Cancel Decom Results:
+	Run Time:		00:13:33
+	Success Totals:	24/24
+	Failed Cases:	none
+    
+7.40.011 Results:
+	Run Time:		01:09:04
+	Success Totals:	58/61
+	Failed Cases:	Import_FullyRandomList [Carton]                     (21),
+                    Email Validation [Lot 2]                            (27),
+                    Email Validation [Lot 4]                            (58)
+                    
+8.1.7 Results:
+	Run Time:		01:08:52
+	Success Totals:	58/61
+	Failed Cases:	Import_FullyRandomList [Carton]                     (21),
+                    Email Validation [Lot 2]                            (27),
+                    Email Validation [Lot 4]                            (58)
+                    
+                    
+// From night of 17-Nov-2018
+Dual Format Results:
+	Missing (?)
+        There's an email with a subject that mimics the 8.1.7 one
+        Makes me suspect that Dual Format failed, triggered a Report job and just used the data from the last test
+        
+In Lot Cancel Decom Results:
+	Run Time:		00:13:36
+	Success Totals:	24/24
+	Failed Cases:	none
+    
+7.40.011 Results:
+	Run Time:		01:08:40
+	Success Totals:	58/61
+	Failed Cases:	Import_FullyRandomList [Carton]                     (21),
+                    Email Validation [Lot 2]                            (27),
+                    Email Validation [Lot 4]                            (58)
+                    
+8.1.7 Results:
+	Run Time:		03:55:19
+	Success Totals:	58/61
+	Failed Cases:	Import_FullyRandomList [Carton]                     (21),
+                    Email Validation [Lot 2]                            (27),
+                    Email Validation [Lot 4]                            (58)
+                    
+                    
+// From night of 18-Nov-2018
+Dual Format Results:
+	Run Time:		00:08:13
+	Success Totals:	12/12
+	Failed Cases:	none
+    
+In Lot Cancel Decom Results:
+	Run Time:		00:14:25
+	Success Totals:	15/18 (/24)
+	Failed Cases:	Import_Range                                        (14),
+                    Import_FullyRandomList                              (15),
+                    Import_PartialRandomList                            (16)
+    Missing Cases:  FT_Notifications                                    (17),
+                    Single Item Decom Use Case                          (18),
+                    FT_Notifications                                    (19),
+                    Quarantined Dupes use case                          (20),
+                    Database Validation                                 (21),
+                    Disable_Numbers                                     (24)
+Huh, I wonder what happened here.
+
+7.40.011 Results:
+	Run Time:		00:42:42
+	Success Totals:	22/57 (/61)
+	Failed Cases:	Every import step
+                        Except 21, the one that has been failing? Why.
+    Missing Cases:  Email Validation [Lot 2]                            (27),
+                    Quarantined Dupes use case                          (42),
+                    Database Validation                                 (43),
+                    Email Validation                                    (58)
+Maybe Guardian crashed during the last test and it carried over
+
+8.1.7 Results:
+	Run Time:		01:08:59
+	Success Totals:	58/61
+	Failed Cases:	Import_FullyRandomList [Carton]                     (21),
+                    Email Validation [Lot 2]                            (27),
+                    Email Validation [Lot 4]                            (58)
+So I guess whatever happened that last time went away this time?
+
+
+===========
+20-Nov-2018
+===========
+Tests went well except for 7.40.011, although that one is in a bit of a mercurial state at the moment, since I'm messing around with it
+
+Dual Format Results:
+	Run Time:		00:06:08
+	Success Totals:	12/12
+	Failed Cases:	none
+    
+In Lot Cancel Decom Results:
+	Run Time:		00:13:38
+	Success Totals:	24/24
+	Failed Cases:	none
+    
+7.40.011 Results:
+	Run Time:		00:02:14
+	Success Totals:	2/8 (/61)
+	Failed Cases:	3-8
+    Missing Cases:  [All of the rest of them]
+I'm tempted to not even bother looking into this one...
+    03:13:19 C:\Jenkins\workspace\Automation\UniSeries\8.4.0\SVT\Duplicate Check - 7.40.011>cscript "C:\OlderAdvisorTest_740011.vbs" 
+    03:13:19 Microsoft (R) Windows Script Host Version 5.8
+    03:13:19 Copyright (C) Microsoft Corporation. All rights reserved.
+    03:13:19 
+    05:16:00 C:\OlderAdvisorTest_740011.vbs(205, 2) (null): The remote procedure call failed. 
+... That's all I got
+
+8.1.7 Results:
+	Run Time:		01:17:16
+	Success Totals:	59/61
+	Failed Cases:	Database Validation [Lot 3]                         (43),
+                    Email Validation [Lot 4]                            (58)
+Looks like what happened to 7.40.011 did not affect 8.1.7, which is good to see
+
+
+===========
+21-Nov-2018
+===========
+Precursory look at tests (via the email subjects) seems promising, let's take a closer look
+When I got in it looked like the most recent test had crashed, however, so 8.1.7 may not be doing too great
+
+Dual Format Results:
+	Run Time:		00:08:14
+	Success Totals:	12/12
+	Failed Cases:	none
+    
+In Lot Cancel Decom Results:
+	Run Time:		00:14:12
+	Success Totals:	24/24
+	Failed Cases:	none
+    
+7.40.011 Results:
+	Run Time:		01:16:44
+	Success Totals:	60/61
+	Failed Cases:	Email Validation [Lot 4]                            (58)
+    
+8.1.7 Results:
+	Run Time:		01:14:23
+	Success Totals:	59/60 (/61)
+	Failed Cases:	Email Validation [Lot 4]                            (58)
+    Missing Cases:  Disable_Numbers [Lot 4]                             (61)
+My guess is that it bombed out during the last disable numbers step, for whatever reason
+All I see in the Jenkins Console Output is 
+"
+05:16:51 C:\Jenkins\workspace\Automation\UniSeries\8.4.0\SVT\Duplicate Check - 8.1.7>cscript "C:\OlderAdvisorTest_817.vbs" 
+05:16:51 Microsoft (R) Windows Script Host Version 5.8
+05:16:51 Copyright (C) Microsoft Corporation. All rights reserved.
+05:16:51 
+08:04:06 C:\OlderAdvisorTest_817.vbs(209, 2) (null): The remote procedure call failed. 
+"
+Odd.
+
+
+===========
+27-Nov-2018
+===========
+5 nights' worth of tests, here we go
+
+//  From night of 21-Nov-2018
+Dual Format Results:
+	Run Time:		00:08:21
+	Success Totals:	12/12
+	Failed Cases:	none
+    
+In Lot Cancel Decom Results:
+	Run Time:		00:14:02
+	Success Totals:	24/24
+	Failed Cases:	none
+    
+7.40.011 Results:
+	Run Time:		01:16:58
+	Success Totals:	61/61
+	Failed Cases:	none
+    
+8.1.7 Results:
+	Run Time:		01:16:38
+	Success Totals:	61/61
+	Failed Cases:	none
+
+//  Pretty good
+    
+
+//  From night of 22-Nov-2018
+8.2.11 Results:
+	Run Time:		00:01:32
+	Success Totals:	11/11 (/??)
+	Failed Cases:	none
+Looks like I set 8.2.11 to run?
+From Console Output:
+"
+07:33:15 C:\Jenkins\workspace\Automation\UniSeries\8.4.0\SVT\Duplicate Check - 8.2.11>cscript "C:\OlderAdvisorTest_8211.vbs" 
+07:33:15 Microsoft (R) Windows Script Host Version 5.8
+07:33:15 Copyright (C) Microsoft Corporation. All rights reserved.
+07:33:15 
+01:25:00 C:\OlderAdvisorTest_8211.vbs(158, 2) (null): The remote procedure call failed. 
+"
+Looks like one of the standard errors I've been running into
+
+Dual Format Results:
+	Run Time:		00:08:16
+	Success Totals:	12/12
+	Failed Cases:	none
+    
+In Lot Cancel Decom Results:
+	Run Time:		00:05:14
+	Success Totals:	10/10 (/24)
+	Failed Cases:	none
+    Missing Cases:  11 - 24
+Oh no!
+From Console Output:
+"
+02:44:56 C:\Jenkins\workspace\Automation\UniSeries\8.4.0\SVT\Duplicate Check - In Lot Cancel Decom>cscript "C:\Automation\Duplicate Check\RunInLotCancelDecom.vbs" 
+02:44:56 Microsoft (R) Windows Script Host Version 5.8
+02:44:56 Copyright (C) Microsoft Corporation. All rights reserved.
+02:44:56 
+03:12:00 C:\Automation\Duplicate Check\RunInLotCancelDecom.vbs(131, 2) mscorlib: The remote procedure call failed. (Exception from HRESULT: 0x800706BE)
+"
+More results which are not very useful
+
+7.40.011 Results:
+    Missing Results File
+Tragedy!
+Console Output:
+"
+03:12:49 C:\Jenkins\workspace\Automation\UniSeries\8.4.0\SVT\Duplicate Check - 7.40.011>cscript "C:\GrdCfgMgr_StartLogin.vbs" 
+03:12:55 Microsoft (R) Windows Script Host Version 5.8
+03:12:55 Copyright (C) Microsoft Corporation. All rights reserved.
+03:12:55 
+05:16:00 C:\GrdCfgMgr_StartLogin.vbs(36, 2) mscorlib: The remote procedure call failed. (Exception from HRESULT: 0x800706BE)
+"
+I suppose something broke the Guardian startup
+
+8.1.7 Results:
+	Run Time:		01:24:37
+	Success Totals:	4/13
+	Failed Cases:	All import steps
+    Missing Cases:  Everything after step 13
+It all comes tumbling down
+Console Output:
+"
+05:17:08 C:\Jenkins\workspace\Automation\UniSeries\8.4.0\SVT\Duplicate Check - 8.1.7>cscript "C:\GrdCfgMgr_StartLogin.vbs" 
+05:17:14 Microsoft (R) Windows Script Host Version 5.8
+05:17:14 Copyright (C) Microsoft Corporation. All rights reserved.
+05:17:14 
+05:21:02 C:\GrdCfgMgr_StartLogin.vbs(36, 2) mscorlib: The remote procedure call failed. (Exception from HRESULT: 0x800706BE)
+"
+More (potentially residual?) Guardian issues
+
+Everything after here broke and I don't feel like writing down how the Guardian was broken for each one.
+
+
+===========
+28-Nov-2018
+===========
+I've been suddenly getting issues with the PIM data import and it has been messing with my overnight tests results.
+
+I just want to run each of the tests to make sure they still work.
+
+Dual Format:
+    got stuck on the purge screen, did not respond to purge request confirmation window
+    successfully purged this time
+        full clear
+        
+In Lot Cancel Decom:
+    full clear
+    
+7.40.011:
+    Lot 3 - CartonGetGtinNumber: SPT Number not available
+    Full clear
+    
+8.1.7:
+    Full clear
+    
+8.2.11:
+    //  This is where I suspect I will start to see some issues
+    Yep, it got stuck on the PIM Import
+    
+Let's go over to DupesTS8211.txt
+
+
+===========
+29-Nov-2018
+===========
+Looking at the DEV01 box, it would appear as if something crashed on file import. Let's see what we can find out
+
+Dual Format Results:
+	Run Time:		00:07:58
+	Success Totals:	12/12
+	Failed Cases:	none
+    
+In Lot Cancel Decom Results:
+	Run Time:		00:13:35
+	Success Totals:	24/24
+	Failed Cases:	none
+    
+7.40.011 Results:
+	Run Time:		01:16:40
+	Success Totals:	61/61
+	Failed Cases:	none
+    
+8.1.7 Results:
+	Run Time:		00:01:32
+	Success Totals:	11/11 (/61)
+	Failed Cases:	none
+    Missing Cases:  12-61
+    
+I guess 8.1.7 bombed out in the middle of its test.
+Error message found on DEV01:
+"
+Error
+833:SPT Numbers from this block are currently in process on Advisor(s)
+DEV06 line
+
+Would you like to save details of this error message to a file?
+    Yes     No
+"
+My guess is that there is an open lot still on DEV06
+Yep:
+"
+IPS Engine Stop
+The following condition(s) have stopped the line:
+CartonGetGtinNumber: SPT Number not available
+    OK
+"
+Looking at the .ips Performance window, I see that CartonGetGtinNumber has 6477 AvailableNumbers (3533 ItemsProcessed)
+Let's check the LotDataHandler.py?
+
+Oh, the program found 23 lots...
+
+Odd. Not sure how to fix it now, but I'll make a note of it.
+
+
+===========
+30-Nov-2018
+===========
+Something weird happened with the tests last night, but I'm pretty sure it was just my own fault.
+
+Dual Format Results:
+	Run Time:		00:08:07
+	Success Totals:	8/12
+	Failed Cases:	Dual Format Use Case                                (7),
+                    Second User Entry dialog for Override Quarantine    (8),
+                    Email Validation                                    (9),
+                    Database Validation                                 (10)
+                    
+In Lot Cancel Decom Results:
+	Run Time:		00:13:59
+	Success Totals:	24/24
+	Failed Cases:	none
+    
+7.40.011 Results:
+	Run Time:		00:00:02
+	Success Totals:	3/3 (/61)
+	Failed Cases:	none
+    Missing Cases:  4-61
+    
+8.1.7 Results:
+	Run Time:		01:17:23
+	Success Totals:	60/61
+	Failed Cases:   Database Validation                                 (43)
+    
+    
+===========
+03-Dec-2018
+===========
+Tests went OK, all things considered.
+
+Failure due to premature addition of 8.2.11 to the automated Jenkins Queue, messing up all the tests down the line.
+
+
+===========
+04-Dec-2018
+===========
+Tests did not go well last night.
+Came in with error message on DEV01:
+"Host Process for Windows Tasks has stopped working"
+
+Dual format timed out and gave no email, 
+ILCD failed and had no .pdf, 
+7.40.011 was 18% successful with 11 test cases, 
+8.1.7 failed and had no .pdf, and 
+8.2.11 was stuck running when I got in. 
+
+A couple of them overlapped each other by ten minutes or so, the rest start at the same time the previous stops
+it looks like something happened that either slowed up the system or maybe broke with a dialog in the first test
+Let's try to find out what went wrong with DualFormat?
+
+It turns out that since the test did not complete, its log was not output to C:\ from the D:\ drive, and was overwritten instead.
+
+Oh well
+
+
+===========
+05-Dec-2018
+===========
+Promising results from last night's tests
+
+Dual Format Results:
+	Run Time:		00:08:13
+	Success Totals:	12/12
+	Failed Cases:	none
+    
+In Lot Cancel Decom Results:
+	Run Time:		00:13:38
+	Success Totals:	24/24
+	Failed Cases:	none
+    
+7.40.011 Results:
+	Run Time:		01:17:02
+	Success Totals:	61/61
+	Failed Cases:	none
+    
+8.1.7 Results:
+	Run Time:		01:17:50
+	Success Totals:	61/61
+	Failed Cases:	none
+    
+8.2.11 Results:
+	Run Time:		00:32:41
+	Success Totals:	61/61
+	Failed Cases:	none
+    
+Hey, full clears the whole night, good stuff
+
+
+===========
+06-Dec-2018
+===========
+Slightly less great results from last night, looks like ILCD did not have an email attached
+
+Dual Format Results:
+	Run Time:		00:08:04
+	Success Totals:	12/12
+	Failed Cases:	none
+    
+In Lot Cancel Decom:
+    email had no attachment
+    According to Console Output, there was no issue, and the test was successful
+    
+7.40.011 Results:
+	Run Time:		01:16:51
+	Success Totals:	61/61
+	Failed Cases:	none
+    
+8.1.7 Results:
+	Run Time:		01:16:50
+	Success Totals:	61/61
+	Failed Cases:	none
+    
+8.2.11 Results:
+	Run Time:		00:32:39
+	Success Totals:	61/61
+	Failed Cases:	none
+    
+So other than whatever happened to ILCD, the tests went fine
+I may be able to check the cumulative QTPrintLog on the C:\ drive to see what happened to ILCD
+The timestamps I'll be looking for would be around midnight
+
+Checking the logs, it looks like the test successfully made it to the end.
+I'll look at the logs for the Report Job?
+Here we go:
+{"
+C:\jenkins\workspace\Automation\UniSeries\8.4.0\SVT\Duplicate Check Report>cscript "AddDataToProject_ReportsAndGeneratePDF_duplicatecheck.vbs" 
+Microsoft (R) Windows Script Host Version 5.8
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+C:\jenkins\workspace\Automation\UniSeries\8.4.0\SVT\Duplicate Check Report\AddDataToProject_ReportsAndGeneratePDF_duplicatecheck.vbs(58, 2) Microsoft VBScript runtime error: ActiveX component can't create object: 'Excel.Application'
+"}
+Something caused excel to break
+
+What was it?
+I'll let Paul know, and then get back to my other tests.
+He said to maybe get it so that the cmd windows do not stay after the completion of the test.
+I've modified the script to do that
+
+
+===========
+11-Dec-2018
+===========
+Yesterday I added the newly finished Post Lot Quarantine Decom onto the end of the automated testing procedure
+Let's see how it did.
+
+Dual Format Results:
+	Run Time:		00:08:12
+	Success Totals:	4/6 (/12)
+	Failed Cases:	Import_FullyRandomList                              (2),
+                    Import_PartialRandomList                            (3)
+    Missing Cases:  7-12
+odd.
+
+In Lot Cancel Decom Results:
+	Run Time:		00:18:48
+	Success Totals:	24/24
+	Failed Cases:	none
+    
+7.40.011 Results:
+	Run Time:		01:22:11
+	Success Totals:	61/61
+	Failed Cases:	none
+    
+8.1.7 Results:
+	Run Time:		01:22:00
+	Success Totals:	61/61
+	Failed Cases:	none
+    
+8.2.11 Results:
+	Run Time:		00:37:26
+	Success Totals:	61/61
+	Failed Cases:	none
+    
+Post Lot Quarantine Decom Results:
+	Run Time:		00:17:51
+	Success Totals:	24/24
+	Failed Cases:	none
+    
+Pretty good results
+I have no idea what happened to Dual Format, though.
+The Jenkins console output reveals no errors
+in the Res## files for AI21 and GTIN, there were no errors thrown, but there was a location where each had 22 and 14 "frmStatus.WaitProperty" messages
+Afterwards, they both aborted.
+My guess, after looking at the code for the StartLot action these instances were in, is that there was a network connection error which caused the steps to fail,
+
+Ran Dual Format again and got a full clear with no issue, so there's that.
+
+
+===========
+12-Dec-2018
+===========
+I left a run of 8.3.0 going when I left yesterday, so that may have interfered with last night's results
+
+Dual Format Results:
+	Run Time:		00:08:56
+	Success Totals:	12/12
+	Failed Cases:	none
+I suppose that if this one passed no issue then whatever messed up the next tests had nothing to do with 8.3.0?
+
+In Lot Cancel Decom:
+No Result .pdf was generated
+Remote procedure call failed during main script
+Just looking at the QTPrintLog, it looks as if it was running fine up until 00:12:00, when 7.40.011 started and interrupted it.
+That's odd, I thought it wasn't supposed to do that.
+
+7.40.011 Results:
+	Run Time:		01:59:56
+	Success Totals:	17/47 (/61)
+	Failed Cases:	many (64%)
+Ok, so my guess is that because it interrupted ILCD, 7.40.011 started without a clean setup and the results were botched.
+
+The rests of the tests have the same pattern of roughly 2/3 steps failing, those including all of the Guardian steps, and very long, overlapping run times.
+I don't feel like recording all the minutiae, but I will take down the run times and success totals
+
+8.1.7 Results:
+	Run Time:		02:04:32
+	Success Totals:	19/56 (/61)
+	Failed Cases:	many (65%)
+    
+8.2.11 Results:
+	Run Time:		02:24:29
+	Success Totals:	20/56 (/61)
+	Failed Cases:	many (64%)
+    
+Post Lot Quarantine Decom:
+    was running when I came in today, I halted it.
+    
+    
+===========
+13-Dec-2018
+===========
+Dual Format Results:
+	Run Time:		00:09:37
+	Success Totals:	12/12
+	Failed Cases:	none
+    
+In Lot Cancel Decom Results:
+	Run Time:		00:15:03
+	Success Totals:	24/24
+	Failed Cases:	none
+    
+7.40.011 Results:
+	Run Time:		00:55:19
+	Success Totals:	45/45 (/61)
+	Failed Cases:	none
+    Missing Cases:  all after 45.
+It got stuck on the Disable_Numbers step?
+    
+8.1.7 Results:
+	Run Time:		00:55:47
+	Success Totals:	31/58 (/61)
+	Failed Cases:	All import files up to end of Qaccept lot
+    Missing Cases:  Quarantined Dupes use case  [LotRemove]             (27),
+                    Quarantined Dupes use case  [LotAccept]             (42),
+                    Database Validation [LotAccept]                     (43)
+The possibility that 7.40.011 froze up the Guardian window would explain the failed import steps
+    
+8.2.11 Results:
+	Run Time:		00:33:40
+	Success Totals:	61/61
+	Failed Cases:	none
+    
+Post Lot Quarantine Decom Results:
+	Run Time:		00:14:47
+	Success Totals:	24/24
+	Failed Cases:	none
+    
+Whatever happened to 7.40.011 and 8.1.7 must have resolved at some point?
+    Pretty what happened was 7.40.011 getting stuck on Disable_Numbers
+    Then 8.1.7 jumped over it, which messed up all of its own import steps
+    However, this still doesn't explain why 7.40.011 got stuck or why it resolved itself.
+Oh well, I'll keep an eye out for it tomorrow.
+
+
+===========
+14-Dec-2018
+===========
+When I came in today, there were error messages on DEV01 which appeared to have interrupted Post Lot Quarantine Decom
+
+Dual Format Results:
+	Run Time:		00:12:20
+	Success Totals:	12/12
+	Failed Cases:	none
+    
+In Lot Cancel Decom Results:
+	Run Time:		00:18:32
+	Success Totals:	24/24
+	Failed Cases:	none
+    
+7.40.011 Results:
+	Run Time:		01:23:47
+	Success Totals:	61/61
+	Failed Cases:	none
+    
+8.1.7 Results:
+	Run Time:		01:22:02
+	Success Totals:	61/61
+	Failed Cases:	none
+    
+8.2.11 Results:
+	Run Time:		00:38:03
+	Success Totals:	61/61
+	Failed Cases:	none
+    
+Post Lot Quarantine Decom:
+Test was aborted
+
+Yeah, no idea what happened to PLQD
+
+
+===========
+17-Dec-2018
+===========
+Things went fine for the first Dual Format but everything broke after that.
+
+Came in and saw a "Host Process for Windows Tasks has stopped working" error window
+
+Console output for the first ILCD:
+    "00:12:00 C:\Automation\Duplicate Check\RunInLotCancelDecom.vbs(105, 2) (null): The remote procedure call failed. "
+    
+QTPrintLog:
+{"
+12/14/2018 11:44:19 PM Login completed on DupeServer
+Attempting Diagnostic Screen Manager Login.
+Completed Screen Manager Login function
+Completed Screen Manager Login function
+Screen Manager Login Failed
+Diagnostic Screen Manager Login Attempt Complete.
+"}
+
+Let's check the Results file for TIPS_DiagnosticPrepare
+{"
+Run Error - Step
+Cannot identify the object "Screen Manager Diagnostic" (of class Window).
+Verify that this object's properties match an object currently displayed in your application.
+"}
+
+This implies that it was the attempt to open the Diagnostic menu failed
+Looking at the attached screenshot, I do see the error message which was present this morning
+This doesn't tell what caused the error, though
+
+Let's check the GrdCfgMgr_Login Res files
+Nah, looked like it went to the end of that without any trouble
+
+No idea, I'll just make a note of it and bring it up with Paul when I get a chance
+
+
+===========
+18-Dec-2018
+===========
+Much more promising conditions, no errors on screen and I see 6 emails with attachments
+
+Dual Format Results:
+	Run Time:		00:09:40
+	Success Totals:	12/12
+	Failed Cases:	none
+    
+In Lot Cancel Decom Results:
+	Run Time:		00:16:19
+	Success Totals:	24/24
+	Failed Cases:	none
+    
+7.40.011 Results:
+	Run Time:		01:17:45
+	Success Totals:	61/61
+	Failed Cases:	none
+    
+8.1.7 Results:
+	Run Time:		01:22:13
+	Success Totals:	61/61
+	Failed Cases:	none
+    
+8.2.11 Results:
+	Run Time:		01:11:44
+	Success Totals:	37/57 (/61)
+	Failed Cases:	every import step after step 24
+Perhaps a test overlap timing issue?
+
+Post Lot Quarantine Decom Results:
+	Run Time:		00:17:36
+	Success Totals:	24/24
+	Failed Cases:	none
+    
+Well that's annoying. Let's see what happened to 8.2.11
+Jenkins Console Output:
+{"
+04:33:00 C:\Jenkins\workspace\Automation\UniSeries\8.4.0\SVT\Duplicate Check - 8.2.11>cscript "C:\SetupEnv.vbs" 
+04:33:06 Microsoft (R) Windows Script Host Version 5.8
+04:33:06 Copyright (C) Microsoft Corporation. All rights reserved.
+04:33:06 
+04:38:09 C:\SetupEnv.vbs(11, 1) mscorlib: The communication object, System.ServiceModel.Channels.ServiceChannel, cannot be used for communication because it is in the Faulted state.
+04:38:09 
+04:38:09 
+04:38:09 C:\Jenkins\workspace\Automation\UniSeries\8.4.0\SVT\Duplicate Check - 8.2.11>cscript "C:\GrdCfgMgr_StartLogin.vbs" 
+04:38:10 Microsoft (R) Windows Script Host Version 5.8
+04:38:10 Copyright (C) Microsoft Corporation. All rights reserved.
+04:38:10 
+07:30:00 C:\GrdCfgMgr_StartLogin.vbs(36, 2) (null): The remote procedure call failed. 
+07:30:00 
+07:30:06 
+07:30:06 C:\Jenkins\workspace\Automation\UniSeries\8.4.0\SVT\Duplicate Check - 8.2.11>exit 0 
+07:30:06 [Duplicate Check - 8.2.11] $ cmd /c call D:\temp\jenkins3411658777431161751.bat
+07:30:06 
+07:30:06 C:\Jenkins\workspace\Automation\UniSeries\8.4.0\SVT\Duplicate Check - 8.2.11>cscript "C:\OlderAdvisorTest_8211.vbs" 
+07:30:06 Microsoft (R) Windows Script Host Version 5.8
+07:30:06 Copyright (C) Microsoft Corporation. All rights reserved.
+07:30:06 
+07:40:06 C:\OlderAdvisorTest_8211.vbs(11, 1) QtpAutomationAgent: Timeout waiting for opening QTP.
+"}
+
+SetupEnv.vbs line 11 attempts to launch UFT.
+
+Asked Paul about it, he didn't know.
+
+
+===========
+19-Dec-2018
+===========
+The Dual Format build was aborted last night
+According to the Jenkins Console output, it was running until 20:26:31 and timed out after 30 minutes at 20:55:00
+It did manage to get up to the main script
+Let's check the QTPrintLog.txt for evidence of where it stopped.
+Last entries from the run:
+{"
+12/18/2018 8:29:54 PM - Importing SAP file C:\Automation\Duplicate Check\ImportFiles\Functional\Lot_SingleItemDualFormat\FT-D_List_Bottle_0.xml
+12/18/2018 8:30:03 PM - waiting for prompt
+12/18/2018 8:30:05 PM - ACTION END: Import_FullyRandomList
+"}
+Checking the most recent FT_DualFormatDriver Res## files.
+It seems to have gotten through to the end.
+Checking most recent DuplicateCheckOneLevel_DualFormat_AI21 Res## files
+did not produce any .html file, so I can't check on what happened.
+Oh well.
+
+Oh no, looking at the rest of these results, it looks like something happened to all of them except for Post Lot Quarantine Decom
+They're all missing many of their testing steps, despite showing 100% clears.
+
+Strange. Not sure what happened here.
+
+
+===========
+21-Dec-2018
+===========
+Yesterday's results were not saved. my computer shut itself off overnight
+Basically: That night's tests all bombed out due to some issue I was not able to isolate
+
+Today:
+It looks like something might have happened to DupeServer overnight.
+I can't connect to it, and DEV01 has this error:
+{"
+Error
+    833: SPT Numbers from this block are currently in process on Advisor(s)
+    DEV06 line
+"}
+This is during the PLQC run, so if there was something wrong with DEV06 it would be a leftover from 7.40.011
+    I think this also indicates that something happened to DupeServer
+Let's get into the results
+
+Dual Format Results:
+	Run Time:		00:09:56
+	Success Totals:	12/12
+	Failed Cases:	none
+    
+In Lot Cancel Decom Results:
+	Run Time:		00:15:38
+	Success Totals:	24/24
+	Failed Cases:	none
+    
+7.40.011 Results:
+	Run Time:		01:17:42
+	Success Totals:	61/61
+	Failed Cases:	none
+    
+8.1.7 Results:
+	Run Time:		00:01:28
+	Success Totals:	11/11
+	Failed Cases:	none
+    Missing Cases:  [12-61]
+More evidence of a DupeSever crash post 7.40.011
+
+8.2.11 Results:
+	Run Time:		03:22:26
+	Success Totals:	9/27
+	Failed Cases:	All import steps
+    Missing Case:   Dataname excluded from duplicate check use case     (12)
+                    Quarantined Dupes use case                          (27)
+                    [Everything from 28-61]
+More issues, likely stemming from the same issue
+
+Post Lot Quarantine Cancel:
+Was frozen up
+
+
+So I'm pretty sure that the issue was that DupeServer shut off or something.
+Yeah, I checked the vSphere client, DupeServer, along with most of the other machines on the network, had been shut off.
+
+
+===========
+26-Dec-2018
+===========
+Completely bombed during the 7.40.011 test on the night of the 21st.
+
+
+===========
+27-Dec-2018
+===========
+Results look very good at first glance
+
+Dual Format Results:
+	Run Time:		00:12:47
+	Success Totals:	12/12
+	Failed Cases:	none
+    
+In Lot Cancel Decom Results:
+	Run Time:		00:17:14
+	Success Totals:	18/18 (/24)
+	Failed Cases:	none
+    Missing Cases:  FT_Notifications    [No new notifications]          (17),
+                    Single Item Decom Use Case                          (18),
+                    FT_Notifications    [New notifications]             (19),
+                    Quarantined Dupes use case                          (20),
+                    Database Validation                                 (21),
+                    Disable_Numbers                                     (24)
+These issues would have appeared during the second UFT script, DuplicateCheckOneLevel_Reject3
+Checking the Res Files.
+Appears to have gotten stuck waiting for frmStatus to be visible after starting a lot
+Waited from 22:00:32 to 22:04:02, after which it aborted the test.
+Checking QTPrintLog.txt for that timestamp
+Found, but gave no new info
+Moving on
+
+7.40.011 Results:
+	Run Time:		01:24:28
+	Success Totals:	61/61
+	Failed Cases:	none
+    
+8.1.7 Results:
+	Run Time:		01:22:09
+	Success Totals:	61/61
+	Failed Cases:	none
+    
+8.2.11 Results:
+	Run Time:		00:01:51
+	Success Totals:	11/11 (/61)
+	Failed Cases:	none
+    Missing Cases:  12-61
+I guess it aborted / froze up during the lot running?
+Checking Res file for DuplicateCheckThreeLevel_GoodLot_821
+There are none...
+Checking Jenkins Console Output
+06:30:01 C:\OlderAdvisorTest_8211.vbs(158, 2) (null): The remote procedure call failed.
+Looking for surrounding QTPringLog.txt entries
+{"
+12/27/2018 2:37:50 AM - ACTION END: Disable_Numbers
+IpsPimFiles, pre-Pim.IpsOpen: 
+DuplicateCheck3Level.ips
+sMsg in IpsLotEnd initial: 
+sMsg in IpsLotEnd loop: 
+sMsg in IpsLotEnd loop: 
+sMsg in IpsLotEnd loop: 
+sMsg in IpsLotEnd loop: 
+sMsg in IpsLotEnd loop: 
+sMsg in IpsLotEnd loop: 
+Starting Guardian - C:\Program Files\Systech International\Guardian SPT Config\GuardianSPTConfig.exe
+Starting Guardian - C:\Program Files\Systech International\Guardian SPT Config\GuardianSPTConfig.exe
+Guardian started
+12/27/2018 6:30:17 AM - Input Parameters: Server=  UserAcct=  Password=
+"}
+Appears to have gotten stuck in that sMsg polling loop
+Wait, the sMsg poll is not in GoodLot_821?
+Odd. Moving on.
+
+Post Lot Quarantine Decom Results:
+	Run Time:		00:18:38
+	Success Totals:	24/24
+	Failed Cases:	none
+    
+Other than those two hiccups, very decent runs.
+
+
+===========
+28-Dec-2018
+===========
+Looks like last night's tests all bombed out.
+It's probably because I left a run of 8.3.0 on when I left
+Moving on
+
+
+===========
+31-Dec-2018
+===========
+Left a test of 8.3.0 up, but the tests handled it pretty well
+
+//  From night of 28-Dec-2018
+Dual Format Results:
+	Run Time:		00:09:19
+	Success Totals:	12/12
+	Failed Cases:	none
+    
+In Lot Cancel Decom Results:
+	Run Time:		00:14:51
+	Success Totals:	24/24
+	Failed Cases:	none
+    
+7.40.011 Results:
+	Run Time:		01:17:55
+	Success Totals:	61/61
+	Failed Cases:	none
+    
+8.1.7 Results:
+	Run Time:		01:17:19
+	Success Totals:	61/61
+	Failed Cases:	none
+    
+8.2.11 Results:
+	Run Time:		00:01:29
+	Success Totals:	11/11 (/61)
+	Failed Cases:	none
+    Missing Cases:  12-61
+****First to look into
+    
+Post Lot Quarantine Decom Results:
+	Run Time:		00:14:34
+	Success Totals:	24/24
+	Failed Cases:	none
+    
+//  From night of 29-Dec-2018
+Dual Format Results:
+	Run Time:		00:06:54
+	Success Totals:	12/12
+	Failed Cases:	none
+    
+In Lot Cancel Decom Results:
+	Run Time:		00:14:54
+	Success Totals:	24/24
+	Failed Cases:	none
+    
+7.40.011 Results:
+	Run Time:		01:21:13
+	Success Totals:	22/56 (/61)
+	Failed Cases:	5-11 (LotGood imports), 17-25 (LotRemove imports), 31-39 (LotQaccept imports), 45-53 (LotExclude imports)
+    Missing Cases:  Initial Lot use case    [LotGood]                           (12),
+                    1st Safeguard Off, 2nd Safeguard On use case    [LotRemove] (27),
+                    Quarantined Dupes use case  [LotQaccept]                    (42),
+                    Database Validation     [LotQaccept]                        (43),
+                    Dataname excluded from duplicate check use case [LotExclude](58)
+****Second failure
+
+8.1.7 Results:
+	Run Time:		00:36:25
+	Success Totals:	29/29 (/61)
+	Failed Cases:	none
+    Missing Cases:  30-61
+****Third failure
+
+8.2.11 Results:
+	Run Time:		00:01:22
+	Success Totals:	2/11 (/61)
+	Failed Cases:	3-11
+    Missing Cases:  12-61
+****Fourth failure
+
+Post Lot Quarantine Decom Results:
+	Run Time:		00:11:44
+	Success Totals:	13/16
+	Failed Cases:	14-16
+    Missing Cases:  17-61
+****Fifth failure
+
+//  From night of 30-Dec-2018
+Dual Format Results:
+	Run Time:       00:07:08
+	Success Totals:	7/11 (/12)
+	Failed Cases:	6-10
+    Missing Cases:  Quarantined Dupes use case                          (9)
+****Sixth failure
+
+In Lot Cancel Decom Results:
+	Run Time:		00:09:06
+	Success Totals:	7/13 (/24)
+	Failed Cases:   3-5 (Import), 11-13 (Import)
+    Missing Cases:  6-8 (Dupes Check), 17-24 (Dupes Check and Post Lot)
+****Seventh failure
+
+7.40.011 Results:
+	Run Time:		00:57:00
+	Success Totals:	41/59 (/61)
+	Failed Cases:	3-11 (LotGood Import), 17-25 (LotRemove Import)
+    Missing Cases:  Initial Lot use case                                (12)
+                    1st Safeguard Off, 2nd Safeguard On use case        (27)
+****Eighth failure
+
+8.1.7 Results:
+	Run Time:		01:17:13
+	Success Totals:	61/61
+	Failed Cases:	none
+
+8.2.11 Results:
+	Run Time:		00:01:31
+	Success Totals:	11/11 (/61)
+	Failed Cases:	none
+    Missing Cases:  12-61
+****Ninth failure
+
+Post Lot Quarantine Decom Results:
+	Run Time:		00:14:28
+	Success Totals:	24/24
+	Failed Cases:	none
+    
+    
+What a doozy
+50% (9/18) of the builds were successful
+each test (except 8.2.11) passed at least once, each test failed at least once
+
+Dual Format:                Pass Pass Fail, 2-1
+In Lot Cancel Decom:        Pass Pass Fail, 2-1
+7.40.011:                   Pass Fail Fail, 1-2
+8.1.7:                      Pass Fail Pass, 2-1
+8.2.11:                     Fail Fail Fail, 0-3
+Post Lot Quarantine Decom:  Pass Fail Pass, 2-1
+
+
+Each 8.2.11 failure had 11 steps before bailing.
+
+
+
+
+
+Results:
+	Run Time:		
+	Success Totals:	
+	Failed Cases:	

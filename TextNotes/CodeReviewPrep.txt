@@ -1,0 +1,117 @@
+Code Review Prep
+
+###########
+08-Oct-2018
+###########
+I have a code review scheduled for this week, but I'm not too sure how to prepare for it.
+
+I guess I could go through and prepare for the code review by attempting to document exactly which bits of code I have written or done major edits to.
+This is part of what confuses me about code-review with regards to the way I am supposed to be working on this code:
+    I don't think I'm really supposed to be writing too much code from scratch, mostly just making minor tweaks to the code while maintaining the established structure
+        The only time I should be totally overhauling is when the code is just a jumbled mess, and even then I try to keep as much semblance to the old code as possible.
+    And since most of my work has consisted of minor tweaks, it's difficult to find and gather together all of these little scraps for the purpose of checking in on my progress.
+I suppose I can first grab the biggest things I've worked on and then attempt to find the smaller edits I've made.
+(Should I include the non-vbs scripts I have edited?)
+
+
+Largest Edits (Major Overhauls, Refactoring from scratch, etc.):
+    All five of the VerifyEmail_Apps
+    EmailScrapperLog.py
+    SetupEnv
+    TIPSDiagnostic_Prepare
+    GrdCfgMgr_StartLogin
+    
+Smaller, but still significant changes:
+    StartLot - loop to enable reconnection after temporary server disconnect
+    Addition of style-appropriate comment and header formatting to all scripts worked on.
+    
+
+Existing aspects to remove:
+    Hard Waits:
+        Any which still appear
+        DuplicateCheckOneLevel_Reject > EndLot_QuarantineReject
+    Unnecessary Comment Lines:
+        Lots of places...
+    Hard Coded variables (e.g. Pathnames):
+        Wherever suggested
+
+To Do:
+    Potentially Add the dupes in database comparison to the other VE_As which may need it
+        Might be none of them
+    Make the network communication loss check to be a repeated action.
+    
+Requests for Advice:
+    old count / new count / log TRUE? 02:18:15
+        Swap out this method of detecting notifications for the current email based one?
+        Appears to be redundant - EndLot_QuarantineReject is right before a VerifyEmail_App, which also detects the presence of errors.
+            Could I just remove the EndLot_QuarantineReject and the log count sections altogether, or are we specifically testing whether notifications themselves are being successfully generated?
+    
+    When running 7.40.011 at all, experiencing strange results from the OverrideQuarantineLot_81x
+        Running the test straight through results in the duplicates in that lot not being detected, that is, there are no emails sent from the server.
+        If the test is interrupted (like with a breakpoint) and then resumed, the server successfully detects the duplicates, that is, the emails are sent.
+        This is despite the test always having the same input data.
+    
+    When running nightly automated runs for DualFormat, script gets stuck attempting to open Screen Manager in Diagnostic Mode
+        This is despite InLotCancelDecom having the same action calls, but not the same issue.
+        
+        
+Running Tests to confirm success before review:
+    DualFormat:         Pass
+    InLotCancelDecom:   Pass
+    
+    
+###########
+09-Oct-2018
+###########
+I have been informed that "the boss-man" is kinda mad and for an unrelated reason wants me to demonstrate what I've been doing for the past six weeks
+    no pressure
+So I think it would be wise to make sure the two tests are still running, and while I do some consistency testing, prepare a text file to help me walk through everything.
+
+I'll write it out and workshop it in here, but I'll create a dedicated .txt file for it once I have it ready.
+
+
+State of my Progress on the Duplicate Check Project:
+I've been working on 3 of the tests in the project: Dual Format, In Lot Cancel Decom, and 7.40.011.
+Test States (for manual runs):
+    Dual Format:            Consistent 100% successful completion runs, ~11 minute run time
+    In Lot Cancel Decom:    Consistent 100% successful completion runs, ~15.5 minute run time
+    7.40.011:               One final issue remaining regarding OverrideQuarantineLot_81x step, otherwise ~35 minute run time
+    
+    
+Present Issues:
+    Automatic Testing issues across automated testing instances:
+        When running an automatically initiated test, the script is in some cases unable to run UFT scripts.
+            Specific triggers: No remote access window to the working machine, box with remote access to machine is logged out.
+        Current attempted fix: I have been informed that an updated version of HP UFT is available, which is supposedly more compatible with remote testing and will potentially resolve the issue.
+    OverrideQuarantineLot_81x issue in 7.40.011 test:
+        When running the 7.40.011 test, a lot is manually loaded with duplicate product numbers shared with a lot processed earlier in the test.
+        When the test is run straight through, the generated results imply that the duplicates are not detected, that is, there are no warning emails automatically sent from the server.
+        However, when the script is paused after the numbers have been loaded, even with the same manually loaded data, the warning emails are sent, showing that the duplicates have been detected.
+            Specific triggers: When test is interrupted, e.g. with a Message Box, and UFT is closed, reopened and resumed, duplicates are detected. Otherwise, no duplicates detected.
+        Current attempted fix: Look for a way to give server more time to process lot without interruption
+
+        
+Run Reviews:
+
+All tests begin with calls to a selection from a group of preparatory scripts I've put together: ScriptForcequit.bat, SetupEnv.vbs, TIPSDiagnostic_Prepare.vbs, and GrdCfgMgr_StartLogin.vbs.
+    ScriptForcequit.bat:    closes out any lingering instances of UFT, Wscript, and QtpAutomationAgent.
+    SetupEnv.vbs:           deletes result output files from previous test runs and ensures Guardian and Screen Manager are closed
+    TIPSDiagnostic_Prepare: Opens Screen Manager in Diagnostic mode and logs in as superuser.
+    GrdCfgMgr_StartLogin:   Opens Guardian and logs in to the server as qa.
+
+Dual Format:
+    Procedure:
+        Runs all four of the prep scripts 
+        Purges Data in the server
+        Loads a GoodLot of 100 items, closes out the lot
+        Loads a QuarantineLot of 100 items with some duplicate numbers shared with GoodLot.
+        Attempts to close the lot and looks for the Quarantine Lot Dialog Window to show that the server has detected the duplicates
+        Closes the lot and checks the Duplicate Check inbox for validation of the server-detected duplicates.
+        Ends the script
+        
+In Lot Cancel Decom:
+    Procedure:
+        Runs all four of the prep scripts
+        Purges Data in the server
+        Loads a GoodLot of 100 items, closes out the lot 
+        

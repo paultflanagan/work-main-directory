@@ -1,0 +1,280 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+506 Cheffissi the Sneak (level 6, -2/30 HPs)
+             Began as a Spriggan Enchanter on Nov 14, 2018.
+             Was a Follower of Wu Jian.
+             Slain by a hound (6 damage)
+             ... on level 6 of the Dungeon.
+             The game lasted 00:26:07 (4833 turns).
+
+Cheffissi the Sneak (Spriggan Enchanter)            Turns: 4833, Time: 00:26:08
+
+Health: -2/30      AC:  0    Str:  5 (6)  XL:     6   Next: 97%
+Magic:  3/13       EV: 18    Int: 15 (17) God:    Wu Jian [*.....]
+Gold:   240        SH:  0    Dex: 15 (16) Spells: 4/13 levels left
+
+rFire    . . .     SeeInvis +   a - +2 dagger
+rCold    . . .     Gourm    .   (shield restricted)
+rNeg     . . .     Faith    .   b - +0 robe
+rPois    .         Spirit   .   (helmet restricted)
+rElec    .         Reflect  .   j - +0 cloak
+rCorr    .         Harm     .   (gloves unavailable)
+MR       +....                  (boots unavailable)
+Stlth    +++.......             (no amulet)
+HPRegen  0.10/turn              q - ring of wizardry
+MPRegen  0.13/turn              r - -3 ring of protection (curse)
+
+@: very quick
+A: very small, unfitting armour, see invisible, herbivore, speed 3, slow
+metabolism 2
+a: Renounce Religion
+
+
+You were on level 6 of the Dungeon.
+You worshipped Wu Jian.
+Wu Jian was aware of your devotion.
+You were near starving.
+
+You visited 1 branch of the dungeon, and saw 6 of its levels.
+You also visited: Ossuary.
+
+You collected 240 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +2 dagger (weapon)
+Armour
+ b - a +0 robe (worn)
+ j - a +0 cloak (worn)
+Jewellery
+ q - a ring of wizardry (left hand)
+ r - a cursed -3 ring of protection (right hand)
+ t - an uncursed ring of see invisible {unknown}
+ v - a +3 ring of evasion {unknown}
+Wands
+ k - a wand of polymorph (15)
+Scrolls
+ e - 4 scrolls of teleportation
+ g - a scroll of amnesia
+ i - a scroll of magic mapping
+ l - a scroll of enchant weapon
+ n - 2 scrolls of identify
+ p - a scroll of immolation
+ u - a scroll of fog
+Potions
+ c - a potion of mutation {unknown}
+ f - a potion of degeneration
+ h - a potion of curing
+ m - a potion of flight {unknown}
+ o - 2 potions of brilliance {unknown}
+ s - a potion of cancellation {unknown}
+Comestibles
+ d - 8 rations
+
+
+   Skills:
+ + Level 1.0 Fighting
+ * Level 4.1 Short Blades
+ + Level 3.5 Dodging
+ + Level 6.6 Stealth
+ + Level 4.3 Spellcasting
+ * Level 5.4 Hexes
+ + Level 1.3 Ice Magic
+
+
+You had 4 spell levels left.
+You knew the following spells:
+
+ Your Spells              Type           Power        Failure   Level  Hunger
+a - Corona                Hex            ###....      1%          1    None
+c - Confuse               Hex            ###.....     2%          3    ###....
+s - Dazzling Spray        Conj/Hex       ##....       7%          3    ###....
+z - Ensorcelled Hibernat  Hex/Ice        ##....       2%          2    ##.....
+
+Your spell library contained the following spells:
+
+ Spells                   Type           Power        Failure   Level  Hunger
+ Tukima's Dance           Hex            ###.....     2%          3    ###....
+
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (6/15)             Temple (0/1) D:4         
+
+Altars:
+Elyvilon
+Gozag
+Hepliaklqana
+Kikubaaqudgha
+Nemelex Xobeh
+Okawaru
+Trog
+Wu Jian
+Xom
+Zin
+
+Shops:
+D:5 !
+
+Annotations:
+D:6 Dowan
+
+
+Innate Abilities, Weirdness & Mutations
+
+You are very small and have problems with some larger weapons.
+You are too small for most types of armour.
+You have supernaturally acute eyesight. (SInv)
+You are a herbivore.
+You cover ground extremely quickly.
+You need to consume almost no food.
+
+
+Message History
+
+Dowan blinks!
+Found 11 gold pieces.
+Found 21 stones and 26 bolts.
+Found a stone staircase leading up.
+A centaur comes into view.
+Casting: Confuse (safe; 2% risk of failure)
+Confirm with . or Enter, or press ? or * to list all spells.
+Aiming: Ensorcelled Hibernation (safe; 2% risk of failure)
+Press: ? - help, Shift-Dir - straight line, f - hound
+Aim: a hound (lightly wounded, chance to defeat MR: 52%)
+The hound resists with significant effort.
+The hound misses you.
+Casting: Ensorcelled Hibernation (safe; 2% risk of failure)
+Confirm with . or Enter, or press ? or * to list all spells.
+Aiming: Ensorcelled Hibernation (safe; 2% risk of failure)
+Press: ? - help, Shift-Dir - straight line, f/p - hound
+Aim: a hound (lightly wounded, chance to defeat MR: 52%)
+The hound resists with significant effort.
+The hound bites you.
+You die...
+
+.e.#      #####.#####..##
+.e.#          #.#   ##..#
+...#        ##..#    ##.#
+...#        #..##  ####.#####
+##.#        #.######........#
+    #########..§e...........#
+    .$........h#####........#
+     ######.####   ##########
+    #######h#     ###
+    ........# ####..#
+    ..(.##..###h@..#
+    ..   #.......###
+         #....####
+         ##..##
+          #..#
+         ....(
+        ......
+       c....##.
+       ..<#.
+
+
+You could see a hound.
+
+Vanquished Creatures
+  Duvessa (D:6)
+  2 ogres
+  A hound (D:4)
+  2 worker ants
+  An iguana (D:5)
+  A mummy (D:5)
+  A worker ant zombie (D:5)
+  3 adders (D:2)
+  A worm (D:4)
+  A dart slug (D:1)
+  2 leopard geckos
+  An orc (D:5)
+  9 giant cockroaches
+  6 goblins
+  6 hobgoblins
+  6 jackals
+  4 quokkas
+  2 ball pythons
+  4 bats
+  4 frilled lizards
+  A goblin zombie (D:5)
+  11 kobolds
+  2 orc zombies
+  9 rats
+81 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | Cheffissi the Spriggan Enchanter began the quest for the
+                  | Orb.
+     0 | D:1      | Reached XP level 1. HP: 9/9 MP: 5/5
+   114 | D:1      | Reached XP level 2. HP: 10/13 MP: 2/6
+   136 | D:1      | Reached skill level 5 in Stealth
+   251 | D:1      | Learned a level 2 spell: Ensorcelled Hibernation
+   780 | D:2      | Reached XP level 3. HP: 14/16 MP: 1/8
+   789 | D:2      | Found an ornate altar of the Wu Jian Council.
+   797 | D:2      | Became a worshipper of the Wu Jian Council
+  1169 | D:2      | Reached XP level 4. HP: 19/21 MP: 9/9
+  2023 | D:3      | Found a bloodstained altar of Trog.
+  2025 | D:3      | Found an ancient bone altar of Kikubaaqudgha.
+  2029 | D:3      | Found a glowing silver altar of Zin.
+  2029 | D:3      | Found a white marble altar of Elyvilon.
+  2032 | D:3      | Found a shimmering altar of Xom.
+  2033 | D:3      | Found a hazy altar of Hepliaklqana.
+  2113 | D:3      | Found an iron altar of Okawaru.
+  2352 | D:3      | Reached * piety under Wu Jian
+  2436 | D:3      | Found a sparkling altar of Nemelex Xobeh.
+  2623 | D:4      | Reached skill level 6 in Stealth
+  2623 | D:4      | Reached XP level 5. HP: 25/25 MP: 11/11
+  2653 | D:4      | Found a staircase to the Ecumenical Temple.
+  2798 | D:4      | Found an opulent altar of Gozag.
+  2816 | D:4      | Noticed an ogre
+  3053 | D:4      | Killed an ogre
+  3053 | D:4      | Reached skill level 5 in Hexes
+  3053 | D:4      | Reached skill level 1 in Ice Magic
+  3065 | D:4      | Learned a level 3 spell: Confuse
+  3069 | D:4      | Learned a level 3 spell: Dazzling Spray
+  3217 | D:5      | Entered Level 5 of the Dungeon
+  3433 | D:5      | Reached XP level 6. HP: 29/29 MP: 10/12
+  3437 | D:5      | Found Honoshay's Distillery.
+  3657 | D:5      | Found a sand-covered staircase.
+  3736 | Ossuary  | Entered an ossuary
+  4743 | D:6      | Noticed Duvessa
+  4743 | D:6      | Noticed Dowan
+  4781 | D:6      | Killed Duvessa
+  4781 | D:6      | Reached skill level 1 in Fighting
+  4787 | D:6      | HP: 1/30 [hound (3)]
+  4833 | D:6      | Slain by a hound
+
+Skill      XL: |  1  2  3  4  5  6 |
+---------------+-------------------+-----
+Stealth        |     5     6       |  6.6
+Hexes          |     4        5    |  5.4
+Spellcasting   |        3        4 |  4.3
+Short Blades   |           2  3  4 |  4.1
+Ice Magic      |              1    |  1.3
+Fighting       |                 1 |  1.0
+Dodging        |                   |  3.5
+
+Action                   |  1- 3 |  4- 6 || total
+-------------------------+-------+-------++-------
+Melee: Dagger            |    97 |   163 ||   260
+ Cast: Corona            |    13 |     5 ||    18
+       Ensorcelled Hiber |    15 |    45 ||    60
+       Dazzling Spray    |       |     9 ||     9
+       Confuse           |       |     9 ||     9
+Invok: Lunge             |     7 |    18 ||    25
+       Whirlwind         |       |    12 ||    12
+  Use: Potion            |       |     4 ||     4
+       Scroll            |       |     9 ||     9
+ Stab: Sleeping          |    21 |    23 ||    44
+       Distracted        |     1 |       ||     1
+       Invisible         |       |     1 ||     1
+       Confused          |       |     5 ||     5
+  Eat: Ration            |       |     2 ||     2
+Armor: Robe              |     8 |     6 ||    14
+Dodge: Dodged            |    61 |    99 ||   160
+

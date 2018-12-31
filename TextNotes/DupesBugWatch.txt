@@ -1,0 +1,52 @@
+Requisite Bug qualities to make this list:
+Primarily:	It confounds me
+		- the reasoning for the presence or triggering of the bug is not trivially obvious (to me, that is)
+Secondarily:	It is able to be "fixed" by resetting the environment or rebooting the machine
+		- which implies that it is not an issue with the main script sequence and standard environment, but is in fact an edge case blunder, i.e. it is not a consistent error
+Tertiarily:	It does not have a clear lead up case
+		- there are no easily detectable early warning signs for this bug: each successive appearance is as unexpected as the first.
+
+Entry 1 - Guardian Navigation Failure
+	Symptoms (I know there's a better word for this, but I can't think of it. Pathology /-gnosis? Etiognosis?):
+		Script ignores all commands to interact with Guardian
+	Description:
+		Script initiates.
+	      *	Fails to interact with Guardian window, meaning that all attempts to navigate menus fail and attempts to run Guardian processes fail to initiate.
+		Skips through all commands to navigate Guardian
+		Script is essentially crashed ("soft crash"?)
+	Apparent cases:
+		On recent system reboot (?)
+	Notes:
+		The apparent case leads me to suspect that it has something to do with some variable or object not being initiated properly and/or not at the right time
+			Maybe it's another timing issue?
+		I took a look at the object identification system in use to try to figure something out, but I couldn't make much sense of it by myself.
+
+Entry 2 - Program Fails to detect duplicates in system
+	Symptoms:
+		Failure of Cases 7 and 8, script locks before testing Case 9.
+	Desciption:
+		Script runs fine until after the lots have been entered and processed.
+	      *	Evidently, Dupes Detecting Software does not detect the duplications in the lots
+		Prevents appearance of Dupes Dialog Box (Fail Case 7)
+		The dupes quarantine window never appears, so is never completed (Fail Case 8)
+	      *	No emails are sent, which would fail Case 9, but Results.txt never has any entry for Case 9.
+	Apparent cases:
+		?
+	Notes:
+		This bug seems to be potentially more workable than the other one. The only issue is that I have no idea what the causes are (at least, not at the moment).
+		I suppose one place to start is checking the contents of the lots. Is there a way to examine the source of the most recent lots?
+		I've started to look around a bit, but I'll run a new test in the meanwhile
+		I can't figure out how to access the code responsible for creating the dupes dialog. I might not have access to it. 
+		After one failure, noticed that "IpsEngine.exe" failed to close properly, and "VisionSimulator.exe" was still running after closing the window
+		Going to try running TipsKillAll.bat and see what else is still open
+			VisionSimulator.exe
+			IpsEngine.exe
+			AuditLog.exe
+		Hadn't seen AuditLog before, although I would think that it wouldn't have anything to do with not detecting dupes?
+			potentially? if it does a check to the log output to check if any errors are reported?
+		I'm thinking that maybe one of these is crashing or malfunctioning, but not giving any direct flags
+			Adding menuman.exe to watchlist
+		Now I've been running until hitting this bug, closing out one of the potential trouble processes, and running again, seeing if it works afterwards
+
+
+I think the biggest part of what makes these bugs annoying is that I can't access where I think the problem lies.

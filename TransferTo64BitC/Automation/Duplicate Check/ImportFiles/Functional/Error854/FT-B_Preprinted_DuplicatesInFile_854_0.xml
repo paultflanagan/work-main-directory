@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns1:Labels xmlns:ns1="urn:sitesystem:o2c:s:global:trackandtrace:labelid:100">
+	<Envelope>
+		<ReelId>4400000000_000100_003</ReelId>
+		<CompanyPrefix></CompanyPrefix>
+		<ProductClass></ProductClass>
+		<ProductClassId></ProductClassId>
+		<PackagingLevel></PackagingLevel>
+		<SPTFormatId>20</SPTFormatId>
+	</Envelope>
+	<Data>
+		<SPT>0111880010000025211000000011</SPT>
+		<SPT>0111880010000025211000000012</SPT>
+		<SPT>0111880010000025211000000013</SPT>
+		<SPT>0111880010000025211000000014</SPT>
+		<SPT>0111880010000025211000000015</SPT>
+		<SPT>0111880010000025211000000015</SPT>
+		<SPT>0111880010000025211000000017</SPT>
+		<SPT>0111880010000025211000000018</SPT>
+		<SPT>0111880010000025211000000019</SPT>
+	</Data>
+</ns1:Labels>

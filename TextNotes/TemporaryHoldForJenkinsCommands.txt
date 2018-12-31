@@ -1,0 +1,24 @@
+Batch command #1 start:
+
+cd "C:\Automation\ReportFramework\Test_Driver"
+cscript "C:\Automation\ReportFramework\Test_Driver\RenameLatestTXTtoduplicatecheck.vbs"
+
+end batch command #1
+
+
+Batch command #2 start:
+
+cd "C:\Automation\ReportFramework\Test_Results"
+Call C:\Automation\ReportFramework\Test_Results\Final_results.bat
+
+end batch command #2
+
+why did I get rid of the first batch command? I think it was just the second which was being problematic, and the PaulTest1 isn't working without it (evidently). I'll throw it back in for now, and ask Paul about it when he gets back.
+Nevermind, I'll add it to the end of the .vbs through UFT, just like the other one.
+
+Tweaks:
+	add the call to RenameLatestTXTtodublicatecheck.vbs onto the end of the GetGtin script, right before the Final_results.bat
+		(Systemutil.Run("C:\Automation\ReportFramework\Test_Driver\RenameLatestTXTtoduplicatecheck.vbs"))
+	edit the Final_results.bat to point to the proper jenkins folder
+		from Y:\jenkins\workspace\Automation\UniSeries\8.4.0\SVT\Duplicate Check Report\Project_Report_duplicatecheck.txt
+		to Y:\jenkins\workspace\Automation\UniSeries\System Level Test Container\System Level Report\Project_Report_duplicatecheck.txt

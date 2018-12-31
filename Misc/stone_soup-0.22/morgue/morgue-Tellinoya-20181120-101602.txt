@@ -1,0 +1,193 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+39 Tellinoya the Conjurer (level 3, -2/26 HPs)
+             Began as a Draconian Conjurer on Nov 20, 2018.
+             Succumbed to Sigmund's poison
+             ... on level 3 of the Dungeon.
+             The game lasted 00:08:10 (1653 turns).
+
+Tellinoya the Conjurer (Draconian Conjurer)         Turns: 1653, Time: 00:08:10
+
+Health: -2/26      AC:  5    Str: 10    XL:     3   Next: 26%
+Magic:  2/6        EV: 12    Int: 16    God:    
+Gold:   95         SH:  0    Dex: 11    Spells: 3/6 levels left
+
+rFire    + . .     SeeInvis .   f - +0 club
+rCold    + . .     Gourm    .   (no shield)
+rNeg     . . .     Faith    .   (armour unavailable)
+rPois    +         Spirit   .   (helmet restricted)
+rElec    +         Reflect  .   (no cloak)
+rCorr    +         Harm     .   (no gloves)
+MR       .....                  (no boots)
+Stlth    ++........             (no amulet)
+HPRegen  0.08/turn              a - ring of wizardry
+MPRegen  0.10/turn              (no ring)
+
+@: lethally poisoned (-2 -> -35), resistant
+A: unfitting armour, cold-blooded, AC +5
+a: no special abilities
+
+
+You were on level 3 of the Dungeon.
+You were not hungry.
+
+You visited 1 branch of the dungeon, and saw 3 of its levels.
+
+You collected 95 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ f - a +0 club (weapon)
+Missiles
+ c - 22 stones (quivered)
+Jewellery
+ a - a ring of wizardry (left hand)
+Scrolls
+ e - a scroll of amnesia {unknown}
+ g - a scroll of fog {unknown}
+ h - a scroll of teleportation {unknown}
+ i - a scroll of identify {unknown}
+ l - a scroll of fear {unknown}
+Potions
+ d - a potion of lignification {unknown}
+ j - a potion of heal wounds {unknown}
+ k - a potion of curing {unknown}
+ n - a potion of mutation {unknown}
+ o - a potion of resistance
+Comestibles
+ b - 2 rations
+ m - 8 chunks of flesh
+
+
+   Skills:
+ + Level 1.9 Dodging
+ + Level 2.0 Stealth
+ + Level 2.2 Spellcasting
+ + Level 4.8 Conjurations
+
+
+You had 3 spell levels left.
+You knew the following spells:
+
+ Your Spells              Type           Power        Failure   Level  Hunger
+a - Searing Ray           Conj           ###...       1%          2    ###....
+z - Magic Dart            Conj           ###.         1%          1    #......
+
+Your spell library contained the following spells:
+
+ Spells                   Type           Power        Failure   Level  Hunger
+ Dazzling Spray           Conj/Hex       #.....       9%          3    ###....
+ Iskenderun's Mystic Bla  Conj           ###.....     11%         4    #####..
+ Force Lance              Conj/Tloc      #.......     28%         4    #####..
+ Fulminant Prism          Conj/Hex       #.........   28%         4    #####..
+
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (3/15)            
+
+Altars:
+
+Annotations:
+D:3 Sigmund
+
+
+Innate Abilities, Weirdness & Mutations
+
+Your plain brown scales are hard. (AC +5)
+You cannot fit into any form of body armour.
+You are cold-blooded and may be slowed by cold attacks.
+
+
+Message History
+
+Sigmund mumbles some strange words.
+Sigmund flickers and vanishes!
+Deactivating autopickup; reactivate with Ctrl-A.
+Casting: Searing Ray (safe; 1% risk of failure)
+Confirm with . or Enter, or press ? or * to list all spells.
+Okay, then.
+You hear some strange, mumbled words.
+You are confused.
+Something hits you but does no damage.
+You are poisoned.
+You feel sick.
+You feel sick. Something hits you!
+You are lethally poisoned!
+You feel sick. Something hits you!
+Ouch! That really hurt!
+* * * LOW HITPOINT WARNING * * *
+You are more poisoned.
+It was a potion of resistance.
+You feel protected. You feel less confused.
+You die...
+
+......#######..##..#..##...#..g..
+......#....#..##..###..##..######
+#.....#....#.###..# #..###.......
+#..####....#.# #.## ##.# #.######
+#..#  #....#.# ###    ## #.......
+#..#  #....#.##          #.######
+#..#  #....#..#         #..#
+...####....#..##        #..######
+#>....'....+...##       .........
+#.#####....##...##     ..########
+#.#   #######...@#    ...
+#.#         ####(........       #
+#.#            ####.....        .
+#.#                 ....        .
++.#                  ...        .
+###                   ..        .
+#                      .        #
+#
+
+
+There were no monsters in sight!
+
+Vanquished Creatures
+  A dart slug (D:1)
+  A leopard gecko (D:3)
+  6 bats
+  3 giant cockroaches
+  3 goblins (D:1)
+  6 hobgoblins
+  3 kobolds (D:3)
+  A ball python (D:2)
+  4 frilled lizards
+  5 rats
+33 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | Tellinoya the Draconian Conjurer began the quest for the
+                  | Orb.
+     0 | D:1      | Reached XP level 1. HP: 14/14 MP: 3/3
+   287 | D:1      | Reached XP level 2. HP: 20/20 MP: 0/5
+   497 | D:1      | Learned a level 2 spell: Searing Ray
+  1286 | D:3      | Reached XP level 3. HP: 25/26 MP: 0/6
+  1491 | D:3      | Noticed Sigmund
+  1652 | D:3      | HP: 1/26 [something (13)]
+  1653 | D:3      | Succumbed to Sigmund's poison
+
+Skill      XL: |  1  2  3 |
+---------------+----------+-----
+Stealth        |        2 |  2.0
+Dodging        |          |  1.9
+Spellcasting   |          |  2.2
+Conjurations   |          |  4.8
+
+Action                   || total
+-------------------------++-------
+Melee: Unarmed           ||     2
+       Tailslap          ||     2
+       Club              ||     5
+ Cast: Magic Dart        ||    61
+       Searing Ray       ||     4
+  Use: Potion            ||     1
+  Eat: Chunk             ||     3
+Armor: Skin              ||     8
+Dodge: Dodged            ||    17
+

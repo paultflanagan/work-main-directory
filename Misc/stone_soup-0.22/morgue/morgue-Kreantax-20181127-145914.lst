@@ -1,0 +1,194 @@
+Kreantax
+
+Level 1 of the Dungeon
+(0, 0, D:1)
+  a +0 dagger
+(3, 14, D:1)
+  a cursed -1 spear
+(6, -10, D:1)
+  20 sling bullets
+(15, -1, D:1)
+  a +0 dagger
+(17, -5, D:1)
+  a stone
+(17, -3, D:1)
+  a stone
+(17, -2, D:1)
+  a cursed -3 club
+(18, 20, D:1)
+  a +0 dagger
+(19, -5, D:1)
+  2 stones
+(31, -4, D:1)
+  a cursed -2 short sword
+(44, 8, D:1)
+  a +0 robe
+(46, -6, D:1)
+  a +0 club
+
+Level 2 of the Dungeon
+(0, 0, D:2)
+  a +0 whip
+(0, 8, D:2)
+  18 arrows
+(6, -15, D:2)
+  a +0 hand axe
+(6, 19, D:2)
+  12 stones
+(9, -16, D:2)
+  19 bolts
+(10, 18, D:2)
+  7 tomahawks of returning
+(14, 10, D:2)
+  12 arrows
+(18, -8, D:2)
+  a stone
+(18, -7, D:2)
+  a stone
+(25, 7, D:2)
+  23 bolts
+(32, 21, D:2)
+  a +0 war axe
+
+Level 3 of the Dungeon
+(0, 0, D:3)
+  a +0 flail
+(13, 4, D:3)
+  a +0 dagger
+(16, 15, D:3)
+  a tomahawk
+(17, 15, D:3)
+  a tomahawk
+(18, 27, D:3)
+  a +0 club
+(20, 14, D:3)
+  a poisoned tomahawk
+(21, 14, D:3)
+  a +0 dagger
+(22, 14, D:3)
+  a +0 club
+  2 stones
+  a +0 flail
+  5 tomahawks
+  a +0 leather armour
+  4 poisoned tomahawks
+(22, 16, D:3)
+  a stone
+(23, 13, D:3)
+  a +0 short sword
+  3 stones
+(26, -4, D:3)
+  22 stones
+(31, -10, D:3)
+  20 stones
+(31, -5, D:3)
+  a +0 long sword
+(32, 38, D:3)
+  a cursed -2 club
+  a +0 leather armour
+(37, -10, D:3)
+  22 arrows
+(38, -4, D:3)
+  a stone
+(38, -3, D:3)
+  a stone
+(53, 14, D:3)
+  a +0 dagger
+(55, 24, D:3)
+  8 arrows
+(55, 26, D:3)
+  a +0 dagger
+
+Level 4 of the Dungeon
+[Shop] Tionam's Jewellery Shop
+  a +4 ring of evasion (360 gold)
+  an uncursed amulet of rage (400 gold)
+  an uncursed amulet of guardian spirit (300 gold)
+  a cursed ring of attention (45 gold)
+  an uncursed ring of poison resistance (200 gold)
+  an uncursed amulet of the acrobat (300 gold)
+  the ring of the Mage {Wiz MR++ Int+3} (517 gold)
+    [ring of wizardry]
+    
+    It improves your spell success rate.
+    It affects your intelligence (+3).
+    It affects your resistance to hostile enchantments.
+  an uncursed ring of positive energy (200 gold)
+(0, 0, D:4)
+  a +0 giant spiked club
+(11, 8, D:4)
+  20 stones
+(18, 7, D:4)
+  a ration
+(19, 14, D:4)
+  the cursed +0 cloak of Royalty {-Cast +Blink MR+}
+    It affects your resistance to hostile enchantments.
+    It lets you blink.
+    It prevents spellcasting.
+    It has a curse placed upon it.
+(26, -19, D:4)
+  19 sling bullets
+(31, -4, D:4)
+  14 stones
+(36, -15, D:4)
+  a +0 robe
+
+Level 5 of the Dungeon
+(0, 0, D:5)
+  4 needles of sleeping
+(1, -18, D:5)
+  25 stones
+(4, -22, D:5)
+  a +0 ring mail
+(5, -9, D:5)
+  a +0 dagger
+  a +0 robe
+  a +0 club
+  a +0 leather armour
+(6, -8, D:5)
+  a +0 flail
+(14, -16, D:5)
+  a +0 scale mail
+(27, 0, D:5)
+  a +0 club
+(35, -29, D:5)
+  an arrow
+(37, -32, D:5)
+  2 arrows
+(37, -30, D:5)
+  an arrow
+(38, -34, D:5)
+  a +0 shortbow
+  17 arrows
+(45, -5, D:5)
+  the +0 pair of fencer's gloves {+Riposte Dex+3}
+    It affects your dexterity (+3).
+(46, -13, D:5)
+  a +0 whip
+(47, -15, D:5)
+  a +0 mace
+
+Level 6 of the Dungeon
+(7, -5, D:6)
+  a +0 ring mail
+(13, -8, D:6)
+  a +0 chain mail
+(15, 2, D:6)
+  a +0 short sword
+(16, -1, D:6)
+  a +0 animal skin
+  a cursed -2 animal skin
+(18, 3, D:6)
+  a +0 robe
+(23, -6, D:6)
+  a +0 rapier
+  a +0 leather armour
+(31, -23, D:6)
+  a +0 ring mail
+(31, -18, D:6)
+  11 arrows
+(32, -18, D:6)
+  a +0 animal skin
+  17 stones
+  4 chunks of flesh
+

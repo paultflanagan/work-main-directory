@@ -1,0 +1,1736 @@
+***********
+30-Aug-2018
+***********
+I've finished updating the PaulFsInstallationDirectories in _DirectoriesForNewMachines, should have the most up to date files and instructions required. 
+I've also updated the How To Run Dupes instructions on Google Drive.
+I have not updated the Environment Directories (the ones with the Scripts and everything we've been tweaking the past few days, because I don't know what the plan is:
+	Will the next step be to fix these To-Dos, or to get things set up on Git? In the meanwhile, I'll read up on git again.
+
+Also, did we print out the .pdfs and sign them yet?
+
+Have been relearning and applying Git. Taking the UniSeriesQADuplicateCheck, forking it, and pushing the latest scripts and files to it.
+	this is a large task, and is taking a long time to process, so in the downtime I'm reading through the online git book.
+
+the git status messages are way too huge to try to get any meaningful data from, so I'll try modifying the .gitignore file. I'll double check the usage, but hopefully it will only stop the files from showing up, not cause git to stop acknowledging them
+jk, I googled it and it doesn't work that way. Apparently what I want is to add a pathspec to the end of the command
+Command to try:
+	git status /c/_DirectoriesForNewMachines/*/
+		hopefully this will only return the names of the directories within _DirectoriesForNewMachines, and none of their further subfolders or files
+		although, I'm worried that it will also return the files within, which will freeze it up for a while.
+		I could try in a smaller test repository, and see what happens
+		I've added some dummy files and directories into GitRepository. However it looks like it doesn't mention the directories at all, only the files.
+		well, let's see what happens anyway
+		Test Comment:
+			git status ~/MainDirectory/GitIntro/GitRepository/*/
+		ok yeah, that did the exact opposite of what I wanted. Does it just never show directories? that would make sense I guess.
+		what if negated? ('!' at beginning)
+		returns... nothing?
+			weird, I would expect it to just show the files in the GitRepository directory and none of the subdirectories
+
+
+***********
+31-Aug-2018
+***********
+Still working on git, first run was spiraling out of control (UpdatedEnvironmentDirectories ended up with 0 files, only folders?!?)
+Decided to start fresh, already working better. 
+Some filenames were too long to get picked up by git, so I started deleting some extraneous files and shortening paths, and now I'm just trimming and cleaning up everything.
+Currently trying to scour through old text files to try to remember which locations are necessary and which can be removed.
+Several of: Report Framework
+	description (assumed):		contains files and scripts pertaining to producing the results at the end of a test
+	instance locations:		base repo (~), 	~\Automation\, 	~\DuplicateCheck\,	~\Automation\DuplicateCheck\
+	recency of locations:		1 year,		2 days,		10 months,		7 days
+	location of most recent files:	~\Automation\ReportFramework\
+	most referenced instance:	~\Automation\ReportFramework\
+	Saving ~\Automation\ReportFramework\. Deleting other instances. 
+		(actually, keeping the one in the base repo. This dissonance between wanting to only keep most updated files and being told to ensure backwards compatibility hurts.)
+Several of: Shared
+	description (assumed):		contains the data, function libraries, and object repositories necessary for running the .vbs scripts (through uft(?))
+	instance locations:		~,		~\Automation\,	~\DuplicateCheck\,	~\Automation\DuplicateCheck\
+	recency of locations:		4 months,	4 days,		8 months,		8 months
+	location of most recent files:	~\Automation\Shared\
+	most referenced instance:	n/a (no references found)
+	Saving ~\Automation\Shared\ and ~\Shared\. Deleting other instances.
+
+	
+
+Steps to take today (so I don't forget during the excruciatingly long run times):
+	Get fresh copies of updated files		done
+	Sync with the remote directory			done
+	clean up files a little bit			done
+	git add (putting new files on the "stage")	done
+	git commit (marking as "unmodified")		done
+	git push (sending new files to the RemRepo)	done
+
+Flow for git:
+	Syncing with remote repository
+		Options:
+		cloning (git clone % git add + git pull):
+			//Note: most likely choice when setting up DupesCheck Machines
+			git clone [remote repo url]
+				scenario:	no existing local repo, want a local copy of remote repo
+				result:		local repo now points to remote repo (as origin) with all files of origin (think: git remote add, git fetch, and git merge all in one)
+		pulling (git pull % git fetch + git merge):
+			git remote add [target remote repo's intended tag] [remote repo url] + git pull [RemRepoTag]
+				scenario:	existing local repo (with new / non-conflicting files), want to get files of remote repo stored in local repo
+				result:		local repo now points to remote repo (as designated tag) with all its files in addition to old files (git pull % git fetch + git merge)
+		fetching:
+			git remote add [target remote repo's intended tag] [remote repo url] + git fetch [RemRepoTag] + <version resolution> + git merge [look up syntax]
+				scenario:	existing local repo (with conflicting editions of files), want to get files of RemRepo on LocRepo while resolving conflicts
+				result:		LRepo points to RRepo via tag, LRepo contains all of RRepo's files with your chosen versions of parallel files
+
+	Adding new files
+	Committing new and edited files
+	Pushing latest commit (the "snapshot") to the RRepo
+
+(moving above to its own .txt file)
+
+
+Actually, keeping any old versions is stupid! This is git! This is my own fork! I can risk screwing things up as much as I want, the base fork is still there! Git is awesome!
+	deleted ~\Shared\ and ~\ReportFramework\
+	deleted ~\Duplicate/ Check\, too, because from what I can tell it is entirely extraneous (feelsgood)
+		and honestly, if any vital scripts do still point to it, it would likely just mean that their pointers need updating, not that ReportFramework\ is vital
+		AND, if it's unfixably vital, I can just re-pull it from the base fork! Hooray for git!
+
+New background task:	sift through items in LRepo and purge anything that is not vital, slimming down the size of the download onto new machines.
+				push to RRepo at the end of every day, I suppose.
+
+Going to try one last push cycle before I go to make sure I've got it down.
+	'removing more files: ones I know to be generated output items, troubleshooting scripts, and anything with "old" in the filename'
+	Success!
+
+
+***********
+04-Sep-2018
+***********
+I've trimmed down my git fork as much as I can comfortably do, so for now I'm back to Jenkins debugging.
+System Level Test Container
+Running on PaulTest3 (jenkins node is still called Paultest3, even though I changed the system name. I might ask how to change it later)
+
+
+Results from Run #1:
+	1. No email was sent.
+	2. New .pdf was generated on engsec830qa, but it contained data from previous run instead of current one.	(Date modified % current, Data timestamp % old)
+	3. Project_Report_duplicatecheck.txt exists, but was generated at same time as data from previous run.		(Date modified % old, Data timestamp % old)
+
+	Checking Project_Report.txt and Results.txt (which, according to both the Date Modified file property and the timestamp within the file), this run passed all tests.
+
+	Primary diagnostic hypothesis: scripts responsible for creating Project_Report.txt, transferring data to engsec830qa, and generating .pdf are working fine
+		The only error is likely in the script responsible for generating new Project_Report_duplicatecheck.txt
+		As for why the email was not sent, I'll work on that afterwards; no hints have been found so far.
+
+	Let's try throwing some msgbox commands into the script in question (RenameLatestTXTtoduplicatecheck.vbs, in Test_Driver\) to see (first) if the script is being run by jenkins and (second) where it might be getting caught up.
+	After adding the msgbox commands, I manually ran the script and it worked properly. This strengthens my suspiscion that jenkins is simply not running it, so now I'll run the whole test and see if the msgbox prompts appear.
+
+	Possible causes:
+		not waiting for the script to run to completion	
+			find where the script is first called, add a loop which waits for script to complete before moving along (?)
+
+	Actually, I'm just going to go ahead and transfer the git repo files onto this box. Couldn't hurt, might happen to fix this file, so I don't have to fix it twice.
+
+Results from Run 2:
+	1. Crash in the middle of RLTXTtodupcheck.vbs, file not found (on line where it copies Project_Report.txt and creates Project_Report_duplicatecheck.txt)
+	2. Email was sent, no attachment
+
+	going to uncomment the msgbox commands and try running again, see if I get the same error.
+//--------
+//Follow-up on renaming Paultest3 to PaulTest3: apparently it's something that would take more permissions than I have access to, and would take more effort than it's worth
+//Makes more sense just to deal with it, since this box will be wiped soon anyway.
+//--------
+
+Results from Run 2.1:
+	1. Got caught up around end of main vbs script (about 5 minutes of standstill)
+	2. seems to have not cleared out the results.txt file, and subsequently the files created from it (i.e. Project_Report.txt and Project_Report_duplicatecheck.txt)'
+	3. email was sent, with attachment (.pdf contained twice the number of entries, however, this is to be expected following result #2.)
+	4. Final entry of results report was a failure, "Database Validation". Potential cause of result #1?
+
+	recommenting the msgbox commands - seems like that script worked fine this time around.
+	double-checking the scripts responsible for generation of Results.txt:
+		results.vbs:
+			deletes Results.txt file in Test_Results\
+			run: worked fine, deleted old Results.txt file.
+		results.bat:
+			copies \Automation\Duplicate/ \Check\Results.txt into Test_Results\
+			!!! source file also has too many entries.
+	Now looking for scripts responsible for generation of \Automation\Duplicate/ \Check\Results.txt: (find after lunch break)
+
+I'll throw another Run on just for the hell of it:
+Results from Run 2.1.1:
+	Appears to be just like last time, email sent with attachment containing too many entries
+
+	Resuming search for scripts generating \Automation\Duplicate/ \Check\Results.txt:
+		I'm pretty sure that this is bedrock as far as external script calls go (that is, I think this is the file which the UFT scripts write to directly).
+		If I want to fix this, I may have to go into the scripts run within the UFT
+		Currently, the UFT-scripts have no built in instructions to delete the old Results.txt file.
+	I went into the UFT-run scripts and added an additional call at the beginning of the procedure which ran through and deleted all of the lingering output files for good measure.
+	Running Test 3...
+
+Results from Run 3:
+	PC Tablet something or other crashed. May have derailed this run, I'll wait a minute or two.
+	After 2 minutes, as I was about to kill it, the run started up again
+	Towards the end, when it got to the external .vbs bits, got another file not found error.
+	Results.txt was not in C:\Automation\Duplicate Check
+	I suppose the UFT-run scripts do not create their own Results.txt. I'll just add a command to generate one in the EnvironmentCleanup action I created.
+	As a result of the bedrock Results.txt file not being created, the rest of the output files were not created, either.
+	Running Test 4...
+	(forgot to reset the system following that PC tablet crash... we might need a 4.1)
+
+Results from Run 4:
+	Yeah, it's been a few minutes of nothing, I'll just abort it, reset the system, and run again.
+	Running Test 4.1...
+
+Results from Run 4.1:
+	rltxttdc.vbs line 38 error file not found 800A0035(OO?)
+	after test, Results.txt was only one line long.
+		(called the EnvironmentCleanup action more than once??)
+	adding msgbox commands to EnvironmentCleanup, running again
+	Actually, first, looking through the steps taken by jenkins, it looks like the actual .vbs run by the system is C:\RunDualFormat.vbs, which runs FT_DualFormat_Driver.vbs multiple times by itself.
+		looks like I still haven't figured out the complete workings of these script orders yet...
+	I predict that if I run the Jenkins job as it is currently, I will get the msgbox command outputs twice, once for each call of FT_DualFormat_Driver.vbs within RunDualFormat.vbs.
+	I think what I'll want to do is add my EnvironmentCleanup commands to the beginning of RunDualFormat.vbs itself, but I'll ask Paul for advice just in case.
+	At Paul's suggestion, I moved those commands out and up into RunDualFormat.vbs
+	Running Test 5...
+
+Results from Run 5:
+	Damn, forgot to remove msgbox commands
+	Running Test 5.1...
+
+Results from Run 5.1:
+	"DeleteFile" was not recognized as a valid command. I'll copy it up from the common library.
+	Running Test 5.2...
+
+Results from Run 5.2:
+	1. Successfully clears all lingering files and creates new, empty Results.txt file
+	2. Error in RLTXTtdc.vbs: file not found, line 38
+	3. Top Results.txt file is populated with LogResults.
+	4. Bot Results.txt file is not created.
+	5. ergo Project_Report.txt not created.
+	6. ergo P_R_dc.txt not created
+	etc.
+
+	Running the script responsible for creation of bot Results.txt (C:\results.bat) manually creates the file without issue.
+	Adding msgbox commands to results.vbs to see if I can get any clues as to what's going wrong.
+	Running Test 5.2.1...
+
+Results from Run 5.2.1:
+	!!! Interesting!!! - same rltxttdc.vbs line 38 error file not found 800A0035(OO?) error from before
+		Did not even get to the msgbox commands from results.vbs and TroubleshootingFlag.vbs scripts!
+			... do I remember moving some of the external scripts into the UFT flow?
+		regardless, this is something I feel I can work with better
+		pick up here tomorrow
+	ok actually it threw the error, and then picked up and got to the msgbox windows...
+	hm
+	the results.bat move was successful
+	WHY did it throw that error? did I move things inward and then forget to move them out after I fixed the outer scripts?
+	again, I'll just pick up here tomorrow.
+
+Attempting to quickly push to my git fork...
+	actually there's probably no time
+
+
+***********
+05-Sep-2018
+***********
+Yesterday I was unable to get my work onto git before I had to leave. Should I set aside the last 10 minutes of work in order to get my progress onto git before I leave, or is it not that big a deal to do it the next morning?
+I suppose I might ask Paul what he thinks
+
+I have double checked the UFT scripts, and, as I expected, I did in fact forget that I had moved some of the scripts around.
+Presumably because I hadn't gotten the external calls to work yet, I now remember (and have the notes to prove) that I cut some of the later batch commands off of the Jenkins procedure and stuck them to the end of the GetGTIN UFT-run scripts.
+Luckily, I pasted the commands I removed into a text file, so I can just paste them back in, remove the final UFT action I added, and start a new run.
+Oh, and I'll comment out the msgbox commands
+
+Running Test 6...
+Results:
+	"tablet pc input panel accessory has stopped working"
+	run halted and exited after that
+
+Running Test 6.1...
+Results:
+	Run did not proceed and jenkins gave up afterwards
+
+*New commit message: 'Early steps towards cleaning up result generation procedure, removal of very many "snapshot" files.'
+*Eh, I should probably get in the habit of terser commit messages: 'Result gen procedure cleanup, "snapshot" file removal'
+
+	Going to try to refresh the system and make another run.
+
+Running Test 6.2...
+Results:
+	Run froze up before doing anything. I'll try one last time and then get some help
+
+Running Test 6.3...
+Results:
+	Freeze. Reset system.
+
+"	Test 6.4...
+Results:
+	Freeze. Trying again.
+
+"	Test 6.5...
+Results:
+	Not an instant freeze!(?) I did start it off by initiating while guardian was opened to the first window (the purge one)
+	Throughout the beginning part of it, the green Guardian connection indicator would switch to the red disconnection, and back again a few times. Normal, or indicative of a root issue?
+	Test proceeded as normal.
+	Email sent, no attachment
+	All required results reporting files (Results.txt(s), Project_Report.txt, Project_Report_duplicatecheck.txt) present and up to date
+	in engsec830qa:
+		(I wasn't logged in at the time of running, could that affect whether or not it runs? It shouldn't, right?)
+		Results text file present
+		.pdf had not been generated.
+	Console output from System Level Report: "AddDataToProject_ReportsAndGeneratePDF_duplicatecheck.vbs(39, 2) Microsoft VBScript runtime error: Permission denied"
+	Pretty sure it was because the engsec830qa box was cluttered with unresolved processes (reminded me of a previous error I'd fixed)
+	Cleared that out, reset the box, and ready to try again before I dig into the ADTP_RAGPDF_dc.vbs script
+	Hopefully it will be able to navigate Guardian by itself this time. If not, I'll get assistance
+
+Running Test 6.8...
+Results:
+	Again, it had difficulty interfacing with Guardian and selecting Adimistration > Purge Production Data, but once I set it there it took off by itself. Remedy?
+	Results Report files created and current
+	File transfer successful and AddDataGenPDF_dupcheck.vbs ran without any errors
+	However, would not run to completion. Probably time to dig in and see if I can fix it with regards to the timing.
+	So I ran the script by itself and it worked fine. Only runs into errors when running through Jenkins?
+
+I did a few small runs with just the AddDataGenPDF_dupcheck.vbs script, and I found that every time I run it through Jenkins, it malfunctions, while every time I run it manually, it runs properly.
+Why does it do that? Why would it be different depending on what triggers it? 
+They both get through the first parts of the script, the final excel file is completely generated, but the Jenkins runs freeze up while creating the final .pdf (after making the temp file)
+I suppose it's time to add the msgbox commands to find out which line specifically it gets caught on.
+My guess: line 67, the WBObj.ExportAsFixedFormat command. 
+But, even if I'm right, I would still have no idea why it only gets caught on it in the Jenkins runs. 
+	As in, I don't predict that looking through the docs of that command would help.
+
+Running PDFGenScript Test 1...
+Results:
+-Manual:
+	Reached pre-line flag.
+	.tmp file created
+	Achieved "Publishing" window
+	Reached post-line flag.
+	Script completed properly.
+-Jenkins:
+	After three minutes, has not even reached pre-line flag.
+	last visible step was removal of .txt file.
+
+Terminating and trying again, adding more flags:
+line 43: FSO.DeleteFile - responsible for removal of .txt file
+lines 51 - 64: commands responsible for populating the new excel file
+3 total flags. 1: .txt removal; 2: excel file population (I think?); 3: .pdf generation
+
+Running PDFGenScript Test 1.1...
+Results:
+-Manual:
+	.xlsx file created
+	Reached pre-line flag 1
+	.txt file removed
+	Reached post-line flag 1
+	Reached pre-line flag 2
+	Reached post-line flag 2
+	Excel population confirmed
+	Reached pre-line flag 3
+	.tmp file created
+	Publishing window achieved
+	Reached post-line flag 3
+	excel file removed
+	Script completed properly
+-Jenkins:
+
+Ok so now it looks like when this Jenkins job tries to run a msgbox command on the engsec830qa box, it backs up the script.
+	Maybe the message boxes are being displayed on a different machine?? Why??? Which machine?
+Great, now how am I supposed to troubleshoot; that's the only pseudo-troubleshooting command I know.
+
+"Some Excel commands, including the command to save as a .pdf, work properly only when the active printer is valid" (????????????)
+"In summary, I’d look at inconsistent printer availability and irregular printer installation as possible underlying causes of failure to consistently export .pdf files using Excel VBA."
+	-https://stackoverflow.com/questions/35857728/exportasfixedformat-fails-sometimes
+This is very irritating. Still can't figure out exactly why it refuses to run through Jenkins, although I guess the above is my next lead (?)
+
+--------
+As to why the ExportAsFixedFormat() command is formatted the way it is - 
+	WBObj.ExportAsFixedFormat (0, FrameWorkFolderPath &"\" &ProjectFileNameFirstPart, 0, True, False, , , False)
+ - it seems like this is the explanation:
+"The reason you need to replace xlTypePDF with 0 (and for others as well) is that vbscript does not recognize VBA Object Model constants, like xlTypePDF. 
+VBA automatically translates this to the enumeration value (0), but you need to specify the enumeration in vbscript."
+	-https://stackoverflow.com/questions/45758079/convert-excel-to-pdf-with-vbscript
+--------
+the StackOverflow page:
+"assignments to the fields of .PageSetup"
+"When I re-installed the default printer, Application.ActivePrinter always returned the proper printer name, whether or not that printer was available for use, and the program stopped crashing."
+
+
+So that was an endeavor and a half
+the fix we found ended up being completely unrelated to what I had been finding: we just stopped running Jenkins as a Windows Service on Start-up and opened it directly through command prompt
+Apparently what I had resembled something that happened before, and the solution was just to try that, and the explanation behind it was just that it worked for whatever reason
+which is fun
+
+It's like every time I feel like I'm making progress and creating a fuller understanding of what's going on, I get a big sobering slap in the face that reminds me of how little I know
+C'est la vie
+
+Running Test 7...
+Results:
+	Froze up in part one, resetting box and retrying
+	
+Running Test 7.1...
+Results:
+	Ok cool so now I have to hold its hand navigating through Guardian again. For no reason. After having not touched this script for five hours.
+	Going to just hope that this was a fluke, although I know the end goal is for this to happen 0% of the time.
+	Refreshing system state and trying again
+
+Running Test 7.1.1...
+Results: 
+	Input personalization something stopped working.
+	Seems to have broken it. Maybe not?
+		Why are there not constantly visible signs of the code working
+		I feel like I half of my time is distributed into 5 minute intervals of wondering whether the code has crashed and is sitting inert or if it is still working invisibly
+		The most annoying crashes are the ones without error messages
+	Ok I guess it didn't crash, it just felt like taking a break while it recovered from that little trip
+	Email, but no attachment. I think I know why, though.
+	Forgot to redirect the file transfer destination of Final_results.bat from the local drive (PaulTest3) to the remote one (engsec830qa)
+		Which was my bad. feels good to actually know why something didn't work, haha. At least when it's my fault I tend to know what's wrong and it usually isn't too hard to fix.
+	Rectifying and retrying.
+	(at least it got all the way through the testing section this time)
+
+Running Test 7.2...
+Results:
+	Froze up, "Tablet PC Input Panel Accessory has stopped working"
+	refreshing, retrying, running overnight.
+
+Running Test 7.2.1...
+
+***********
+06-Sep-2018
+***********
+Results:
+	Got stuck on one of those old expected result errors. Restarting box and trying again
+	Also preemptively restarting engsec830qa.
+
+Running Test 7.2.2...
+Results:
+	Input panel accessory crashed again
+		It seems like it's never fatal, though - is that even neccessary?
+	And it can't navigate through guardian. Let me just try over again.
+
+Running Test 7.2.3...
+Results:
+	It navigated by itself...
+		This time the VisionSimulator was behind guardian, where last time it was in front?
+	Complete Run, all results files generated, email sent with .pdf attachment
+		It would be awesome if I could transition onto working with the actual content of the results files, and not just their generation
+		for now, I'll just begin noting the result states if only for the sake of having them logged
+	Test Summary:
+		Run Time:	00:07:16
+		Run Totals:	11/12 Successes
+		Failures:	10
+	Running again to check consistency
+
+Running Test 7.2.4...
+Results:
+	Guardian navigation successful
+	Output procedure full success (Complete Run, all results files generated, email sent with .pdf attachment)
+	Test Summary:
+		Run Time:	00:07:05
+		Success Totals:	11/12
+		Failed Cases:	10
+	Cool, I'm almost tempted to get my hopes up
+	Let's take a look at Test Case 10 and see what's up.
+
+Test Case 10: 
+Database Validation	Validate dupes in database	Dupes in database not validated
+
+//I realize I've been doing troubleshooting in this text document when I already have a designated "DupesTroubleshooting.txt" file
+//It would probably make the most sense if I just carry this on over there. I should probably just be more aware of which notes go where for clarity's sake.
+//For now, let's just keep this what it is: a log.
+
+Continuing with Troubleshooting for Dupes, I believe that the Results generation procedure is stable.
+I will now begin to work on the actual content of the results files.
+Sounds like fun!
+
+I'm seeing more evidence to support my opinion that the worst bugs are the ones that don't throw big loud error messages, and just silently break.
+
+Things which I have edited (and which I need to add to the git repo) today (or tomorrow morning):
+	EmailScrapper.py in C:\Automation\Duplicate Check\
+	Various files in C:\Automation\Duplicate Check\ (may as well just add the whole folder)
+	Various files in C:\Automation\Shared\
+
+Additional notes for git repo:
+	Can also delete the contents of the C:\Automation\Duplicate Check\Emails\ each time
+	and EmailScrapper.log in C:\Automation\Duplicate Check\ (shows up as a text file on my computer)
+
+
+***********
+07-Sep-2018
+***********
+Transferring the updated files over to my computer so I can push them to the remote repository
+In the meanwhile, I suppose I could do the Training Plan thing I've been getting emails about.
+	Completed 3/5, the other two don't seem to have any files associated with them
+	At least, none that I am able to find / access.
+
+*New Commit Message: 'Result Gen procedure stabilized, improving test performance'
+
+I almost forgot to remove the over 8,000 Snapshot items
+Could I write a script that automatically deletes all of them? And maybe gets rid of some of the generated code I know I won't want?
+Or maybe this is what the gitignore is for?
+	hm, I think I'd rather not have to take the time to transfer them all over in the first place
+I could maybe make a script that takes a Dupes Testing Main directory as a parameter, and then goes down and removes all the extraneous files?
+I could write it, transfer it over to PaulTest3 (and maybe every box I test on going forward), and run it before I copy files over to my main system for remote storage?
+I've also noticed a whole bunch of Report Files, asked Paul about it, and he said I could delete those, too (5,000 items) (16,000 items?!?)
+
+I'll go ahead and create a new note file to think about this potential script.
+
+I've gotten everything I need off of PaulTest3 and onto my own machine, so I think I'm good to resume troubleshooting the tests.
+
+Maybe I should keep a running tab of the file changes I make so I know what to copy over for pushing to the remote repository?
+
+
+***********
+10-Sep-2018
+***********
+Paul is out for the next couple of days. I'll try to stay on target, and not forget what I'm supposed to be doing. 
+
+For now, having hopefully stabilized the testing procedures, I'm running the scripts over and over to test consistency.
+
+In the meanwhile, I'm working on the script which will prepare the environment for transfer to my box so that I can push it
+	I need to come up with a better name for that...
+
+While running tests I ran into a snag with the .pdf generation script. I suspected it had to do with the previous EXCEL.exe instance not being closed properly.
+	This was annoying, since I thought I had fixed this with a kill command at the beginning of the script.
+I figured I may as well try out implementing the new version of the script, which supposedly had been running no issue every time
+	It didn't work.
+	I realized I had to update the filepath variables, so I did.
+	It still didn't work.
+	Turns out this new script doesn't have the excel kill command at the beginning like the one I'd been using does.
+	The issue was that I'd forgotten to add a /f tag to the command.
+
+I feel like every time I notice that I am doing something repetitively in this document, I create a new dedicated place to log it or to workshop it ("shed it"?).
+	To the point where the entries in this log are the sparsest, as if that is the natural size of this sort of log.
+On second thought, that may not be a bad thing. In fact, it may be the perfect use of this text file: a scrap-paper staging-ground for building more efficient logging habits
+
+***********
+11-Sep-2018
+***********
+More of just trying random things to attempt to fix things I can't get a good pulse on.
+Feels like I'm actually making progress, though, which is more than I could have said yesterday.
+
+Once I get things in a working state (i.e. one where I don't have to monitor it through the entirety of the test, and am free in the 10 minute run time) I'll get back on the file deletion script
+
+I don't think it's possible, or easy, or time efficient at the very least, to do all of what I'm trying to do with the script. 
+	I can delete out the files that I know the location of just fine, but that's only a small part of the giant amount of result files this script generates
+	The bit I wanted to do, where it searches for all folders named "Report" in the base directory and deletes them, may not be feasible
+		I mean, it should be at least possible, right? How else does Windows File Explorer find the folders in the first place?
+
+Well, I like to think I made progress today, even if it didn't feel like it at times.
+I'll report to Paul tomorrow morning.
+
+***********
+12-Sep-2018
+***********
+A bit late getting in, went to a meeting in Dave's office
+Once Paul gets back I'll ask him about the two bugs I kept running into
+	Less prevalent one: the non-interaction with Guardian
+	More prevalent one: failure to verify duplicate numbers
+Said I should go ahead and stick the TipsKillAll.bat onto the beginning of the script
+	but that will close ScreenManager.exe, and when it is reopened it won't be logged in
+We can clean it up later
+
+Actually he said it would make more sense for me to create a whole new UFT script with object interaction
+this will be fun
+Making new note file, "UFTEnvironmentSetup.txt"
+
+***********
+13-Sep-2018
+***********
+My computer crashed (I think it was a graphics card error) and I lost the logs I was writing for today
+Gist is that I did some work on how to fix the apparent timing issues in RunDualFormat.vbs with regards to the cleanup process
+I had an idea to create new Jenkins jobs for each cleanup step, since it would appear Jenkins knows how to wait for each job to finish
+	making use of the downstream feature, a la Black-box
+before I did that, however, Paul told me that we will be resuming with other boxes and getting the rest of the Dupes Check jobs to run successfully
+My plan was to see which scripts are shared between the tests and update those first manually
+But, Paul made a snapshot of the original state of the ENGADVDEV01 box, so I can risk being as destructive as I want
+Now I'm just going to copy a bunch of files over and fix the changes as I go
+Currently, I'm deleting the several GB of \Res#\ folders and their files
+
+In the meantime I'll try to recreate the list of common scripts and what I changed prior to the copy transfer
+C:\results.vbs
+	Changes:
+		Minor -	commented out the call and closing of an otherwise unused WScript.shell
+C:\results.bat
+	Changes:
+		Major -	changed move target location from C:\Automation\Duplicate Check\ReportFramework\Test_Results\ to C:\Automation\ReportFramework\Test_Results\
+C:\Automation\ReportFramework\Test_Driver\RenameLatestTXTtoduplicatecheck.vbs
+	Changes:
+		Major -	swapped finicky "WscriptObj.currentdirectory" declaration of DriverScriptFrameWorkFolderPath for a hard coded one (to "C:\Automation\ReportFramework\Test_Driver")
+
+Important Locations to copy:
+Probably all of C:\Automation\
+Probably none of C:\jenkins\ or C:\PimLabTestData
+C:\results.vbs
+C:\results.bat
+C:\RunDualFormat.vbs	//I know it won't need it for it's purposes, but it couldn't hurt (too much)
+C:\sg3.bat
+C:\sg2.bat
+
+All of C:\Automation is taking too long.
+It's probably C:\Automation\Duplicate Check\'s many script directories which are slowing the process down
+	Yeah it's over 10x larger than the other two subdirectories combined
+Let's find the scripts I worked with and leave the other ones behind.
+\Advisor UFT\
+\DuplicateCheckOneLevel_DualFormat*\	(3 folders)
+\FT_DualFormat_Driver\
+\GrdCfgMgr_StartLogin\
+\SetupEnv\
+
+Going to go to lunch soon, I'll copy everything that isn't in C:\Automation\Duplicate Check\ first
+
+Hm, actually I'm thinking this should go into its own notefile, too.
+Creating "ENGADVDEV01Setup.txt"
+
+
+***********
+17-Sep-2018
+***********
+Friday was weird, mostly doing and being taught new steps for running the other 6 tests, didn't have much time to write anything down.
+Paul's out today, hopefully I can remember how to do things, even though I didn't write it down
+
+Ok, so I've got the structure set up so that I get a successful result generation procedure pretty consistently.
+I think now's a good time to move to the Troubleshooting document and work on getting from 74% to 100% test success.
+
+Hmm, may as well make a new log? Maybe? I'll rename the old one to "DupesTSDualFormat.txt", and make this new one "DupesTSInLotCancelDecom.txt"
+
+The end of today, having issue with a function from Advisor_V2
+Going to ask Paul about it the morning he gets back.
+
+On a side note, the orange flashing sequence from my battery light went away over the weekend, which is cool.
+
+
+***********
+18-Sep-2018
+***********
+Ja	 Fe   Ma   Ap   Ma   Ju   Ju   Au   Se   Oc   No   De		Non unique
+Jn   Fb   Mr   Ap   My   Jn   Jl   Ag   Sp   Oc   Nv   Dc		Meh
+Jan	 Feb  Mar  Apr  May  Jun  Jul  Aug  Sep  Oct  Nov  Dec		Probably best
+Jnry Fbry Mrch Aprl Maay June July Agst Sept Octb Nvmb Dcmb		D.u.m.b.
+Sep vs Sept seems like the biggest annoyance for the third option (that is, I believe that, most often, the three letter abbreviations are used, except Sept, with four letters.)
+
+Been waiting for a few minutes, Paul not in yet. I'll get back to Troubleshooting while I wait.
+
+I feel I accomplished a decent amount of work today.
+Didn't fall asleep during the code review
+Knocked out a lot of the failed test cases (with help)
+
+
+***********
+19-Sep-2018
+***********
+Got in with good time, was able to get logged in before 8
+Skladjf ("SKLA-djif")
+Picking up where I left off with running the InLotCancelDecom troubleshooting
+
+So, thinking back to my git repo structure, it seems as if I had been only keeping the files necessary for the DualFormat check
+In reality, it will make the most sense to keep all the files for all of the tests in the same repo.
+I think I'll need to familiarize myself with the .gitignore functionality
+	Best way to do this is probably by creating a test environment, making a remote repository for it, and messing around with the .gitignore file.
+
+Just been banging my head against that one test case over and over, hopefully I'll have more luck tomorrow.
+
+
+***********
+20-Sep-2018
+***********
+Paul still not in yet, hopefully he'll be in today so I can ask him about the test case 20.
+
+Came in, went to standup meeting, got to work fixing the last test case.
+
+Apparently this issue is much bigger than what I've been working on and it has developed toa point where my job is to sit and watch Alex try to fix it
+at least he's doing it on his computer, and I can still use my own this time.
+
+I have literally no idea how else to be useful, so I guess I may as well mess around with setting up git.
+Hopping on to PaulTest1 and seeing what I can do.
+
+
+***********
+21-Sep-2018
+***********
+Finished up the InLotCancelDecom test, got the 100% .pdf saved on PDQA
+
+Transferred files onto PaulTest1, which I've been using as my local git repo, since PaulTest3's C:\ is too messy.
+Now I've got to reset the machine to a previous snapshot using VMware, I think
+
+Paul told me to ask Alex about it, he pointed me to a new box, ENGADVDEV06, which was already set to the correct version
+Creating new log file, DupesTS740011.txt
+
+
+***********
+24-Sep-2018
+***********
+Things seem a bit hectic today. Paul is out on jury duty, apparently a deadline is fast approaching which we don't feel prepared for, and I've got to pick up where Paul left off.
+Appears first I need to work on 8.1.7
+Creating DupesTS817.txt
+
+	-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+	_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+	-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+	_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+	-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+	_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+	-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+	_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+	
+	-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+	-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+	-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+	-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+	-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+	-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+	-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+	-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+	-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+	
+I didn't realize how much I missed mochas...
+I think maybe I should stick to black, sugarless coffee most days, but on crunch days or when I need an extra kick I can grab mochas
+I think it's partially how easy they are to drink and how they have sugar in them
+If I need a super pickup, I could go for the espresso ones?
+
+
+I seriously need to make more checklists.
+The most recent mega-issue boiled down to the environment variable .xml file not having the server name updated (to DUPESERVER) after the box had been reset to the previous image
+	So, it was because the proper protocol had not been followed when restoring the box
+If I had (or even just had created and shared) a checklist for setting up new boxes, all of this could have been prevented.
+	and crucially, this protocol would have lead-in from MANY scenarios, not just ghosting and setting up machines for the first time
+	
+	
+***********
+28-Sep-2018
+***********
+I'm back after being out of commission from an ear infection
+I asked Paul what I ought to be doing now and he said to run through all of the previous tests and make sure they work front to back
+Rather than make new log files (since I hope these won't take too long), I'll just document them here.
+
+Dual Format:
+1.	Screen Manager > Timeout on starting Pallet Controller
+	Trying again
+2.	Same error.
+	Restarting System
+	Paul says that, although it is failing now, Pallet Controller is not used at all for the tests I want to run, so I don't need to worry about it.
+3.	Same error, clicking through and allowing test to continue.
+	Guardian > "Login Failed for user: qa"
+		I believe this is because the Server architecture (including for DupeServer) was updated recently, and DupeServer has not been powered on since then
+		Waiting for server to power up, and then I'll get back into it.
+4.	Interestingly, the Pallet Controller error did not appear this time.
+		Perhaps had to do with the server being down?
+	It's been stuck on "Starting Guardian" for a while now, and, according to the print log, has not even begun its attempt to login yet, after over five minutes.
+	Opening UFT to check on where it is stuck
+	"Failed to Start the Test Application"
+	Aborting
+	GrdCfgMgr_StartLogin worked fine when run manually.
+	Starting again.
+5.	Again, no Pallet Controller error.
+	Guardian opened with no issue.
+	"No random numbers block detected!"
+	Aborting
+	"IpsEngine error "MINOR":	no Random SPT Numbers block has been detected!"
+	Maybe a purging issue?
+	Retrying, I guess.
+6.	Purge was successful
+	Same issue with Numbers block
+	May have been something wrong with importing the files in the beginning, I'll keep a closer eye on it.
+	Aborting, trying again.
+7.	It appears to start and end the Setup_AI02AI21 immediately.
+	I'll check inside to the code and see why that may be.
+	Aborting.
+	Upon opening FT_DualFormat_Driver (which contains the scripts responsible for loading the data), I see that it is missing some Object Repositories.
+		Why is the default search location for repositories and libraries always in C:\Duplicate Check\Shared\, not in C:\Automation\Shared\?
+	The machine is being so sluggish right now.
+	Finally finished associating all the correct object repository locations
+	Going to attempt to manually run the script direct from UFT to see if it runs properly.
+	Actually, it may not work that way since I don't know how to properly input the correct parameters required.
+	Just going to run another test.
+	Might want to reset the box, considering how slow it's been.
+	Starting new test.
+8.	Had a small hiccup regarding logging in to TIPS, but other than that, seems to have loaded AI02AI21 without issue.
+	It got up to the second user entry confirmation for quarantining the second lot and froze.
+	I'm guessing it's another object repository I need to either re-associate or assign the proper file location.
+	Aborting
+	Figured out I had to have associated the Advisor_V2 repository
+		There should really be a list of repos needed for each test.
+	Associated the additional repository to StartLot and EndLot.
+	Running Again
+//	It seems as if this procedure has decided to take way too long (my whole morning), and may have warranted its own log, or at least a record on the DualFormat log.
+//		I anticipate the other tests to take less time to verify, given their greater recency
+//		... although I could be wrong again...
+9.	Appears to be stuck on "Starting Guardian" again.
+	Last time I just aborted and retried, and the issue went away, so I still don't have a fix for this.
+	Noticed the same message, "Failed to start the test application" hiding underneath other windows.
+	I just hit Ok and then the login proceeded just fine.
+		Is it throwing an error when it shouldn't?
+		Is it not waiting long enough for Guardian to start up?
+		Is it not waiting for the correct flag to signal that Guardian ought to be ready?
+		I should take time to examine this if this run fails, perhaps ask Paul or Alex about it.
+//  Side note:	it appears as if, after several runs of generating .pdfs, 830QA becomes flooded with spent CMD shells (haha "spent shells" get it) which are used to attempt to close excel.exe and then are left open.
+//				I should probably add in code to automatically clean out the shell once its code has been fired off (ahahaha).
+	Timed out, appeared to be stuck in the script which waits for the results from the python script in the Emails folder.
+	did not see the emails?
+	Were the emails sent at all?
+	Running again
+10.	Similar issue with "Failed to start the test application", but then continued fine.
+	"Host process failed"???
+	skipped over the data purge section, aborting and retrying.
+11.	Skipped data purge again. Aborting, retrying.
+12.	Purged successfully.
+	Lot Quarantined successfully
+	Stuck in email poll
+	Aborting and Retrying
+13.	Purge successful
+	No emails
+	Aborting
+	Alex suggested that each time he took out the email polling code, the emails were sent no problem.
+	Trying that for this next run.
+14.	Successes, second user entry confirmed
+	Appears to have still not received the emails.
+	Stuck on navigation to "Lines and Products;Products"?
+	Navigated for it.
+	Final result, failed on the email validation test, since no emails were received.
+	New Test
+15.	Does not appear to be navigating Guardian.
+	Aborting
+	Starting new Test
+16.	Before the guardian completed logging in:	"RD Clip monitor stopped working" or something.
+	Appears to be working fine afterwards
+	Successful quarantine.
+	Did not get stuck navigating through beginning or end of script this time.
+	Same issue, results and final file states show that emails were never received.
+	Checking the Guardian notification logs.
+	
+	
+***********
+01-Oct-2018
+***********
+Running a test for DualFormat as I start up
+Also, moving future logs to DupesTSDualFormat.txt like I should have a long time ago.
+
+Finished working on DualFormat. Now going to work on InLotCancelDecom.
+Moving to DupesTSInLotCancelDecom.txt
+
+
+***********
+02-Oct-2018
+***********
+The script which I set up to run automatically last night did not do well
+I'm pretty sure it was because the script which I had running when I left froze and interfered with the automatic one.
+
+Finished working on InLotCancelDecom. Now going to work on 7.40.011.
+Moving to DupesTS740011.txt
+
+After wasting a lot of time trying to make git work properly, I've got everything backed up and pointing to the RRepo.
+
+On top of all that, after struggling to grab a scrap of code out of one of the UFT tests for Paul,
+    it's getting late and I have to leave on time today, and I don't want to leave a test running when I go, in case it interrupts the nightly tests.
+
+Not the most productive afternoon I've ever had, but I suppose it was better to improve my shaky git structure sooner rather than later
+And I was able to finish up InLotCancelDecom much more efficiently than I did DualFormat
+    so I think I can hope that 740011 might take less time than DualFormat, as well, since it had been updated more recently.
+Of course, once I get finished with setting up the tests we've already gotten working once, it will be back to square one, and all bets will be off.
+    but maybe it will be easier since I will have had practice?
+
+This font does a bad job of distinguishing the number one and a lowercase L.
+11111111    all ones
+llllllll    letters
+1l1l1l1l    number-letter
+l1l1l1l1    letter-number
+
+I think the number is thinner, and maybe the top bit is narrower?
+
+
+***********
+03-Oct-2018
+***********
+Runs from last night did not go off since I closed the Jenkins agent on DEV01 and forgot to turn it back on.
+
+Let's start right off with 740011 testing.
+
+I mashed my keyboard and this came out:
+
+YEAH, ?
+WAT
+CAHTOA
+O
+DOREMIFALATIDO
+
+Even though it looks like it takes up 3 spaces, the reader counts it as 1 character.
+
+recommended corrected spellings are 'e', 's', 'i', 'a', 'n'
+
+elsewhere it appears as the white square unicode
+
+
+Was not able to completely clear up 740011, but I prepped the system for overnight automated testing, and I threw 740011 onto the end for the hell of it.
+I'll pick up with 740011 tomorrow after recording the auto test results.
+
+
+***********
+04-Oct-2018
+***********
+As for results from last night's testing, they are underwhelming.
+    Only two results emails, both of them without an attachment
+    Timestamped at 2:44 and 3:12, which would appear to make them from InLotCancelDecom and 740011
+    No email from DualFormat
+Checked console output on Jenkins. DualFormat shown as aborted, InLotCancelDecom and 740011 shown as failed.
+It would appear as if DualFormat timed out during the TIPS_DiagnosticPrepare step
+    As a result, UFT was still tied up when the time for the other two tests to run came, so they were unable to run.
+    
+This seems like a problem that ought to be fixed, and one which potentially has an easy solution
+    Referring to the fact that a failure in one test dooms the successes of any following tests, that is
+        I have no idea why it froze during TIPS startup yet.
+We could start each Jenkins job with a command to kill any lingering instances of UFT before the rest of the code starts running
+
+
+Running each of the tests once just because
+Also, I suppose it can show that it is in fact possible to run these scripts back to back.
+DualFormat:
+    Test ran fine, got stuck in the results generation.
+    "(307, 2) (null): The remote procedure call failed"
+    Manually pushed through to get a .pdf
+    Test Summary:   Full Pass (00:08:34)
+    
+InLotCancelDecom:
+    No issue with .pdf generation
+    Wait, nevermind: it just sent me the .pdf from the previous test
+    "Microsoft VBScript runtime error: Permission denied"
+        Doesn't that error usually come up when excel is already open? What happened to the commands which were supposed to attempt to close excel.exe?
+    Without changing anything, I ran the script again manually.
+    It completed without issue...
+    Put the .txt back and tried running through Jenkins
+    Again, no issue
+    This is irritating.
+    Test Summary:   Full Pass (00:15:06)
+    
+740011:
+    "File Open Failed"
+    Oh damn I forgot to show Paul
+    9:48/9:47
+    Test Summary: Full Clear-ish?? (00:32:18)
+        It says 100%, but it only has 58 entries...
+        Missing: First Email Validation, and this time, Third Email Validation test.
+    [Moving over to DupesTS740011...]
+    
+at least there were no .pdf gen issues...
+
+
+I was a good little developer and I remembered to push to git today :)
+
+In last minutes I'll let Paul know the progress I've made with diagnosing the email issues:
+
+I suspect that this issue leads back to the DupeServer. There could potentially be an issue with an incorrect configuration option.
+    Might have to do with not checking the correct product types,
+    wrong manufacturer settings,
+    incorrect notification triggers,
+    Not sure yet
+    
+    
+***********
+05-Oct-2018
+***********
+Overnight tests: we got the same issue as last time.
+Timed out during the GrdCfgMgr_StartLogin step of the first test, rest of tests were unable to access UFT and failed.
+I should ask Paul about it over Skype when he gets online (he's working from home today).
+The issue has only ever occurred during overnight testing (I can't reproduce it during the day). 
+The only idea I have so far would be just to add a call to ScriptForcequit.bat to the beginning of every test
+    although that would be less a solution and more a way of cleaning up
+    
+    
+***********
+08-Oct-2018
+***********
+Overnight tests ran over the weekend, but I got a lot of errors still.
+DualFormat:
+    2/3 success, 00:01:15 run time
+    Appears to have had the same issue: got to the Diagnostic Screen Manager and was unable to proceed
+        At least the TipsKillAll call was able to stop it from preventing the other two tests
+InLotCancelDecom:
+    12/22 success, 00:58:01 run time
+    Failed every test regarding the import of data
+        No Idea why... Navigation of Guardian issue?
+7.40.011:
+    14/42, 14/43 success, 00:58:54, 00:58:44 run time
+    Like in the previous test, all attempts to import data failed.
+        Whatever's wrong with ILCD may be wrong with this.
+
+Forgot to remove most recent artificial breakpoint
+    probably partially explains why the overnight 7.40.011 tests were failing
+    But there's so much wrong with 7.40.011 that I doubt it's the only thing.
+
+Starting preparation for impending code review.
+Creating CodeReviewPrep.txt
+
+
+***********
+09-Oct-2018
+***********
+Same Results from last night's runs: first aborted, second two full of errors.
+    Also, I may have mixed up which test the 2/3 result from last time belonged to
+DualFormat:
+    Aborted, no final results to speak of
+        Build timed out (after 30 minutes). Marking the build as aborted.
+            Time-out during TIPS_DiagnosticPrepare.vbs step.
+InLotCancelDecom:
+    2/3 success, 00:01:16 run time
+        C:\TIPSDiagnostic_Prepare.vbs(36, 2) (null): The remote procedure call failed.
+            qtApp.Test.Run Null, True
+                an issue with UFT?
+                I'm not 100% sure how these bits of code work, probably worth bringing it up.
+        C:\Automation\Duplicate Check\RunInLotCancelDecom.vbs(131, 2) mscorlib: The remote procedure call failed. (Exception from HRESULT: 0x800706BE)
+            qtApp.Test.Run Null, True
+                same thing?
+7.40.011:
+    22/59 success, 01:32:20 run time
+        C:\SetupEnv.vbs(10, 1) (null): 0x80131505
+            Set qtApp % CreateObject("QuickTest.Application")
+                More qtApp things. Probably worth looking into and making sure I understand how it works.
+
+No luck looking within the UFT Help window, but I did find a very useful website:
+https://admhelp.microfocus.com/uft/en/14.00/AutomationObjectModel/QuickTest~Application.html
+
+qtApp - instance of CreateObject("QuickTest.Application")
+    CreateObject() - function native to VBScript
+        CreateObject(servername.typename, Optional location)
+            servername (QuickTest): The name of the application that provides the object
+            typename (Application): The type/class of the object
+            location (Omitted): Where to create the object
+    QuickTest.Application - The UFT application's object type. Used for running of scripts.
+
+qtApp.Test (QuickTest.Application.Test), Object - The Open Test or Business component
+    qtApp.Test.Run - Runs the Open test and creates results in the specified file or ALM path
+        Run(Optional ResultsOptions, Optional WaitOnReturn, Optional Parameters)
+            ResultsOptions (null): Determines how test results are processed (Location, Test name, etc.)
+            WaitOnReturn (True): Determines whether the Test.Run statement waits until end of run before continuing automation script
+            Parameters (Omitted): the parameters collection containing the values you want to pass to the test or component.
+            
+qtApp.Open (QuickTest.Application.Open), Method - Opens an existing test
+    Open(TestPath, Optional OpenInReadOnlyMode, Optional SaveCurrent)
+        TestPath (strAdvisorTest): Full path of the test to open
+        OpenInReadOnlyMode (True): Indicates whether to open the test in read-only mode
+        SaveCurrent (Omitted): Indicates whether to save changes for currently opened document before opening specified test.
+    
+I'm surprised I haven't done this yet: moving this to AutomatedTestAnalysis.txt
+
+    
+***********
+10-Oct-2018
+***********
+Today is the code review, but I'm not too worried.
+
+Seems to have gone pretty well, no one yelled at me.
+Anyway, back to testing.
+
+Progress was made, had new issues with 7.40.011, and most of the day was spent banging head against it.
+    But, got to meet the CTO and he helped set on the way to a solution
+Potential breakthrough with overnight testing:
+    Instead of having the Remote Desktop Connection on my own computer, I connected it through DUPESERVER, which is a Virtual Machine and always kept open through the server.
+Tonight's tests may have better (or, at the very least, workable) results
+
+
+***********
+11-Oct-2018
+***********
+Not great results from the overnight tests, going to AutomatedTestAnalysis
+
+Issues with ILCD, going to DupesTSInLotCancelDecom
+
+Paul asked me to take a look at the auto-generated email subject off-by-one issue in my downtime
+I suspect that Jenkins starts off the script and then immediately begins attempting to create the email.
+    As a result, it immediately sees and grabs the old version of the generictexts.properties file without waiting for it to be updated.
+    But if that were the case, why does it not immediately grab the .pdf from the prior test? Is it because the script deletes the old .pdf first thing?
+It turns out that there was a step out of place, "Inject Environment Variables", which actually more extracted them.
+    It was being done before the script had a chance to edit the file, so it was getting the data left over from the previous test.
+It is fixed now and running correctly, though
+It's nice to have an issue with a straightforward fix for a change.
+
+Been managing to get through the ILCD, with the odd change here and there, but on this last test it appears to have triggered an email halfway through the test?
+Oh, I still had a leftover auto-test queued up for 4:36 PM on the DEV01 box. I'm an idiot.
+
+Well, there's no more time to run manual tests today. I'll clean up and push to git.
+    On that note, I really need to start using the DupesCheckGitDeltas log again; I can't remember all the changes I've made since last push.
+I suppose "git status" helps a bit, though.
+
+
+***********
+12-Oct-2018
+***********
+Overnight results appear to be a bit better
+Working on ILCD.
+
+ILCD has been inconsistent and slow. I'm going to move over to 740011 for a bit.
+
+
+***********
+15-Oct-2018
+***********
+Came in and saw that testing from last night's (early this morning) 740011 run was caught on an error message I haven't seen before.
+Took a snapshot to show Paul, followed the prompt to print the further details to a text file in C:\
+
+Apparently what happened was indicative of a larger error. Something happened which held up a lot as open on Saturday's tests.
+As a result, none of the rest of the tests were able to Purge (a lot was open, which prevented it).
+    So, the tests from over this weekend are pretty much moot.
+After talking with some other members of the team, apparently the way we've been handling errors has been unsatisfactory
+    by just stopping and waiting until the next test, which just shuts down all the TIPS processes, we lose out on any info about that particular error.
+Paul says that another team member, the contractor Bhagy, has some code which should be able to handle errors better than we have been handling them
+
+One annoying bit which is demonstrated by this situation is how I can't seem to properly emulate the nighttime auto-runs during the day, no matter what I do.
+    That is, there are some errors which only seem to occur overnight, and all attempts to recreate them during the day have been in vain. 
+    
+I haven't been good about entering into logs today, but I added the repos and the abort / retry steps
+
+Additionally, I'm getting annoyingly inconsistent results from 7.40.011.
+    Without changing anything, I've gotten a full clear and two separate fail states on the same day.
+    I'll have to ask for help I guess.
+    
+I have remembered to commit to git, though. Let's try to do that now before I leave.
+    ... git bash is being very slow...
+    never mind, there it goes.
+    
+    
+***********
+16-Oct-2018
+***********
+Got in, there appear to be some interesting results from last night's tests.
+Also, I promise to take better notes today.
+
+Most of today was just banging my head against the last remaining test in 740011 
+    Everyone else was busy doing their own thing, so I was trying to find some consistency in how one of the tests was failing 
+I did add a way of circumventing the failing test if it is irrelevant, but I just want the go ahead if it is OK.
+
+Also, in the morning I created a new attempt to fix the nightly crashes by putting a buffer job out front.
+
+----------------------------------------------------------
+* * * * * * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ * * * * *  
+* * * * * * ..............................................
+ * * * * *  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+* * * * * * 
+ * * * * *  ..............................................
+* * * * * * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ * * * * *  
+* * * * * * ..............................................
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+..........................................................
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+..........................................................
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+..........................................................
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+----------------------------------------------------------
+
+          _     _   _____   ____   _____   _____     _    
+    /\   | \   / | |  ___| | __ | |_   _| |  ___|   / \   
+    \_|  |  \ /  | |  ___| | -- |   | |   | |      / /\\  
+         | |\_/| | | |___  | |\ \  _| |_  | |___  / ___ \ 
+         |_|   |_| |_____| |_| \_||_____| |_____||_|   |_|
+         
+.
+
+
+***********
+17-Oct-2018
+***********
+This morning I came in to an angry "HP Unified Functional Testing has stopped working" message.
+Let's go to check the console outputs and see what I can find.
+
+
+***********
+18-Oct-2018
+***********
+Cool, the result emails from last night's tests seem to be normal and non-crashed.
+Going to AutomatedTestAnalysis.txt
+
+Got down all the info from last night's test, but can't think of the solution immediately. 
+I'll open up DupesTS740011.txt and run a 740011 test while I look at the results from last night.
+
+I've been slowly working towards workable results on 740011
+the most annoying part is how long these tests take, when I really only care about the result from one part
+    but, I don't feel confident enough in my understanding of the structure of the test to take it apart and just test the one part.
+
+    
+***********
+19-Oct-2018
+***********
+Similarly promising results, and by "promising" I mostly just mean that they did not inundate me with despair when I saw them
+    which, historically, has been a lot to ask of the tests I've run.
+I'd like to try to make progress towards improving the email subjects with the test name
+    I'll see if I can get a setup on my own computer, and then run tests in the background.
+    Probably do a few on 740011 to see if anything has changed, and to check on one step which failed unexpectedly
+    Then I'll move to ILCD, I guess.
+    
+So the good news is I figured out the email subject update.
+The bad news is that the unexpected failure showed up again.
+I might stay on 740011 for a bit longer.
+
+Paul told me to find a way to access the print log after the test has been closed
+I found a location at D:\temp\QTPrintLog which appears to be what we're looking for
+When I get a chance, maybe on Monday, 
+
+Updated the EmailScrapperPoll.py to take an optional argument boolean indicating whether the program expects any emails
+    If not, then it skips the 10 minute wait and goes straight to the 1 minute one, to cut down on wait time.
+    
+
+***********
+22-Oct-2018
+***********
+Nice results from weekend's overnight testing, 9 total result emails from the three days, each with a .pdf
+    and thanks to the lovely email subject enhancement, I can see that each test had the proper 3 tests.
+So the results weren't as nice as I was hoping once I saw the emails, but they are consistent, which is better than otherwise.
+
+I'll run a test on 740011 to do a daily check-in.
+
+One thing I would like to accomplish is to be able to interact with the LogOutput on the D:\ drive on DEV06 and potentially add that to the result email attachments.
+    Of course, I will have to check in with Paul to see if this is the sort of thing deserves to be in every email.
+I asked Paul about it and he said that including the log in the email was unnecessary, and that having it end up in the results folder in C:\ was fine.
+Afterwards, he showed me an Excel sheet with a timetable for what I can expect to be doing for the rest of the year as far as main projects go.
+It was a bit intimidating to see it all scheduled, but I understand the purpose of having something like that and think that the rough deadlines are fair
+
+We've made what appears to be some progress in regards to 740011 by demonstrating that the recent lack of emails was not on the part of the software (we think)
+So, I've begun working directly with using SQL to fetch the sent emails in order to circumvent the email server 
+    which we suspect may be holding up the email delivery, and could potentially the root of the problem.
+Also I'm learning a bit of SQL, which is cool.
+
+I've been waiting for Paul to get out of a long meeting, so I've tried to put together the unexpected results from the most recent test as best as I can.
+
+
+***********
+23-Oct-2018
+***********
+As last time, received all expected results emails. DF and 740011 are the most proper, ILCD is missing a few steps.
+Today I want to work on getting the SQL script interaction up and running, which will potentially allow us to circumvent the issues with the email server.
+
+We suddenly started trying to massively upscale the sample size in an attempt to get around the incorrect dupe detection issues we've been having
+But, it ended up being more trouble than it was worth, so Paul had me scrap it and revert all the changes I'd made.
+So I only got partly through the implementation of the SQL checks.
+
+Pushing to git and getting box ready for overnight testing.
+
+
+***********
+24-Oct-2018
+***********
+First thing this morning was a code review that had gone completely under my radar
+Luckily, it wasn't about me, and I took the notes during it, so I guess I get brownie points or whatever
+
+Last night's tests all went through, although DualFormat crashed or something, with only 4 passes over 6 total cases.
+After I ran it again it full cleared, though, so I won't worry about it for now.
+What I do need to worry about is what to do with 740011 now, since we've thrown the "too-big-to-fail" option out the window.
+I'll probably be doing most of my work over there today, after I finish implementing the switch over to the SQL-based email check.
+
+The SQL Email check has been coded in, waiting on the run testing it out to finish.
+I need to think of a polite way to ask "How is this code possibly supposed to work the way you say it should".
+    I really don't think I can make too much more progress towards fixing the issue without a clearer understanding of what it's supposed to be doing and how it's supposed to be doing it
+What usually works is framing it a way such that they are doing you an extra little favor (as opposed to something that they either should have done or shouldn't need to do)
+    "Hey, I'm still having some trouble wrapping my head around this aspect of the test, could you help me walk through it? So, my first thought was..."
+As opposed to:
+    "Hey, I've been banging my head against the donked-up structure of this section and I've concluded that it makes no sense at all to do what it's trying to do, and here's why..."
+The former approach usually gets more willing cooperation and better results, in my experience
+
+I'd like to also work on a better solution for the handling of the QTPrintlog.txt because currently it is deleted at the beginning of each test
+    This works for most cases, but specifically when I run overnight, I only get to see the log of the last test, and not what happened during the others.
+    
+I also edited the SQL related batch files so that they stop outputting the info twice.
+    This may impact multiple tests, but I'll keep an eye out for it, and if any of the other tests fail relating to sql result comparison, I'll know how to fix it.
+        and knowing is half the battle
+    Preemptively, I've cut off the second half of all the baseline files I could think of.
+
+    
+***********
+25-Oct-2018
+***********
+Overnight test results were different. Seems as if Screen Manager failed, and that broke the first two tests.
+IpsEngine was open when I got in? Task bar is missing?
+The task bar missing might be problematic. Let's reset the box.
+
+
+***********
+29-Oct-2018
+***********
+Only one result email 
+Other than 740011 breaking because I had left excel open, results were the same as last time.
+
+Paul is on a sick day today, so I don't think I want to start reworking that 740011 test step yet, even though I have some ideas.
+I'll just be working on ILCD today I think.
+
+Spent the morning and some of the afternoon working on ILCD, and I think I've got it working now
+    All it needed was one line of code to get it to start in the right position so it could run the second lot properly.
+
+    
+***********
+30-Oct-2018
+***********
+Overnight tests were bad, appears to have crashed again, frozen.
+ended up refreshing the system
+going to run a couple of each test to make sure things still work.
+
+Got stuck trying to work through ILCD, trying to get it consistent and not crashing every other time
+
+
+***********
+31-Oct-2018
+***********
+Overnight tests crashed again
+I am going to go ahead and uninstall Microsoft Office, which could potentially free up a decent chunk of memory and help prevent further crashes.
+
+Managed to get full clears with each of the tests 
+    which should show that the tests themselves have not broken, and that it is the machines which have been problematic
+Now I'll look back into ILCD and pick up where I left off.
+
+I've gotten ILCD to a point where it is fairly consistent in its successes.
+The last thing I was testing was the Screen Manager startup, which doesn't even have to do with ILCD itself
+So I need to figure out what I should be doing next
+    Paul is out for the rest of today, so I'll have to pick something myself.
+Each of the three tests are at relatively stable states
+    Either they are working well most of the time and only failing in rarer cases independent of the test itself
+        DualFormat and ILCD
+    Or I can't continue to make progress towards fixes without the go-ahead from some other people
+        740011
+I guess I could dip into the next test in the suite, which is 8.1.7, according to the Dupes Document.
+
+I've been looking around and I can't find the job script for 8.1.7 anywhere, 
+    I've checked the DEV01's C:\ drive, the enggit base repository, looking in all of PDQA now
+Cool, found it in an obscure subdirectory
+Loading it in and jumping back to DupesTS817.txt
+
+Side note: it would also probably be worthwhile to make it so that the result email subject lines properly acknowledge when they have no .pdf attached.
+
+Before I run what might be the last run of the day, I'll do a quick push to git.
+
+
+***********
+02-Nov-2018
+***********
+Working towards finalizing the 740011 and 817 tests so that they no longer try to find matches in completely random set
+
+Paul has suggested that I get ready to move my completed tests over to a 64-bit machine.
+So I'll be spending some time putting together a condensed group of the necessary files for my completed tests to run on the other box.
+
+I think I have everything I need, but I'm not sure how to tell?
+
+
+***********
+05-Nov-2018
+***********
+Alex was in today so I was able to ask him about the 2ndSafeguard potentially bugging out. 
+He suggested that I run one of the older lots, either 7.40.011 or 8.1.7, and stop it right before the second lot is run.
+
+First, I'll get all of the weekend's nightly run results together.
+
+We're kinda doing a thing where we scrap what we've been working on for fixing those two runs to try something different again.
+
+
+***********
+06-Nov-2018
+***********
+On DEV06 there was an error message saying that there were no SPT numbers available.
+    If I had to guess I'd say there are more things we need to adjust for the larger data sets.
+    
+    
+***********
+07-Nov-2018
+***********
+Paul's been having me rework the test to have tons of items so that it can more easily catch duplicates.
+Now the runs take forever and I have more downtime than ever
+I've written a Python>Batch>SQL thing that grabs all of the items from recently run lots and puts them into text files, but now I'm bored.
+I guess I could make it publishable, with a configuration file of sorts with Server name, user name, and password so that it can be easily modified.
+However, there is a meeting at 8:30 today, so I'll wait until after that. In the meantime, I'll do an AutomatedTestAnalysis entry.
+
+
+***********
+08-Nov-2018
+***********
+Paul and Alex and I think Shrutep are all out today. I'll mostly be out on my own.
+
+Running the super long tests on 7.40.011 probably all day
+
+Code review for Brendan today, I'll be taking notes.
+Not a very noteworthy event, the test ran smoothly and there were no complaints about the test structure.
+
+The DupeServer broke around 1:00 and since everyone is out today I had to spend like 3 hours trying to figure out how to properly boot it back up again
+    I had to do some google-fu and figure out how to open the SQL server back up to remote access even though I couldn't even access it locally.
+    On the plus side the more I fix broken parts of our network the better I gradually come to understand it.
+    
+So it's like 4:00 right now and there's no way I'll have time for a full run.
+
+
+***********
+09-Nov-2018
+***********
+Paul and Alex are out again today, but I've got a pretty clear idea of what I'll be working on
+Last night's tests were bad again, but I expected that since I didn't get a chance to clean up the latest changes
+
+I would really love to be able to make the set sizes smaller, since that would make the tests so much faster
+    That'll be the first thing I ask about on Monday.
+    
+    
+***********
+12-Nov-2018
+***********
+Going to be asking about the results I got at the end of last week.
+
+Just kidding, Paul seemed busy all day
+
+I did manage to make some progress towards resolving the last test, I think
+
+
+***********
+13-Nov-2018
+***********
+Overnight tests went well. I'll work again on that one tests step.
+
+
+***********
+14-Nov-2018
+***********
+Not so well on the overnight tests, but I'm making progress.
+
+I've noticed something which Paul and Alex say could be a bug, which we should probably show to Vlad.
+I put together a mini test which should get the system into a state where we can look at the issue better.
+
+Vlad doesn't get back until Friday, so Paul suggested I work on the next test case instead of sitting around until then
+ok i guess
+
+It looks like the next test would be 8.2.11
+    Because of the way it appears to be set up, I think it could potentially run into some of the same issues as the previous two.
+I'll try setting it up and if it seems to be the same as 740011 and 817 I'll jump to the next, 830_1stSafeguard
+
+Yeah, looking at the main script it appears to be very similar, using the same provisioning files, but differently named Advisor files.
+I'll try running without looking into those advisor files first.
+Also, the job called for a "OlderAdvisorTest_8211.vbs" instead of "OlderAdvisorTest_821.vbs". 
+    I changed the script, not the filename.
+    
+[Moving this to its own log file, "DupesTS821.txt"]
+
+
+***********
+15-Nov-2018
+***********
+I'll be working on getting 8.2.11 in a functional state today
+
+Been making good progress with 8.2.11
+I'd like to take a bit of a detour and try running the 7.40.011 bug demo script to make sure it still works for tomorrow
+
+
+***********
+16-Nov-2018
+***********
+Decided to start today with a git commit instead of waiting until the end of the day, mostly because I haven't made one in a while
+    Although, it seems like it might be better to start every day with a commit than to end the day with one.
+    
+Vlad is in today, so I will be showing him the issue once I make sure the demo still works
+
+I've ensured the demo still works, I've set up a small outline to help display what's going on to Vlad when he gets here
+    He's currently pretty busy, so I'll have the mini-presentation at the ready and work on other things until he gets over
+    
+As for what I will be working on, I'm fairly certain that 8.2.11 has the same issue as 7.40.011 and 8.1.7
+    It likely has additional unique issues, as well
+However, now that it has been set up to run end to end without crashing (mostly) I'm gonna go ahead and set up the next test
+According to the Google Doc, the next test to work on would be 830_1stSafeguard
+Let's make a log file and get started
+
+Creating "DupesTS830FirstSG.txt"
+
+Made a good bit chunk of progress in documenting and wrapping my head around the new files in this test (coffee helped)
+I've got some new insight on the Error854 that I've been running into, though, so I might work on that first come Monday morning.
+
+
+***********
+19-Nov-2018
+***********
+Let's work on the Error854 thing, see what headway I can make. 
+But first, I'll do the automated test analysis.
+
+Been working on it, making some progress, but there was a power outage for a few minutes which threw the VM Server out of whack
+    set me back a couple of hours, which was more than a little annoying for sure.
+I've got a new idea for fixing Error854 from Paul: after running the good lot, I would use SQL to grab the used numbers and slap them onto the beginning of the second lot.
+    It would mean a bit of extra coding, but I'd definitely be willing to give it a shot.
+        and honestly, it's not like I haven't already done more than just a little bit of extra coding for this issue...
+I'll give it a shot after I finish trying my current approach (Even Smaller Import File)
+
+The attempt did not finish before I had to leave; I'll continue work on it tomorrow.
+
+
+***********
+20-Nov-2018
+***********
+Checking the results from the run I left at the end of the day, it seems like it might have gone around the error message
+I want to do another run to watch it more closely and make sure
+First, I'll review last night's results, then I'll do a run and continue working on Error854.
+
+I got a very promising result from 7.40.011, started confirming 8.1.7, but it turns out we have an early dismissal today
+    I need to start reading emails more often...
+I set up 8.2.11 to run nightly, and I have good hopes for their successes
+
+
+***********
+27-Nov-2018
+***********
+I was out sick yesterday, so I've got like 5(?) nights' worth of tests to look through...
+Let's crack 'em open
+
+I believe I left off working on 8.1.7 in the 8.2.11 notes
+Let's resume
+
+Made slow-ish progress today, I've managed to get a full clear in 8.1.7, but I'm not horribly confident in it
+I won't have time to run any more tests, so I've rearranged the timing of the nightly runs
+
+The new schedule:
+22:00 - Dual Format
+23:00 - In Lot Cancel Decom
+00:00 - 7.40.011
+02:00 - 8.1.7
+04:00 - 8.2.11
+
+
+***********
+28-Nov-2018
+***********
+Something weird happened with last night's tests
+I think it would be best to just not dwell on it too much and just assume I did something wrong setup-wise
+
+Suddenly I'm getting recurring issues with the PIM import.
+
+It was using some wrong files, but I haven't quite gotten it to work yet. I'll continue working tomorrow.
+
+
+***********
+29-Nov-2018
+***********
+Going to continue working on the 8.2.11 PIM Import issue today
+First I'll look at last night's tests.
+
+Made some good progress towards fixing 8.2.11, but I hit a wall towards the end of today.
+Alex said the guy who could most likely best help was out, so I should work on something else for the remainder of the day.
+What would the next thing be?
+
+I suppose it would be back to 8.3.0 1st Safeguard?
+
+Finished going through all of the new files for the latests test, just need to finish asking people about them.
+
+
+***********
+30-Nov-2018
+***********
+I'd like to ask about the 8.2.11 blank sMsg today
+I've run 8.2.11 to get a fresh set of results to show to whomever Alex brings over when I talk to him
+I'll work on 8.3.0 until I see Alex
+
+Unfortunately Alex was busy pretty much all day so I didn't get a chance to ask him anything
+I did get some good progress on 8.3.0, though
+I have a question to ask Paul on Monday, and I don't think I'll make much more progress with this until then
+I haven't posted to git in a while, so I'll get that figured out for the rest of today.
+
+
+***********
+03-Dec-2018
+***********
+Machine is very slow. Resetting.
+
+Important realization (which I luckily made before wasting someone else's time): the issue with 8.2.11 was that lot 3's UFT script did not have the correct IP address
+
+Thanks to that, I was able to finish up work on 8.2.11 and get consistent full clears.
+I've put the clean .pdfs into the PDQA folder, and I will now move on to 8.3.0.
+
+
+***********
+04-Dec-2018
+***********
+"Host Process for Windows Tasks has stopped working"
+Looks like overnight tests bombed out for some reason.
+
+Couldn't find a way to diagnose the broken tests since the log is not saved until the test is completed.
+Moving back to 8.3.0
+
+Made some good progress towards 8.3.0 full runs, but it is a gigantic test. 
+I managed to get partway through earlier, and it had taken over an hour with ~120 test cases.
+I got dumped out with not enough time left in the day to do much else, unfortunately
+We'll try again tomorrow, I suppose
+
+
+***********
+05-Dec-2018
+***********
+Bad car crash on I-287 this morning, so I got in a little late
+Let's start with review of last night's tests
+
+Full clears from every test last night, feels good
+Moving on to 8.3.0
+
+After a very exciting two hour run of only part of 8.3.0, I am getting a good idea of how much fun this test will be.
+
+
+***********
+06-Dec-2018
+***********
+Talked to Paul about the length of the test, he said he was aware of it, and that we may want to get me another box
+I get the impression that I should be more proactive than usual in attempting to acquire this resource
+
+
+***********
+07-Dec-2018
+***********
+Machine is very slow, none of last night's tests went through
+Going to reset DEV01
+
+
+***********
+10-Dec-2018
+***********
+Got in: RD Clip monitor has stopped working (DEV01)
+Didn't really feel like taking notes on Friday, I'll try better today
+
+Setting up the new machine and server is proving to be annoying. I've decided that I want to have 8.3.0 by itself on AUTO01
+What I should do first is make a git commit and then connect AUTO01's C:\ drive to my git repo
+Checking the .txt I made to make sure I'm not doing anything wrong
+
+The continued attempts at establishing AUTO01 continue to frustrate, and Paul is baffled.
+I've decided to jump ahead to Post Lot Quarantine Decom for now.
+Creating DupesTSPostLotQuarantineCancel.txt
+
+Made very good progress with PLQC today, turns out it was only 20 minutes long with 26-ish test cases
+    it's nice to have a short and straightforward test for a change of pace
+    
+    
+***********
+11-Dec-2018
+***********
+I threw PLQD onto the end of last night's procedures. If all goes well, I might have to jump back onto 8.3.0
+
+Tests went well
+
+I talked with Paul about how, since I got PLQD working in short time, the only remaining job is now 8.3.0 again.
+I said I probably didn't even need the additional box any more, since I won't be needing to do any parallel testing
+He said that was fine. Also I may need to find something to keep myself busy while the two hour long tests run.
+Paul suggested picking up the Library project again, but Brandon said he had that pretty much squared away.
+
+May as well hop back on to DupeTS830FirstSG.txt and fire up a run before I spend time figuring out how to spend my time.
+
+Paul gave me another thing to work on: there's a Groovy (Java-adjacent) script that needs some maintenance
+He wants it to be able to sort out builds based on recency and test location (in Jenkins structure)
+
+
+***********
+12-Dec-2018
+***********
+Going to be spending more time working on 8.3.0 and Groovy_Script in between.
+
+
+***********
+13-Dec-2018
+***********
+Same as yesterday, working on 8.3.0 and Groovy_Script
+
+
+***********
+14-Dec-2018
+***********
+Came in and saw error messages on DEV01:
+"Host process Has Failed"
+"Screen Manager is Already Running"
+Clicked through them and it looks like they tripped up Post Lot Quarantine Decom
+
+Anyway, I've been making good progress with both 8.3.0 and Groovy_Script, so I'll continue to work on those today
+
+Finished up Groovy_Script work and I figure I'm at least 2/3 of the way through 8.3.0
+
+
+***********
+17-Dec-2018
+***********
+Another "Host Process for Windows Tasks has stopped working" message when I got in.
+Didn't quite figure out what exactly caused what happened, but I took note of what I could find to look into it later
+
+Resuming work on 8.3.0
+
+
+***********
+18-Dec-2018
+***********
+No errors on screen when returning, looks like last night's tests may have gone well
+Some weird thing happened to 8.2.11, but I wasn't able to isolate it.
+
+Going to be working on putting together the parts of 8.3.0 today.
+
+8.3.0 runs are coming to a nice conclusion and I'd like to restructure the overnight tests to accommodate for 8.3.0
+Current Spacing:
+Dual Format:    H 22 * * *  (1 hour space)
+ILCD:           H 23 * * *  (1 hour space)
+7.40.011:       H 00 * * *  (2 hour space)
+8.1.7:          H 02 * * *  (2 hour space)
+8.2.11:         H 04 * * *  (3 hour space)
+PLQD:           H 07 * * *
+
+8.3.0 is looking to have an approximate 1 hour run time, so I'll give it the 2 hour window the other 1 hour tests have.
+Also, I don't know why 8.2.11 has 3 hours, but I'll trim that down.
+I would like to put it between 8.2.11 and PLQD, since that matches the recommended procedure outlined in the Google Doc.
+Let's try starting the testing at 8:00 PM (20:00)
+
+Planned Spacing:
+Dual Format:    H 20 * * *  (1 hour space)
+ILCD:           H 21 * * *  (1 hour space)
+7.40.011:       H 22 * * *  (2 hour space)
+8.1.7:          H 00 * * *  (2 hour space)
+8.2.11:         H 02 * * *  (2 hour space)
+8.3.0:          H 04 * * *  (2 hour space)
+PLQD:           H 06 * * *
+
+Let's give that a shot and see how it works out over the next few days.
+
+Wasn't able to wrap up 8.3.0 by the end of today, so I've disabled its periodic runs
+However, when it is ready, there will be a nice available slot for it, and reactivation should be as simple as ticking the box.
+
+
+***********
+19-Dec-2018
+***********
+On schedule for today:
+    Do Automated Test Analysis
+    Continue troubleshooting the last issue of 8.3.0
+        potentially prepare a demo for Vlad to help out
+    check out hloom.com
+
+    
+***********
+21-Dec-2018
+***********
+Yesterday's results were not saved. my computer shut itself off overnight
+Basically: After resetting the box again, tests were cooperating much better, continued to work on 8.3.0
+Made a bit of progress, but decided that something weird was indeed going on.
+Day was cut short by the luncheon
+
+Today I will put together a demonstration for the remaining issue on 8.3.0 to show to whoever can help
+
+
+***********
+26-Dec-2018
+***********
+Once again, preparing the demonstration
+
+I'm noticing something else which may be the cause of the issue, I'd like to look into it further tomorrow
+
+
+***********
+27-Dec-2018
+***********
+Today, I'll try out my double purge idea
+
+With Alex's help, I was able to put together a slightly modified test procedure where the second purge is after the ProvisionNew steps.
+After tweaking the ProvisionUsed data, which had been pointing to some of the ProvisionNew data, the modified A2 test completed successfully
+I've queued up a full test, but I won't be able to get the full results until tomorrow morning.
+I'll check on it first thing tomorrow morning.
+
+
+***********
+28-Dec-2018
+***********
+Test did not complete overnight, but I'm confident that I will be able to finish it up today.
+
+I managed to get a full clear once, but after that various things started falling apart, and I couldn't tie down the reasons.
+Hopefully this won't mess up the tests over the weekend too badly.
+
+
+***********
+31-Dec-2018
+***********
+Tests went surprisingly well today
+
+Seeing as how this is my last day here, I will spend most of today cleaning everything up and letting Alex know where everything is

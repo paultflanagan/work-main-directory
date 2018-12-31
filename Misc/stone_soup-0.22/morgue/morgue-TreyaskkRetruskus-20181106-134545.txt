@@ -1,0 +1,134 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+0 Treyaskk Retruskus the Skirmisher (level 1, -1/18 HPs)
+             Began as a Demonspawn Abyssal Knight on Nov 6, 2018.
+             Was a Follower of Lugonu.
+             Slain by a white imp (2 damage)
+             ... on level 1 of the Abyss.
+             The game lasted 00:00:47 (152 turns).
+
+Treyaskk Retruskus the Skirmisher (DsAK)             Turns: 152, Time: 00:00:48
+
+Health: -1/18      AC:  3    Str: 12    XL:     1   Next: 0%
+Magic:  2/2        EV: 11    Int: 13    God:    Lugonu [*.....]
+Gold:   12         SH:  0    Dex: 12    Spells: 0/0 levels left
+
+rFire    . . .     SeeInvis .   a - +1 mace
+rCold    . . .     Gourm    .   (no shield)
+rNeg     . . .     Faith    .   b - +0 leather armour
+rPois    .         Spirit   .   (no helmet)
+rElec    .         Reflect  .   (no cloak)
+rCorr    .         Harm     .   (no gloves)
+MR       .....                  (no boots)
+Stlth    +.........             (no amulet)
+HPRegen  0.06/turn              (no ring)
+MPRegen  0.08/turn              (no ring)
+
+@: no status effects
+A: no striking features
+a: Depart the Abyss, Renounce Religion
+
+
+You were on level 1 of the Abyss.
+You worshipped Lugonu.
+Lugonu was aware of your devotion.
+You were not hungry.
+
+You visited 0 branches of the dungeon, and saw 0 of its levels.
+You visited the Abyss 1 time.
+
+You collected 12 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +1 mace (weapon)
+Armour
+ b - a +0 leather armour (worn)
+ d - a +0 plate armour
+Comestibles
+ c - a ration
+
+
+   Skills:
+ + Level 3.0 Fighting
+ + Level 1.7 Maces & Flails
+ + Level 1.7 Armour
+ + Level 0.8 Dodging
+ + Level 2.4 Invocations
+
+
+You couldn't memorise any spells.
+You didn't know any spells.
+Your spell library was empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (0/15)            
+
+Altars:
+
+Message History
+
+The white imp gestures at you.
+The puff of frost hits you!
+The white imp hits you but does no damage.
+You hit the white imp.
+The white imp is heavily wounded.
+The white imp hits you but does no damage.
+You closely miss the white imp.
+The white imp is heavily wounded.
+The white imp closely misses you.
+You closely miss the white imp.
+The white imp is heavily wounded.
+The white imp gestures at you.
+The puff of frost hits you!
+Ouch! That really hurt!
+* * * LOW HITPOINT WARNING * * *
+The white imp barely misses you.
+You hit the white imp but do no damage.
+The white imp is heavily wounded.
+The white imp hits you.
+You die...
+
+    ..#    ˜˜˜˜#  #
+    ..#.   ˜ ˜˜. .#
+     #˜˜####˜#. # #
+    .#˜˜.˜˜˜ ... ..
+    #.˜?˜˜?˜˜˜...##
+    ##˜˜˜˜˜#. ....#
+     .. #˜˜... #
+    #..##.#...# ##  #
+      # .#. #.##.##.#.#
+#.    #....##...#.....#
+ #..## #...#..#.@5#
+ #....#.#..##..#..#
+#   ##....# #..##..#
+.    ..# ##..... .##
+...## ...######. ..
+....#...       . ...
+# ##... #        ..##
+#.## .##         ...
+#....##
+.... .
+#.. .##
+
+
+You could see a white imp.
+
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | Abyss:1  | Treyaskk Retruskus the Demonspawn Abyssal Knight began the
+                  | quest for the Orb.
+     0 | Abyss:1  | Reached XP level 1. HP: 18/18 MP: 2/2
+   152 | Abyss:1  | Slain by a white imp
+
+Action                   || total
+-------------------------++-------
+Melee: Mace              ||     7
+Armor: Leather armour    ||     3
+Dodge: Dodged            ||     3
+

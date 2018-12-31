@@ -1,0 +1,136 @@
+Update on project goals:
+	Ideal:		something that can automatically run through new and old code and interpret the comment structures and formats we've been writing and using.
+	Realistic:	a program that we will have to go through updating old code, and will write new code comments with its functionalities and limitations in mind.
+				as long as it works out of the box (i.e. isn't broken code) it is a viable option
+					beyond that, it's just whichever is easiest / simplest to implement.
+
+Software to Look into (support VBScript):
+
+
+					Diagnosis:
+Doxygen		(requires plugin)	Difficult to setup
+Document! X				Installing
+Natural Docs	(partial(?))		
+ROBODoc					Difficult to setup
+VSdocman				Non-free
+
+Doxygen:
+
+	VBFilter:
+		Works by transforming VB into C++ like syntax so it can be read by Doxygen
+		Necessary files: sh.exe, gawk.exe, tee.exe, vbfilter.zip (some located on website)
+		Once the files are installed, invoke the filter by including the tag:
+			INPUT_FILTER = drive:/path/to/unxtools/vbfilter.bat drive:\path\to\unxtools
+				ex: C:\Users\user\directory\vbfilter.bat C:\Users\user\directory
+
+			Missing unix commands so far: none
+			look for them on google 
+
+			All missing commands have been located and added.
+
+			VBFilter has been successfully(?) setup
+
+	Steps for creating docs:
+		doxygen -g <config-file>
+		//If filenames include spaces, wrap in double quotes ("C:/Program Files/")
+			EXTENSION_MAPPING	=	qfl=C++	//might not be necessary, "Any other extension is parsed as if it is a C/C++ file."
+			INPUT			=	[source directory]
+			FILE_PATTERNS		=	*.c \
+							...
+							*.qfl
+			INPUT_FILTER		=	drive:/path/to/unxtools/vbfilter.bat drive:\path\to\unxtools
+			OUTPUT			=	[output location]
+
+		current issue: does not recognize .qfl as a file extension (even though I thought I was telling it that it was?)
+		to try: adding the direct file name (the .qfl) to the INPUT config value
+
+		ok nevermind it works now, somehow
+
+		Taken from doxygen_manual.chm, section "Doxygen usage":
+			To generate a manual for your project you typically need to follow these steps:
+
+			You document your source code with special documentation blocks (see section Special comment blocks).
+			You generate a configuration file (see section Configuration) by calling doxygen with the -g option:
+				doxygen -g <config_file>
+			You edit the configuration file so it matches your project. In the configuration file you can specify the input files and a lot of optional information.
+			You let doxygen generate the documentation, based on the settings in the configuration file:
+				doxygen <config_file>
+
+	Rules for composing comment sections to be parsed by Doxygen:
+	(in doxygen_manual.chm, included in file download from website)
+
+
+	According to the VBFilter readme, I have to edit the code in a VB-Editor, not in a text editor like I've been using.
+
+	I've been looking around for a good vb-editor, but not too much luck so far. 
+	I think the issue is the file extension: the VB editors don't recognize *.qfl as a VBScript
+	I'm pretty sure that the code is just treated as VBS, but is actually just a subclass of it. I may need a more specialized Editor
+		So, basically, the Doxygen makes Docs from C++, the VBFilter makes C++-parsable code from VBScript code, and I need something which interprets a Quicktest Function Library (.qfl) file as VBscript
+		It's like I need to speak in German, but all I have are a Spanish-German and English-Spanish dictionaries
+	There is an editor I've seen on some boxes called HP Unified Functional Testing, but it isn't on my computer.
+		The website for downloading it seems a bit involved, e.g. asking for your company, so I'll ask Paul P.
+
+
+	I feel I may be reaching the end of my usefulness in this, and that maybe I should switch on to the next program to try out, since what I am doing seems like it would be easier if I had more experience knowledge of VBscript.
+	
+	Paul P. says to continue working until I hit a wall again, at which point I may need to try one of the other DocGen programs
+
+	The reason we want Doxygen is that it's free and it's trusted
+
+
+
+VSdocman
+	Seems like it's a paid program. Moving on...
+
+ROBODoc
+	Off the bat seems like it will be much easier to implement, like I think I will have more headway with this in a fourth of the time.
+		Not that Trying Doxygen wasn't a fun exercise, it's just that it wasn't producing results 
+	(n.b. these files aren't readable in vanilla Notepad, use another reader, e.g. Notepad++)
+	Important data from README:
+		build + install : INSTALL
+		usage : Docs/manual.html
+		example headers : Headers/
+		example source code : Source/
+	""	""	INSTALL:
+		shell command './configure && make && make install' should auto configure, build, and install
+			my error: no C compiler (I'll download one real quick) (Use MinGW)
+				already I gotta say this seems like a really well made program (Has extensive error logs!!)
+			now I also needed a make command from one of the GCC downloads, through MinGW
+			and also Perl I guess, for the automake command.
+				this is, if not frustrating, a bit annoying, since I have no idea which components I'm missing before I start a new software like this
+				although I suppose it is to be expected: this is a new machine and I haven't taken time to load any important base software
+
+		So currently, I think (maybe) that the issue might be that I'm using the 64bit version of MinGW but the automake installers are calling for a 32bit version
+		That is, one of the programs calls to /mingw/bin/autom4te-2.68, but what I have is /mingw64/bin/autom4te-2.68
+			again, I'm not sure, but it's my best guess at the moment.
+		And I'm sure that just renaming the directory to be mingw without the 64 would be a fun way to fix it, I'll bet that it would bite me later on
+		Although, possibly, I just need an updated version of autoconf?
+		
+		Hitting another wall again, let's see if there's one that doesn't require oodles of setup
+
+Document! X
+	Seems like it might require a paid version in order to make full access, but I'll see what I can do w/ trial
+	open doc X when I get back to it
+
+Natural Docs
+	"Free and Open Source" - already off to a good start
+	According to the website, adding another compatible language is as simple as editing a .txt file
+	I'll go ahead and download it, see if it's as easy as it claims to be
+	
+
+
+Potential New Lead: Random Online 	
+	I googled ""qtp" documentation generator" and found a post by a guy from 2011 who apparently tried to create his own doc-gen for QTP
+	I've downloaded the ZIP file. I'll read on and see if I can get this to work
+	Considering it was designed specifically for the environment we're using, I am a bit more hopeful for this one
+	However, the guy only has one total post on the forum.
+		This could either be good, meaning the program works flawlessly and no one has ever needed additional help with it
+		(or it's just a garbage program.)
+	Looking at it at a glance, it seems like it's a lot of individual .vbs and .qfl files that I would have to pick out and run, as opposed to something usable through command prompt / shell, which could be difficult for me, as someone not too familiar with UFT and QTP
+
+
+
+
+
+
+

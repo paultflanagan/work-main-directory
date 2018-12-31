@@ -1,0 +1,240 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+270 Helmie the Cudgeler (level 6, 0/38 HPs)
+             Began as a Gargoyle Gladiator on Dec 20, 2018.
+             Slain by an ogre
+             ... wielding a +0 giant club
+              (27 damage)
+             ... on level 4 of the Dungeon.
+             The game lasted 00:06:36 (1970 turns).
+
+Helmie the Cudgeler (Gargoyle Gladiator)            Turns: 1970, Time: 00:06:37
+
+Health: 0/38       AC: 11    Str: 18    XL:     6   Next: 22%
+Magic:  6/6        EV: 10    Int:  8    God:    
+Gold:   152        SH:  0    Dex: 13    Spells: 5/5 levels left
+
+rFire    . . .     SeeInvis .   x - +1 whip (elec)
+rCold    . . .     Gourm    .   (no shield)
+rNeg     + . .     Faith    .   i - +0 scale mail
+rPois    8         Spirit   .   c - +0 helmet
+rElec    +         Reflect  .   (no cloak)
+rCorr    +         Harm     .   (no gloves)
+MR       .....                  (no boots)
+Stlth    ..........             (no amulet)
+HPRegen  0.12/turn              v - ring of resist corrosion
+MPRegen  0.10/turn              (no ring)
+
+@: no status effects
+A: negative energy resistance 1, electricity resistance, unbreathing,
+petrification resistance, rot immunity, AC +4
+a: no special abilities
+
+
+You were on level 4 of the Dungeon.
+You were not hungry.
+
+You visited 1 branch of the dungeon, and saw 3 of its levels.
+
+You collected 152 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +0 flail
+ x - a +1 whip of electrocution (weapon)
+Missiles
+ d - 3 throwing nets (quivered)
+ e - 24 arrows
+Armour
+ b - a +0 leather armour
+ c - a +0 helmet (worn)
+ i - a +0 scale mail (worn)
+Jewellery
+ v - a ring of resist corrosion (left hand)
+Wands
+ q - a wand of acid (6)
+Scrolls
+ k - 3 scrolls of fog {unknown}
+ l - a scroll of remove curse {unknown}
+ o - a scroll of identify {unknown}
+ r - 2 scrolls of teleportation {unknown}
+ y - a scroll of blinking {unknown}
+ z - a scroll of fear {unknown}
+Potions
+ g - a potion of degeneration {unknown}
+ h - a potion of flight {unknown}
+ j - a potion of berserk rage {unknown}
+ m - a potion of agility {unknown}
+ p - 3 potions of curing {unknown}
+ s - a potion of invisibility {unknown}
+ t - a potion of brilliance {unknown}
+ u - 2 potions of magic {unknown}
+ w - a potion of heal wounds {unknown}
+Comestibles
+ f - 10 rations
+ n - 12 chunks of flesh
+
+
+   Skills:
+ + Level 4.1 Fighting
+ * Level 5.7 Maces & Flails
+ - Level 1.8 Throwing
+ - Level 2.6 Dodging
+
+
+You had 5 spell levels left.
+You didn't know any spells.
+Your spell library was empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (2/15)            
+
+Altars:
+The Shining One
+
+
+Innate Abilities, Weirdness & Mutations
+
+You are resistant to torment.
+Your stone body is resilient. (AC +4)
+You are immune to poison.
+You resist negative energy. (rN+)
+You are resistant to electric shocks. (rElec)
+You can survive without breathing.
+You are immune to petrification.
+You are immune to rotting.
+
+
+Message History
+
+You miss the leopard gecko.
+The leopard gecko bites you but does no damage.
+You barely miss the leopard gecko.
+An iguana comes into view.
+The leopard gecko barely misses you.
+The iguana hisses angrily.
+You hit the leopard gecko but do no damage.
+The leopard gecko bites you but does no damage.
+Some of the chunks of flesh in your inventory have rotted away.
+You miss the leopard gecko.
+The leopard gecko bites you but does no damage.
+You closely miss the leopard gecko. The leopard gecko barely misses you.
+The leopard gecko bites you but does no damage.
+The leopard gecko misses you.
+Number of times to repeat, then command key: 
+You must enter the number of times for the command to repeat.
+The leopard gecko closely misses you.
+The ogre hits you with a giant club!!
+Ouch! That really hurt!
+You die...
+
+  #.........................#
+  #.#........##..............
+###.#.........#.........#...#
+#.......................#....
+   #.>.......>..........# ...
+   #....................# ...
+   #...........l........#  ..
+   #..................#......
+   #...........>...........
+   #........lO....#.##.#..##
+   #........@.....#.# .#..#
+   #..............#.. .#
+  ##.........###......
+  #..........# #.##....
+ ##.#........# #.# ...
+ ...#.###[.###  $#  ..
+###....#..####
+  #..#....)..#
+  #.##.#####.####...
+  #.#..#   #........
+  #.#.     #######.#
+
+
+You could see an ogre, an iguana and a leopard gecko.
+
+Vanquished Creatures
+  A phantom (D:4)
+  Jessica (D:2)
+  Terence (D:2)
+  A worker ant (D:4)
+  3 gnolls (D:2)
+  3 adders (D:2)
+  2 worms (D:2)
+  A leopard gecko (D:2)
+  2 orcs (D:4)
+  A ball python (D:2)
+  4 giant cockroaches
+  2 goblins (D:2)
+  2 hobgoblins (D:2)
+  4 jackals (D:4)
+  7 kobolds
+  4 bats
+  8 frilled lizards
+  5 rats (D:2)
+52 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | Helmie the Gargoyle Gladiator began the quest for the Orb.
+     0 | D:1      | Reached XP level 1. HP: 12/12 MP: 1/1
+     2 | D:1      | Noticed an elf
+     4 | D:1      | Noticed a halfling
+     6 | D:1      | Noticed a troll
+     6 | D:1      | Noticed a naga
+     8 | D:1      | Noticed an octopode
+     8 | D:1      | Noticed a gargoyle
+    10 | D:1      | Noticed an ogre
+    10 | D:1      | Noticed a merfolk
+    12 | D:1      | Noticed a formicid
+    14 | D:1      | Noticed a demigod
+    14 | D:1      | Noticed a vine stalker
+    16 | D:1      | Noticed a human
+    16 | D:1      | Noticed a felid
+    18 | D:1      | Noticed a minotaur
+    18 | D:1      | Noticed a demonspawn
+    20 | D:1      | Noticed a ghoul
+    20 | D:1      | Noticed a centaur
+    22 | D:1      | Noticed a tengu
+    24 | D:1      | Noticed a spriggan
+    24 | D:1      | Noticed a vampire
+    26 | D:1      | Noticed a dwarf
+    26 | D:1      | Noticed a draconian
+   306 | D:1      | Reached XP level 2. HP: 17/17 MP: 2/2
+   888 | D:2      | Found a glowing golden altar of the Shining One.
+   912 | D:2      | Reached XP level 3. HP: 15/22 MP: 3/3
+   984 | D:2      | Reached skill level 4 in Maces & Flails
+   992 | D:2      | Reached XP level 4. HP: 5/28 MP: 4/4
+  1247 | D:2      | Noticed Terence
+  1254 | D:2      | Killed Terence
+  1372 | D:2      | Noticed Jessica
+  1383 | D:2      | Killed Jessica
+  1383 | D:2      | Reached XP level 5. HP: 15/32 MP: 5/5
+  1805 | D:2      | You fall through a shaft for 2 floors!
+  1820 | D:4      | Reached skill level 5 in Maces & Flails
+  1882 | D:4      | Noticed a phantom
+  1927 | D:4      | Killed a phantom
+  1927 | D:4      | Reached XP level 6. HP: 22/38 MP: 6/6
+  1970 | D:4      | Slain by an ogre
+
+Skill      XL: |  1  2  3  4  5 |
+---------------+----------------+-----
+Maces & Flails |        4     5 |  5.7
+Fighting       |        3     4 |  4.1
+Throwing       |                |  1.8
+Dodging        |                |  2.6
+
+Action                   |  1- 3 |  4- 6 || total
+-------------------------+-------+-------++-------
+Melee: Flail             |    81 |    80 ||   161
+       Whip              |       |    23 ||    23
+Evoke: Wand              |     1 |       ||     1
+  Eat: Chunk             |       |     4 ||     4
+Armor: Leather armour    |    39 |     1 ||    40
+       Scale mail        |       |    48 ||    48
+Dodge: Dodged            |    72 |    48 ||   120
+

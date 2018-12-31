@@ -1,0 +1,240 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+917 Gralitus the Basher (level 8, -1/50 HPs)
+             Began as a Gargoyle Gladiator on Dec 20, 2018.
+             Slain by an ogre
+             ... wielding a +0 giant club
+              (11 damage)
+             ... on level 5 of the Dungeon.
+             The game lasted 00:17:45 (4803 turns).
+
+Gralitus the Basher (Gargoyle Gladiator)            Turns: 4803, Time: 00:17:46
+
+Health: -1/50      AC: 22    Str: 19    XL:     8   Next: 9%
+Magic:  8/8        EV: 11    Int: 12    God:    
+Gold:   170        SH:  0    Dex: 15    Spells: 7/7 levels left
+
+rFire    . . .     SeeInvis .   p - +2 mace (protect)
+rCold    . . .     Gourm    .   (no shield)
+rNeg     + . .     Faith    .   r - +0 scale mail
+rPois    8         Spirit   .   c - +0 helmet
+rElec    +         Reflect  .   o - +0 cloak
+rCorr    .         Harm     .   l - +1 pair of gloves
+MR       .....                  (no boots)
+Stlth    ..........             (no amulet)
+HPRegen  0.16/turn              n - +4 ring of intelligence
+MPRegen  0.11/turn              z - +2 ring of dexterity
+
+@: protection aura
+A: negative energy resistance 1, electricity resistance, unbreathing,
+petrification resistance, rot immunity, AC +5
+a: no special abilities
+
+
+You were on level 5 of the Dungeon.
+You were not hungry.
+
+You visited 1 branch of the dungeon, and saw 5 of its levels.
+
+You collected 170 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +0 flail
+ i - a +0 great sword of freezing
+ p - a +2 mace of protection (weapon)
+ A - a +0 shortbow
+Missiles
+ g - a throwing net (quivered)
+ m - 33 arrows
+Armour
+ b - a +0 leather armour
+ c - a +0 helmet (worn)
+ d - a +0 leather armour
+ l - a +1 pair of gloves (worn)
+ o - a +0 cloak (worn)
+ r - a +0 scale mail (worn)
+ y - a +0 cloak
+Jewellery
+ n - a +4 ring of intelligence (left hand)
+ u - an uncursed ring of wizardry
+ z - a +2 ring of dexterity (right hand)
+Wands
+ q - a wand of random effects (27)
+ s - a wand of flame (29)
+ t - a wand of iceblast (5)
+Scrolls
+ e - 2 scrolls of identify
+ h - 2 scrolls of magic mapping
+ j - a scroll of immolation
+ v - a scroll of amnesia {unknown}
+ w - a scroll of teleportation {unknown}
+ x - a scroll of fog {unknown}
+Potions
+ k - a potion of heal wounds
+Comestibles
+ f - 7 rations
+
+
+   Skills:
+ + Level 5.4 Fighting
+ * Level 8.2 Maces & Flails
+ - Level 1.7 Throwing
+ - Level 2.5 Dodging
+
+
+You had 7 spell levels left.
+You didn't know any spells.
+Your spell library was empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (5/15)            
+Temple: D:4-7       
+
+Altars:
+Kikubaaqudgha
+Zin
+
+
+Innate Abilities, Weirdness & Mutations
+
+You are resistant to torment.
+Your stone body is resilient. (AC +5)
+You are immune to poison.
+You resist negative energy. (rN+)
+You are resistant to electric shocks. (rElec)
+You can survive without breathing.
+You are immune to petrification.
+You are immune to rotting.
+
+
+Message History
+
+The ogre is lightly wounded.
+The ogre struggles against the net.
+You hit the ogre.
+The ogre is moderately wounded.
+The ogre struggles against the net.
+You strike the helpless ogre from behind!
+You hit the ogre.
+The ogre is heavily wounded.
+The ogre struggles against the net.
+You sock the ogre!
+The ogre is severely wounded.
+The ogre struggles against the net.
+You hit the ogre.
+The ogre is almost dead.
+The ogre struggles against the net.
+The net rips apart, and the ogre comes free!
+You hit the ogre.
+The ogre is almost dead.
+The ogre hits you with a giant club!
+You die...
+
+ #.########...
+ #...........#..#
+ ####.........#..
+    #.###.###...
+    #.# #.#  #..###
+    #.# #.#  #.#..
+#####.###.####.#.#
+#...........##^#.#
+#<#.#............#
+#.#...#...#......#
+...#..#.######.#@#
+###...#.#    #.#O#
+  ##..#.######.#(.
+   #........>..####
+   #....########
+ ##.##..#########
+.................
+######.#.########
+######.#.#
+.......#.###
+#   #...#(.#
+
+
+You could see an ogre.
+
+Vanquished Creatures
+  The ghost of Helikk the Caller, an amateur MfSu of Wu Jian (D:4)
+  A centaur (D:5)
+  A gnoll sergeant (D:3)
+  A crimson imp (D:5)
+  A hound (D:5)
+  Crazy Yiuf (D:2)
+  A gnoll shaman (D:3)
+  An iguana (D:2)
+  A worker ant (D:4)
+  A hound skeleton (D:4)
+  7 adders
+  34 gnolls
+  A worm (D:5)
+  2 leopard geckos
+  2 orcs (D:3)
+  6 bats
+  5 giant cockroaches
+  2 goblins
+  2 hobgoblins (D:2)
+  23 jackals
+  4 frilled lizards
+  A kobold (D:2)
+  A quokka skeleton (D:5)
+  6 rats
+106 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | Gralitus the Gargoyle Gladiator began the quest for the
+                  | Orb.
+     0 | D:1      | Reached XP level 1. HP: 12/12 MP: 1/1
+   241 | D:1      | Reached XP level 2. HP: 17/17 MP: 2/2
+   662 | D:2      | Reached XP level 3. HP: 12/21 MP: 3/3
+   779 | D:2      | Reached skill level 4 in Maces & Flails
+   957 | D:2      | Reached XP level 4. HP: 26/26 MP: 4/4
+  1032 | D:2      | Found a runed door.
+  1143 | D:2      | Noticed Crazy Yiuf
+  1150 | D:2      | Killed Crazy Yiuf
+  1150 | D:2      | Reached skill level 5 in Maces & Flails
+  1219 | D:3      | Found an ancient bone altar of Kikubaaqudgha.
+  1402 | D:3      | Reached XP level 5. HP: 26/31 MP: 5/5
+  2086 | D:3      | Reached XP level 6. HP: 13/37 MP: 6/6
+  2110 | D:3      | Reached skill level 6 in Maces & Flails
+  2713 | D:3      | Reached XP level 7. HP: 33/43 MP: 7/7
+  2760 | D:3      | Reached skill level 7 in Maces & Flails
+  3995 | D:4      | Found a glowing silver altar of Zin.
+  3996 | D:4      | Noticed an angel
+  4244 | D:4      | Found a large runed door.
+  4245 | D:4      | Found a large runed door.
+  4248 | D:4      | Noticed Helikk's ghost (amateur MfSu)
+  4514 | D:4      | Killed Helikk's ghost
+  4514 | D:4      | Reached skill level 5 in Fighting
+  4633 | D:5      | Entered Level 5 of the Dungeon
+  4714 | D:5      | Reached skill level 8 in Maces & Flails
+  4714 | D:5      | Reached XP level 8. HP: 17/49 MP: 8/8
+  4803 | D:5      | Slain by an ogre
+
+Skill      XL: |  1  2  3  4  5  6  7 |
+---------------+----------------------+-----
+Maces & Flails |        4  5     6  8 |  8.2
+Fighting       |              3  4  5 |  5.4
+Throwing       |                      |  1.7
+Dodging        |                      |  2.5
+
+Action                   |  1- 3 |  4- 6 |  7- 9 || total
+-------------------------+-------+-------+-------++-------
+Melee: Flail             |    98 |     8 |       ||   106
+       Mace              |       |   199 |   203 ||   402
+Throw: Throwing net      |       |     3 |     4 ||     7
+  Use: Scroll            |       |     3 |     4 ||     7
+       Potion            |       |     3 |     1 ||     4
+ Stab: Held in net/web   |       |     1 |     1 ||     2
+  Eat: Chunk             |       |     6 |     7 ||    13
+Armor: Leather armour    |    39 |    14 |       ||    53
+       Scale mail        |       |    85 |   162 ||   247
+Dodge: Dodged            |   111 |   132 |   156 ||   399
+

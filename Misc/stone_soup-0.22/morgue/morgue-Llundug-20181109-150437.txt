@@ -1,0 +1,459 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+4371 Llundug the Grappler (level 10, -6/144 HPs)
+             Began as a Troll Chaos Knight on Nov 9, 2018.
+             
+             Mangled by a sun demon (22 damage)
+             ... summoned by Xom
+             ... on level 8 of the Dungeon.
+             The game lasted 00:35:25 (5965 turns).
+
+Llundug the Grappler (Troll Chaos Knight)           Turns: 5965, Time: 00:35:26
+
+Health: -6/144     AC:  5    Str: 22 (24) XL:     10   Next: 13%
+Magic:  11/11      EV:  1    Int:  7 (8)  God:    Xom [......]
+Gold:   544        SH:  0    Dex: 12 (14) Spells: 11/12 levels left
+
+rFire    . . .     SeeInvis +     - Unarmed
+rCold    . . .     Gourm    +   (no shield)
+rNeg     + + +     Faith    .   (armour currently unavailable)
+rPois    +         Spirit   .   (helmet currently unavailable)
+rElec    .         Reflect  .   (cloak currently unavailable)
+rCorr    .         Harm     .   (gloves unavailable)
+MR       .....     NoTele   +   (boots unavailable)
+Stlth    +.........             (no amulet)
+HPRegen  0.74/turn              g - ring of see invisible
+MPRegen  0.12/turn              (no ring)
+
+@: tree-form, corroded, very slightly contaminated, hasted, heavily drained,
+invisible, very quick
+A: large, unfitting armour, rugged brown scales 1, agile 1, fast metabolism 3,
+gourmand, regeneration 1, screaming 1, strong 1
+a: Renounce Religion
+
+
+You were on level 8 of the Dungeon.
+You worshipped Xom.
+You were a very special plaything of Xom.
+You were full.
+
+You were a tree.
+
+You visited 1 branch of the dungeon, and saw 8 of its levels.
+
+You collected 544 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +0 hunting sling
+ o - a +1 giant spiked club
+ I - a +0 giant spiked club
+Missiles
+ f - 345 stones (quivered)
+ n - 82 sling bullets
+ r - 36 poisoned needles
+ z - 42 arrows
+Armour
+ C - a +2 robe (melded)
+Magical Staves
+ u - an uncursed staff of air
+Jewellery
+ g - a ring of see invisible (left branch)
+Wands
+ j - a wand of random effects (14)
+ m - a wand of disintegration (6)
+ p - a wand of polymorph (7)
+ t - a wand of enslavement (6)
+ J - a wand of iceblast (9)
+Scrolls
+ c - 5 scrolls of remove curse
+ h - 2 scrolls of magic mapping
+ q - 3 scrolls of fog
+ v - 7 scrolls of identify
+ y - a scroll of enchant weapon
+ A - a scroll of enchant armour
+ B - 5 scrolls of teleportation
+ D - a scroll of amnesia
+Potions
+ d - a potion of curing
+ e - a potion of berserk rage {unknown}
+ i - a potion of degeneration
+ k - a potion of mutation
+ l - a potion of magic
+ s - 3 potions of lignification
+ w - a potion of brilliance
+ E - a potion of flight {unknown}
+ F - a potion of invisibility
+ G - a potion of haste
+ H - a potion of might {unknown}
+Comestibles
+ b - 10 rations
+
+
+   Skills:
+ * Level 4.7(2.9) Fighting
+ * Level 4.3(2.6) Throwing
+ * Level 6.3(4.5) Dodging
+ + Level 1.1(0.0) Stealth
+ * Level 10.4(8.4) Unarmed Combat
+ + Level 1.5(0.0) Spellcasting
+ + Level 0.6(0.0) Transmutations
+ + Level 0.2(0.0) Evocations
+
+
+You had 11 spell levels left.
+You knew the following spells:
+
+ Your Spells              Type           Power        Failure   Level  Hunger
+a - Beastly Appendage     Tmut           #.....       43%         1    ##.....
+
+Your spell library contained the following spells:
+
+ Spells                   Type           Power        Failure   Level  Hunger
+ Magic Dart               Conj           #...         43%         1    ##.....
+ Blink                    Tloc           N/A          56%         2    ###....
+ Call Imp                 Summ           #.......     56%         2    ###....
+ Slow                     Hex            #.......     56%         2    ###....
+ Sticks to Snakes         Tmut           #.......     56%         2    ###....
+ Conjure Flame            Conj/Fire      #.......     80%         3    ####...
+ Mephitic Cloud           Conj/Pois/Air  #.......     80%         3    ####...
+ Spider Form              Tmut/Pois      #.........   80%         3    ####...
+ Ice Form                 Ice/Tmut       #.......     99%         4    #####..
+ Blade Hands              Tmut           #.........   100%        5    ######.
+
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (8/15)             Temple (0/1) D:7         
+  Lair: D:8-11      
+
+Altars:
+Fedhas
+Gozag
+Hepliaklqana
+Okawaru
+Sif Muna
+Trog
+Xom
+Zin
+
+
+Innate Abilities, Weirdness & Mutations
+
+You are too large for most types of armour.
+((You have claws for hands.))
+Your metabolism is lightning-fast.
+You like to eat raw meat.
+Your natural rate of healing is unusually fast.
+((You are covered in fur. (AC +1)))
+((You have very tough skin. (AC +2)))
+(You are partially covered in rugged brown scales. (AC +1, +3% HP))
+((You are partially covered in yellow scales. (AC +2)))
+You are agile. (Dex +2)
+((Your flesh is cold resistant. (rC+)))
+((Your flesh is heat resistant. (rF+)))
+You occasionally shout uncontrollably at your foes.
+Your muscles are strong. (Str +2)
+
+
+Message History
+
+* * * LOW HITPOINT WARNING * * *
+You feel better.
+The ufetubus hits you but does no damage. x2
+The sun demon hits you!
+* * * LOW HITPOINT WARNING * * *
+You are engulfed in flames!
+* * * LOW HITPOINT WARNING * * *
+The rust devil completely misses you.
+The ufetubus hits you but does no damage.
+The ufetubus barely misses you.
+The ufetubus hits you but does no damage.
+The ufetubus hits you.
+* * * LOW HITPOINT WARNING * * *
+You feel extremely strange.
+You feel clever. You feel less repulsive.
+Your hooves expand and flesh out into feet!
+You feel less heat resistant. You feel agile.
+The iron imp hits you but does no damage.
+The sun demon hits you!!
+You die...
+
+     #..........#       #....
+     #..........#       #....
+     #..........#########....
+     #..........#............
+     #..........#.##########.
+###############.#.#.[..#   #.
+#.....#       #.#.#.##.#####.
+#.....#    ####.#.#.#.....##.
+#.....######.................
+#.....'....535..#.#.....#.##)
+#.....######?####.#####.#.##.
+#.....###...54....#####.#.##.
+#.....'.....>................
+#.....###.############.....#.
+#.....# #.#          #.....#.
+####### #.#          #.....+.
+  #######.#          #.....#.
+  #.......#          #.......
+  #.##################.......
+  #.#........................
+  #.#.##....##########.....#.
+
+
+You could see a sun demon, a rust devil, an iron imp and 2 ufetubi.
+
+Vanquished Creatures
+  Harold (D:8)
+  A two-headed ogre (D:8)
+  Grinder (D:4)
+  Sigmund (D:2)
+  Duvessa (D:6)
+  An ice beast (D:8)
+  A sky beast (D:8)
+  A phantom (D:7)
+  4 ogres
+  A necrophage (D:8)
+  A centaur (D:7)
+  A bullfrog (D:6)
+  A big kobold (D:8)
+  Dowan (D:6)
+  2 scorpions
+  7 wights
+  A howler monkey (D:6)
+  A crimson imp (D:8)
+  6 hounds
+  An orc priest (D:6)
+  A centaur skeleton (D:8)
+  2 bullfrog skeletons
+  10 orc wizards
+  2 iguanas
+  7 worker ants
+  A killer bee zombie (D:6)
+  A hound zombie (D:7)
+  A hound skeleton (D:6)
+  A howler monkey skeleton (D:4)
+  3 gnolls (D:4)
+  11 adders
+  An ooze (D:3)
+  3 adder skeletons
+  4 worms
+  3 dart slugs
+  5 leopard geckos
+  19 orcs
+  6 giant cockroaches
+  5 goblins
+  5 hobgoblins
+  8 jackals
+  2 quokkas
+  A ball python (D:3)
+  15 bats
+  3 frilled lizards
+  A jackal skeleton (D:5)
+  12 kobolds
+  A quokka skeleton (D:7)
+  14 rats
+183 creatures vanquished.
+
+Vanquished Creatures (others)
+  An orc wizard (D:6)
+1 creature vanquished.
+
+Grand Total: 184 creatures vanquished
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | Llundug the Troll Chaos Knight began the quest for the Orb.
+     0 | D:1      | Reached XP level 1. HP: 22/22 MP: 0/0
+   436 | D:1      | Reached XP level 2. HP: 29/29 MP: 1/1
+   811 | D:2      | XOM: stealth player
+   829 | D:2      | XOM: harmless Conj miscast
+   840 | D:2      | XOM: harmless Conj miscast
+   903 | D:2      | Reached XP level 3. HP: 30/36 MP: 2/2
+   929 | D:2      | XOM: harmless Tloc miscast
+  1022 | D:2      | Reached XP level 4. HP: 45/45 MP: 3/3
+  1047 | D:2      | XOM: harmless Conj miscast
+  1073 | D:2      | Reached skill level 4 in Unarmed Combat
+  1160 | D:2      | Noticed Sigmund
+  1165 | D:2      | XOM: confuse monster(s)
+  1196 | D:2      | XOM: confuse monster(s)
+  1202 | D:2      | Killed Sigmund
+  1202 | D:2      | Reached XP level 5. HP: 31/53 MP: 4/4
+  1280 | D:2      | XOM: harmless Chrm miscast
+  1304 | D:2      | XOM: silly message
+  1343 | D:2      | Reached skill level 5 in Unarmed Combat
+  1359 | D:2      | Found a hazy altar of Hepliaklqana.
+  1364 | D:2      | Found a shimmering altar of Xom.
+  1364 | D:2      | Noticed a hungry ghost
+  1367 | D:2      | Noticed a spectral ugly thing
+  1367 | D:2      | Noticed a hungry ghost
+  1578 | D:3      | Reached XP level 6. HP: 61/61 MP: 5/5
+  1607 | D:3      | Reached skill level 1 in Throwing
+  1643 | D:3      | XOM: noise
+  1673 | D:3      | XOM: potion effect (haste)
+  1754 | D:3      | XOM: smoke on damage
+  1844 | D:3      | Reached skill level 6 in Unarmed Combat
+  1844 | D:3      | Reached XP level 7. HP: 67/67 MP: 6/6
+  1881 | D:3      | Learned a level 1 spell: Beastly Appendage
+  1967 | D:3      | XOM: give mutations
+  1967 | D:3      | Gained mutation: You have large cloven feet. [Xom's grace]
+  1967 | D:3      | Gained mutation: You are partially covered in yellow
+                  | scales. (AC +2) [Xom's grace]
+  1967 | D:3      | Gained mutation: You possess an exceptional clarity of
+                  | mind. [Xom's grace]
+  1967 | D:3      | Gained mutation: You are agile. (Dex +2) [Xom's grace]
+  2163 | D:4      | Noticed Grinder
+  2163 | D:4      | Paralysed by Grinder for 3 turns
+  2164 | D:4      | XOM: confuse monster(s)
+  2180 | D:4      | XOM: enchant monster (good)
+  2181 | D:4      | Paralysed by Grinder for 6 turns
+  2186 | D:4      | XOM: fog
+  2193 | D:4      | XOM: cleaving
+  2194 | D:4      | Killed Grinder
+  2236 | D:4      | XOM: medium Hex miscast
+  2271 | D:4      | XOM: give mutations
+  2271 | D:4      | Gained mutation: You are surrounded by a mild repulsion
+                  | field. (EV +2) [Xom's mischief]
+  2271 | D:4      | Gained mutation: Armour fits poorly on your strangely
+                  | shaped body. [Xom's mischief]
+  2271 | D:4      | Gained mutation: You are somewhat resistant to further
+                  | mutation. [Xom's mischief]
+  2271 | D:4      | Lost mutation: You are agile. (Dex +2) [Xom's mischief]
+  2361 | D:4      | Reached skill level 7 in Unarmed Combat
+  2431 | D:4      | XOM: god gift: scroll labeled NUIPNI LAD {god gift}
+  2575 | D:4      | Reached XP level 8. HP: 67/76 MP: 8/8
+  2657 | D:4      | XOM is BORED!
+  2657 | D:4      | XOM: give mutations
+  2657 | D:4      | Lost mutation: You possess an exceptional clarity of mind.
+                  | [Xom's mischief]
+  2657 | D:4      | Gained mutation: You are frail. (-10% HP) [Xom's mischief]
+  2753 | D:4      | XOM: god gift: metallic red potion {god gift}
+  2870 | D:5      | Entered Level 5 of the Dungeon
+  2880 | D:5      | Found an opulent altar of Gozag.
+  2903 | D:5      | XOM: polymorph ogre -> scorpion
+  2905 | D:5      | XOM: harmless Chrm miscast
+  2974 | D:5      | XOM: cloud trail
+  3051 | D:5      | XOM: give mutations
+  3051 | D:5      | Gained mutation: Your system is resistant to poisons.
+                  | (rPois) [Xom's mischief]
+  3051 | D:5      | Gained mutation: You are clumsy. (Dex -2) [Xom's mischief]
+  3460 | D:5      | Found a blossoming altar of Fedhas.
+  3537 | D:6      | XOM: chaos upgrade
+  3553 | D:6      | XOM: summons 1 hostile demon
+  3564 | D:6      | XOM: confuse monster(s)
+  3738 | D:6      | Reached skill level 8 in Unarmed Combat
+  3827 | D:6      | XOM: god gift: scroll labeled MYUGUAN EMONOGH {god gift}
+  3961 | D:6      | Noticed Duvessa
+  3962 | D:6      | Noticed Dowan
+  3973 | D:6      | Killed Duvessa
+  3975 | D:6      | XOM: enchant monster (good)
+  3977 | D:6      | Killed Dowan
+  4134 | D:6      | XOM: enchant monster (good)
+  4192 | D:6      | Found a deep blue altar of Sif Muna.
+  4221 | D:6      | XOM: give mutations
+  4221 | D:6      | Lost mutation: You are clumsy. (Dex -2) [Xom's grace]
+  4221 | D:6      | Gained mutation: Your flesh is heat resistant. (rF+) [Xom's
+                  | grace]
+  4221 | D:6      | Gained mutation: You are partially covered in rugged brown
+                  | scales. (AC +1, +3% HP) [Xom's grace]
+  4221 | D:6      | Gained mutation: Your flesh is cold resistant. (rC+) [Xom's
+                  | grace]
+  4286 | D:7      | Reached skill level 1 in Stealth
+  4286 | D:7      | Reached XP level 9. HP: 40/78 MP: 9/9
+  4427 | D:7      | Reached skill level 5 in Dodging
+  4448 | D:7      | Found a staircase to the Ecumenical Temple.
+  4464 | D:7      | Reached skill level 9 in Unarmed Combat
+  4492 | D:7      | Reached skill level 1 in Spellcasting
+  4495 | D:7      | XOM: harmless Tloc miscast
+  4539 | D:7      | XOM: divination: detect items
+  4578 | D:7      | Found a glowing silver altar of Zin.
+  4629 | D:7      | XOM: give mutation
+  4629 | D:7      | Gained mutation: Your muscles are strong. (Str +2) [Xom's
+                  | mischief]
+  4635 | D:7      | XOM: give mutations
+  4635 | D:7      | Gained mutation: Scrolls take you a little longer to read.
+                  | [Xom's mischief]
+  4635 | D:7      | Lost mutation: You are frail. (-10% HP) [Xom's mischief]
+  4635 | D:7      | Gained mutation: You are dopey. (Int -2) [Xom's mischief]
+  4635 | D:7      | Gained mutation: You have an increased reservoir of magic.
+                  | (+10% MP) [Xom's mischief]
+  4737 | D:7      | XOM is BORED!
+  4959 | D:7      | XOM: harmless Conj miscast
+  5003 | D:8      | Noticed Harold
+  5023 | D:8      | Killed Harold
+  5240 | D:8      | Found a bloodstained altar of Trog.
+  5304 | D:8      | XOM: enchant monster (bad)
+  5319 | D:8      | Noticed a two-headed ogre
+  5322 | D:8      | XOM: repel stairs
+  5324 | D:8      | XOM: noise
+  5328 | D:8      | Killed a two-headed ogre
+  5328 | D:8      | Reached skill level 10 in Unarmed Combat
+  5352 | D:8      | Reached XP level 10. HP: 32/96 MP: 12/12
+  5434 | D:8      | XOM: 1-stop teleportation journey
+  5459 | D:8      | Found an iron altar of Okawaru.
+  5497 | D:8      | XOM: draining
+  5680 | D:8      | XOM: mild Tloc miscast
+  5724 | D:8      | XOM: stat loss: -1 Dex (11/12)
+  5876 | D:8      | XOM: enchant monster (bad)
+  5954 | D:8      | XOM: summons 5 hostile demons
+  5955 | D:8      | Noticed a rust devil
+  5955 | D:8      | Noticed a sun demon
+  5957 | D:8      | Lost mutation: You are somewhat resistant to further
+                  | mutation. [potion of mutation]
+  5957 | D:8      | Lost mutation: Armour fits poorly on your strangely shaped
+                  | body. [potion of mutation]
+  5957 | D:8      | Lost mutation: You have an increased reservoir of magic.
+                  | (+10% MP) [potion of mutation]
+  5957 | D:8      | Lost mutation: Your system is resistant to poisons. (rPois)
+                  | [potion of mutation]
+  5957 | D:8      | Lost mutation: Scrolls take you a little longer to read.
+                  | [potion of mutation]
+  5957 | D:8      | Gained mutation: You occasionally shout uncontrollably at
+                  | your foes. [potion of mutation]
+  5957 | D:8      | Gained mutation: Your flesh is very heat resistant. (rF++)
+                  | [potion of mutation]
+  5965 | D:8      | Lost mutation: You are dopey. (Int -2) [potion of mutation]
+  5965 | D:8      | Lost mutation: You are surrounded by a mild repulsion
+                  | field. (EV +2) [potion of mutation]
+  5965 | D:8      | Lost mutation: You have large cloven feet. [potion of
+                  | mutation]
+  5965 | D:8      | Lost mutation: Your flesh is very heat resistant. (rF++)
+                  | [potion of mutation]
+  5965 | D:8      | Gained mutation: You are agile. (Dex +2) [potion of
+                  | mutation]
+  5965 | D:8      | Mangled by a sun demon
+
+Skill      XL: |  1  2  3  4  5  6  7  8  9 |
+---------------+----------------------------+-----
+Dodging        |     2     3           4  6 |  6.3
+Fighting       |        3              4    |  4.7
+Unarmed Combat |           4  5  6  7  8 10 | 10.4
+Throwing       |                 1  2  3  4 |  4.3
+Stealth        |                       1    |  1.1
+Spellcasting   |                          1 |  1.5
+Transmutations |                            |  0.6
+Evocations     |                            |  0.2
+
+Action                   |  1- 3 |  4- 6 |  7- 9 | 10-12 || total
+-------------------------+-------+-------+-------+-------++-------
+Melee: Unarmed           |   109 |   131 |   293 |    27 ||   560
+       Punch             |     1 |     2 |     5 |     1 ||     9
+       Kick              |       |       |    82 |    10 ||    92
+       Headbutt          |       |       |     4 |       ||     4
+Throw: Stone             |    16 |     8 |     6 |       ||    30
+ Cast: Beastly Appendage |       |       |     8 |       ||     8
+Evoke: Wand              |       |       |     7 |       ||     7
+  Use: Scroll            |       |       |    10 |     1 ||    11
+       Potion            |       |       |     5 |     9 ||    14
+ Stab: Sleeping          |     2 |       |       |     1 ||     3
+       Paralysed         |       |       |     3 |       ||     3
+       Confused          |       |       |     1 |       ||     1
+  Eat: Chunk             |    15 |     7 |    33 |     3 ||    58
+Armor: Robe              |    81 |    35 |    81 |     7 ||   204
+       Skin              |       |       |       |    50 ||    50
+Dodge: Dodged            |   117 |    63 |   168 |    18 ||   366
+

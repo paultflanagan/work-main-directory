@@ -1,0 +1,376 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+9364 Jorrbeld the Basher (level 11, -4/68 HPs)
+             Began as a Gargoyle Fighter on Nov 27, 2018.
+             Was a High Priest of Qazlal.
+             Killed by nerve-wracking pain
+             ... invoked by an orc priest
+              (6 damage)
+             ... on level 11 of the Dungeon.
+             The game lasted 00:50:09 (9829 turns).
+
+Jorrbeld the Basher (Gargoyle Fighter)              Turns: 9829, Time: 00:50:10
+
+Health: -4/68      AC: 25    Str: 19    XL:     11   Next: 45%
+Magic:  11/14      EV:  7    Int: 10    God:    Qazlal [*****.]
+Gold:   580        SH: 18    Dex: 12    Spells: 10/10 levels left
+
+rFire    + . .     SeeInvis .   a - +1 flail
+rCold    + . .     Gourm    .   c - +0 shield
+rNeg     + . .     Faith    +   C - +0 plate armour
+rPois    8         Spirit   .   t - +0 helmet
+rElec    +         Reflect  .   Z - scarf {rC+ rF+}
+rCorr    +         Harm     .   B - +0 pair of gloves
+MR       .....                  x - +0 pair of boots
+Stlth    ..........             F - amulet of faith
+HPRegen  0.21/turn              g - ring of resist corrosion
+MPRegen  0.14/turn              T - ring of attention (curse)
+
+@: hasted, repel missiles, very quick
+A: negative energy resistance 1, electricity resistance, unbreathing,
+petrification resistance, rot immunity, AC +8
+a: Upheaval, Elemental Force, Disaster Area, Renounce Religion
+
+
+You were on level 11 of the Dungeon.
+You worshipped Qazlal.
+Qazlal was extremely pleased with you.
+You were near starving.
+
+You visited 2 branches of the dungeon, and saw 12 of its levels.
+
+You collected 580 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +1 flail (weapon)
+ b - a +0 great mace
+ W - a +0 dire flail
+ X - a cursed +2 mace of crushing
+Missiles
+ h - 250 arrows
+ k - 244 stones (quivered)
+ r - 75 sling bullets
+ A - 8 tomahawks
+Armour
+ c - a +0 shield (worn)
+ t - a +0 helmet (worn)
+ x - a +0 pair of boots (worn)
+ B - a +0 pair of gloves (worn)
+ C - a +0 plate armour (worn)
+ R - a +1 chain mail of poison resistance
+ Y - a +0 troll leather armour
+ Z - a scarf of resistance (worn)
+Jewellery
+ g - a ring of resist corrosion (left hand)
+ F - an amulet of faith (around neck)
+ N - an uncursed ring of protection from cold
+ T - a cursed ring of attention (right hand)
+Wands
+ d - a wand of digging (9)
+ n - a wand of scattershot (6)
+ v - a wand of flame (15)
+ J - a wand of disintegration (12)
+ M - a wand of polymorph (16)
+ O - a wand of iceblast (12)
+Scrolls
+ i - 3 scrolls of enchant weapon
+ l - a scroll of amnesia
+ p - 3 scrolls of remove curse
+ q - 5 scrolls of teleportation
+ E - a scroll of blinking
+ H - a scroll of fog
+ K - 3 scrolls of identify
+Potions
+ o - a potion of resistance
+ u - 2 potions of curing
+ z - 2 potions of cancellation
+ D - 2 potions of lignification
+ I - 3 potions of brilliance
+Comestibles
+ f - 22 rations
+
+
+   Skills:
+ * Level 7.7 Fighting
+ * Level 10.3 Maces & Flails
+ + Level 0.5 Throwing
+ * Level 7.8 Armour
+ * Level 4.6 Dodging
+ + Level 0.2 Stealth
+ * Level 10.1 Shields
+ * Level 4.3 Invocations
+
+
+You had 10 spell levels left.
+You didn't know any spells.
+Your spell library was empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (11/15)            Temple (1/1) D:4             Orc (0/2) D:11
+  Lair: D:8-11      
+
+Altars:
+Ashenzari
+Cheibriados
+Dithmenos
+Elyvilon
+Fedhas
+Gozag
+Hepliaklqana
+Kikubaaqudgha
+Makhleb
+Nemelex Xobeh
+Okawaru
+Qazlal
+Ru
+Sif Muna
+Trog
+Uskayaw
+Vehumet
+Wu Jian
+Xom
+Yredelemnul
+Zin
+The Shining One
+
+Shops:
+D:4 !(:=   D:6 ?*?   D:9 [
+
+Annotations:
+D:4 Cantrips, Geomancy Books
+
+
+Innate Abilities, Weirdness & Mutations
+
+You are resistant to torment.
+Your stone body is resilient. (AC +8)
+You are immune to poison.
+You resist negative energy. (rN+)
+You are resistant to electric shocks. (rElec)
+You can survive without breathing.
+You are immune to petrification.
+You are immune to rotting.
+
+
+Message History
+
+The orc priest hits you but does no damage.
+An orc priest comes into view.
+The meliai mumbles some strange prayers to its god against you.
+Something smites you!
+* * * LOW HITPOINT WARNING * * *
+You feel better.
+You hear a shout!
+The meliai mumbles some strange prayers to its god against you.
+Something smites you!
+* * * LOW HITPOINT WARNING * * *
+You block the orc priest's attack.
+The meliai calls upon its god to heal the meliai.
+The meliai's wounds heal themselves!
+You feel yourself speed up.
+You hear a shout!
+You block the orc priest's attack.
+You hear an angry growl.
+The orc priest calls down the wrath of Beogh upon you.
+Pain shoots through your body!
+You die...
+
+     ##########
+##   #........#          .
+.### #........#         ..
+.'.###.......>#        .).
+.#..##........#       ....
+.##..'........###    .)...
+.#####........'.####s.....
+.#   #........#.@.oyyY....
+##   #........######yl....
+#    #######+##      .o...
+#                     ....
+                       ###
+
+
+       ##########
+       .........#
+       .......<Y####
+       .......YYY.y#
+
+
+You could see a yak, 3 meliai, a scorpion, an iguana and an orc priest.
+
+Vanquished Creatures
+  The ghost of squishfish the Basher, a journeyman GrFi of Okawaru (D:10)
+  A two-headed ogre (D:10)
+  2 trolls (D:10)
+  A polar bear (D:10)
+  A queen bee (D:8)
+  A hippogriff (D:7)
+  A wyvern (D:8)
+  A yak (D:5)
+  3 spriggans (D:10)
+  Eustachio (D:4)
+  Menkaure (D:5)
+  A hungry ghost (D:11)
+  A porcupine (D:11)
+  An ice beast (D:9)
+  4 orc warriors
+  2 sky beasts
+  3 necrophages
+  2 phantoms
+  A black bear (D:4)
+  2 ogres
+  4 centaurs
+  2 big kobolds
+  A crocodile (D:7)
+  11 bullfrogs
+  A wyvern zombie (D:7)
+  33 killer bees
+  3 wights (D:10)
+  6 electric eels (D:5)
+  7 crimson imps
+  2 bullfrog zombies
+  3 jellies
+  2 centaur zombies (D:7)
+  A centaur skeleton (D:7)
+  2 orc priests
+  4 hounds
+  A bullfrog skeleton (D:10)
+  An iguana (D:6)
+  8 orc wizards
+  10 worker ants
+  A hound zombie (D:10)
+  A hound skeleton (D:6)
+  Robin (D:2)
+  2 worker ant zombies
+  A howler monkey skeleton (D:7)
+  8 adders
+  4 gnolls (D:5)
+  3 shadow imps
+  An adder skeleton (D:5)
+  2 worms
+  A dart slug (D:2)
+  2 leopard geckos
+  26 orcs
+  A ball python (D:5)
+  2 bats
+  12 giant cockroaches
+  11 hobgoblins
+  4 jackals
+  3 quokkas
+  4 frilled lizards
+  8 goblins
+  20 kobolds
+  A leopard gecko skeleton (D:5)
+  A leopard gecko zombie (D:6)
+  A quokka zombie (D:9)
+  7 rats
+261 creatures vanquished.
+
+Vanquished Creatures (others)
+  A big kobold (D:11)
+  A kobold (D:11)
+  20 fungi
+  22 plants
+44 creatures vanquished.
+
+Grand Total: 305 creatures vanquished
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | Jorrbeld the Gargoyle Fighter began the quest for the Orb.
+     0 | D:1      | Reached XP level 1. HP: 14/14 MP: 1/1
+   279 | D:1      | Reached XP level 2. HP: 19/19 MP: 2/2
+   849 | D:2      | Reached XP level 3. HP: 19/23 MP: 3/3
+  1185 | D:2      | Noticed Robin
+  1195 | D:2      | Killed Robin
+  1299 | D:2      | Reached XP level 4. HP: 27/29 MP: 4/4
+  1754 | D:3      | Found a hazy altar of Hepliaklqana.
+  2098 | D:3      | Reached XP level 5. HP: 33/33 MP: 5/5
+  2484 | D:4      | Found Vuholicu's Weapon Shop.
+  2491 | D:4      | Noticed Eustachio
+  2512 | D:4      | Killed Eustachio
+  2512 | D:4      | Reached skill level 1 in Dodging
+  2512 | D:4      | Reached XP level 6. HP: 13/39 MP: 6/6
+  2636 | D:4      | Found Supheheo's Jewellery Shop.
+  2644 | D:4      | Found Vadil's Book Boutique.
+  2777 | D:4      | Found a sacrificial altar of Ru.
+  3094 | D:4      | Noticed a black bear
+  3115 | D:4      | Killed a black bear
+  3115 | D:4      | Reached XP level 7. HP: 32/44 MP: 7/7
+  3128 | D:4      | Found Loffyuhu's Distillery.
+  3215 | D:4      | Found a staircase to the Ecumenical Temple.
+  3432 | Temple   | Entered the Ecumenical Temple
+  3674 | Temple   | Became a worshipper of Qazlal Stormbringer
+  3719 | D:5      | Entered Level 5 of the Dungeon
+  3726 | D:5      | Reached skill level 5 in Shields
+  3894 | D:5      | Noticed Menkaure
+  3925 | D:5      | Killed Menkaure
+  3943 | D:5      | Reached skill level 5 in Maces & Flails
+  3953 | D:5      | Reached skill level 5 in Fighting
+  4025 | D:5      | Reached * piety under Qazlal
+  4094 | D:5      | Reached XP level 8. HP: 48/49 MP: 8/8
+  4313 | D:5      | Noticed a yak
+  4331 | D:5      | Killed a yak
+  4331 | D:5      | Reached skill level 5 in Armour
+  5352 | D:6      | You fall through a shaft for 2 floors!
+  5493 | D:8      | Noticed a wyvern
+  5502 | D:8      | Killed a wyvern
+  5502 | D:8      | Reached XP level 9. HP: 46/55 MP: 9/9
+  5947 | D:6      | Reached ** piety under Qazlal
+  6019 | D:6      | Found Eretag's General Store.
+  6079 | D:6      | Found Plog's Magic Scroll Boutique.
+  6229 | D:6      | Found Bauwa's Magic Scroll Boutique.
+  6569 | D:7      | Reached skill level 1 in Invocations
+  6728 | D:7      | Reached XP level 10. HP: 45/61 MP: 11/11
+  6777 | D:7      | Reached *** piety under Qazlal
+  8118 | D:9      | Reached **** piety under Qazlal
+  8307 | D:9      | Found Voeliren's Antique Armour Emporium.
+  8577 | D:10     | Entered Level 10 of the Dungeon
+  8694 | D:10     | Noticed a two-headed ogre
+  8704 | D:10     | Killed a two-headed ogre
+  8704 | D:10     | Reached XP level 11. HP: 32/67 MP: 13/13
+  8893 | D:10     | Found a runed door.
+  8926 | D:10     | Reached skill level 10 in Maces & Flails
+  8941 | D:10     | Reached ***** piety under Qazlal
+  8976 | D:10     | Noticed squishfish's ghost (journeyman GrFi)
+  9542 | D:10     | Killed squishfish's ghost
+  9542 | D:10     | Reached skill level 10 in Shields
+  9547 | D:10     | Got a steaming spear {freeze}
+  9561 | D:10     | Identified the +9 spear of the Elven Halls {freeze, +Blink
+                  | MP+9 Str-2 Int+2} (You took it off a spriggan on level 10
+                  | of the Dungeon)
+  9783 | D:11     | Found a staircase to the Orcish Mines.
+  9827 | D:11     | HP: 2/68 [meliai/divine providence (12)]
+  9829 | D:11     | Killed from afar by an orc priest
+
+Skill      XL: |  1  2  3  4  5  6  7  8  9 10 11 |
+---------------+----------------------------------+-----
+Maces & Flails |           3  4     5  6  8  9 10 | 10.3
+Fighting       |           4        5     6  7    |  7.7
+Shields        |              4     5  6  7  9 10 | 10.1
+Armour         |              4        6     7    |  7.8
+Dodging        |              1     2  3     4    |  4.6
+Invocations    |                          1  3  4 |  4.3
+Throwing       |                                  |  0.5
+Stealth        |                                  |  0.2
+
+Action                   |  1- 3 |  4- 6 |  7- 9 | 10-12 || total
+-------------------------+-------+-------+-------+-------++-------
+Melee: Flail             |    85 |   173 |   491 |   646 ||  1395
+Throw: Stone             |       |       |       |    10 ||    10
+Invok: Upheaval          |       |       |       |     1 ||     1
+  Use: Potion            |     1 |       |     4 |    12 ||    17
+       Scroll            |       |       |    12 |     6 ||    18
+  Eat: Chunk             |     1 |     6 |     6 |    12 ||    25
+       Ration            |       |       |     2 |       ||     2
+Armor: Scale mail        |    40 |     1 |       |       ||    41
+       Chain mail        |       |   112 |   200 |       ||   312
+       Plate armour      |       |       |    63 |   294 ||   357
+       Skin              |       |       |       |    36 ||    36
+Dodge: Dodged            |    26 |    44 |    91 |   134 ||   295
+Block: Shield            |    33 |    93 |   244 |   631 ||  1001
+

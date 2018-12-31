@@ -1,0 +1,268 @@
+Xeschis
+
+Level 1 of the Dungeon
+(0, 0, D:1)
+  a +0 short sword
+(2, -9, D:1)
+  19 stones
+(3, -21, D:1)
+  a +0 dagger
+(6, 0, D:1)
+  a cursed +0 club
+(14, -12, D:1)
+  a +0 dagger
+(14, -11, D:1)
+  a +0 dagger
+(23, 2, D:1)
+  a +0 club
+(28, 30, D:1)
+  a +0 club
+(32, -8, D:1)
+  17 stones
+(34, 12, D:1)
+  a +0 dagger
+(41, 2, D:1)
+  a +0 short sword
+(43, 19, D:1)
+  a +0 club
+
+Level 2 of the Dungeon
+(0, 0, D:2)
+  17 stones
+(0, 5, D:2)
+  17 arrows
+(7, -13, D:2)
+  a +0 dagger
+  2 stones
+(7, 13, D:2)
+  a +0 dagger
+(8, -10, D:2)
+  a stone
+(8, -9, D:2)
+  a stone
+(16, -13, D:2)
+  a +0 whip
+(20, -7, D:2)
+  a +0 club
+(21, -10, D:2)
+  a +0 club
+(25, 18, D:2)
+  a +0 robe
+(27, -9, D:2)
+  a +0 dagger
+(41, -2, D:2)
+  a +0 club
+(46, 2, D:2)
+  16 arrows
+(49, -1, D:2)
+  a +0 hand axe
+(51, 11, D:2)
+  a +0 dagger
+
+Level 3 of the Dungeon
+(0, 0, D:3)
+  a +2 dagger of holy wrath
+(9, -7, D:3)
+  a +0 dagger
+(11, 26, D:3)
+  an uncursed staff of cold
+(12, 30, D:3)
+  15 stones
+(18, 15, D:3)
+  a +0 mace
+(19, 15, D:3)
+  a +0 dagger
+(19, 26, D:3)
+  a +0 trident
+(20, 7, D:3)
+  a +1 short sword of freezing
+(20, 11, D:3)
+  a stone
+(20, 27, D:3)
+  a +0 dagger
+(21, 13, D:3)
+  a stone
+(29, 26, D:3)
+  30 stones
+(31, 28, D:3)
+  a +0 spear
+(32, 27, D:3)
+  a +1 flail of crushing
+  a +0 club
+  a +0 leather armour
+(35, 24, D:3)
+  a +0 whip
+(39, 30, D:3)
+  28 arrows
+(40, 24, D:3)
+  22 stones
+(41, 24, D:3)
+  a +0 robe
+(46, 0, D:3)
+  21 sling bullets
+(48, 29, D:3)
+  a +0 leather armour
+(52, 8, D:3)
+  20 sling bullets
+(54, 27, D:3)
+  a +0 short sword
+  2 stones
+(55, 12, D:3)
+  a +0 dagger
+(55, 30, D:3)
+  a stone
+
+Level 4 of the Dungeon
+(0, 0, D:4)
+  the +8 orange crystal plate armour {Archmagi, Int+3 Clar}
+    It affects your intelligence (+3).
+    It protects you against confusion.
+(13, -20, D:4)
+  a +0 scale mail
+(14, -20, D:4)
+  a scroll of identify
+(20, -4, D:4)
+  a +0 mace
+(20, 9, D:4)
+  a +0 rapier
+(23, 5, D:4)
+  a +0 chain mail
+(31, -24, D:4)
+  a cursed +0 cloak
+(36, -9, D:4)
+  10 sling bullets
+(37, 15, D:4)
+  a +0 hand axe
+(47, 7, D:4)
+  a +0 robe
+(56, -7, D:4)
+  12 stones
+
+Level 5 of the Dungeon
+(13, 7, D:5)
+  21 stones
+(16, 1, D:5)
+  a +0 giant club
+  a +0 giant club
+(16, 13, D:5)
+  a +0 leather armour
+(17, 35, D:5)
+  a +0 giant club
+(19, 41, D:5)
+  27 stones
+(27, 27, D:5)
+  22 arrows
+(28, 11, D:5)
+  a +0 trident
+  a +0 robe
+(29, 47, D:5)
+  a +0 flail
+(32, 21, D:5)
+  a +0 spear
+(40, 55, D:5)
+  a +0 giant club
+(43, 6, D:5)
+  17 stones
+(57, -9, D:5)
+  a +0 spear
+(57, -5, D:5)
+  a +0 hand axe
+(65, 38, D:5)
+  a +0 long sword
+(66, 28, D:5)
+  a +0 club
+
+Level 6 of the Dungeon
+[Shop] Hastrukiq's Food Emporium
+  a ration (55 gold)
+  a ration (55 gold)
+  a ration (55 gold)
+  a ration (55 gold)
+  a ration (55 gold)
+  a ration (55 gold)
+  a ration (55 gold)
+  a ration (55 gold)
+  a ration (55 gold)
+  a ration (55 gold)
+[Shop] Covomp's Antique Armour Boutique
+  a +3 leather armour of poison resistance (399 gold)
+  a +0 robe of magic resistance (146 gold)
+  a +0 pair of gloves (85 gold)
+  a +2 cloak of poison resistance (351 gold)
+  a +0 ring mail (76 gold)
+  a +2 robe of magic resistance (336 gold)
+  a +0 robe (13 gold)
+  a +0 robe (13 gold)
+  a +0 chain mail of poison resistance (161 gold)
+  a +0 ring mail (76 gold)
+[Shop] Onutoff's Food Emporium
+  a ration (60 gold)
+  a ration (60 gold)
+  a ration (60 gold)
+  a ration (60 gold)
+  a ration (60 gold)
+  a ration (60 gold)
+  a ration (60 gold)
+  a ration (60 gold)
+  a ration (60 gold)
+(0, 0, D:6)
+  a +0 club
+(0, 1, D:6)
+  27 stones
+(3, 15, D:6)
+  the +2 robe "Boin" {Regen+ Int+3}
+    It affects your intelligence (+3).
+    It increases your rate of regeneration.
+(7, -7, D:6)
+  a +0 giant club
+(10, -20, D:6)
+  a +0 war axe
+(11, -15, D:6)
+  a +0 short sword
+(12, -14, D:6)
+  a +0 club
+(15, -9, D:6)
+  a cursed +0 leather armour
+  a +0 club
+  a +0 dagger
+(15, 3, D:6)
+  26 bolts
+(15, 11, D:6)
+  23 bolts
+(16, 0, D:6)
+  a +0 chain mail
+(28, -19, D:6)
+  a +0 trident
+(51, 17, D:6)
+  a +0 dagger
+(57, 9, D:6)
+  a +0 scale mail
+
+Level 7 of the Dungeon
+(0, 0, D:7)
+  8 gold pieces
+(3, 8, D:7)
+  a scroll of teleportation
+(4, 3, D:7)
+  21 stones
+(4, 8, D:7)
+  a +0 flail
+(5, 8, D:7)
+  a +0 rapier
+(8, 18, D:7)
+  a +0 dagger
+
+Level 9 of the Dungeon
+(0, 0, D:9)
+  a +1 robe of the Archmagi
+(6, -22, D:9)
+  a cursed +0 falchion
+  a +0 robe
+  a yak corpse
+  a yak corpse
+(6, -21, D:9)
+  a cursed +2 dagger
+  (unseen)
+(6, -16, D:9)
+  a +0 ring mail
+

@@ -1,0 +1,266 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+1449 Murtunor the Cudgeler (level 8, 0/60 HPs)
+             Began as a Demonspawn Gladiator on Nov 20, 2018.
+             Succumbed to a worker ant's poison
+             ... on level 6 of the Dungeon on Nov 21, 2018.
+             The game lasted 00:19:31 (6278 turns).
+
+Murtunor the Cudgeler (Demonspawn Gladiator)        Turns: 6278, Time: 00:19:32
+
+Health: 0/60       AC: 18    Str: 15    XL:     8   Next: 46%
+Magic:  8/8        EV:  6    Int:  9    God:    
+Gold:   223        SH:  0    Dex: 17    Spells: 7/7 levels left
+
+rFire    . . .     SeeInvis .   a - +1 flail
+rCold    . . .     Gourm    .   (no shield)
+rNeg     + . .     Faith    .   z - +1 plate armour
+rPois    .         Spirit   .   c - +0 helmet
+rElec    .         Reflect  .   (no cloak)
+rCorr    .         Harm     .   x - +0 pair of gloves
+MR       .....     Rnd*Tele +   (no boots)
+Stlth    ..........             (no amulet)
+HPRegen  0.20/turn              p - ring of positive energy
+MPRegen  0.11/turn              w - ring of teleportation (curse)
+
+@: lethally poisoned (0 -> -4), very slightly contaminated
+A: talons 1, icy blue scales 2, powered by pain 1, rot immunity
+a: no special abilities
+
+
+You were on level 6 of the Dungeon.
+You were hungry.
+
+You visited 1 branch of the dungeon, and saw 6 of its levels.
+
+You collected 223 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +1 flail (weapon)
+Missiles
+ h - 124 stones (quivered)
+Armour
+ b - a +0 leather armour
+ c - a +0 helmet (worn)
+ i - a +0 ring mail
+ x - a +0 pair of gloves (worn)
+ z - a +1 plate armour (worn)
+Jewellery
+ p - a ring of positive energy (left hand)
+ q - an uncursed ring of wizardry
+ w - a cursed ring of teleportation (right hand)
+Wands
+ u - a wand of flame (44)
+Scrolls
+ k - 6 scrolls of identify
+ l - a scroll of enchant armour
+ m - 9 scrolls of remove curse
+Comestibles
+ f - 10 rations
+ A - 4 chunks of flesh
+
+
+   Skills:
+ * Level 3.9 Fighting
+ * Level 7.3 Maces & Flails
+ + Level 1.9 Throwing
+ * Level 4.6 Armour
+ * Level 4.3 Dodging
+ + Level 0.2 Stealth
+
+
+You had 7 spell levels left.
+You didn't know any spells.
+Your spell library contained the following spells:
+
+ Spells                   Type           Power        Failure   Level  Hunger
+ Ensorcelled Hibernation  Hex/Ice        #.....       100%        2    ###....
+ Borgnjor's Vile Clutch   Necr/Erth      #.........   100%        5    ######.
+ Silence                  Hex/Air        #.........   100%        5    ######.
+ Darkness                 Hex            #.........   100%        6    #######
+ Shadow Creatures         Summ           N/A          100%        6    #######
+
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (6/15)             Temple (0/1) D:4         
+
+Altars:
+Cheibriados
+Dithmenos
+Elyvilon
+Gozag
+Kikubaaqudgha
+Uskayaw
+Xom
+Yredelemnul
+
+Shops:
+D:6 =
+
+Annotations:
+D:6 1 runed door
+
+
+Innate Abilities, Weirdness & Mutations
+
+You have sharp toenails.
+You are mostly covered in icy blue scales. (AC +3)
+You sometimes gain a little power by taking damage.
+You are immune to rotting.
+
+
+Message History
+
+As you read the scroll labeled PAF JIRUILAL, it crumbles to dust.
+The scroll dissolves into smoke. It was a scroll of fog. The worker ant closely
+You feel sick.
+The worker ant bites you but does no damage.
+Blink to where?
+Press: ? - help, Dir - move target cursor
+As you read the scroll labeled GEVVOXTIRPHE, it crumbles to dust.
+It was a scroll of blinking.
+As you read the scroll labeled BUZXUN SADETH, it crumbles to dust.
+It is a scroll of amnesia.
+You feel forgetful for a moment.
+As you read the scroll labeled WETINA AKITU, it crumbles to dust.
+You hear the sound of one hand clapping.
+It was a scroll of random uselessness. You feel sick.
+The worker ant bites you but does no damage.
+The worker ant bites you.
+* * * LOW HITPOINT WARNING * * *
+You are lethally poisoned!
+The worker ant poisons you!
+You die...
+
+       ###
+########.#
+#§§§§§§..#
+#§#####§.#    #####
+#s##..§..#.   #....
+#a##.##.##..  +.b!.
+#§§..§.§# ... #...b
+##@...a.# ....#####
+ #.#.##.# .........
+ #.#.##.##........(
+ #..#....# ######a#
+ #.#..#..# #......#
+ #......a# #.......
+ #.#..##.# #.....##
+ #.#.## .# #.....##
+ #.#.###.# #######
+ #.......#
+ ###.#######
+
+
+You could see 2 worker ants.
+
+Vanquished Creatures
+  A soldier ant (D:6)
+  A sky beast (D:3)
+  A phantom (D:5)
+  3 ogres
+  2 centaurs (D:6)
+  2 bullfrogs
+  A killer bee (D:6)
+  2 scorpions (D:6)
+  A howler monkey (D:5)
+  A jelly (D:6)
+  A bullfrog skeleton (D:5)
+  2 hounds
+  2 iguanas (D:6)
+  An orc wizard (D:5)
+  4 worker ants
+  5 adders
+  An adder skeleton (D:5)
+  2 worms
+  2 leopard geckos
+  13 orcs
+  4 ball pythons
+  4 giant cockroaches
+  5 goblins
+  12 hobgoblins
+  12 jackals
+  4 quokkas
+  6 bats
+  3 frilled lizards
+  8 kobolds
+  13 rats
+119 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | Murtunor the Demonspawn Gladiator began the quest for the
+                  | Orb.
+     0 | D:1      | Reached XP level 1. HP: 16/16 MP: 1/1
+   270 | D:1      | Reached skill level 3 in Maces & Flails
+   276 | D:1      | Gained mutation: You are partially covered in icy blue
+                  | scales. (AC +2) [demonic ancestry]
+   276 | D:1      | Reached XP level 2. HP: 5/22 MP: 2/2
+  1535 | D:2      | Found a shadowy altar of Dithmenos.
+  1608 | D:2      | Reached skill level 1 in Armour
+  1608 | D:2      | Gained mutation: You are immune to rotting. [demonic
+                  | ancestry]
+  1608 | D:2      | Reached XP level 3. HP: 26/27 MP: 3/3
+  1830 | D:2      | Found a hide-covered altar of Uskayaw.
+  2127 | D:2      | Reached XP level 4. HP: 30/33 MP: 4/4
+  2158 | D:2      | Found an opulent altar of Gozag.
+  2597 | D:3      | Found a white marble altar of Elyvilon.
+  2712 | D:3      | Found an ancient bone altar of Kikubaaqudgha.
+  2734 | D:3      | Noticed a bullfrog
+  2749 | D:3      | Killed a bullfrog
+  2749 | D:3      | Reached skill level 4 in Maces & Flails
+  2749 | D:3      | Gained mutation: You are mostly covered in icy blue scales.
+                  | (AC +3) [demonic ancestry]
+  2749 | D:3      | Reached XP level 5. HP: 6/39 MP: 5/5
+  3277 | D:3      | Noticed a sky beast
+  3292 | D:3      | Killed a sky beast
+  3292 | D:3      | Reached skill level 5 in Maces & Flails
+  3292 | D:3      | Reached XP level 6. HP: 30/46 MP: 6/6
+  3938 | D:4      | Found a staircase to the Ecumenical Temple.
+  4715 | D:5      | Entered Level 5 of the Dungeon
+  4744 | D:5      | Gained mutation: You sometimes gain a little power by
+                  | taking damage. [demonic ancestry]
+  4744 | D:5      | Reached XP level 7. HP: 28/51 MP: 7/7
+  5163 | D:5      | Found a snail-covered altar of Cheibriados.
+  5257 | D:5      | Reached skill level 6 in Maces & Flails
+  5815 | D:6      | Found a shimmering altar of Xom.
+  5942 | D:6      | Gained mutation: You have sharp toenails. [demonic
+                  | ancestry]
+  5942 | D:6      | Reached XP level 8. HP: 34/58 MP: 8/8
+  5999 | D:6      | Found a basalt altar of Yredelemnul.
+  6017 | D:6      | Found Eraton's Jewellery Boutique.
+  6156 | D:6      | Found a runed door.
+  6168 | D:6      | Found a runed door.
+  6173 | D:6      | Reached skill level 7 in Maces & Flails
+  6277 | D:6      | HP: 1/60 [worker ant (5)]
+  6278 | D:6      | Succumbed to a worker ant's poison
+
+Skill      XL: |  1  2  3  4  5  6  7  8 |
+---------------+-------------------------+-----
+Maces & Flails |  3        4  5     6  7 |  7.3
+Dodging        |     3              4    |  4.3
+Armour         |     1        2  3  4    |  4.6
+Fighting       |                    3    |  3.9
+Throwing       |                         |  1.9
+Stealth        |                         |  0.2
+
+Action                   |  1- 3 |  4- 6 |  7- 9 || total
+-------------------------+-------+-------+-------++-------
+Melee: Flail             |   149 |   194 |   224 ||   567
+       Kick              |       |       |    18 ||    18
+Throw: Throwing net      |       |     2 |     2 ||     4
+  Use: Scroll            |       |     1 |     8 ||     9
+       Potion            |       |       |     5 ||     5
+ Stab: Held in net/web   |       |     1 |       ||     1
+       Invisible         |       |       |     1 ||     1
+  Eat: Chunk             |     4 |     8 |     5 ||    17
+Armor: Leather armour    |    12 |       |       ||    12
+       Ring mail         |    29 |    85 |    74 ||   188
+       Plate armour      |       |       |    61 ||    61
+Dodge: Dodged            |   116 |   142 |   186 ||   444
+

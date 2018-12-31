@@ -1,0 +1,1143 @@
+Dupes Troubleshooting: In Lot Cancel Decom
+
++++++++++++
+17-Sep-2018
++++++++++++
+Results of first couple of tests (have been pretty consistent):
+~21 minute run time
+74% success
+Failed Cases:
+	# :	Name							Expected Desc.								Resulting Desc.
+	6 :	FT_Notifications				Verify notification were successful			Notifications were not generated
+	7 :	Single Item Decom Use Case		End a lot that has duplicates				Lot ends with a Duplicate Dialog (?)
+	8 :	Second User Entry Dialog (...)	Enter second signature						Lot is quarantined with second signature (?)
+	16:	Import_FullyRandomList			Import fully random list for Bottle (...)	File import succeeded (?)
+	20:	Single Item Decom Use Case		End a lot that has duplicates				Lot ends without a Duplicate Dialog
+	22:	FT_Notifications				Verify notification were successful			Notifications were not generated
+	23:	Email Validation				Validate the email							Email is not received
+
+It's probably best to start from the beginning and work towards the errors that appear later in the test.
+
+Case 6: DuplicateCheckOneLevel_Reject > EndLot_QuarantineReject > Line 13 - 22
+"
+	If CInt(newCount) > CInt(DataTable.Value("CurrentLogCount",dtglobalsheet)) Then  'got more rows
+		print "log TRUE"
+		[log successful test]
+	Else
+		If CInt(newCount) > CInt(DataTable.Value("CurrentLogCount",dtglobalsheet)) Then
+			print "stupid VB"	//<- actually what the code says	//Maybe a complaint over timing issues?
+		End If
+		print "log FALSE"
+		[log unsuccessful test]
+	End If
+"
+
+CInt(expression):	returns the input expressed as an integer value (rounded to the nearest even number, interestingly)
+newCount:			initialized line 9, "newCount = UBound(arrOutput) + 1"		UBound(arrOutput) + 1 returns the total number of items in arrOutput?
+					declared... nowhere? at least, not in this document?
+						doing a search through the whole test, it is not mentioned at all before its initialization...
+UBound(arrayname):	returns greatest value for optionally indicated dimension (otherwise, dimension [1]) of passed array
+
+	arrOutput is declared as arrOuput.
+	Going to fix (?) this and run again(?)
+	
+arrOutput:			declared line 6, re-declared (? "ReDim arrOutput(-1)"?) line 7, used line 8 and 9
+					also declared in line 16 of StartLot, also re-declared and used in a similar pattern.
+					Ok, so each time it is created, two lines down it is used in a function "ExecuteSQL"
+					I guess it is initialized and set with values in that function.
+					But then what is "ReDim (-1)"? what does that accomplish?
+						the help manual didn't help too much, I'll google it.
+						so maybe it resizes it so that it can't hold any items?
+							the way that the 0 start system works (Dim x(5) => [0,1,2,3,4,5] = 6 items), Dim x(0) => [0] = 1 item.
+							so I guess ReDim x(-1) => [] = 0 items?
+							maybe just a way to completely clear out the array so that it can be written to fresh
+					
+ExecuteSQL:			"DESC: Executes SQL in a database"
+					"arrOutput = returned array to be loaded with output data"
+						so this is what I was anticipating
+					intCount is set as number of fields in the source SQL procedure
+					from what I can tell, this function just loops through adding data to arrOutput from the SQL source
+
+DataTable.Value():	"Retrieves or sets the value of the cell in the specified parameter and the current row of the run-time data table."
+
+dtglobalsheet:		the datasheet, I guess?
+CurrentLogCount:	what it says on the box
+
+I think, maybe, it checks to see if something returned a log result by counting the number of logs before and after, and then, if it is greater now, declaring a success?
+
+Everything else seems to be in order, other than the naming error, that is.
+I'll run and come back to it if it still fails.
+
+
+Running Test 3...
+Results:
+	Test Summary:
+		Run Time:		00:21:18
+		Success Totals:	19/27
+		Failed Cases:	3,	6,	7,	8,	16,	20,	22,	23
+		
+	Three is a new one.
+	3 :	Import_Range				Import range file for Bottle (...)				File import succeeded (?)
+
+Maybe I'll run again and see if 3 is consistent.
+
+Running Test 3.1...
+Results:
+	Test Summary:
+		Run Time:		00:20:16
+		Success Totals:	20/27
+		Failed Cases:	6,	7,	8,	16,	20,	22,	23
+	
+	So I guess 3 is an inconsistent failure.
+	And also I have not yet fixed 6.
+	Going to put in a msgbox command so I can stop the script once it's ready for 6 and continue with step-by-step debugging.
+	
+Running Test 3.2...
+Should stop before testing 6 and then I'll do diagnostics on the script
+	Reached message flag.
+	Stopped Jenkins
+	Killed UFT
+	Report.txt:	5 successes, end of document.
+	Opening UFT to run step-by-step through rest of script, looking for errors
+	Error:	"Line (13): "print "old count=" & DataTable.Value("CurrentLogCount",dtglobalsheet)"."
+			"The retrieve DataTable.Value operation failed. The <CurrentLogCount> column does not exist"
+			
+	At the time of this error, arrOutput had 27 sub-items, with the value "Successful" from 0-20 and "Pending" from 21-26.
+	The value of newCount was 27, as is expected, since it is set using UBound(arrOutput) + 1, or 26 + 1.
+	I wish to check the contents of dtglobalsheet, I'll see if I can figure out how
+
+As a side note, I see that the user defined Environment variables have DbServer_Name set to QASERVER6499, when I think it needs to be set to DUPESERVER
+	I'll go ahead and fix that when I leave the debug mode
+	
+	I asked Alex about it and he confirmed my suspicion that dtglobalsheet was referring to one of the Data tables along the bottom, specifically the Global one.
+	The script should create a new parameter row into the global sheet and set its value as the current number of logs in line 19 of StartLot 
+		("DataTable.GlobalSheet.AddParameter")
+	but, it isn't for some reason.
+	
+	Let's finish the current debugging and make sure it isn't something radically different, and then poke around the earlier script.
+	Doesn't seem to be broken where I'm testing it. Added flags around the creation of the new CurrentLogCount column
+	Starting again.
+	
+Running Test 3.3...
+Should stop before creating the CurrentLogCount column.
+Did stop, but when I opened UFT to look at it, it did not seem to be updated with the progress of the current test.
+I could not see any of the datatables.
+	Maybe next time I'll try opening UFT before I begin the test. The GUI might follow along in that case.
+Did not allow the viewing of datatables until after it went past the part I wished to watch.
+Now I'll run from the top and keep UFT open the whole time.
+Starting again.
+
+Running Test 3.4...
+So it did create the new column in Global, but it was in column R for some reason, and it held a value of 0
+And then when it got to the check part, it looked like it said both newCount and DataTable.Value("CurrentLogCount",dtglobalsheet) were 0
+I'm going to add a pause to the end of the relevant test procedure (DuplicateCheckOneLevel_Reject) for me to check on the state of the datatable.
+
+Running Test 3.5...
+I realize that I keep forgetting to change the user defined environment variable for the Server.
+
+
+maybe wait until presence of the stop button of the lot menu for the Decom Notification Single Item in StartLot line 18 or so? in OneLevel_Reject?
+	next step if just fixing the variable doesn't work.
+created it in between Q and S, with a value of 0.
+and it still outputs a 0 for NewCount
+I think it really might be the user-defined environment variable.
+Updating the variable
+	Going into C:\Automation\Duplicate Check\UftEnvironmentVars.xml
+	Changing DbServer_Name from <Value><![CDATA[QASERVER6499]]></Value> to <Value><![CDATA[DUPESERVER]]></Value>
+Starting new test.
+
+Running Test 4...
+(Still going to open up UFT. When I don't want to do that anymore, I'll have to remember to remove the msgbox commands.)
+... ran until it had to navigate guardian. I'll take out the msgbox commands and stop opening UFT.
+Aborted.
+Removing msgbox commands.
+Starting next run.
+
+Running Test 4.1...
+current log count was reported as 0
+old and new count were printed as 0
+	Test fail
+	Results:
+		Run Time:		19:51
+		Success Totals:	20/27
+		Failed Cases:	6,	7,	8,	16,	18,	20,	23
+		
+		ok so this time 18 failed and 22 passed. weird. Maybe because I changed DbServer_Name?
+		
+Going to try to add the check for the end of the lot by waiting for the stop button.
+	probably easiest to check back on PaulTest3 and take the similar code
+
+it... might not have been told to open the right Screen Manager menu?
+I'm going to try to add a breakpoint and see if the script is actually opening TIPS to the right place before trying to interact with it.
+And it isn't getting the proper search term? Instead of changing it to ".Type", I'll change the ".Set" parameter to match what it is looking for.
+WshShell is initialized with that capitalization but then is made to be closed as "wshshell". Rectifying.
+Actually, not having any luck with .Set so I'll change it to .Type for now.
+	no, nevermind, .Type isn't working?
+Let's see what the other scripts do again, back on PaulTest3.
+
+So, it calls two Advisor_V2 functions: "Call boolFunc_SearchAndSelectProduct" and "Call boolFunc_StartLot"
+the current test does not have Advisor_V2 associated. I'll try that and add the function calls.
+	library associated, functions called.
+	Still having trouble. Pressing enter doesn't properly select the matched item?
+	it navigates to the product select menu properly and types in the name by itself, but the function doesn't open the product.
+	Additionally, when I go through the steps manually, pressing enter works every time, but when I make the script go step-by-step, it fails.
+	
+We're getting towards the end of the day. I'll bring this up to Paul the morning he gets back.
+
+Ok, but before I left I realized that it may not have been working because I was clicking back into UFT to hit F11 to go to the next step, which removed focus from the Item Search window.
+Cool.
+
+
++++++++++++
+18-Sep-2018
++++++++++++
+
+At the end of yesterday I realized that the functions I was trying to implement were not working because I was clicking back into UFT to proceed another step
+If I'm lucky, that will have been the fix for 6, but realistically I'm probably not quite done yet
+	Still just gradually making the scripts more robust until I can get it into a place where I can fix the issue.
+Starting new test
+
+Running Test 5...
+Note: for some reason (while I was away) the StartTipsDiagnosticAndLogin function failed to log in to TIPS.
+I'll look at it again to see why it may have done that, but I also saw that there is a while loop directly after which locks the program if the function does fail
+	Should I assume that the library function will work 100% of the time?
+	Should I build in a counter to the while loop?
+Moving on...
+Broke for some reason, probably because I opened UFT to look at where it was getting stuck.
+Refreshing and trying again.
+
+Running Test 5.1...
+COM Surrogate stopped working
+Test proceeded fine(?) anyway
+Had no trouble searching for and opening the proper product
+however it appears to have gotten caught while trying to start the lot
+opening UFT again to attempt to diagnose.
+System is refusing to let me open up UFT, I guess
+Seems broken.
+Might be the function responsible for starting the lot - I never took the time to look into that, just the search one.
+Aborting
+Looking through the code first: Calls an operation named "dynamicClick", let's see what that is.
+	Doesn't look like the Menu>StartLot item has a dynamicClick operation available. I'll see what I can find about it.
+		Search in the UFT help manual returned 0 results. Online?
+		No luck. Might not be a correct operation. But what about PaulTest3?
+		It's still using dynamicClick in PaulTest3, and I can't find a mention of the dynamicClick operation in either object repository.
+	Although, perhaps it is a function, not an object operation?
+	yyyyep, it was in a library called "GlobalVariableList"
+	so, for now, I'll associate this new library and run again.
+Associating GlobalVariableList shared library on ENGADVDEV01
+Running new test
+
+Running Test 5.2...
+Accessed product and started lot without issue
+Results:
+	Run Time:		00:14:21
+	Success Totals:	21/27
+	Failed Cases:	6,	7,	8,	18,	20,	23
+	
+	So now 16 suddenly worked.
+	Also, took like 5-6 minutes less than usual, which raises some alarm.
+	Still no luck in regards to 6.
+	
+I wish I knew what the intended values were; having 0 for even one doesn't seem like it should be the expected value, although I don't think I can be sure.
+I'll look through the scripts responsible for the creation of the initial value (the original log count)
+In: DCOL_Reject>StartLot>Line 22.
+	So, the arrOutput() array is declared line 22	(along with intCurrentCount? I don't see that used anywhere else yet...)
+	It is ReDim'd as arrOutput(-1), which I have determined gives it a size of 0, that is, it has 0 items in it (I think)
+	Then, ExecuteSQL is run, parameterizing (is that the right word? "using the parameters..."?) the Guardian Connection code,  
+	Finally, a parameter (column) is added to GlobalSheet, with the title "CurrentLogCount" and a first value of UBound(arrOutput) + 1, which should equal the number of items in arrOutput.
+	
+	If I had to guess, I'd say the issue lies within the ExecuteSQL function.
+		But, if the value I've been seeing has been 0 for the CurrentLogCount, how has that been equal to UBound(arrOutput) + 1?
+			That would imply that UBound(arrOutput) = -1, which is odd.
+				My understanding is that LBound(array) returns 0 in most cases. Why would LBound > UBound?
+				In this case, might LBound also return -1?
+				I forget, is it the highest/lowest index that is returned or the value at the highest/lowest index?
+				The former would make the most sense
+				Maybe by ReDim-ing it at -1, that becomes the highest, and the lowest is also shifted down to -1?
+				Regardless, this line of thinking probably isn't the best to be focusing on.
+	Anyway, let's take a look at the ExecuteSQL function again and see if I can get a better understanding of how it works (or, how it isn't working)
+	There are two ExecuteSQL functions? One in Common.Library and the other in DotNet.Library?
+	I guess I ought to check both.
+	First, I should check to see if they're the same
+	Wait, nah, I'm an idiot, the appearance in DotNet.Library is just the ExecuteSQL function being called within the ExecProcedure_GetArray function.
+	What I know about ExecuteSQL (from 17-Sep-2018):
+		"DESC: Executes SQL in a database"
+		"arrOutput = returned array to be loaded with output data"
+			so this is what I was anticipating
+		intCount is set as number of fields in the source SQL procedure
+		from what I can tell, this function just loops through adding data to arrOutput from the SQL source
+	:End.
+	More questions about ExecuteSQL:
+		passes "GetConnectionString" as its "strConnect". What does GetConnectionString return?
+		creates an object "conn" as "ADODB.Connection". Do I need to look up what that is?
+			Precursory guess: it is an object that allows interaction with the sql server
+		What causes a "Log" to exist, such that it contributes to "LogCount"?
+			I know that the LogCount variable is set to the number of entries (indices) in the (one dimensional?) arrOutput array. 
+			What data is passed into each index, and from where? What is responsible for making sure the array is populated properly?
+	This seems like a good amount to start with, let's work down the line
+	GetConnectionString:
+		in DotNet.Library:
+		"DESC: Gets a SQL connection string from the global configuration file. If not found, then searches Environment variables.
+		RETURNS: SQL connection string for current server"
+		I know that I changed the name value in the config file. Do I need to change this "connection string" as well, or could it be just the server name?
+		I can't find the global configuration file 
+		But, looking at the environment variable file (which is the one that I did edit), the connection string has a space for the server name, which is piped in by the function.
+		Hm, I think what I've been calling the envvar file is actually the global config file.
+			It looks like what are the environment variables are loaded into UFT from the global config file at the start of the script.
+			ok, that clears that up.
+		So, GetConnectionString should look like "Provider=SQLOLEDB;Data Source=DUPESERVER;Initial Catalog=Guardian;Persist Security Info=False;User ID=sa;Password=cactus#1"
+		
+		
+		Brought Paul over to take a look at it
+		he says we should check the DUPESERVER and see if everything's alright over there.
+		Ran the sql script which the UFT script was trying to run
+		got errors for all the entries
+		"GuardAgent needs special accesses and permissions to use it?"
+		
+		Did not have the File Name Configuration Destination folders updated on the DUPESERVER
+		... Will non-updated remote server settings become the default reason for why things aren't working?
+			Maybe I should move checking-that higher up in my debug procedure?
+		
+		
+		Change EndLot_QuarantineReject - add the flat wait back in
+		
+		
+	So on top of all that, it looked like there was a timing issue. It needs to wait until... something (should probably figure out what)... is done running before getting its value.
+		The value being UBound(arrOutput)
+		and the something being... the SQL thing updating?
+			I don't think the ExecuteSQL command actually makes the Server update, I think it just grabs the data
+			Otherwise the wait wouldn't have done anything
+				since it wasn't in between the value being recorded (newCount = ...) and what would have been the value being created (ExecuteSQL)
+		
+		Maybe the SQL command is run during ExecuteSQL, but the data it is polling is not fully updated immediately
+		
+	Regardless, I think I should put the wait right before the ExecuteSQL line.
+	
+	But what to wait for?
+	How can I tell the server is done being updated?
+		I'm not as familiar with the ways I can interact with the DUPESERVER directly
+	I'm tempted to just poll the ExecuteSQL command until it has a result greater than 0 (or until a timeout)
+		But if I did that, then the following check (the one which leads to the LogResult) would be redundant
+	Although, isn't that check simply for the purpose of seeing whether the server has updated?
+	
+	For now, I'll leave the 30 seconds and make sure it works in the first place.
+	(also removing the msgbox command at the beginning)
+	
+Running Test 6...
+Results:
+	Run Time:		00:15:47
+	Success Totals:	21/26
+	Failed Cases:	7,	8,	18,	20,	22
+
+Now, apart from 6 passing (woohoo), 22 has failed and 23 has passed.
+Before we run again, let's take a look at 7 and 8 quickly, since the wording of their Result log is confusing
+	it seems to imply a success when the result is a failure
+First of all, the formatting was atrocious.
+Second of all, it really is confusing. I can't tell if the lot is supposed to have duplicates or not.
+The success of test case 7 is triggered as "End a lot that has duplicates" and "Lot ends without a duplicate dialog", which isn't what the software should be doing.
+on top of that, if the success case is that there is no duplicate, why does it check to see if the lot is successfully quarantined in the next test case?
+
+According to Alex the test isn't supposed to get any duplicate dialogs because that lot isn't supposed to have any
+
+So it turns out that the conditionals were looking for an object that was not in our repository, since it used the wrong name for it.
+AND if you call if (ThingThatIsNotRegisteredInYourObjectRepository.Exist), it goes to the true case by default
+	thanks Vbscript
+		Or UFT
+			Whomever's fault that is.
+Fixed the conditionals to name the correct object and are running again.
+
+
+Running Test 7...
+8 still failed.
+We looked into it and realized that 8 had the same problem and we forgot to fix it
+the only difference being that we would have to trigger a duplicate lot in order to view the proper window and add it to the repository
+in the end we decided that test 8 was extraneous altogether and decided to scrap it
+... which throws a wrench in my by-index naming conventions thus far...
+this will be important for me to see if I look at notes from before this.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+All index-based references to test case errors greater than 7 before this point are off by one.
+
+This is due to the removal of Test Case 8.
+
+Ex: References to Test Case 8 below this notice correspond to Test Case 9 above it, Case 9 below is 10 above, etc. 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+that ought to do it.
+After applying changes, starting new test.
+
+
+Running Test 8...
+Results:
+	Run Time:		00:15:46
+	Success Totals:	22/25
+	Failed Cases:	17,	19,	21
+					(18, 20, 22 pre-removal)
+
+Making progress, cool.
+
+
++++++++++++
+19-Sep-2018
++++++++++++
+Making a new run as the first thing today
+
+
+Running Test 9...
+Results:
+	Run Time:		00:15:07
+	Success Totals:	22/25
+	Failed Cases:	17,	19,	21
+Ok, it's stable again. Time to dig into the next case, 17.
+
+	# :	Name							Expected Desc.								Resulting Desc.
+	17:	FT_Notifications				Verify notification were successful			Notifications were generated
+	
+So, this is interesting, because 17's name, expected description, and result description (all fields, actually) are identical to 6's, but 6 is marked as a pass
+Could this be a case where it's just looking for the opposite of what I think it's looking for, or could the logic just be backwards?
+Let's find the LogResult call and find out.
+... Having trouble finding the log results calls
+Ok, I only just now read the RunGuardian function in each of the main Jenkins-run .vbs scripts, and they each call the FT_Provisioning_Driver script.
+That accounts for most of the missing LogResult calls I couldn't find.
+Anyway, found the LogResult:
+
+Case 17: DuplicateCheckOneLevel_Reject3 > EndLot_QuarantineReject > Line 12 - 16
+"
+If CInt(newCount) = CInt(DataTable.Value("CurrentLogCount",dtglobalsheet)) Then     'got same number of rows
+	LogResult Environment("Results_File"), True, dtStartTime, Now(), "FT_Notifications", Null, "Verify notification were successful", "No notifications generated"
+Else
+	LogResult Environment("Results_File"), False, dtStartTime, Now(), "FT_Notifications", Null, "Verify notification were successful", "Notifications were generated"
+End If
+"
+Seems like a very similar setup to Case 6, but this time it wants to be sure that there were no notifications created.
+I was under the impression that it created a log regardless of the output, but perhaps what it was doing was just logging the conflicts
+So it wants to make sure there are no conflicts by making sure no notifications are reported
+
+Going to start troubleshooting attempt the same way I did 6, with a manual run through UFT once the environment is set up, and then a breakpoint where I'll check progress
+May need to interact via DUPESERVER box, but I think I've seen that done enough times that I may be able to at least try by myself.
+Starting new test
+
+
+Running Test 9.1...
+"IPS: IpsEngine error "MINOR":		No available SPT numbers detected!"
+Aborted script.
+Starting new test.
+
+
+Running Test 9.1.1...
+Got to Kill flag fine.
+Killed script, opened UFT and ran manually
+By the Breakpoint, the oldCount was 2 (the value put into the globalsheet) and the newCount was 4 (the value generated right before the check)
+So, there's nothing wrong with the way the logic was setup. The Numbers are compared correctly and the apparent logic is performed successfully.
+The issue then, I suppose, is indeed that the server creates additional result logs, when it looks like the script expects it not to.
+I'll move over to DUPESERVER and see what I can find.
+looked around, not sure yet.
+
+For now, I see that some of the logic for the following tests is problematic, and one has the same mis-named object error as last time.
+Fixing these first may help me understand the intention of Case 17
+Error: frmDuplicateAction_original not found in repository
+Error: IPS Test Screen also not found in repository
+
+Removing instances of "_original".
+
+There was another object repository I did not have associated, so I added that.
+I'll run again, still expecting 17 to fail.
+
+
+Running Test 9.2...
+Got to Kill flag fine.
+Killed script, opened UFT and ran manually
+Breakpoint #1: oldCount = 2, newCount = 4
+
+	*Reminder: add times to the waits so it doesn't take 30 seconds each
+
+Got an error about waiting for the client or something
+Could not find one of the buttons, "Decom Item".
+Associating it manually
+Could not find "Scan Label"
+Renaming to "txtScan" to match the existing repository object.
+Could not find SwfButton("Yes")
+appears to have thrown an error:	"Item has been sent as part of a notification. EPC ...000025(21)0000106024 cannot be reworked"
+
+It is not working because it does not detect duplicates
+
+In the end, after getting Alex's help, it turned out that the server settings were not correct (surprise surprise)
+It appeared to have reverted the settings of which data names it would check for duplication to the default of none.
+
+Starting new test
+
+
+Running Test 9.3...
+detected the duplicates
+now I have to associate the objects again, 
+remove the "Screen Manager Diagnostic" from the beginning of the Second user entry interactions
+I edited it such that it no longer ran both halves of one of the Test Cases (18 and 19)
+Now, should be just one test.
+I guess I may have to make another one of those notes...
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+All index-based references to test case errors greater than 18 before this point are off by one.
+
+This is due to the merging of test cases 18 and 19.
+
+Ex: References to Test Case 20 below this notice correspond to Test Case 21 above it, Case 21 below is 22 above, etc. 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+eh, I've been running into issues which I think have to do with running manually through UFT
+just going to run a new test.
+
+
+Running Test 10...
+I left for lunch and for some reason when I got back, everything was closed except for screen manager.
+	like, the little diagnostic Screen Manager window
+The test was still running for some reason, but I don't think it's going anywhere, and I don't know where it stopped, so I don't know where to pick it up from.
+That's annoying, let's run again I guess
+Actually, let's check the Results.txt
+... there is no Results.txt...
+So it might have just got caught right after I left for lunch and was just sitting here for an hour?
+Actually, the Jenkins console says it got stuck in the middle of TIPSDiagnostic_Prepare.vbs
+If I put it through that will it pick up?
+ok yeah, I guess it was just stuck on that. When I manually set up TIPS it proceeded by itself.
+That's annoying, I hope that doesn't become a regular thing.
+
+	
+Results:
+	Run Time:		00:16:26
+	Success Totals:	24/25
+	Failed Cases:	20
+
+So this is weird because I should only have 24 test cases now
+19 has info that I have not seen before:
+
+	# :	Name							Expected Desc.								Resulting Desc.
+	19:	FT_Notifications				Resend notifications						Notification request submitted
+	20:	FT_Notifications				Verify notification were successful			Notifications were not generated
+
+Looks like it did not receive notifications it wanted, successfully submitted a request for the notifications, but then did not receive them a second time.
+Found the code responsible for requesting a new notification and walked through it, checking to see if everything's ok
+
+I edited some stuff and ran again to see if it's working now	(forgot to write it all down)
+
+Running Test 10.1...
+Results:
+	Run Time:		00:16:26
+	Success Totals:	24/25
+	Failed Cases:	20
+	
+Nope, not magically fixed yet :(
+Adding kill flags back in and retrying
+
+
+Running Test 10.2...
+Made it to kill flag fine.
+"Object is disabled" when referring to that grayed out check box
+
+Going to run again up until the same spot, and keep a closer eye on the variables displayed, now that I have a slightly better understanding of what is going on.
+
+
+Running Test 10.3...
+Got up fine, when I went to look at the Guardian Manual Notification Resend page it said that there were already 0 remaining items in the Initial Notifications lots.
+What is Provisioning? It seems to be failing every time.
+Each one is "Failed with 405: Method Not Allowed"
+	seems irrelevant 
+Tried a notification resend, no result. Still only two entries in the Notification Log.
+
+
++++++++++++
+20-Sep-2018
++++++++++++
+Trying more troubleshooting with Paul's help.
+Added msgbox commands in more places so we can get better understanding of the progression of the state of the data
+
+Running Test 10.4...
+got a "no numbers available" error or something
+may have skipped the purge maybe?
+Trying again
+
+
+Running Test 10.4.1...
+got up to the flags we added in, checked the first one, looked correct
+when it tried to re-work and then decom the item, it gave the red error where it said it was a part of a notification and said it couldn't be used.
+got to the second flag and it said 0 remaining items.
+Results:
+	Run Time:		00:24:29
+	Success Totals:	24/29
+	Failed Cases:	20
+
+Still no
+Trying again to see if I can get a better look at the red error maybe
+
+
+Running Test 10.4.2...
+"Item has been sent as part of a notification. EPC ...000025(21)0000112267 cannot be reworked"
+Same results
+Results:
+	Run Time:		00:15:40
+	Success Totals:	24/25
+	Failed Cases:	20
+
+Question(s) I need to ask when people come back:
+Why might the Lot have 0 remaining items?
+	What exactly constitutes a "remaining item"?
+What might be causing the "cannot be reworked" error?
+	I've been getting it on and off, not sure why, it wouldn't have anything to do with this issue, would it?
+
+	
+	
++++++++++++
+21-Sep-2018
++++++++++++
+Alex told me that it was an issue with our own software, where it had been updated so that the check we were running was redundant
+Which is a relief
+
+Took out the parts he told me to (including test case 20)
+added a resizing command to the Guardian setup so that it hopefully stops interrupting the TIPS procedures by sitting on top of it
+Starting new test
+
+
+Running Test 11...
+Error Connecting to the Guardian Database
+Aborting, trying again
+
+
+Running Test 11.1...
+Power Fail
+Aborting, trying again
+
+
+Running Test 11.1.1...
+IPS: IpsEngine error "MINOR":	No available SPT numbers detected
+Aborting, trying again
+
+
+Running Test 11.1.2...
+Forgot to remove some of the msgbox commands, I'll do that after this run
+Results:
+	Run Time:		00:15:49
+	Success Totals:	24/24
+	Failed Cases:	none
+	
+Awesome! Removing remaining msgbox commands and moving on to the next test.
+msgbox commands removed
+
+
+
++++++++++++
+01-Oct-2018
++++++++++++
+I have returned to finalize preparations for this test's nightly runs.
+As with DualFormat, I am hoping this will not take too long, but I was proven entirely wrong last time, so I'll start out with more detailed recordings of the test runs.
+
+(I think it makes sense to start from 0 again)
+Making a preliminary test to get an idea of how much work I might have to do.
+    I anticipate I will have to point the email interaction sections to the updated EmailScrapperPoll.py, but other than that I am not sure what I will have to do.
+
+
+Running Test 0... 
+Setup and purge successful.
+Appears to have gotten caught on the DupeQuarantine section
+... Maybe not?
+    I think I just forget how proper procedure is supposed to look for this test
+    I'll refrain from aborting since it could just be running fine in the background.
+Reached the python script (likely the old one)
+Ran to completion without generating .pdf
+Checking ENGSEC830QA...
+VBScript runtime error: The remote server machine does not exist or is unavailable: 'WSObj.Range'
+Can't see clear issue with code, attempting to run manually.
+Ran fine
+Results:
+	Run Time:		00:12:54
+	Success Totals:	24/24
+	Failed Cases:	none
+
+Trying again, since this should work by itself...
+
+
+
++++++++++++
+02-Oct-2018
++++++++++++
+The script I left to run overnight crashed.
+Aborting and trying again.
+
+
+Running Test 0.1...
+Got the Ips error with no available numbers
+Maybe Purge was skipped?
+Aborting
+Trying again, keeping closer eye on purge section
+
+
+Running Test 0.2...
+Purge completed successfully
+First lot started successfully
+Got stuck in the email section. Adding a flag to halt at beginning of relevant section
+Looking at the local variables from the last run, the count variable responsible for waiting 2.5 minutes for the python script was at 17
+    it should only get up to five and then leave
+I think I see the problem, I need to change the logic from OR to AND:
+
+NOT(FileExists)     count < 5       Situation                       Desired Outcome     Desired Boolean
+True                True            No file, within time limit      Keep looking        True 
+True                False           No file, time limit expired     Exit loop           False 
+False               True            File found, within time limit   Exit loop           False 
+False               False           File found, time limit expired  Exit loop           False
+
+Yeah, that would be an AND, not an OR, whoops
+I'll have to change that on DualFormat, too
+Aborting debugging session, making changes
+Starting new test
+
+//  EndLotQuarantine Reject: remove wait(30), replace with better thing
+
+Running Test 0.3...
+//  Alternate idea for any of the UFT actions involving external python scripts:
+//      Does the python shell appear every time a python script is run?
+//      Currently, those actions are polling every 30 seconds, waiting for the results of the python script
+//      If so, would it be possible to instead associate the shell object and wait for it to go away?
+Forgot to remove msgbox command, I'll do that for next time.
+I've noticed the python shell at 09:05:30, if it's still there at 09:08:00, then I'll have cause for worry.
+Hey, it worked, nice
+Test proceeding as normal
+Results:
+	Run Time:		00:17:19
+	Success Totals:	23/24
+	Failed Cases:	8
+
+The failed case is that one section I messed with because it was painful to look at.
+Location:   VerifyEmail_App_GoodLot
+    Pretty sure I used the wrong method (.len) when attempting to get the number of items within FilesObj
+    Yeah, .len is not valid here.
+    Instead, using .Count for determining number of items.
+That should do it.
+Starting new test
+
+
+Running Test 1...
+Still didn't remove the flag...
+
+****REMOVE THE MSGBOX COMMAND****
+
+Results:
+	Run Time:		00:18:57
+	Success Totals:	24/24
+	Failed Cases:	none
+
+Nice, full clear.
+Removing flag
+Starting new tests to ensure consistency
+3 Consistency Tests remaining.
+
+
+Running Test 2...
+I remember that I changed the wait duration for the python call
+I need to either revert it or update the comment description to the correct amount of time
+Results:
+    Test Summary:   Full Pass (00:15:19)
+Starting new test
+2 Consistency Tests remaining.
+
+
+Running Test 3...
+Results:
+    Test Summary:   Full Pass (00:16:00)
+I think I'll just update the comment description for the wait.
+    Also added a TO-DO, calling to change the designated flag from the existence of a file in Emails/ to the exiting of the python shell.
+Starting new test
+1 Consistency Test remaining
+
+
+Running Test 4...
+Results:
+    Test Summary:   Full Pass (00:16:01)
+
+Consistency checks passed, setting up for nightly runs.
+Set to run nightly at "H 02 * * *"
+
+
++++++++++++
+11-Oct-2018
++++++++++++
+Having issues with recent runs of ILCD, so hopping back in here to work on it.
+Current issue: script is halting after result 17.
+Also, case 6 is failing
+    They both have to do with emails, but I don't think that's the root of the problem, at least not yet.
+Making an abridged ILCD script for troubleshooting.
+"IPS: IpsEngine error "MINOR":  IPS/GetGTIN: 601: No available SPT numbers detected!"
+
+May be getting caught on the boolFunc_SearchAndSelectProduct
+Re-associated one object into the Advisor repository, the error message from attempting to open a non-existent product
+Now it's trying to click a button which is in thew repository, but does not appear on the screen.
+Commenting those lines for now to see if it's an issue.
+
+Been managing to get through the test, with the odd change here and there, but on this last test it appears to have triggered an email halfway through the test?
+Oh, I still had a leftover test queued up for 4:36 PM on the DEV01 box. I'm an idiot.
+
+Well, there's no more time to run manual tests today. 
+
+
++++++++++++
+12-Oct-2018
++++++++++++
+Running test as I get in today
+Same typical results, 20/24, appears to have not created the dupe quarantine dialog.
+I plan to ask Alex about the "SwfWindow("SPTReworkOp.exe").SwfButton("Yes")" object not appearing on screen at all.
+
+I've gotten a close to good run, with only one failed test. 
+It's the Database validation one where it compares the 3rdSafeguard.txt to the expected text file result
+    I have a suspicion of what might be going on but I'm not sure.
+Yeah, it turned out that it was comparing the result to the wrong baseline file.
+This is annoying because it means that I can't use the same repeated action for every instance of this - each different instance needs its own unique baseline file.
+One idea:
+    create a new text file (like "DatabaseDupesTarget.txt" or something) which gets written over with the contents of the intended baseline file in each test.
+        "DatabaseDupesTarget"? "BaselineTarget"? "baseline_target"?
+    have VE_A_Quarantine call that instead.
+It'd be easier, I think, if I could define a variable for each test.
+I'll ask Alex about it when he doesn't seem too busy.
+
+Eh, he's been busy / gone for a while, so I went ahead and did it
+Ought to work now, let's run it.
+
+Running it through Jenkins caused the same initial issue where the Quarantine Window doesn't appear in the first place
+Will this be another one of those annoying issues where it doesn't work unless I make it pause halfway through?
+Trying to run the whole thing, but manually, without Jenkins.
+    If it is how I suspect it might be, then this will also result in the same issue.
+I may have to just use the updated version of Vision Simulator the CTO gave me?
+It also resulted in the same issue, but this time the first FT_Notifications test failed as well.
+You know what, let's just try setting up the new Vision Simulator.
+
+Trying from the top via Jenkins with this new version of Vision.
+It seems as if this new version has a differently structured reconnection prompt.
+I'll have to modify the code to reflect this, probably adding the new object into an existing repository.
+    Hopefully this hasn't thrown off the test, but if it has, it's an easy fix.
+    
+Promising Result: pass on all tests except for case 6, which I believe correlates with the connection error.
+I am about to go to lunch, and I think I may have to wait until it happens to trigger again before I can grab the object for association.
+I'll run a test, and hope for a trigger of that window when I get back. If not, I'll keep running until I get it.
+
+This has been inconsistent and slow. I'm going to move over to 740011 for a bit.
+
+
++++++++++++
+17-Oct-2018
++++++++++++
+I haven't touched this job in a while and I'm not exactly sure where I left off
+I'll run a test or two while I'm waiting to ask Alex a question.
+
+Running Test 5...
+Results:
+	Run Time:		00:27:57
+	Success Totals:	19/24
+	Failed Cases:	6, 18, 19, 20, 21
+It's not great.
+
+
++++++++++++
+29-Oct-2018
++++++++++++
+I'm at a point in the 740011 work where I will need to completely redo a section of the test because the software can't actually do what we want it to do.
+I have some ideas, but Paul is out and I'd rather wait for his help before I dive in, so I'll work here for today.
+Starting with a check-in
+
+
+Running test 6...
+Results:
+	Run Time:		00:27:03
+	Success Totals:	20/24
+	Failed Cases:	18, 19, 20, 21
+My fear is that this test may be having the same issues as 740011
+I'll take a look at the test procedure code and then the server data to see what I can find.
+
+It looks like the root error is that the duplicate dialog does not appear, which causes the rest of the cases to fail.
+I'll look at the server to see if I can find out what's going on.
+
+I only see one lot (1548). I believe there should be two lots.
+I'm going to run again and keep a closer eye on the lot generation.
+
+
+Running test 6.1...
+Appears to have gotten stuck on the Screen Manager startup
+    Same issue DF gets every night?
+Trying again
+
+
+Running test 6.1.1...
+Ran the Lot Identification SQL script on DUPESERVER after seeing the first lot start, found lot number 1549
+    Lot 1549 has stopped
+I'm not sure that I saw it starting a new lot, but it is already at the "Wait Until:ItemsCreated=100" step
+still just the 1549 lot
+aborting, taking a look
+    perhaps the part where it selects the product with which it will create the lot needs fixing.
+    
+After looking at the code, it would appear as if the section responsible for starting a new lot fails unless it starts on the home screen.
+    or, rather, that it does not start on the Products screen
+I'm going to check to see if it is this way in DF as well, because I don't think it is.
+
+It is that way, but there isn't ever any issue on DF's end, I don't think
+
+The quick and lazy solution I can come up with would be to throw in a command to return to the home screen before the start of each lot.
+I'll do that.
+That should work for now, later I can get around to either implementing it everywhere else or coming up with a better way to fix that issue.
+Trying again
+
+
+Running test 6.2...
+Got stuck on the ScreenManager start again...
+Shuffled some bits of code around, it will either fix the problem or blow everything up.
+Retrying test.
+
+
+Running test 6.3...
+Everything blew up.
+Actually I just forgot to add a "Then" to my if clause
+Trying again
+
+
+Running test 6.3.1...
+OK, did not blow up.
+Got to first lot, completed.
+One lot found on DUPESERVER, ID = 1551
+Got to second lot, completed
+Two lots found, second ID = 1552
+cool
+Results:
+	Run Time:		00:12:41
+	Success Totals:	24/24
+	Failed Cases:	none
+awesome
+
+I did notice one strange thing, it seemed as if both lots used the same product selection, as opposed to separate selections with the same properties
+It probably isn't an issue, though.
+Starting again for consistency
+
+
+Running test 7...
+Results:
+	Run Time:		00:12:51
+	Success Totals:	24/24
+	Failed Cases:	none
+Cool, the only thing stopping that from working was one line of code.
+
+
+Running test 8...
+Results:
+	Run Time:		00:12:45
+	Success Totals:	23/24
+	Failed Cases:	6
+6 is the first notifications comparison. It is supposed to get 0 notifications because of the successful run (prompting no error messages)
+Looking through the PrintLog, I see that it indeed got 0 for both the old and new count values
+Does it have to do with the "CInt()" function?
+And, it isn't a consistent error from what I can tell, so I'm not sure how to fix this, especially since the print log shows that they were both at 0.
+Let's try again and see what happens this time.
+
+
+Running test 9...
+Results:
+	Run Time:		00:12:42
+	Success Totals:	23/24
+	Failed Cases:	6
+Same deal: I see 0 for both old and new counts, but the check failed.
+Modified the print statements to use CInt() (e.g. 'print "new count=" & CInt(newCount)') for both 
+Trying again
+
+
+Running Test 9.1...
+Results:
+	Run Time:		00:12:55
+	Success Totals:	24/24
+	Failed Cases:	none
+Wait, this time the print log says that the old count is 0 and the new count is 2, and the test passed.
+This test step may be broken
+Let's take another look.
+Yeah, I think the logic for that check was backwards.
+Won't fix the inconsistency, but now I'll be more able to tell when to look for it.
+Starting next test.
+
+
+Running Test 9.2...
+The test appears to have crashed for some reason.
+Trying again
+
+
+Running test 9.2.1...
+It also appears to have crashed.
+At this point, I may just want to reset the system and have it fresh for the overnight testing.
+Trying one last time
+
+
+Running test 9.2.2...
+Same crash - box freezes up, screen goes white
+I think it may have to do with the code rearranging I did in the Screen Manager setup step.
+I might just revert it so that the box doesn't freeze up for the whole night.
+might have to do some weird thing with a setter in the function to flip a flag to true once it has finished running 
+doesn't the function return true already if it finishes?
+
+
++++++++++++
+30-Oct-2018
++++++++++++
+Overnight tests bombed, so I'm trying ILCD runs:
+    23/24, failed step 6 (FT_Notifications)
+        had gotten 2 notifications when it expected 0.
+I'll try again:
+    "Failed to start the test application"
+Trying again...
+    Didn't open Screen Manager...
+Next try...
+    Full clear.
+Once more for consistency check...
+    Failed step 6
+Is it alternating? Is it an issue with clearing out the previous results?
+Trying one last time...
+    Paul came over and said that next time it fails I should call him over to look at it before purging the results.
+    Screen Manager did not open.
+Trying again...
+    Pass
+Trying again...
+    the test crashed again...
+This is annoying...
+    Step 6 failed
+    
+So it has been alternating between passing and failing...
+(null) Pass Fail (null) (null) Pass Fail Pass (null) Fail
+I'll report the failed cases
+
+Paul Alex and I looked at it and messed with it, ran it to see what happens
+Results:
+	Run Time:		00:19:20
+	Success Totals:	16/21 (/24)
+	Failed Cases:	3, 14, 15, 17, 18
+    Missing Cases:  6, 7, 8
+Looks like the data loading failed. Trying again
+    Something crashed, but I'm not sure if it broke the test
+    I think it broke the test
+Trying again...
+    Full clear
+    found results I'm looking for, but now I want to find what the fails look like
+Trying for a fail?
+    crashed
+    not that kind of fail
+Trying again
+    craaaaash
+    
+
++++++++++++
+31-Oct-2018
++++++++++++
+Performing check-in test.
+
+
+Running Test 10...
+Results:
+	Run Time:		00:12:36
+	Success Totals:	24/24
+	Failed Cases:	none
+Full clear
+Trying again, seeing if I still get fails
+
+
+Running test 10.1...
+Results:
+	Run Time:		00:12:36
+	Success Totals:	23/24
+	Failed Cases:	6
+OK. What was I looking for again?
+Paul is working from home today and I haven't seen Alex for a bit
+I poked around in the Guardian software and looked for the actual notifications
+Interestingly, I found (in the C:\Notifications\FuncTest\GS1Decom\ directory on DUPESERVER) a total of 4 notification files which seemed to coincide with the test.
+    According to Guardian, these notifications are of the "Decommissioning FT" variety.
+In the case of the first pair, if I am reading the filenames correctly, the files were first created at 10:39:21
+Looking at the Result.txt file, the failure of step 6 was recorded at 10:39:15
+ ...Looks like another damned timing error...
+Further reinforcing this interpretation is that, in the QTPrintLog.txt file, leading up to the second notification check, the before count is 2, not 0.
+Alright, let's add in a polling loop to wait to see if the number changes for a minute or something.
+
+Now, it should wait for at least ten seconds and at most a minute while checking for the first set of notifications
+I will know that it encountered the scenario I've attempted to fix if I see two pairs of print logs showing the two first being equal and then being unequal.
+    Or, if the initial 10 second wait is longer than any future delay, I won't see anything.
+
+
+Running test 11...
+Results:
+	Run Time:		00:12:54
+	Success Totals:	24/24
+	Failed Cases:	none
+Cool. Let's run again
+
+
+Running test 12...
+Got stuck after I went to lunch. Appears to have not navigated screen manager?
+Trying again.
+
+
+Running test 12.1...
+Seems like it just didn't open Screen manager at all this time...
+I may have to fix the Diagnostic Prepare script again.
+Trying again.
+
+
+Running test 12.1.1...
+"Search box contains an invalid product!"???
+Test bombed, many fails
+Results:
+	Run Time:		00:22:35
+	Success Totals:	20/24
+	Failed Cases:	18, 19, 20, 21
+Let's try again?
+
+
+Running test 12.2...
+Results:
+	Run Time:		00:12:57
+	Success Totals:	24/24
+	Failed Cases:	none
+one more for good measure
+
+
+Running test 13...
+Results:
+	Run Time:		00:13:20
+	Success Totals:	24/24
+	Failed Cases:	none
+cool. I'll work on the Diagnostic Prepare again.
+
+I've made some tweaks, but I can't test my changes unless it breaks again, so I'll keep waiting?
+
+Running test 14:
+    Full clear (00:14:09)
+Running test 15:
+    Full clear (00:13:28)
+Running test 16:
+    Full clear (00:13:11)
+
+I can't help but feel like this isn't the most efficient usage of my time.
+Leaving this document for a bit.
+
+
++++++++++++
+
+
+
+
+
+
+
+Results:
+	Run Time:		
+	Success Totals:	
+	Failed Cases:	

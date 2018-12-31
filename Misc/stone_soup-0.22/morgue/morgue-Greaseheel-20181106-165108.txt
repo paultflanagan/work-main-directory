@@ -1,0 +1,199 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+132 Greaseheel the Slasher (level 4, -1/37 HPs)
+             Began as a Draconian Skald on Nov 6, 2018.
+             Slain by a gnoll (4 damage)
+             ... on level 3 of the Dungeon.
+             The game lasted 00:06:38 (1739 turns).
+
+Greaseheel the Slasher (Draconian Skald)            Turns: 1739, Time: 00:06:39
+
+Health: -1/37      AC:  5    Str: 13    XL:     4   Next: 92%
+Magic:  6/7        EV: 13    Int: 13    God:    
+Gold:   101        SH:  0    Dex: 12    Spells: 1/7 levels left
+
+rFire    . . .     SeeInvis .   m - +2 falchion (holy)
+rCold    . . .     Gourm    .   (no shield)
+rNeg     . . .     Faith    .   (armour unavailable)
+rPois    .         Spirit   .   (helmet restricted)
+rElec    .         Reflect  .   (no cloak)
+rCorr    .         Harm     .   (no gloves)
+MR       .....                  (no boots)
+Stlth    +.........             (no amulet)
+HPRegen  0.12/turn              (no ring)
+MPRegen  0.10/turn              (no ring)
+
+@: singing
+A: unfitting armour, cold-blooded, AC +5
+a: no special abilities
+
+
+You were on level 3 of the Dungeon.
+You were not hungry.
+
+You visited 1 branch of the dungeon, and saw 3 of its levels.
+
+You collected 101 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +0 falchion
+ m - a +2 falchion of holy wrath (weapon)
+Scrolls
+ b - a scroll of amnesia {unknown}
+ e - a scroll of remove curse
+ f - a scroll of identify
+ g - 5 scrolls of teleportation {unknown}
+ i - a scroll of random uselessness {unknown}
+ j - 2 scrolls of enchant weapon {unknown}
+ l - a scroll of magic mapping {unknown}
+ n - a scroll of fear {unknown}
+Potions
+ d - a potion of berserk rage {unknown}
+ h - a potion of haste {unknown}
+ k - 3 potions of curing {unknown}
+Comestibles
+ c - 5 rations
+
+
+   Skills:
+ + Level 2.7 Fighting
+ + Level 3.6 Long Blades
+ + Level 2.9 Dodging
+ + Level 0.5 Stealth
+ + Level 2.2 Spellcasting
+ + Level 3.2 Charms
+
+
+You had one spell level left.
+You knew the following spells:
+
+ Your Spells              Type           Power        Failure   Level  Hunger
+a - Infusion              Chrm           #...         7%          1    ##.....
+c - Spectral Weapon       Hex/Chrm       #.......     36%         3    ####...
+z - Song of Slaying       Chrm           #.......     10%         2    ###....
+
+Your spell library contained the following spells:
+
+ Spells                   Type           Power        Failure   Level  Hunger
+ Shroud of Golubria       Chrm/Tloc      #.........   19%         2    ###....
+ Regeneration             Chrm/Necr      #.........   36%         3    ####...
+
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (3/15)            
+
+Altars:
+Qazlal
+
+
+Innate Abilities, Weirdness & Mutations
+
+Your plain brown scales are hard. (AC +5)
+You cannot fit into any form of body armour.
+You are cold-blooded and may be slowed by cold attacks.
+
+
+Message History
+
+The gnoll is heavily wounded.
+The gnoll hits you but does no damage. The gnoll barely misses you. x2
+The rat twitches its whiskers.
+The gnoll misses you. You riposte. You barely miss the gnoll.
+You tail-slap the gnoll, but do no damage.
+The gnoll is heavily wounded.
+The gnoll hits you from afar with an enchanted spear!
+You hit the gnoll.
+The gnoll is almost dead.
+The gnoll closely misses you. x3
+You closely miss the gnoll.
+The gnoll is almost dead.
+The gnoll barely misses you. The gnoll closely misses you.
+The gnoll hits you from afar with an enchanted spear.
+The gnoll hits you!
+* * * LOW HITPOINT WARNING * * *
+The gnoll hits you.
+* * * LOW HITPOINT WARNING * * *
+The gnoll hits you.
+You die...
+
+##############
+.............#
+.############# #######.#
+.#.#.#.###     #.......#
+.........#   ###'#######
+.#.#.#.#.#####....########
+......÷.÷..<('..@.g.gr....
+.#.#.#.#######...g###g####
+........#  #.....##
+.#.#.#[##  ##+++##
+........#
+>#.#.#.##
+........#
+.#.#.#.##
+.######.#
+.#    #.#
+.#    #.#
+
+
+You could see 4 gnolls and a rat.
+
+Vanquished Creatures
+  A hound (D:2)
+  4 adders
+  2 worms
+  A dart slug (D:2)
+  2 leopard geckos
+  7 giant cockroaches (D:1)
+  8 goblins
+  8 hobgoblins
+  6 kobolds
+  5 bats
+  7 frilled lizards
+  5 rats
+56 creatures vanquished.
+
+Vanquished Creatures (others)
+  5 toadstools (D:3)
+5 creatures vanquished.
+
+Grand Total: 61 creatures vanquished
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | Greaseheel the Draconian Skald began the quest for the Orb.
+     0 | D:1      | Reached XP level 1. HP: 17/17 MP: 3/3
+   128 | D:1      | Reached XP level 2. HP: 20/24 MP: 5/5
+   347 | D:1      | Reached XP level 3. HP: 30/30 MP: 6/6
+   849 | D:2      | Found a stormy altar of Qazlal.
+   854 | D:2      | Reached XP level 4. HP: 33/37 MP: 7/7
+  1592 | D:3      | Learned a level 2 spell: Song of Slaying
+  1596 | D:3      | Learned a level 3 spell: Spectral Weapon
+  1739 | D:3      | Slain by a gnoll
+
+Skill      XL: |  1  2  3 |
+---------------+----------+-----
+Charms         |     3    |  3.2
+Long Blades    |        3 |  3.6
+Fighting       |          |  2.7
+Dodging        |          |  2.9
+Stealth        |          |  0.5
+Spellcasting   |          |  2.2
+
+Action                   |  1- 3 |  4- 6 || total
+-------------------------+-------+-------++-------
+Melee: Falchion          |   104 |    47 ||   151
+       Tailslap          |    17 |     5 ||    22
+ Cast: Infusion          |     4 |       ||     4
+       Song of Slaying   |       |     1 ||     1
+  Use: Scroll            |       |     2 ||     2
+ Stab: Sleeping          |     1 |       ||     1
+  Eat: Chunk             |       |     3 ||     3
+Armor: Skin              |    34 |    15 ||    49
+Dodge: Dodged            |    92 |    37 ||   129
+Rpst.: Falchion          |    30 |    13 ||    43
+

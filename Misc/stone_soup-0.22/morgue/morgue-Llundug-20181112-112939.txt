@@ -1,0 +1,257 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+116 Llundug the Insei (level 4, -2/32 HPs)
+             Began as a Demonspawn Transmuter on Nov 12, 2018.
+             Was a Follower of Wu Jian.
+             Slain by Sigmund
+             ... wielding a +0 scythe
+              (9 damage)
+             ... on level 3 of the Dungeon.
+             The game lasted 00:14:27 (2609 turns).
+
+Llundug the Insei (Demonspawn Transmuter)           Turns: 2609, Time: 00:14:27
+
+Health: -2/32      AC:  6    Str: 11    XL:     4   Next: 70%
+Magic:  5/7        EV: 13    Int: 14    God:    Wu Jian [*.....]
+Gold:   149        SH:  0    Dex: 14    Spells: 1/7 levels left
+
+rFire    . . .     SeeInvis .     - Unarmed
+rCold    . . .     Gourm    .   (no shield)
+rNeg     + . .     Faith    .   b - +0 robe
+rPois    .         Spirit   .   (no helmet)
+rElec    .         Reflect  .   o - +1 cloak
+rCorr    .         Harm     .   (no gloves)
+MR       .....                  (no boots)
+Stlth    +.........             (no amulet)
+HPRegen  0.10/turn              p - ring of positive energy
+MPRegen  0.10/turn              (no ring)
+
+@: confused
+A: icy blue scales 1, powered by death 1
+a: Renounce Religion
+
+
+You were on level 3 of the Dungeon.
+You worshipped Wu Jian.
+Wu Jian was aware of your devotion.
+You were not hungry.
+
+You visited 1 branch of the dungeon, and saw 3 of its levels.
+
+You collected 149 gold pieces.
+
+Inventory:
+
+Missiles
+ a - 51 arrows
+ g - 66 stones (quivered)
+Armour
+ b - a +0 robe (worn)
+ o - a +1 cloak (worn)
+Jewellery
+ p - a ring of positive energy (left hand)
+Scrolls
+ c - a scroll of teleportation
+ f - a scroll of identify {unknown}
+ i - 2 scrolls of fear {unknown}
+ k - a scroll of remove curse {unknown}
+ n - a scroll of blinking {unknown}
+ q - a scroll of magic mapping {unknown}
+ s - a scroll of immolation {unknown}
+ t - a scroll of fog {unknown}
+Potions
+ e - a potion of flight
+ h - a potion of berserk rage {unknown}
+ j - a potion of cancellation
+ l - a potion of haste {unknown}
+Comestibles
+ d - 5 rations
+ r - 13 chunks of flesh
+
+
+   Skills:
+ + Level 1.2 Fighting
+ * Level 2.3 Dodging
+ + Level 0.5 Stealth
+ * Level 4.1 Unarmed Combat
+ + Level 2.4 Spellcasting
+ + Level 2.1 Transmutations
+
+
+You had one spell level left.
+You knew the following spells:
+
+ Your Spells              Type           Power        Failure   Level  Hunger
+a - Beastly Appendage     Tmut           #.....       10%         1    #......
+b - Sticks to Snakes      Tmut           #.......     14%         2    ###....
+c - Spider Form           Tmut/Pois      #.........   41%         3    ###....
+
+Your spell library contained the following spells:
+
+ Spells                   Type           Power        Failure   Level  Hunger
+ Ice Form                 Ice/Tmut       #.......     82%         4    #####..
+ Blade Hands              Tmut           #.........   95%         5    ######.
+
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (3/15)            
+
+Altars:
+Ashenzari
+Gozag
+Qazlal
+Wu Jian
+
+Annotations:
+D:3 Sigmund
+
+
+Innate Abilities, Weirdness & Mutations
+
+You are partially covered in icy blue scales. (AC +2)
+You regenerate a little health from kills.
+
+
+Message History
+
+* * * LOW HITPOINT WARNING * * *
+It was a potion of cancellation.
+Your magical effects are unravelling.
+You feel magically purged.
+Your transformation has ended.
+Your +1 cloak unmelds from your body. Your +0 robe unmelds from your body.
+It was a potion of curing. You feel better.
+You hear some strange, mumbled words.
+You are confused.
+You closely miss something. Your punch misses something. Something hits you.
+You hit something.
+You hear some strange, mumbled words.
+A magic dart appears from out of thin air!
+The magic dart hits you!
+You closely miss something. Something barely misses you.
+You bump into the rock wall.
+Something hits you.
+* * * LOW HITPOINT WARNING * * *
+You hit something. Something hits you!
+You die...
+
+         #.##>.........#.##.#####
+         #.............#......
+         ####..........####.###
+          .........###.#  #.#
+         ..........###.#  #.#
+         #.##..........#  #.#
+         #. ####...#####  #..
+         #    ##...#
+         #.#  w....#
+         .....###{[###########
+         !......@...#.........
+         .....###..˜?.########
+         .........˜˜˜.###
+         # .......˜˜˜...#
+           ..####.P˜˜...########
+           .    #..P............
+         #...#  #.###.#.########
+         #...#  #..##.#.#####
+         #...#  ##.##.......#
+         #...#####.####.###.#
+#.       #................#
+
+
+There were no monsters in sight!
+
+Vanquished Creatures
+  3 adders
+  An ooze (D:1)
+  6 worms
+  2 dart slugs (D:2)
+  An orc (D:3)
+  4 giant cockroaches
+  6 goblins
+  6 hobgoblins
+  13 kobolds
+  A quokka (D:3)
+  7 bats
+  3 frilled lizards
+  13 rats
+66 creatures vanquished.
+
+Vanquished Creatures (others)
+  2 fungi (D:3)
+  3 plants (D:3)
+5 creatures vanquished.
+
+Grand Total: 71 creatures vanquished
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | Llundug the Demonspawn Transmuter began the quest for the
+                  | Orb.
+     0 | D:1      | Reached XP level 1. HP: 15/15 MP: 3/3
+   112 | D:1      | Reached skill level 3 in Unarmed Combat
+   116 | D:1      | Gained mutation: You are partially covered in icy blue
+                  | scales. (AC +2) [demonic ancestry]
+   116 | D:1      | Reached XP level 2. HP: 12/21 MP: 3/5
+   246 | D:1      | Learned a level 2 spell: Sticks to Snakes
+   742 | D:2      | Found a stormy altar of Qazlal.
+   749 | D:2      | Gained mutation: You regenerate a little health from kills.
+                  | [demonic ancestry]
+   749 | D:2      | Reached XP level 3. HP: 26/26 MP: 4/6
+   759 | D:2      | Learned a level 3 spell: Spider Form
+   799 | D:2      | You fall through a shaft!
+   827 | D:3      | Noticed Sigmund
+  1858 | D:2      | Found an opulent altar of Gozag.
+  2033 | D:2      | Reached XP level 4. HP: 29/32 MP: 7/7
+  2036 | D:2      | Found a faded altar of an unknown god.
+  2054 | D:2      | Became a worshipper of the Wu Jian Council
+  2054 | D:2      | Reached * piety under Wu Jian
+  2265 | D:3      | Found a shattered altar of Ashenzari.
+  2269 | D:3      | Saw a vision of the Swamp and the Spider Nest.
+  2269 | D:3      | Noticed an alligator
+  2269 | D:3      | Noticed an alligator
+  2269 | D:3      | Noticed an alligator
+  2269 | D:3      | Noticed a redback
+  2269 | D:3      | Noticed a wolf spider
+  2269 | D:3      | Noticed an alligator
+  2269 | D:3      | Noticed an alligator
+  2269 | D:3      | Noticed a redback
+  2269 | D:3      | Noticed a wolf spider
+  2269 | D:3      | Noticed a redback
+  2269 | D:3      | Noticed a wolf spider
+  2269 | D:3      | Noticed a wolf spider
+  2269 | D:3      | Noticed a wolf spider
+  2269 | D:3      | Noticed a water moccasin
+  2269 | D:3      | Noticed a redback
+  2270 | D:3      | Noticed a swamp drake
+  2271 | D:3      | Noticed a water moccasin
+  2291 | D:3      | Reached skill level 4 in Unarmed Combat
+  2609 | D:3      | Slain by Sigmund
+
+Skill      XL: |  1  2  3  4 |
+---------------+-------------+-----
+Unarmed Combat |  3        4 |  4.1
+Dodging        |     2       |  2.3
+Transmutations |        2    |  2.1
+Fighting       |             |  1.2
+Stealth        |             |  0.5
+Spellcasting   |             |  2.4
+
+Action                   |  1- 3 |  4- 6 || total
+-------------------------+-------+-------++-------
+Melee: Unarmed           |   149 |    88 ||   237
+       Headbutt          |    16 |     1 ||    17
+       Kick              |    14 |    14 ||    28
+ Cast: Beastly Appendage |    27 |    10 ||    37
+       Spider Form       |       |     1 ||     1
+Invok: Lunge             |       |    10 ||    10
+       Whirlwind         |       |     7 ||     7
+  Use: Potion            |     1 |     2 ||     3
+       Scroll            |     1 |       ||     1
+ Stab: Sleeping          |     3 |       ||     3
+  Eat: Chunk             |     4 |     2 ||     6
+Armor: Robe              |    32 |    22 ||    54
+Dodge: Dodged            |    92 |    48 ||   140
+

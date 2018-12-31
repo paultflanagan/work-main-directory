@@ -1,0 +1,207 @@
+Dupes Troubleshooting Post Lot Quarantine Cancel
+
++++++++++++
+10-Dec-2018
++++++++++++
+I have moved over to this test while Paul works on setting up another machine for me to run 8.3.0
+Adding the standard setup (ScriptForcequit.bat, SetupEnv.vbs, GrdCfgMgr_StartLogin.vbs, TIPSDiagnostic_Prepare.vbs) to head.
+Let's first check the main script, C:\RunPostLotQuarantineDecom.vbs
+
+It is not in C:\. Checking C:\Duplicate Check\
+Found a file titled "RunPosLotQuarantineDecom.vbs"
+    I'll rename it and move it to C:\ to match the Jenkins call
+Crack it open
+
+
+Steps:
+PurgeData
+
+Process "PreLot_SingleItemDecomA.xls" through FT_Provisioning_Driver
+Run     "DuplicateCheckOneLevel_Reject"
+Process "PostLot_SingleItemDecomA.xls" through FT_Provisioning_Driver
+
+Process "PreLot_SingleItemDecomB.xls" through FT_Provisioning_Driver
+Run     "DuplicateCheckOneLevel_Reject2"
+Process "PostLot_SingleItemDecomB.xls" through FT_Provisioning_Driver
+
+End of Test
+
+Seems like a pretty straightforward (dare I say, short?) test
+
+
+Let's examine these files
+PreLot_SingleItemDecomA.xls
+    Sets both SafeGuards to OFF
+    Imports:
+        Range:              ImportFiles\Functional\Lot_SingleItemDecom\FT-A_Range_Bottle_0.xml
+        FullyRandomList:    "           "           "           "     \FT-A_List_Bottle_0.xml
+        PartialRandomList:  "           "           "           "     \Product FT-A_20170000-000_9918801000000000-001_x1x_1.txt
+PostLot_SingleItemDecomA.xls
+    Sets both SafeGuards to ON
+    Disables a number range
+PreLot_SingleItemDecomB.xls
+    Sets both SafeGuards to OFF
+    Imports:
+        Range:              ImportFiles\Functional\Lot_SingleItemDecom\FT-A_Range_Bottle_5000.xml
+        FullyRandomList:    "           "           "           "     \FT-A_List_Bottle_5000.xml
+        PartialRandomList:  "           "           "           "     \Product FT-A_20170000-000_9918801000005000-001_x1x_1.txt
+PostLot_SingleItemDecomB.xls
+    Sets both SafeGuards to ON
+    Disables a number range
+    
+Checking the ReadMe for the Lot_SingleItemDecom directory:
+    "2 duplicates @ position 10 in List file 5000"
+All of the various data sets have 5000 items
+
+Time to dig into the UFT scripts
+Hang on, I think I've already used _Reject
+Yeah definitely
+Let's look at _Reject2
+    Uses a unique VE_A, _Quarantine_PostLot
+        Seems like a version of _Quarantine with a target file of "C:\baseline_postlot.txt"
+    I also see one action, "EndLot_QuarantineReject", which I may need to rework later
+    
+For now, let's give it a shot
+
+
+Running test 0...
+Aw man, I just realized I forgot to set the target file
+    has been running well so far, though.
+    16 passed results in 11 minutes.
+I did some quick file manipulation on the fly and rewrote the contents of baseline_target.txt to match _postlot.txt
+    might work
+Had an issue navigating to "Manual Notification Resend" and threw an error
+Finished, generated an email without an attachment.
+
+is missing "Test_Results\PreprocessGuardianResults_PostLotQuarantineDecom.vbs"
+Let's take a look
+There was a file called PreprocessGuardianResults_PostLot.vbs
+made a copy with the full requested name.
+Piping the results along...
+Email and attachment received.
+Results:
+	Run Time:		00:18:56
+	Success Totals:	24/25
+	Failed Cases:	FT_Notifications    [Lot 2]                         (20)
+Not too bad for a first run.
+First, let's add in the file targeting commands
+_Reject2 > Initialize now sets _target to _postlot.
+I did notice where step 20 went wrong, but let's make another run to verify.
+
+
+Running test 0.1...
+Could not purge because of an open lot?
+The lines tab says there aren't any lots open.
+
+There was a suspended lot tucked away which had to be resolved.
+Trying again
+
+
+Running test 0.1.1...
+if the script was unable to successfully close out a lot before the end of the test, it may be indicative of a larger problem.
+"COM surrogate has stopped working"
+Once more...
+
+
+Running test 0.1.2...
+Results:
+	Run Time:		00:17:57
+	Success Totals:	23/25
+	Failed Cases:	Email Validation    [Lot 1]                         (8),
+                    FT_Notifications    [Lot 2]                         (20)
+Rats.
+Resuming and closing the remaining lot.
+Once again.
+
+
+Running test 0.2...
+Finally got a .pdf first try.
+Results:
+	Run Time:		00:17:52
+	Success Totals:	23/25
+	Failed Cases:	Email Validation    [Lot 1]                         (8),
+                    FT_Notifications    [Lot 2]                         (20)
+Let's run with UFT visible so we can see right where the issues are.
+Setting qtApp.Visible = True
+
+Running test 0.3...
+forgot to hit save.
+
+
+Running test 0.3.1...
+I think 8 may have been failing because I have not been clearing the email tables after I manually quarantine the suspended lots
+    this would leave the quarantine confirmation messages in the table for the VE_A to find when it did not expect any.
+after having cleared the email table, step 8 passed.
+Some weird stuff going on in EndLot_QuarantineReject of _Reject2
+Not suspending the lot, not navigating to the correct window (and not giving any notification when it failed to do either)
+Results:
+	Run Time:		00:22:17
+	Success Totals:	24/25
+	Failed Cases:	FT_Notifications    [Lot 2]                         (20)
+so the 8 case is understood, at least.
+
+I'll step through _Reject2 > EndLot_QuarantineReject to see what's up
+ah, it's using "frmDuplicateAction_original" instead of "frmDuplicateAction"
+{"Second User Entry" Dialog object was not found in the Object Repository}
+    In Advisor library for the SecondSig function
+Need to associate "AdvisorObjects_V2.tsr" for this one to work, if I'm reading the GetGTIN file correctly.
+Now it's getting stuck on the "Decom Item" button
+Let's see where ILCD has its stored.
+These two actions actually seem very similar.
+I'll do a side-by-side and see if I can just copy all of _Reject3 over to _Reject2.
+Taking from Action13 of both.
+Yeah, they seem identical, all the way down to the specific item numbers.
+Alright, so that code should be nicer to read now.
+Let's get back to figuring out the proper object repo
+
+_Reject3 had it stored locally.
+Let's put it into a shared repo
+AdvisorObjects_V2 seems to have the most similar items already, so I'll put it there.
+Hopping back on _Reject2 to see how much that fixed
+
+That part worked, but I think there's something wrong with the code I took from _Reject3?
+It tries to close the lot, quarantines the lot, reworks duplicate numbers, then tries to close the lot again
+    I think it should maybe just hit cancel the first time?
+Wait, I'm an idiot, it does what I want it to do
+    it was the last one which was incorrect, but I copied over it.
+Let's try another run
+
+
+Running test 1...
+Got stuck in an endless loop.
+Issue: ReadTag("InLot-A") = 1
+    "<Type mismatch: 'ReadTag'>"
+Oh, there may be an issue with another unassociated library
+It's in Advisor_V2 in _Reject3
+Associating Advisor_V2 to _Reject2
+Cleaned it up, let's try again
+
+
+Running test 1.1...
+.pdf gen failed again, but I piped it through.
+Results:
+	Run Time:		00:17:45
+	Success Totals:	24/24
+	Failed Cases:	none
+neat
+It's down a case, but now it matches ILCD, which I think makes more sense
+
+
++++++++++++
+11-Dec-2018
++++++++++++
+The run I set last night after adding this test to the tail of the procedure completed a full clear
+Feel pretty confident in the continued success of this test, so I'll be moving on for now.
+
+
++++++++++++
+
+
+
+
+
+
+Results:
+	Run Time:		
+	Success Totals:	
+	Failed Cases:	

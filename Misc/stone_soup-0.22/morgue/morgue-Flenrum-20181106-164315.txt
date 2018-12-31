@@ -1,0 +1,144 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+0 Flenrum the Charmwright (level 1, -1/17 HPs)
+             Began as a Draconian Skald on Nov 6, 2018.
+             Slain by a gnoll
+             ... wielding a +0 whip
+              (3 damage)
+             ... on level 1 of the Dungeon.
+             The game lasted 00:00:31 (13 turns).
+
+Flenrum the Charmwright (Draconian Skald)             Turns: 13, Time: 00:00:31
+
+Health: -1/17      AC:  4    Str: 13    XL:     1   Next: 0%
+Magic:  2/3        EV: 12    Int: 13    God:    
+Gold:   0          SH:  0    Dex: 10    Spells: 3/4 levels left
+
+rFire    . . .     SeeInvis .   a - +0 falchion
+rCold    . . .     Gourm    .   (no shield)
+rNeg     . . .     Faith    .   (armour unavailable)
+rPois    .         Spirit   .   (helmet restricted)
+rElec    .         Reflect  .   (no cloak)
+rCorr    .         Harm     .   (no gloves)
+MR       .....                  (no boots)
+Stlth    +.........             (no amulet)
+HPRegen  0.05/turn              (no ring)
+MPRegen  0.08/turn              (no ring)
+
+@: infused
+A: unfitting armour, cold-blooded, AC +4
+a: no special abilities
+
+
+You were on level 1 of the Dungeon.
+You were not hungry.
+
+You visited 1 branch of the dungeon, and saw 1 of its levels.
+
+Inventory:
+
+Hand Weapons
+ a - a +0 falchion (weapon)
+Comestibles
+ c - a ration
+
+
+   Skills:
+ + Level 2.1 Fighting
+ + Level 2.0 Long Blades
+ + Level 2.1 Dodging
+ + Level 2.0 Spellcasting
+ + Level 2.6 Charms
+
+
+You had 3 spell levels left.
+You knew the following spells:
+
+ Your Spells              Type           Power        Failure   Level  Hunger
+a - Infusion              Chrm           #...         9%          1    ##.....
+
+Your spell library contained the following spells:
+
+ Spells                   Type           Power        Failure   Level  Hunger
+ Song of Slaying          Chrm           #.......     13%         2    ###....
+ Shroud of Golubria       Chrm/Tloc      #.........   22%         2    ###....
+ Regeneration             Chrm/Necr      #.........   41%         3    ####...
+ Spectral Weapon          Hex/Chrm       #.......     41%         3    ####...
+
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (1/15)            
+
+Altars:
+
+
+Innate Abilities, Weirdness & Mutations
+
+Your plain brown scales are hard. (AC +4)
+You cannot fit into any form of body armour.
+You are cold-blooded and may be slowed by cold attacks.
+
+
+Message History
+
+The gnoll barely misses you.
+You closely miss the gnoll.
+The gnoll is almost dead.
+The gnoll hits you with a whip!
+* * * LOW HITPOINT WARNING * * *
+The goblin closely misses you. The gnoll misses you. The goblin completely
+You are too injured to fight recklessly!
+You aren't carrying any potions.
+You aren't carrying any scrolls.
+Casting: Infusion (safe; 9% risk of failure)
+Confirm with . or Enter, or press ? or * to list all spells.
+Okay, then.
+Casting: Infusion (safe; 9% risk of failure)
+Confirm with . or Enter, or press ? or * to list all spells.
+You don't know that spell.
+Casting: Infusion (safe; 9% risk of failure)
+Confirm with . or Enter, or press ? or * to list all spells.
+You begin infusing your attacks with magical energy.
+The gnoll hits you with a whip.
+You die...
+
+  #......
+  #......
+###.....+
+........+
+........#
+ #......#     #
+ #....g.+    .#
+ #....g@####..#..
+.................
+.....####'#####.
+.... #.......#
+...  #.8.8.8.#
+..   #.......#
+.    +.8.<.8.+
+     #.......#
+     #.8.8.8.#
+     #.......#
+     ####+####
+
+
+You could see a gnoll and a goblin.
+
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | Flenrum the Draconian Skald began the quest for the Orb.
+     0 | D:1      | Reached XP level 1. HP: 17/17 MP: 3/3
+    13 | D:1      | Slain by a gnoll
+
+Action                   || total
+-------------------------++-------
+Melee: Falchion          ||     6
+       Tailslap          ||     1
+ Cast: Infusion          ||     1
+Dodge: Dodged            ||     7
+Rpst.: Falchion          ||     2
+

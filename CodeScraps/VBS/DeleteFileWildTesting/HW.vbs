@@ -1,0 +1,2 @@
+Wscript.echo("Hello, World!")
+

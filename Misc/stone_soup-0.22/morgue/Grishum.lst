@@ -1,0 +1,245 @@
+Grishum
+
+Level 1 of the Dungeon
+(0, 0, D:1)
+  a club
+(3, -19, D:1)
+  23 arrows
+(9, -9, D:1)
+  a robe
+(17, -7, D:1)
+  a dagger
+(21, -21, D:1)
+  a club
+(32, -10, D:1)
+  a hunting sling
+(35, -8, D:1)
+  20 bolts
+(38, -6, D:1)
+  a dagger
+
+Level 2 of the Dungeon
+(0, 0, D:2)
+  a club
+(8, 35, D:2)
+  a dagger
+(15, 33, D:2)
+  a robe
+  22 arrows
+(17, 15, D:2)
+  22 bolts
+(18, 4, D:2)
+  a club
+(24, 29, D:2)
+  a leather armour
+(26, 16, D:2)
+  a club
+(28, 46, D:2)
+  a whip
+(32, 34, D:2)
+  a club
+(48, 23, D:2)
+  a spear
+
+Level 3 of the Dungeon
+(0, 0, D:3)
+  a dagger
+  a club
+(2, -1, D:3)
+  an uncursed club
+  an uncursed hunting sling
+(11, -14, D:3)
+  a robe
+(14, -1, D:3)
+  25 arrows
+(14, 5, D:3)
+  a short sword
+(14, 7, D:3)
+  an enchanted scythe
+  a robe
+(16, -11, D:3)
+  a dagger
+(20, -7, D:3)
+  a leather armour
+(22, 1, D:3)
+  a leather armour
+(27, -3, D:3)
+  a club
+(30, 17, D:3)
+  a club
+(32, -13, D:3)
+  a rapier
+(34, -15, D:3)
+  a dagger of protection
+  a dagger
+  a robe
+  a hand axe
+  a chain mail
+  a club
+  a dagger
+  a club
+(34, 18, D:3)
+  a club
+(36, 16, D:3)
+  a robe
+
+Level 4 of the Dungeon
+[Shop] Cela's Antique Weapon Shop
+  a glowing hunting sling (103 gold)
+  a rapier (92 gold)
+  a flail (80 gold)
+  a runed glaive (218 gold)
+  a rapier (92 gold)
+  a glowing short sword (138 gold)
+  a long sword (80 gold)
+  a club (23 gold)
+  a long sword (80 gold)
+  a warped flail (195 gold)
+  a club (23 gold)
+  a great mace (149 gold)
+(0, 0, D:4)
+  14 sling bullets
+(4, 7, D:4)
+  a buckler
+(30, 27, D:4)
+  a dagger
+(36, 9, D:4)
+  a glowing chain mail
+(37, 7, D:4)
+  a club
+(38, -16, D:4)
+  a rapier
+(39, 9, D:4)
+  an uncursed ring of teleportation
+  a potion of degeneration
+(41, -9, D:4)
+  a dagger
+(50, -12, D:4)
+  a dagger
+(57, 9, D:4)
+  a falchion
+
+Level 5 of the Dungeon
+(0, 0, D:5)
+  a pair of boots
+(5, 18, D:5)
+  a quarterstaff
+(23, 21, D:5)
+  a leather armour
+  2 tomahawks
+(23, 22, D:5)
+  a dagger
+  a robe
+(24, 22, D:5)
+  a club
+(25, -1, D:5)
+  17 arrows
+(25, 3, D:5)
+  a flail
+(26, 28, D:5)
+  an uncursed shortbow
+  14 arrows
+(29, 24, D:5)
+  4 arrows
+(30, -8, D:5)
+  28 arrows
+(30, 0, D:5)
+  a scale mail
+(30, 17, D:5)
+  28 bolts
+(30, 22, D:5)
+  2 arrows
+(30, 25, D:5)
+  an arrow
+(31, 25, D:5)
+  an arrow
+(37, 6, D:5)
+  a rapier
+(43, 11, D:5)
+  a scorched short sword
+
+Level 6 of the Dungeon
+(0, 0, D:6)
+  a scale mail
+(8, -9, D:6)
+  a dagger
+(18, -15, D:6)
+  a spear
+  a whip
+  a spear
+  a ring mail
+  a shield
+(19, -14, D:6)
+  a spear
+(20, -13, D:6)
+  a quarterstaff
+  a spear
+(21, -27, D:6)
+  a hand axe
+  a robe
+(25, -27, D:6)
+  a dagger
+  a robe
+  a battleaxe
+  a chain mail
+(27, -25, D:6)
+  a dagger
+  a robe
+(33, -21, D:6)
+  a book of Geomancy
+(35, -24, D:6)
+  17 sling bullets
+(37, 4, D:6)
+  a scale mail
+(40, -24, D:6)
+  16 sling bullets
+(45, 1, D:6)
+  a dagger
+  a robe
+(45, 2, D:6)
+  a short sword
+(45, 3, D:6)
+  a club
+(48, -13, D:6)
+  24 arrows
+
+Level 7 of the Dungeon
+[Shop] Goluaw's Book Shop
+  a book of Beasts (unknown) (605 gold)
+  a book of Maledictions (unknown) (275 gold)
+  a book of Geomancy (385 gold)
+  a book of Dreams (unknown) (825 gold)
+  a book of Alchemy (unknown) (825 gold)
+  a book of Conjurations (unknown) (330 gold)
+  a book of Changes (unknown) (275 gold)
+  Iqaplunn's Guide on Shifting Lightness (550 gold)
+    Spells                           Type                      Level
+     a - Petrify                      Transmutation/Earth           4
+     b - Lightning Bolt               Conjuration/Air               5
+     c - Blade Hands                  Transmutation                 5
+     d - Deflect Missiles             Charms/Air                    6
+    
+    
+    Trog disapproves of the use of such an item.
+  a book of Death (unknown) (770 gold)
+(0, 0, D:7)
+  a bullfrog skeleton
+(0, 4, D:7)
+  a long sword
+(18, -9, D:7)
+  a hardcover book
+(25, -16, D:7)
+  a trident
+  a leather armour
+(26, -15, D:7)
+  a hand axe
+  a mace
+  a chain mail
+  a dire flail
+  a chain mail
+  an orc skeleton
+(31, -16, D:7)
+  a metal-bound book
+(33, -16, D:7)
+  a battleaxe
+

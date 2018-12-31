@@ -1,0 +1,112 @@
+Group Review Notes
+
+~~~~~~~~~~~
+24-Oct-2018
+~~~~~~~~~~~
+Notes from Guardian Notification Playback
+
+Do not edit shared libraries without ensuring it does not break any other tests using it.
+Use environment variables instead of hard coded values for ease of modification
+Remove old and unused commented code
+"If" statements without "else" clauses should be avoided whenever possible
+Add comment headers to all actions
+Focus on parallel running as opposed to serialization of the tests
+In the interest of conserving resources, do not create more VMs than necessary
+Consider the wider architecture of the Jenkins job instead of focusing solely on the code
+
+Brainstorm topics to discuss for leading our own code reviews
+    What would be the "30-way" test for UniSeries, stress test
+        restraints?
+            (not 300TB)
+            Whatever would reasonably exercise the system
+            
+            
+~~~~~~~~~~~
+07-Nov-2018
+~~~~~~~~~~~
+Jenkins 
+    Set up naming conventions
+    Timing Schedule
+    Script in Jenkins has not been running in a while
+        Put up a nice grid after looking at all the running scripts
+Test data catalog
+    archives, testing images, IpsFiles
+    constantly maintained data system
+Define user roles
+    would have to customize our archives to do that 
+    might still have to do it at some point.
+Library maintenance has proven difficult 
+    we plan on making use of GIT for this
+Dave - moving away from UFT?
+Discuss setting up Git structure and pull-down
+
+
+~~~~~~~~~~~
+08-Nov-2018
+~~~~~~~~~~~
+Brendan's Code Review
+Error: Customer would start a lot, printer would open, cannot suspend and resume properly because printer is in an error state
+    Grabbed access to Device Simulator, attempting to demonstrate the error
+
+Test runs through with no issue, structure of code raises no complaints.    
+
+
+
+~~~~~~~~~~~
+21-Nov-2018
+~~~~~~~~~~~
+~~~ Setting up plans for remainder of sprint
+PIM
+    Working out kinks in the script
+    47% is a confident estimate
+Guardian Notification
+    Almost done, the assigned is going to jump to Suspend Resume once done
+Suspend Resume
+    Playback
+Duplicates Institutionalization
+    Three of the tests suffer from the same issue, fixing this will simultaneously resolve all 3
+    
+Feeling confident in reaching this 100% by the end of the deadline
+
+~~~ Review of previous plan going forward
+Going through each item for clarity
+
+Topology of 30-way system
+    Stress testing, seeing how can handle a system with wide breadth
+    
+Doing Architecture for Jenkins
+    Currently a whole bunch of tests with little higher scale structure
+    Goal is to have standards of what a Jenkins job should be as far as QA goes
+    
+Structure of GIT 
+    Allocate time for learning (YouTube, various research)
+    Current setup: Code Review > Merge
+    Read SOP on code review, proper annotation during merge requests
+        More comments, don't put them into emails, but it right on GIT
+    Opportunity here to set a standard for proper version pull requests.
+    
+Test Data Catalog - how often to refresh
+    Previously, all QA testing had golden copies of testing data
+    We want one location with all of the approved and required software, data, tests, etc.
+    We already do this in a way
+        not all tests are currently following this standard
+    We should all follow a standard pattern
+
+New UI and Testing
+    Will want to potentially wean ourselves off of UFT
+    Might not want to create a proprietary automation tool
+    if we focus on the engine and not the UI then we are not truly testing the experience of the customer
+    if it does not exactly emulate the product, then it is not 
+    We don't like UFT (bloated, slow, expensive), but we might not have too many other options
+    Moving towards more Use case based, which is what we want
+    
+!!! Find >=30 minutes over the next two weeks to build out a plan for learning what you need for your task.
+    Would like to see plans by next week
+    
+~~~ Next year for UniSeries QA
+Rework 
+Identifying particular apps
+    Architecture should fit into one of those roles
+Code coverage
+    might need to be revisited
+    we will definitely want to take a look at this next year

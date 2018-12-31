@@ -1,0 +1,215 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+49 Demelliagus the Cudgeler (level 3, -10/29 HPs)
+             Began as a Demonspawn Gladiator on Nov 14, 2018.
+             Killed by divine providence
+             ... invoked by an orc priest
+              (12 damage)
+             ... on level 3 of the Dungeon.
+             The game lasted 00:08:21 (1948 turns).
+
+Demelliagus the Cudgeler (Demonspawn Gladiator)     Turns: 1948, Time: 00:08:21
+
+Health: -10/29     AC:  4    Str: 18    XL:     3   Next: 53%
+Magic:  3/3        EV: 15    Int:  9    God:    
+Gold:   123        SH:  0    Dex: 15    Spells: 2/2 levels left
+
+rFire    . . .     SeeInvis .   e - +0 whip
+rCold    . . .     Gourm    .   (no shield)
+rNeg     . . .     Faith    .   b - +0 leather armour
+rPois    .         Spirit   .   c - +0 helmet
+rElec    .         Reflect  .   (no cloak)
+rCorr    .         Harm     .   (no gloves)
+MR       .....                  (no boots)
+Stlth    +.........             (no amulet)
+HPRegen  0.09/turn              o - +2 ring of evasion
+MPRegen  0.08/turn              k - +4 ring of strength
+
+@: no status effects
+A: robust 1, spiny 1, evolution 1
+a: no special abilities
+
+
+You were on level 3 of the Dungeon.
+You were very hungry.
+
+You visited 1 branch of the dungeon, and saw 3 of its levels.
+
+You collected 123 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +0 flail
+ e - a +0 whip (weapon)
+Missiles
+ d - a throwing net (quivered)
+Armour
+ b - a +0 leather armour (worn)
+ c - a +0 helmet (worn)
+ s - a +0 ring mail
+Jewellery
+ g - an uncursed ring of resist corrosion
+ j - an uncursed ring of magical power
+ k - a +4 ring of strength (right hand)
+ o - a +2 ring of evasion (left hand)
+ p - a +2 ring of evasion
+ q - an uncursed ring of flight
+Scrolls
+ h - 3 scrolls of amnesia
+ l - a scroll of remove curse
+ m - a scroll of teleportation {unknown}
+ n - 2 scrolls of identify {unknown}
+ r - a scroll of fog {unknown}
+ t - a scroll of blinking {unknown}
+ w - a scroll of fear {unknown}
+Comestibles
+ f - 4 rations
+
+
+   Skills:
+ + Level 2.1 Fighting
+ + Level 3.4 Maces & Flails
+ + Level 2.0 Throwing
+ + Level 0.9 Armour
+ + Level 3.1 Dodging
+
+
+You had 2 spell levels left.
+You didn't know any spells.
+Your spell library contained the following spells:
+
+ Spells                   Type           Power        Failure   Level  Hunger
+ Animate Skeleton         Necr           N/A          43%         1    ##.....
+ Apportation              Tloc           #.....       43%         1    ##.....
+ Confusing Touch          Hex            #.....       43%         1    ##.....
+ Magic Dart               Conj           #...         43%         1    ##.....
+ Summon Small Mammal      Summ           #...         43%         1    ##.....
+ Blink                    Tloc           N/A          58%         2    ###....
+ Call Imp                 Summ           #.......     58%         2    ###....
+ Slow                     Hex            #.......     58%         2    ###....
+ Conjure Flame            Conj/Fire      #.......     82%         3    ####...
+ Mephitic Cloud           Conj/Pois/Air  #.......     82%         3    ####...
+
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (3/15)            
+
+Altars:
+Gozag
+Yredelemnul
+
+Annotations:
+D:2 1 runed door
+
+
+Innate Abilities, Weirdness & Mutations
+
+You are partially covered in sharp spines.
+You are robust. (+10% HP)
+You evolve.
+
+
+Message History
+
+As you read the scroll labeled IFUIDI LIJIPH, it crumbles to dust.
+You feel blessed for a moment. It was a scroll of remove curse. The bat is
+The bat hits you but does no damage. The orc is struck by your spines. The orc
+The orc hits you with a war axe.
+* * * LOW HITPOINT WARNING * * *
+The bat is struck by your spines.
+You kill the bat!
+The frilled lizard is struck by your spines.
+You kill the frilled lizard!
+Found 9 gold pieces.
+The orc priest begins to cast a cantrip, but forgets the words!
+Found 19 stones and a club.
+It was a potion of mutation. You feel extremely strange.
+You feel robust.
+You feel nature experimenting on you. Don't worry, failures die fast.
+The orc priest looks encouraged for a moment.
+The orc completely misses you.
+The orc priest invokes the aid of Beogh against you.
+Beogh smites you!
+You die...
+
+  ............
+###..........
+ ....$..(...
+  #........
+ ##.......
+ #.......
+##......#
+.......@##
+...b...oo#        #
+.....#.o.##      .####
+..##..##..###  ##.....
+..........o.#  <....#
+ #..........## .....#
+...........o.##.....#
+..####............$.##
+).   ####.###........#
+        #.####..!.....
+    #..##(.#o..######.
+
+
+You could see 2 orc priests, 3 orcs and a bat.
+
+Vanquished Creatures
+  An adder (D:2)
+  3 worms (D:2)
+  3 ball pythons
+  A giant cockroach (D:2)
+  2 gnoll zombies (D:2)
+  2 goblins (D:1)
+  3 hobgoblins
+  4 jackals (D:2)
+  3 bats
+  3 frilled lizards
+  A jackal skeleton (D:2)
+  5 kobolds
+  2 rats
+33 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | Demelliagus the Demonspawn Gladiator began the quest for
+                  | the Orb.
+     0 | D:1      | Reached XP level 1. HP: 16/16 MP: 1/1
+   284 | D:1      | Gained mutation: You are partially covered in sharp spines.
+                  | [demonic ancestry]
+   284 | D:1      | Reached XP level 2. HP: 16/22 MP: 2/2
+   673 | D:2      | Found an opulent altar of Gozag.
+  1020 | D:2      | Reached XP level 3. HP: 24/27 MP: 3/3
+  1177 | D:2      | Found a runed door.
+  1177 | D:2      | Noticed a human
+  1182 | D:2      | Found a basalt altar of Yredelemnul.
+  1851 | D:2      | Found a basalt altar of Yredelemnul.
+  1944 | D:3      | HP: 1/27 [orc/war axe (4)]
+  1948 | D:3      | Gained mutation: You are robust. (+10% HP) [potion of
+                  | mutation]
+  1948 | D:3      | Gained mutation: You evolve. [potion of mutation]
+  1948 | D:3      | Killed from afar by an orc priest
+
+Skill      XL: |  1  2 |
+---------------+-------+-----
+Maces & Flails |  3    |  3.4
+Throwing       |     2 |  2.0
+Dodging        |     3 |  3.1
+Fighting       |       |  2.1
+Armour         |       |  0.9
+
+Action                   || total
+-------------------------++-------
+Melee: Whip              ||   125
+       Flail             ||     1
+Throw: Throwing net      ||     2
+  Use: Scroll            ||     2
+       Potion            ||     2
+  Eat: Chunk             ||     2
+Armor: Leather armour    ||    25
+Dodge: Dodged            ||    75
+

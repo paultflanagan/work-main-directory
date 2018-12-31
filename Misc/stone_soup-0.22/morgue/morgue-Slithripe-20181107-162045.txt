@@ -1,0 +1,343 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+2438 Slithripe the Covert (level 9, -8/40 HPs)
+             Began as a Spriggan Enchanter on Nov 7, 2018.
+             Was a Follower of Wu Jian.
+             Mangled by a skeletal warrior
+             ... wielding a +0 dire flail
+             ... led by a skeletal warrior
+              (32 damage)
+             ... on level 8 of the Dungeon.
+             The game lasted 00:44:23 (7465 turns).
+
+Slithripe the Covert (Spriggan Enchanter)           Turns: 7465, Time: 00:44:27
+
+Health: -8/40      AC:  2    Str:  5    XL:     9   Next: 25%
+Magic:  8/20       EV: 20    Int: 17    God:    Wu Jian [*.....]
+Gold:   489        SH:  0    Dex: 18    Spells: 6/22 levels left
+
+rFire    x . .     SeeInvis +   a - +2 dagger
+rCold    + . .     Gourm    .   (shield restricted)
+rNeg     . . .     Faith    .   b - +0 robe
+rPois    .         Spirit   .   (helmet restricted)
+rElec    .         Reflect  .   (no cloak)
+rCorr    .         Harm     .   (gloves unavailable)
+MR       +....                  (boots unavailable)
+Stlth    ++++++....             (no amulet)
+HPRegen  0.13/turn              t - ring of ice
+MPRegen  0.17/turn              o - ring of stealth {Cursed ring of Stealth?}
+
+@: very slightly contaminated, very quick
+A: very small, unfitting armour, see invisible, herbivore, speed 3, slow
+metabolism 2
+a: Renounce Religion
+
+
+You were on level 8 of the Dungeon.
+You worshipped Wu Jian.
+Wu Jian was aware of your devotion.
+You were very hungry.
+
+You visited 2 branches of the dungeon, and saw 9 of its levels.
+
+You collected 489 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +2 dagger (weapon)
+ E - a +0 dagger of venom
+Missiles
+ l - 14 poisoned needles
+Armour
+ b - a +0 robe (worn)
+Jewellery
+ o - a ring of stealth (right hand) {Cursed ring of Stealth?}
+ t - a ring of ice (left hand)
+ v - an uncursed ring of resist corrosion
+ x - an uncursed ring of stealth
+ J - an uncursed ring of ice
+Wands
+ i - a wand of random effects (15)
+ z - a wand of acid (8)
+ A - a wand of digging (15)
+ G - a wand of disintegration (9)
+ H - a wand of iceblast (12)
+ I - a wand of scattershot (3)
+ K - a wand of paralysis (9)
+Scrolls
+ c - a scroll of blinking
+ h - 2 scrolls of fog {unknown}
+ k - 7 scrolls of remove curse
+ n - 2 scrolls of identify
+ p - 2 scrolls of enchant weapon
+ u - a scroll of fear
+ y - a scroll of immolation
+ B - a scroll of amnesia
+ N - a scroll of torment {unknown}
+Potions
+ e - a potion of berserk rage
+ f - a potion of haste
+ g - a potion of cancellation
+ j - a potion of brilliance {unknown}
+ m - a potion of resistance {unknown}
+ q - 3 potions of heal wounds
+ r - 2 potions of lignification {unknown}
+ s - 2 potions of flight {unknown}
+ w - a potion of magic {unknown}
+ C - 2 potions of curing
+ D - a potion of might {unknown}
+ F - a potion of degeneration {unknown}
+ L - a potion of ambrosia {unknown}
+ M - a potion of mutation {unknown}
+Comestibles
+ d - 7 rations
+
+
+   Skills:
+ + Level 0.6 Fighting
+ * Level 5.4 Short Blades
+ + Level 4.9 Dodging
+ + Level 11.2 Stealth
+ + Level 7.0 Spellcasting
+ + Level 0.2 Conjurations
+ + Level 7.3 Hexes
+ + Level 3.2 Ice Magic
+
+
+You had 6 spell levels left.
+You knew the following spells:
+
+ Your Spells              Type           Power        Failure   Level  Hunger
+a - Corona                Hex            ####...      1%          1    None
+b - Cause Fear            Hex            ####......   6%          4    ####...
+c - Tukima's Dance        Hex            ####....     1%          3    ##.....
+s - Dazzling Spray        Conj/Hex       ###...       8%          3    ##.....
+x - Confuse               Hex            ####....     1%          3    ##.....
+z - Ensorcelled Hibernat  Hex/Ice        #####.       1%          2    None
+
+Your spell library contained the following spells:
+
+ Spells                   Type           Power        Failure   Level  Hunger
+ Slow                     Hex            ####....     1%          2    None
+ Inner Flame              Hex/Fire       ###.....     8%          3    ##.....
+ Portal Projectile        Hex/Tloc       ###...       8%          3    ##.....
+ Leda's Liquefaction      Hex/Erth       ###.......   26%         4    ####...
+
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (8/15)             Temple (1/1) D:6         
+  Lair: D:8-11      
+
+Altars:
+Ashenzari
+Hepliaklqana
+Kikubaaqudgha
+Okawaru
+Uskayaw
+Vehumet
+Wu Jian
+Xom
+Yredelemnul
+The Shining One
+
+Shops:
+D:8 *
+
+
+Innate Abilities, Weirdness & Mutations
+
+You are very small and have problems with some larger weapons.
+You are too small for most types of armour.
+You have supernaturally acute eyesight. (SInv)
+You are a herbivore.
+You cover ground extremely quickly.
+You need to consume almost no food.
+
+
+Message History
+
+The wight is moderately damaged.
+You hit the skeletal warrior but do no damage.
+The skeletal warrior is heavily damaged.
+The skeletal warrior barely misses you.
+Casting: Dazzling Spray (safe; 8% risk of failure)
+Confirm with . or Enter, or press ? or * to list all spells.
+Aiming: Confuse (safe; 1% risk of failure)
+Press: ? - help, Shift-Dir - straight line, f - wight, p - skeletal warrior
+Aim: a wight, wielding a short sword and wearing a robe (chance to defeat MR:
+The wight appears confused.
+The skeletal warrior closely misses you.
+You hit the wight but do no damage.
+You hit the wight but do no damage. The skeletal warrior barely misses you. The
+You catch the helpless wight completely off-guard!
+You impale the wight!!
+You destroy the wight!
+The Council accepts your kill.
+The skeletal warrior hits you with a dire flail!!
+Ouch! That really hurt!
+You die...
+
+             ####.#.#.#
+        ######.........
+        ..........#.#..
+         #####....#.##.
+             #...## ###
+##############?..##..##
+#........##....z.......
+#................##...?
+#........z.###...#  ...
+#....?zz.#.# #####   .#
+#.....@zz.[###        )
+#..............
+#.........#####
+#.....)...#
+#........##
+#######.##
+      #.#
+      #.#
+       .#
+       ..
+       ##
+
+
+You could see 3 skeletal warriors and 2 wights.
+
+Vanquished Creatures
+  Pikel (D:7)
+  Duvessa (D:7)
+  A sky beast (D:7)
+  An orc warrior (D:6)
+  3 centaurs
+  A gnoll sergeant (D:8)
+  3 bullfrogs
+  Dowan (D:7)
+  2 scorpions
+  3 killer bees
+  A wight (D:8)
+  2 howler monkeys
+  A crimson imp (D:6)
+  A jelly (D:5)
+  4 hounds
+  6 orc priests
+  4 orc wizards
+  3 worker ants
+  4 gnolls
+  2 adders
+  An adder skeleton (D:5)
+  A worm (D:3)
+  3 dart slugs
+  5 leopard geckos
+  29 orcs
+  2 bat zombies (D:5)
+  7 giant cockroaches
+  10 hobgoblins
+  20 jackals
+  3 quokkas
+  2 ball pythons
+  6 bats
+  7 frilled lizards
+  19 goblins
+  6 kobolds
+  2 leopard gecko skeletons
+  A quokka skeleton (D:5)
+  12 rats
+  2 rat zombies (D:5)
+183 creatures vanquished.
+
+Vanquished Creatures (others)
+  An ogre (D:7)
+1 creature vanquished.
+
+Grand Total: 184 creatures vanquished
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | Slithripe the Spriggan Enchanter began the quest for the
+                  | Orb.
+     0 | D:1      | Reached XP level 1. HP: 9/9 MP: 5/5
+   255 | D:1      | Reached XP level 2. HP: 13/13 MP: 6/6
+   259 | D:1      | Learned a level 2 spell: Ensorcelled Hibernation
+   671 | D:1      | Reached XP level 3. HP: 11/16 MP: 0/8
+   782 | D:1      | Reached skill level 5 in Stealth
+  1270 | D:2      | Found a basalt altar of Yredelemnul.
+  1630 | D:2      | Found a shattered altar of Ashenzari.
+  1715 | D:2      | Reached XP level 4. HP: 8/21 MP: 0/10
+  2363 | D:3      | Reached skill level 6 in Stealth
+  2363 | D:3      | Reached XP level 5. HP: 24/24 MP: 11/11
+  2542 | D:3      | Reached skill level 7 in Stealth
+  3159 | D:4      | Reached XP level 6. HP: 28/28 MP: 13/13
+  3173 | D:4      | Reached skill level 5 in Hexes
+  3302 | D:4      | Found a hide-covered altar of Uskayaw.
+  3502 | D:4      | Found a glowing golden altar of the Shining One.
+  3561 | D:4      | Found a hazy altar of Hepliaklqana.
+  3715 | D:5      | Entered Level 5 of the Dungeon
+  3722 | D:5      | Reached skill level 8 in Stealth
+  4065 | D:5      | Found a radiant altar of Vehumet.
+  4105 | D:5      | Learned a level 3 spell: Dazzling Spray
+  4229 | D:5      | Reached skill level 1 in Ice Magic
+  4877 | D:5      | Reached XP level 7. HP: 28/32 MP: 6/14
+  4988 | D:5      | Found an ancient bone altar of Kikubaaqudgha.
+  5142 | D:6      | Reached skill level 9 in Stealth
+  5257 | D:6      | Found an ornate altar of the Wu Jian Council.
+  5275 | D:6      | Found a staircase to the Ecumenical Temple.
+  5316 | D:6      | Reached skill level 5 in Spellcasting
+  5342 | D:6      | Became a worshipper of the Wu Jian Council
+  5880 | D:6      | Reached XP level 8. HP: 37/37 MP: 7/17
+  6034 | D:7      | Noticed Pikel
+  6103 | D:7      | Reached skill level 10 in Stealth
+  6251 | Temple   | Entered the Ecumenical Temple
+  6368 | D:7      | Found a shimmering altar of Xom.
+  6734 | D:7      | Killed Pikel
+  6844 | D:7      | Reached * piety under Wu Jian
+  6866 | D:7      | Noticed Duvessa
+  6871 | D:7      | Noticed Dowan
+  6872 | D:7      | Killed Duvessa
+  6872 | D:7      | Reached skill level 11 in Stealth
+  6872 | D:7      | Reached XP level 9. HP: 40/40 MP: 10/19
+  6876 | D:7      | Killed Dowan
+  6893 | D:7      | Reached skill level 5 in Short Blades
+  6968 | D:7      | Found an iron altar of Okawaru.
+  7350 | D:7      | Learned a level 4 spell: Cause Fear
+  7354 | D:7      | Learned a level 3 spell: Tukima's Dance
+  7358 | D:7      | Learned a level 3 spell: Confuse
+  7432 | D:8      | Found Giajinit's General Store.
+  7438 | D:8      | Noticed a skeletal warrior
+  7439 | D:8      | Noticed a skeletal warrior
+  7441 | D:8      | Noticed a skeletal warrior
+  7465 | D:8      | Mangled by a skeletal warrior
+
+Skill      XL: |  1  2  3  4  5  6  7  8  9 |
+---------------+----------------------------+-----
+Hexes          |  4              5     6  7 |  7.3
+Spellcasting   |     3        4     5  6  7 |  7.0
+Stealth        |        5  6  7  8  9 11    | 11.2
+Short Blades   |              2        4  5 |  5.4
+Ice Magic      |                 1  2  3    |  3.2
+Dodging        |                    4       |  4.9
+Fighting       |                            |  0.6
+Conjurations   |                            |  0.2
+
+Action                   |  1- 3 |  4- 6 |  7- 9 || total
+-------------------------+-------+-------+-------++-------
+Melee: Dagger            |   120 |   139 |   155 ||   414
+ Cast: Corona            |    13 |     6 |     5 ||    24
+       Ensorcelled Hiber |    33 |    56 |    63 ||   152
+       Dazzling Spray    |       |       |    11 ||    11
+       Cause Fear        |       |       |     1 ||     1
+       Confuse           |       |       |     1 ||     1
+Invok: Lunge             |       |       |    14 ||    14
+       Whirlwind         |       |       |     4 ||     4
+  Use: Scroll            |       |     1 |     8 ||     9
+       Potion            |       |       |     2 ||     2
+ Stab: Sleeping          |    32 |    60 |    46 ||   138
+       Distracted        |       |     3 |     2 ||     5
+       Invisible         |       |       |     2 ||     2
+       Confused          |       |       |     1 ||     1
+  Eat: Ration            |       |     2 |     2 ||     4
+Armor: Robe              |     8 |     7 |    17 ||    32
+Dodge: Dodged            |   101 |    95 |   152 ||   348
+

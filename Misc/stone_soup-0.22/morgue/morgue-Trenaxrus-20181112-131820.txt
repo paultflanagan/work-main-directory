@@ -1,0 +1,235 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+128 Trenaxrus the Insei (level 4, -1/32 HPs)
+             Began as a Demonspawn Transmuter on Nov 12, 2018.
+             Was a Follower of Qazlal.
+             Killed by divine providence
+             ... invoked by an orc priest
+              (13 damage)
+             ... on level 3 of the Dungeon.
+             The game lasted 00:10:12 (2820 turns).
+
+Trenaxrus the Insei (Demonspawn Transmuter)         Turns: 2820, Time: 00:10:13
+
+Health: -1/32      AC:  6    Str: 12    XL:     4   Next: 87%
+Magic:  7/7        EV: 12    Int: 14    God:    Qazlal [*.....]
+Gold:   48         SH:  5    Dex: 15    Spells: 1/7 levels left
+
+rFire    . . .     SeeInvis .     - Unarmed
+rCold    . . .     Gourm    .   (no shield)
+rNeg     . . .     Faith    +   i - +0 leather armour
+rPois    .         Spirit   .   g - +0 helmet
+rElec    .         Reflect  .   (no cloak)
+rCorr    .         Harm     .   (no gloves)
+MR       .....                  (no boots)
+Stlth    +.........             c - amulet of faith
+HPRegen  0.10/turn              r - +2 ring of protection
+MPRegen  0.10/turn              p - +2 ring of strength
+
+@: very slightly contaminated
+A: large bone plates 1, deterioration 1, wild magic 1
+a: Renounce Religion
+
+
+You were on level 3 of the Dungeon.
+You worshipped Qazlal.
+Qazlal was aware of your devotion.
+You were near starving.
+
+You visited 1 branch of the dungeon, and saw 4 of its levels.
+
+You collected 48 gold pieces.
+
+Inventory:
+
+Missiles
+ a - 12 arrows
+Armour
+ b - a +0 robe
+ g - a +0 helmet (worn)
+ i - a +0 leather armour (worn)
+ o - a +0 ring mail
+Jewellery
+ c - an amulet of faith (around neck)
+ m - an uncursed ring of magical power
+ p - a +2 ring of strength (right hand)
+ r - a +2 ring of protection (left hand)
+Scrolls
+ j - a scroll of immolation {unknown}
+ k - 4 scrolls of teleportation
+ n - a scroll of remove curse {unknown}
+ q - a scroll of enchant weapon {unknown}
+ t - 3 scrolls of identify {unknown}
+Potions
+ e - a potion of agility {unknown}
+ h - a potion of berserk rage {unknown}
+ l - a potion of experience {unknown}
+ s - a potion of heal wounds {unknown}
+ u - a potion of curing {unknown}
+Comestibles
+ d - 4 rations
+
+
+   Skills:
+ + Level 1.0 Fighting
+ + Level 0.4 Armour
+ * Level 2.5 Dodging
+ * Level 3.9 Unarmed Combat
+ + Level 2.4 Spellcasting
+ + Level 2.5 Transmutations
+ + Level 0.2 Poison Magic
+
+
+You had one spell level left.
+You knew the following spells:
+
+ Your Spells              Type           Power        Failure   Level  Hunger
+a - Beastly Appendage     Tmut           ##....       16%         1    #......
+b - Sticks to Snakes      Tmut           ##......     22%         2    ###....
+c - Spider Form           Tmut/Pois      #.........   54%         3    ###....
+
+Your spell library contained the following spells:
+
+ Spells                   Type           Power        Failure   Level  Hunger
+ Ice Form                 Ice/Tmut       #.......     90%         4    #####..
+ Blade Hands              Tmut           ##........   98%         5    ######.
+
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (4/15)            
+Temple: D:4-7       
+
+Altars:
+Qazlal
+Sif Muna
+
+
+Innate Abilities, Weirdness & Mutations
+
+You are partially covered in large bone plates. (SH +4)
+Your body sometimes deteriorates upon taking damage.
+Your spells are a little harder to cast, but a little more powerful.
+
+
+Message History
+
+Found 15 sling bullets.
+Number of times to repeat, then command key: 
+You must enter the number of times for the command to repeat.
+e - an inky potion
+Found a club.
+The phantom blinks!
+The orc shouts!
+The adder hisses angrily.
+The orc closely misses you.
+The orc hits you with a falchion.
+You are near starving!
+There is a stone staircase leading up here.
+The orc hits you but does no damage.
+You climb upwards.
+The orc priest mumbles some strange prayers to Beogh against you.
+Beogh smites you!
+There is a stone staircase leading down here.
+The orc priest calls down the wrath of Beogh upon you.
+Beogh smites you!
+You die...
+
+                 #......
+          ########.#####
+        ###o.oo....#
+        #....####..#
+        #.......#o.#
+        #.....#.#..#
+        #.....#.#S.###
+   ######......s.o...#
+   #....###'###.#o####
+####....###.....#.######
+.......@ooos#####.#.....
+........§.....o...##.###
+............########.#
+####....#...########.#
+   ######...#.<......#
+        #...##########
+        #....
+        #..###
+        #..
+
+
+You could see an orc priest, 3 orcs and a giant cockroach.
+
+Vanquished Creatures
+  4 adders (D:2)
+  2 oozes
+  An adder skeleton (D:2)
+  2 dart slugs (D:1)
+  2 leopard geckos (D:2)
+  A ball python (D:2)
+  5 bats
+  A bat skeleton (D:2)
+  3 bat zombies (D:2)
+  A giant cockroach (D:2)
+  7 goblins (D:1)
+  7 hobgoblins
+  11 jackals
+  3 quokkas (D:2)
+  A ball python zombie (D:2)
+  5 frilled lizards
+  3 kobolds
+  A quokka zombie (D:2)
+  9 rats
+69 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | Trenaxrus the Demonspawn Transmuter began the quest for the
+                  | Orb.
+     0 | D:1      | Reached XP level 1. HP: 15/15 MP: 3/3
+   214 | D:1      | Reached skill level 3 in Unarmed Combat
+   214 | D:1      | Gained mutation: You are partially covered in large bone
+                  | plates. (SH +4) [demonic ancestry]
+   214 | D:1      | Reached XP level 2. HP: 21/21 MP: 3/5
+   329 | D:1      | Learned a level 2 spell: Sticks to Snakes
+   830 | D:1      | Reached XP level 3. HP: 12/26 MP: 6/6
+   844 | D:1      | Learned a level 3 spell: Spider Form
+  1330 | D:2      | Found a deep blue altar of Sif Muna.
+  1430 | D:2      | Reached XP level 4. HP: 13/32 MP: 7/7
+  2197 | D:2      | Found a faded altar of an unknown god.
+  2204 | D:2      | Became a worshipper of Qazlal Stormbringer
+  2204 | D:2      | Reached * piety under Qazlal
+  2476 | D:4      | Gained mutation: Your body sometimes deteriorates upon
+                  | taking damage. [potion of mutation]
+  2476 | D:4      | Gained mutation: Your spells are a little harder to cast,
+                  | but a little more powerful. [potion of mutation]
+  2734 | D:4      | Noticed a phantom
+  2820 | D:3      | Killed from afar by an orc priest
+
+Skill      XL: |  1  2 |
+---------------+-------+-----
+Unarmed Combat |  3    |  3.9
+Dodging        |     2 |  2.5
+Transmutations |     2 |  2.5
+Fighting       |       |  1.0
+Armour         |       |  0.4
+Spellcasting   |       |  2.4
+Poison Magic   |       |  0.2
+
+Action                   |  1- 3 |  4- 6 || total
+-------------------------+-------+-------++-------
+Melee: Unarmed           |   138 |   137 ||   275
+       Kick              |    10 |    11 ||    21
+       Headbutt          |     4 |       ||     4
+       Punch             |       |     1 ||     1
+ Cast: Beastly Appendage |    24 |     6 ||    30
+       Spider Form       |       |     1 ||     1
+  Use: Potion            |       |     2 ||     2
+       Scroll            |       |     1 ||     1
+ Stab: Sleeping          |     1 |     1 ||     2
+  Eat: Chunk             |     2 |     4 ||     6
+Armor: Robe              |    14 |       ||    14
+       Leather armour    |     8 |    59 ||    67
+Dodge: Dodged            |    87 |    85 ||   172
+Block: Other             |    16 |    35 ||    51
+

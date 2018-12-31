@@ -1,0 +1,6 @@
+Project##Duplication Check##Session Start Time##Pass#0
+Test Machine##Guardian w/Advisor 8.3.0 1st Safeguard##Session End Time##Fail#0
+Version##8.3.0##Execution Time hh:mm:ss##N/A#0
+SuiteName##UniSeries Guardian##Execution Status##Total#0
+#######
+No.#Test Case#Design Doc Reference/Bug or Defect ID#Description#Expected Results##Test Execution Time#Pass/Fail/N/A

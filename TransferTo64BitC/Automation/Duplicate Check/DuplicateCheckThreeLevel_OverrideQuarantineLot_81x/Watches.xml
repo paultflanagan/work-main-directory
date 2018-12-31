@@ -1,0 +1,5 @@
+﻿<Properties>
+  <WatchEntry0 value="IpsPimFiles" />
+  <WatchEntry1 value="len(IpsPimFiles)" />
+  <WatchEntry2 value="len(sMsg)" />
+</Properties>

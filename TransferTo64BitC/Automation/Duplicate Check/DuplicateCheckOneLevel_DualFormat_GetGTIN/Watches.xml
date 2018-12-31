@@ -1,0 +1,4 @@
+﻿<Properties>
+  <WatchEntry0 value="VbWindow(&quot;frmStatus&quot;).WaitProperty(&quot;visible&quot;,&quot;true&quot;, 1000)" />
+  <WatchEntry1 value="VbWindow(&quot;frmStatus&quot;).ChildObjects.count &gt; 2" />
+</Properties>

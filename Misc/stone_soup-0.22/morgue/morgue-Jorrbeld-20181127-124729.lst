@@ -1,0 +1,425 @@
+Jorrbeld
+
+Level 1 of the Dungeon
+(0, 0, D:1)
+  a +0 robe
+(3, 18, D:1)
+  a cursed +0 leather armour
+(9, 47, D:1)
+  a +0 club
+(10, 4, D:1)
+  a +0 hand axe
+(11, 42, D:1)
+  a +0 club
+(20, 6, D:1)
+  a +0 whip
+(22, 6, D:1)
+  a cursed +0 club
+(28, 30, D:1)
+  a +0 club
+(35, 2, D:1)
+  a +0 dagger
+
+Level 2 of the Dungeon
+(0, 0, D:2)
+  a +0 short sword
+(5, 8, D:2)
+  a +0 club
+  a +0 club
+  a +2 spear of piercing
+  a +0 animal skin
+(6, 8, D:2)
+  a cursed +0 club
+  a +0 club
+(15, 7, D:2)
+  a +0 club
+(18, 7, D:2)
+  a +0 club
+(25, 36, D:2)
+  a +0 scale mail
+(26, 13, D:2)
+  7 javelins
+(27, 4, D:2)
+  a +0 short sword
+(28, 4, D:2)
+  a +0 dagger
+(43, 3, D:2)
+  a +0 dagger
+
+Level 3 of the Dungeon
+(4, -6, D:3)
+  a +0 short sword
+(9, 12, D:3)
+  a +0 short sword
+  a tomahawk
+  a +0 scale mail
+(10, 12, D:3)
+  a +0 falchion
+  a +0 chain mail
+  a +0 club
+  a +0 leather armour
+(11, 12, D:3)
+  a tomahawk
+(21, -36, D:3)
+  a cursed +0 robe
+(32, -10, D:3)
+  a cursed +0 flail
+  a +0 scale mail
+  a +0 club
+  a +0 war axe
+
+Level 4 of the Dungeon
+[Shop] Vuholicu's Weapon Shop
+  a +6 glaive of flaming (611 gold)
+  a +0 dagger (28 gold)
+  a +0 war axe of flaming (116 gold)
+  20 stones (28 gold)
+  13 stones (18 gold)
+  a +2 battleaxe of flaming (331 gold)
+  a +0 war axe (49 gold)
+  a +2 shortbow of flaming (243 gold)
+  a +1 dagger of draining (148 gold)
+  a +1 mace of venom (148 gold)
+  a +0 morningstar (56 gold)
+  a +4 flail (357 gold)
+[Shop] Supheheo's Jewellery Shop
+  the ring "Afumekhli" {Fire rElec Str+4 Dex+2} (722 gold)
+    [ring of fire]
+    
+    It enhances your fire magic.
+    It affects your strength (+4).
+    It affects your dexterity (+2).
+    It protects you from fire.
+    It makes you vulnerable to cold.
+    It insulates you from electricity.
+  an uncursed amulet of magic regeneration (420 gold)
+  an uncursed ring of fire (350 gold)
+  an uncursed amulet of the acrobat (420 gold)
+  an uncursed ring of protection from fire (350 gold)
+  a cursed ring of teleportation (63 gold)
+  a +2 amulet of reflection (105 gold)
+  an uncursed ring of positive energy (280 gold)
+  an uncursed ring of protection from magic (350 gold)
+  an uncursed ring of poison resistance (280 gold)
+[Shop] Vadil's Book Boutique
+  a book of Death (770 gold)
+  a book of Minor Magic (220 gold)
+  a book of Geomancy (385 gold)
+  a book of Party Tricks (550 gold)
+  a book of Maledictions (275 gold)
+  Sif Muna's Almanac of Boosting Flames (770 gold)
+    Spells                           Type                      Level
+     a - Regeneration                 Charms/Necromancy             3
+     b - Fireball                     Conjuration/Fire              5
+     c - Deflect Missiles             Charms/Air                    6
+     d - Bolt of Fire                 Conjuration/Fire              6
+  the Almanac of Execration and Fire (935 gold)
+    Spells                           Type                      Level
+     a - Leda's Liquefaction          Hexes/Earth                   4
+     b - Ignition                     Fire                          8
+     c - Discord                      Hexes                         8
+  a book of Cantrips (220 gold)
+  a book of Misfortune (220 gold)
+  a book of Maledictions (275 gold)
+[Shop] Loffyuhu's Distillery
+  a potion of magic (80 gold)
+  a potion of flight (30 gold)
+  a potion of curing (30 gold)
+  a potion of agility (40 gold)
+  2 potions of curing (60 gold)
+  a potion of curing (30 gold)
+  a potion of brilliance (40 gold)
+  a potion of mutation (80 gold)
+  2 potions of degeneration (20 gold)
+(14, -15, D:4)
+  22 bolts
+(22, 6, D:4)
+  a +0 dagger
+(26, 13, D:4)
+  a +0 mace
+(27, 6, D:4)
+  a +0 dagger
+(27, 24, D:4)
+  a +0 glaive
+(36, -7, D:4)
+  a +0 plate armour
+(39, 36, D:4)
+  a +0 leather armour
+  a +0 falchion
+(42, 28, D:4)
+  a +0 hunting sling
+(57, 34, D:4)
+  a +0 ring mail
+
+Level 5 of the Dungeon
+(0, 0, D:5)
+  a cursed +0 pair of boots
+(0, 8, D:5)
+  a +0 giant club
+  a +0 shortbow
+(1, -4, D:5)
+  23 bolts
+(2, 21, D:5)
+  a +0 club
+(16, 3, D:5)
+  a +0 club
+  a +0 scale mail
+(18, 0, D:5)
+  a +0 club
+  a +0 club
+(24, 2, D:5)
+  7 curare-tipped needles
+(26, 0, D:5)
+  a +0 club
+(30, -13, D:5)
+  a +0 whip
+(34, 21, D:5)
+  a +0 ring mail
+(49, -13, D:5)
+  19 poisoned needles
+
+Level 6 of the Dungeon
+[Shop] Eretag's General Store
+  a potion of brilliance (52 gold)
+  a cursed -2 ring mail (1 gold)
+  a potion of berserk rage (65 gold)
+  a potion of magic (104 gold)
+  a scroll of fog (26 gold)
+  31 bolts (80 gold)
+  13 sling bullets (84 gold)
+  a book of Dreams (975 gold)
+  a scroll of identify (26 gold)
+  a potion of invisibility (104 gold)
+  a +0 leather armour (26 gold)
+  23 bolts (59 gold)
+[Shop] Plog's Magic Scroll Boutique
+  a scroll of enchant weapon (90 gold)
+  a scroll of identify (24 gold)
+  a scroll of noise (12 gold)
+  a scroll of identify (24 gold)
+  a scroll of teleportation (36 gold)
+  a scroll of remove curse (36 gold)
+  a scroll of remove curse (36 gold)
+  a scroll of remove curse (36 gold)
+  a scroll of enchant weapon (90 gold)
+  a scroll of remove curse (36 gold)
+[Shop] Bauwa's Magic Scroll Boutique
+  a scroll of identify (26 gold)
+  a scroll of fear (45 gold)
+  a scroll of remove curse (39 gold)
+  a scroll of teleportation (39 gold)
+  a scroll of identify (26 gold)
+  a scroll of teleportation (39 gold)
+  a scroll of enchant weapon (97 gold)
+  a scroll of magic mapping (45 gold)
+  a scroll of identify (26 gold)
+  a scroll of identify (26 gold)
+  a scroll of acquirement (676 gold)
+  a scroll of identify (26 gold)
+(8, -13, D:6)
+  a +0 short sword
+(9, 24, D:6)
+  a +0 mace
+(20, -19, D:6)
+  5 needles of frenzy
+(27, -13, D:6)
+  a +0 mace
+(30, -6, D:6)
+  a +0 dagger
+  a +0 robe
+  a +0 flail
+  a +0 leather armour
+(34, -6, D:6)
+  a +0 mace
+
+Level 7 of the Dungeon
+(0, 0, D:7)
+  3 curare-tipped needles
+(16, 20, D:7)
+  a +0 leather armour
+(17, 17, D:7)
+  a +0 trident
+(18, 10, D:7)
+  a +0 hand crossbow
+(23, -4, D:7)
+  a +0 chain mail
+(28, 0, D:7)
+  a +0 blowgun
+(28, 40, D:7)
+  a +0 war axe
+(30, 1, D:7)
+  a +0 ring mail
+(35, 7, D:7)
+  a -3 ring of evasion
+  a +0 scale mail
+(40, 9, D:7)
+  a +0 shortbow
+(46, 18, D:7)
+  25 bolts
+(53, 23, D:7)
+  a +0 short sword
+  a +0 chain mail
+  a cursed -3 club
+  a +0 leather armour
+  a +0 leather armour
+(53, 24, D:7)
+  a +0 trident
+(53, 25, D:7)
+  a +0 dagger
+  a +0 robe
+
+Level 8 of the Dungeon
+(0, 0, D:8)
+  a +0 leather armour
+(4, 38, D:8)
+  a +0 scale mail
+(8, 49, D:8)
+  11 poisoned needles
+(13, 27, D:8)
+  a cursed -2 dagger
+(13, 28, D:8)
+  a +0 club
+  a +0 dagger
+(13, 29, D:8)
+  a +0 whip
+  a +0 dagger
+(14, -2, D:8)
+  a cursed +0 plate armour
+(15, 29, D:8)
+  a +0 short sword
+(31, 47, D:8)
+  a +0 robe
+
+Level 9 of the Dungeon
+[Shop] Voeliren's Antique Armour Emporium
+  a +3 leather armour of positive energy (588 gold)
+  a +0 robe (19 gold)
+  a +0 pair of gloves (126 gold)
+  a +1 ring mail of cold resistance (448 gold)
+  a +0 chain mail (126 gold)
+  a +0 ring mail (112 gold)
+  a +0 robe (19 gold)
+  the +2 chain mail "Kanam" {Int+3} (778 gold)
+    It affects your intelligence (+3).
+  a +2 pair of boots of flying (602 gold)
+  a +3 leather armour of cold resistance (672 gold)
+  a +0 leather armour (56 gold)
+  the +4 ring mail of the Bulwark {rF+ rCorr} (1220 gold)
+    It protects you from fire.
+    It provides partial protection from all sources of acid and corrosion.
+(0, 0, D:9)
+  a +0 giant club
+  a +0 dagger
+  a +0 ring mail
+  a +0 dagger
+  a +0 robe
+  a +0 hand axe
+  a +0 plate armour
+  a +0 dagger
+  a +0 robe
+(1, -1, D:9)
+  a cursed -2 club
+  a +0 leather armour
+(16, 37, D:9)
+  a +0 war axe
+(17, 19, D:9)
+  a +0 robe
+  a +0 dagger
+(38, 24, D:9)
+  a +0 mace
+  a +0 scale mail
+(41, -1, D:9)
+  a +0 shortbow
+
+Level 10 of the Dungeon
+(0, 0, D:10)
+  a +0 flail
+(4, 11, D:10)
+  a +0 giant club
+(10, -3, D:10)
+  a +0 chain mail
+  a +0 helmet
+  a +0 chain mail
+  a cursed -3 hunting sling
+  a +2 great sword of holy wrath
+  a +1 shortbow of velocity
+  the +9 spear of the Elven Halls {freeze, +Blink MP+9 Str-2 Int+2}
+    It has been specially enchanted to freeze those struck by it, causing extra
+    injury to most foes and up to half again as much damage against particularly
+    susceptible opponents. It can also slow down cold-blooded creatures.
+    
+    It affects your strength (-2).
+    It affects your intelligence (+2).
+    It affects your magic capacity (+9).
+    It lets you blink.
+  a scroll of noise
+(10, 1, D:10)
+  a +0 spear
+  a +0 spear
+(10, 8, D:10)
+  a +0 club
+  a +0 scale mail
+  a +0 dagger
+  a +0 plate armour
+(11, 7, D:10)
+  a +0 club
+  a +0 short sword
+(11, 8, D:10)
+  a cursed -2 battleaxe
+  a +0 chain mail
+(11, 10, D:10)
+  a +0 robe
+  a +1 falchion
+  a +0 robe
+  a +0 dagger
+  a cursed +0 chain mail
+(12, 7, D:10)
+  a +1 short sword of electrocution
+(12, 8, D:10)
+  a +0 dagger
+  a +0 robe
+  a +0 long sword
+  a +0 plate armour
+(12, 11, D:10)
+  a cursed +0 trident
+  a +0 robe
+(14, 11, D:10)
+  a +0 hand axe
+(15, 23, D:10)
+  a +0 ring mail
+(33, -5, D:10)
+  a bolt
+(34, -6, D:10)
+  a poisoned needle
+(35, -6, D:10)
+  a poisoned needle
+  a +0 hand crossbow
+  a +0 dagger
+  15 bolts
+(36, -6, D:10)
+  a +0 club
+  a cursed -1 dagger
+  a cursed +0 club
+(36, 23, D:10)
+  a +0 scale mail
+(37, -7, D:10)
+  a +0 dagger
+(37, -6, D:10)
+  14 poisoned needles
+  a +0 blowgun
+  a +0 dagger
+
+Level 11 of the Dungeon
+(6, 4, D:11)
+  a +0 short sword
+  (unseen)
+(7, 5, D:11)
+  a +0 trident
+  (unseen)
+(9, 2, D:11)
+  a +0 flail
+(11, 0, D:11)
+  a +0 dagger
+
+the Ecumenical Temple
+

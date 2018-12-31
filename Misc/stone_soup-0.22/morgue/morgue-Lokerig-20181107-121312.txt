@@ -1,0 +1,290 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+109 Lokerig the Chiller (level 4, -5/32 HPs)
+             Began as a Gnoll Wanderer on Nov 7, 2018.
+             Slain by a worm (9 damage)
+             ... on level 3 of the Dungeon.
+             The game lasted 00:16:43 (2398 turns).
+
+Lokerig the Chiller (Gnoll Wanderer)                Turns: 2398, Time: 00:16:44
+
+Health: -5/32      AC:  9    Str: 13    XL:     4   Next: 90%
+Magic:  2/17       EV: 11    Int: 17    God:    
+Gold:   75         SH:  0    Dex: 14    Spells: 3/9 levels left
+
+rFire    . . .     SeeInvis .   p - +0 mace (protect)
+rCold    . . .     Gourm    .   (no shield)
+rNeg     . . .     Faith    .   h - +0 leather armour {rPois}
+rPois    +         Spirit   .   (no helmet)
+rElec    .         Reflect  .   (no cloak)
+rCorr    .         Harm     .   (no gloves)
+MR       .....                  (no boots)
+Stlth    ++........             (no amulet)
+HPRegen  0.10/turn              k - ring of magical power
+MPRegen  0.15/turn              (no ring)
+
+@: icy armour, very slightly contaminated
+A: distributed training, fangs 1, strong nose
+a: no special abilities
+
+
+You were on level 3 of the Dungeon.
+You were not hungry.
+
+You visited 1 branch of the dungeon, and saw 3 of its levels.
+
+You collected 75 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ d - a +0 club
+ p - a +0 mace of protection (weapon)
+Armour
+ c - a +0 robe
+ h - a +0 leather armour of poison resistance (worn)
+ i - a +0 ring mail
+ l - a +0 chain mail
+ m - a +0 plate armour
+Jewellery
+ k - a ring of magical power (left hand)
+Scrolls
+ a - a scroll of fear {unknown}
+ g - a scroll of enchant weapon {unknown}
+ j - 2 scrolls of identify {unknown}
+ o - a scroll of remove curse {unknown}
+ r - 2 scrolls of immolation {unknown}
+ t - a scroll of teleportation {unknown}
+ u - a scroll of enchant armour {unknown}
+Potions
+ b - 4 potions of curing
+ e - a potion of haste {unknown}
+ n - a potion of invisibility {unknown}
+ q - a potion of might {unknown}
+ s - a potion of flight {unknown}
+ w - a potion of degeneration {unknown}
+Comestibles
+ f - 5 rations
+ v - 9 chunks of flesh
+
+
+   Skills:
+ + Level 1.2 Fighting
+ + Level 1.2 Short Blades
+ + Level 1.2 Long Blades
+ + Level 1.2 Axes
+ + Level 4.7 Maces & Flails
+ + Level 1.2 Polearms
+ + Level 1.2 Staves
+ + Level 1.2 Slings
+ + Level 1.2 Bows
+ + Level 1.2 Crossbows
+ + Level 2.8 Throwing
+ + Level 2.8 Armour
+ + Level 1.2 Dodging
+ + Level 2.6 Stealth
+ + Level 1.2 Shields
+ + Level 1.2 Unarmed Combat
+ + Level 3.0 Spellcasting
+ + Level 1.0 Conjurations
+ + Level 1.0 Hexes
+ + Level 1.0 Charms
+ + Level 1.0 Summonings
+ + Level 1.0 Necromancy
+ + Level 1.0 Translocations
+ + Level 1.0 Transmutations
+ + Level 1.0 Fire Magic
+ + Level 5.5 Ice Magic
+ + Level 1.0 Air Magic
+ + Level 2.3 Earth Magic
+ + Level 1.0 Poison Magic
+ + Level 1.3 Invocations
+ + Level 1.2 Evocations
+
+
+You had 3 spell levels left.
+You knew the following spells:
+
+ Your Spells              Type           Power        Failure   Level  Hunger
+a - Freeze                Ice            ###.         2%          1    None
+x - Ozocubu's Armour      Chrm/Ice       ##......     17%         3    ###....
+z - Throw Frost           Conj/Ice       ##....       9%          2    ##.....
+
+Your spell library contained the following spells:
+
+ Spells                   Type           Power        Failure   Level  Hunger
+ Summon Ice Beast         Ice/Summ       ##......     50%         4    ####...
+ Throw Icicle             Conj/Ice       ##......     50%         4    ####...
+
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (3/15)            
+
+Altars:
+Ashenzari
+
+
+Innate Abilities, Weirdness & Mutations
+
+Your experience applies equally to all skills.
+You have very sharp teeth.
+Your uncanny sense of smell can sniff out nearby items.
+
+
+Message History
+
+The worm is moderately wounded.
+The bat hits you but does no damage. x2; The worm bites you.
+* * * LOW HITPOINT WARNING * * *
+Casting: Freeze (safe; 2% risk of failure)
+Confirm with . or Enter, or press ? or * to list all spells.
+Aiming: Freeze (safe; 2% risk of failure)
+Press: ? - help, Shift-Dir - straight line, f/p - worm
+Aim: a worm (moderately wounded)
+You freeze the worm.
+The worm is heavily wounded.
+The bat hits you but does no damage. x2
+Casting: Freeze (safe; 2% risk of failure)
+Confirm with . or Enter, or press ? or * to list all spells.
+Aiming: Freeze (safe; 2% risk of failure)
+Press: ? - help, Shift-Dir - straight line, f/p - worm
+Aim: a worm (heavily wounded)
+You freeze the worm.
+The worm is heavily wounded.
+The bat barely misses you. The bat hits you but does no damage. The worm bites
+You die...
+
+      ######
+    ###....#
+     ......#
+     #...[.#
+  #¦ #.....#
+  #.##.....#
+  #...b...(#  ##### ####
+   %##)@..<#  #...# #)..
+......))w.(####...###...
+..#.##..(...............
+  #..b..#...###...###...
+  #.##..+...# #...# #...
+ .. ....#...# #######...
+ . .##..#...#      #)...
+     ...#...#      #....
+        #...#      #....
+        #...#      #....
+        .....      +....
+
+
+You could see a worm and 2 bats.
+
+Vanquished Creatures
+  2 adders (D:2)
+  An ooze (D:1)
+  3 worms
+  3 dart slugs (D:1)
+  A leopard gecko (D:2)
+  4 orcs (D:3)
+  4 giant cockroaches
+  6 goblins
+  11 hobgoblins
+  3 jackals (D:2)
+  4 kobolds
+  A quokka (D:2)
+  2 ball pythons (D:1)
+  8 bats
+  4 frilled lizards
+  9 rats
+66 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | Lokerig the Gnoll Wanderer began the quest for the Orb.
+     0 | D:1      | Lokerig set off with: a potion of curing, a +0 robe, a +0
+                  | club, a ration
+     0 | D:1      | Reached XP level 1. HP: 13/13 MP: 4/4
+     2 | D:1      | Learned a level 1 spell: Freeze
+   146 | D:1      | Reached XP level 2. HP: 14/19 MP: 5/5
+   630 | D:1      | Reached XP level 3. HP: 12/25 MP: 4/7
+  1065 | D:1      | Found a shattered altar of Ashenzari.
+  1162 | D:2      | Reached skill level 1 in Invocations
+  1540 | D:2      | Reached skill level 1 in Fighting
+  1540 | D:2      | Reached skill level 1 in Short Blades
+  1540 | D:2      | Reached skill level 1 in Long Blades
+  1540 | D:2      | Reached skill level 1 in Axes
+  1540 | D:2      | Reached skill level 1 in Polearms
+  1540 | D:2      | Reached skill level 1 in Staves
+  1540 | D:2      | Reached skill level 1 in Slings
+  1540 | D:2      | Reached skill level 1 in Bows
+  1540 | D:2      | Reached skill level 1 in Crossbows
+  1540 | D:2      | Reached skill level 1 in Dodging
+  1540 | D:2      | Reached skill level 1 in Shields
+  1540 | D:2      | Reached skill level 1 in Unarmed Combat
+  1540 | D:2      | Reached skill level 1 in Evocations
+  1646 | D:2      | Reached XP level 4. HP: 12/32 MP: 8/8
+  2104 | D:2      | Reached skill level 1 in Conjurations
+  2104 | D:2      | Reached skill level 1 in Hexes
+  2104 | D:2      | Reached skill level 1 in Charms
+  2104 | D:2      | Reached skill level 1 in Summonings
+  2104 | D:2      | Reached skill level 1 in Necromancy
+  2104 | D:2      | Reached skill level 1 in Translocations
+  2104 | D:2      | Reached skill level 1 in Transmutations
+  2104 | D:2      | Reached skill level 1 in Fire Magic
+  2104 | D:2      | Reached skill level 1 in Air Magic
+  2104 | D:2      | Reached skill level 1 in Poison Magic
+  2215 | D:2      | Learned a level 3 spell: Ozocubu's Armour
+  2218 | D:2      | Learned a level 2 spell: Throw Frost
+  2387 | D:3      | HP: 1/32 [goblin/dagger of electrocution (16)]
+  2398 | D:3      | Slain by a worm
+
+Skill      XL: |  1  2  3  4 |
+---------------+-------------+-----
+Earth Magic    |  2          |  2.3
+Invocations    |        1    |  1.3
+Fighting       |        1    |  1.2
+Short Blades   |        1    |  1.2
+Long Blades    |        1    |  1.2
+Axes           |        1    |  1.2
+Polearms       |        1    |  1.2
+Staves         |        1    |  1.2
+Slings         |        1    |  1.2
+Bows           |        1    |  1.2
+Crossbows      |        1    |  1.2
+Dodging        |        1    |  1.2
+Shields        |        1    |  1.2
+Unarmed Combat |        1    |  1.2
+Evocations     |        1    |  1.2
+Spellcasting   |           3 |  3.0
+Conjurations   |           1 |  1.0
+Hexes          |           1 |  1.0
+Charms         |           1 |  1.0
+Summonings     |           1 |  1.0
+Necromancy     |           1 |  1.0
+Translocations |           1 |  1.0
+Transmutations |           1 |  1.0
+Fire Magic     |           1 |  1.0
+Air Magic      |           1 |  1.0
+Poison Magic   |           1 |  1.0
+Maces & Flails |             |  4.7
+Throwing       |             |  2.8
+Armour         |             |  2.8
+Stealth        |             |  2.6
+Ice Magic      |             |  5.5
+
+Action                   |  1- 3 |  4- 6 || total
+-------------------------+-------+-------++-------
+Melee: Club              |   120 |       ||   120
+       Bite              |    17 |     3 ||    20
+       Mace              |    13 |    75 ||    88
+ Cast: Freeze            |    22 |    21 ||    43
+       Throw Frost       |       |     5 ||     5
+       Ozocubu's Armour  |       |     2 ||     2
+  Use: Potion            |       |     2 ||     2
+ Stab: Sleeping          |     6 |       ||     6
+  Eat: Chunk             |     2 |     3 ||     5
+Armor: Robe              |    24 |       ||    24
+       Ring mail         |     5 |     3 ||     8
+       Leather armour    |       |    87 ||    87
+Dodge: Dodged            |    82 |    97 ||   179
+

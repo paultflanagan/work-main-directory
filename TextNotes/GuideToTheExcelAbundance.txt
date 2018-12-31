@@ -1,0 +1,25 @@
+What I can find out about this test's Excel files:
+
+Type 1: FT_Provisioning_Driver Files
+    Location:   C:\Automation\Duplicate Check\FT_Provisioning_Driver\
+    Summary:    Called by FT_Provisioning_Driver to set up and conclude each test step run.
+    Contents:   Steps responsible for setting up variables, importing files, and disabling used numbers
+    Examples:   PreLot_Good.xls, PostLot_Good.xls
+    Driver:     FT_Provisioning_Driver selected via the Master .vbs Script RunGuardian commands
+    Notes:      Basically collections of settings which are selected and applied by FT_Provisioning_Driver
+    
+Type 2: ImportFiles
+    Location:   C:\Automation\Duplicate Check\ImportFiles\Functional\Lot_*\
+    Summary:    Master sets or ranges of product numbers. Contents of the run lots are selected from here.
+    Contents:   Long files with product numbers (Lists) and small files with two boundary numbers (Ranges)
+    Examples:   FT-B_List_Carton_10000.xml, FT-B_Range_Carton_10000.xml
+    Driver:     Called by the FT_Provisioning_Driver Files.
+    Notes:      Actually .xml files, but I still tend to forget which these are.
+    
+Type 3: PIMLabTestData
+    Location:   C:\PimLabTestData\
+    Summary:    Used to control the creation of the lots
+    Contents:   Excel tabs with procedure steps and parameters to guide the lot creation
+    Examples:   DuplicateCheckPimLabTestData_3level_GoodLot_810.xlsx
+    Driver:     All of the testing steps have in-built references to the PIM file of each. 
+    Notes:      Accessed by the test steps themselves

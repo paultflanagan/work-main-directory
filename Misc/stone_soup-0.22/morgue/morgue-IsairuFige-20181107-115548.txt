@@ -1,0 +1,204 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+37 Isairu Fige the Insei (level 3, 0/28 HPs)
+             Began as a Gnoll Wanderer on Nov 7, 2018.
+             Succumbed to an adder's poison
+             ... on level 2 of the Dungeon.
+             The game lasted 00:06:14 (656 turns).
+
+Isairu Fige the Insei (Gnoll Wanderer)               Turns: 656, Time: 00:06:15
+
+Health: 0/28       AC:  3    Str: 13    XL:     3   Next: 39%
+Magic:  4/4        EV: 15    Int: 11    God:    
+Gold:   39         SH:  0    Dex: 19    Spells: 3/3 levels left
+
+rFire    . . .     SeeInvis .   l - +0 dagger
+rCold    . . .     Gourm    .   (no shield)
+rNeg     . . .     Faith    .   p - +0 leather armour
+rPois    .         Spirit   .   (no helmet)
+rElec    .         Reflect  .   (no cloak)
+rCorr    .         Harm     .   (no gloves)
+MR       .....                  (no boots)
+Stlth    ++........             o - amulet of regeneration
+HPRegen  0.49/turn              j - +4 ring of evasion
+MPRegen  0.09/turn              m - ring of wizardry
+
+@: lethally poisoned (0 -> 0)
+A: distributed training, fangs 1, strong nose
+a: no special abilities
+
+
+You were on level 2 of the Dungeon.
+You were not hungry.
+
+You visited 1 branch of the dungeon, and saw 2 of its levels.
+
+You collected 39 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ c - a +0 hand crossbow
+ l - a +0 dagger (weapon)
+Missiles
+ d - 41 bolts
+Armour
+ f - a +0 robe
+ p - a +0 leather armour (worn)
+Jewellery
+ j - a +4 ring of evasion (left hand)
+ m - a ring of wizardry (right hand)
+ o - an amulet of regeneration (around neck)
+Scrolls
+ h - a scroll of identify {unknown}
+ k - a scroll of immolation {unknown}
+ n - 3 scrolls of remove curse {unknown}
+ r - a scroll of teleportation {unknown}
+Potions
+ a - a potion of haste
+ q - 3 potions of might {unknown}
+Comestibles
+ b - a chunk of flesh
+ g - 2 rations
+
+
+   Skills:
+ + Level 2.6 Fighting
+ + Level 0.7 Short Blades
+ + Level 0.7 Long Blades
+ + Level 0.7 Axes
+ + Level 0.7 Maces & Flails
+ + Level 0.7 Polearms
+ + Level 0.7 Staves
+ + Level 0.7 Slings
+ + Level 0.7 Bows
+ + Level 4.5 Crossbows
+ + Level 0.7 Throwing
+ + Level 4.5 Armour
+ + Level 0.7 Dodging
+ + Level 2.3 Stealth
+ + Level 2.6 Shields
+ + Level 4.5 Unarmed Combat
+ + Level 0.7 Spellcasting
+ + Level 0.5 Conjurations
+ + Level 0.5 Hexes
+ + Level 0.5 Charms
+ + Level 0.5 Summonings
+ + Level 0.5 Necromancy
+ + Level 0.5 Translocations
+ + Level 0.5 Transmutations
+ + Level 0.5 Fire Magic
+ + Level 0.5 Ice Magic
+ + Level 0.5 Air Magic
+ + Level 0.5 Earth Magic
+ + Level 0.5 Poison Magic
+ + Level 0.9 Invocations
+ + Level 2.6 Evocations
+
+
+You had 3 spell levels left.
+You didn't know any spells.
+Your spell library was empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (2/15)            
+
+Altars:
+Gozag
+
+Shops:
+D:2 *
+
+
+Innate Abilities, Weirdness & Mutations
+
+Your experience applies equally to all skills.
+You have very sharp teeth.
+Your uncanny sense of smell can sniff out nearby items.
+
+
+Message History
+
+You feel sick. The adder bites you.
+* * * LOW HITPOINT WARNING * * *
+The bat hits you but does no damage. The goblin barely misses you. The goblin
+You hit the adder but do no damage.
+The adder is almost dead.
+The bat hits you but does no damage. The adder bites you but does no damage.
+The goblin misses you. The goblin hits you but does no damage.
+You closely miss the adder. Your bite misses the adder.
+The adder is almost dead.
+You feel sick. The bat closely misses you. The adder bites you.
+* * * LOW HITPOINT WARNING * * *
+The goblin barely misses you. The adder closely misses you. The goblin misses
+You closely miss the adder.
+The adder is almost dead.
+The bat closely misses you. The bat completely misses you. The adder bites you.
+* * * LOW HITPOINT WARNING * * *
+The goblin closely misses you. The goblin hits you but does no damage.
+You closely miss the adder.
+The adder is almost dead.
+You die...
+
+               ....#.
+           ... .....
+          >... ....
+          ...  ...
+          ...  ..
+     #    #.#  .#  .....
+   ..#.####.###b#  ....
+   .......#.##@g###.#.####
+   .#####†..#Sg###..#....
+   ˜˜˜˜˜......s........###
+#˜.....˜....÷.<..........#
+#˜.(.(.˜........[..)......
+#˜..n..˜...........###
+.˜.(.(.˜........!#........
+.˜.....˜........#..####.#.
+#˜˜...˜˜..........##
+#.˜._.˜.###.......#
+#.˜...˜......#)####
+
+
+You could see an adder, a giant cockroach, 2 goblins and a bat.
+
+Vanquished Creatures
+  2 adders (D:2)
+  2 dart slugs (D:1)
+  A giant cockroach (D:1)
+  5 goblins
+  A hobgoblin (D:1)
+  A bat (D:2)
+  A frilled lizard (D:2)
+  A kobold (D:1)
+  2 rats (D:1)
+16 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | Isairu Fige the Gnoll Wanderer began the quest for the Orb.
+     0 | D:1      | Isairu Fige set off with: a potion of haste, a potion of
+                  | berserk rage, a +0 hand crossbow, 26 bolts, a potion of
+                  | lignification, a +0 robe, a ration
+     0 | D:1      | Reached XP level 1. HP: 17/17 MP: 2/2
+    94 | D:1      | Reached XP level 2. HP: 17/23 MP: 3/3
+   542 | D:2      | Found Gozag's Platinum Reserve.
+   542 | D:2      | Found an opulent altar of Gozag.
+   565 | D:2      | Reached XP level 3. HP: 24/28 MP: 4/4
+   655 | D:2      | HP: 1/28 [adder (1)]
+   656 | D:2      | Succumbed to an adder's poison
+
+Action                   || total
+-------------------------++-------
+Melee: Dagger            ||    45
+       Bite              ||     4
+ Fire: Hand crossbow     ||    21
+  Use: Potion            ||     2
+ Stab: Sleeping          ||     1
+Armor: Skin              ||    30
+       Leather armour    ||    23
+Dodge: Dodged            ||    84
+

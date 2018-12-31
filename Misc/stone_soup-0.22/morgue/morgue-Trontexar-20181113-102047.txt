@@ -1,0 +1,140 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+3 Trontexar the Skirmisher (level 1, -1/18 HPs)
+             Began as a Demonspawn Abyssal Knight on Nov 13, 2018.
+             Was a Follower of Lugonu.
+             Slain by a hobgoblin
+             ... wielding a +0 club
+              (3 damage)
+             ... on level 1 of the Dungeon.
+             The game lasted 00:01:09 (209 turns).
+
+Trontexar the Skirmisher (Demonspawn Abyssal Knight) Turns: 209, Time: 00:01:09
+
+Health: -1/18      AC:  3    Str: 12    XL:     1   Next: 41%
+Magic:  2/2        EV: 11    Int: 13    God:    Lugonu [*.....]
+Gold:   23         SH:  0    Dex: 12    Spells: 0/0 levels left
+
+rFire    . . .     SeeInvis .   a - +1 mace
+rCold    . . .     Gourm    .   (no shield)
+rNeg     . . .     Faith    .   b - +0 leather armour
+rPois    .         Spirit   .   (no helmet)
+rElec    .         Reflect  .   (no cloak)
+rCorr    .         Harm     .   (no gloves)
+MR       .....                  (no boots)
+Stlth    +.........             (no amulet)
+HPRegen  0.06/turn              (no ring)
+MPRegen  0.08/turn              (no ring)
+
+@: no status effects
+A: no striking features
+a: Depart the Abyss, Renounce Religion
+
+
+You were on level 1 of the Dungeon.
+You worshipped Lugonu.
+Lugonu was aware of your devotion.
+You were not hungry.
+
+You visited 1 branch of the dungeon, and saw 1 of its levels.
+You visited the Abyss 1 time.
+
+You collected 23 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +1 mace (weapon)
+Armour
+ b - a +0 leather armour (worn)
+Comestibles
+ c - 2 rations
+
+
+   Skills:
+ + Level 3.1 Fighting
+ + Level 1.9 Maces & Flails
+ + Level 1.7 Armour
+ + Level 0.8 Dodging
+ + Level 2.4 Invocations
+
+
+You couldn't memorise any spells.
+You didn't know any spells.
+Your spell library was empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (1/15)            
+
+Altars:
+
+Message History
+
+The hobgoblin shouts!
+A rat comes into view.
+The hobgoblin moves out of view.
+You are too injured to fight recklessly!
+You are too injured to fight recklessly!
+A frilled lizard comes into view.
+The frilled lizard hisses angrily.
+Found a stone staircase leading down.
+You closely miss the frilled lizard. The frilled lizard closely misses you.
+You barely miss the frilled lizard. The hobgoblin hits you with a club. The
+You barely miss the frilled lizard. The frilled lizard bites you.
+* * * LOW HITPOINT WARNING * * *
+The hobgoblin hits you with a club.
+* * * LOW HITPOINT WARNING * * *
+The giant cockroach barely misses you. The frilled lizard barely misses you.
+You hit the frilled lizard.
+You kill the frilled lizard!
+Lugonu accepts your kill.
+The giant cockroach barely misses you. The hobgoblin hits you with a club.
+You die...
+
+     ###
+     #..
+     #.#
+   #.#.#
+   #.#.#
+   #.#.#    #
+   #.#.###..###
+#..#..s@†..>...
+#..#..g#########
+#..#..r#.......##
+#..#...#.####....
+#..#.....g.s.r.r.
+#..#.#...#.......
+#..#.#####.......
+#....#    ..#....
+##.###    .## ...
+ #.###    .#   ..
+ #.#..    .#    .
+
+
+You could see a giant cockroach, a hobgoblin and a rat.
+
+Vanquished Creatures
+  A hobgoblin (D:1)
+  A kobold (D:1)
+  A frilled lizard (D:1)
+3 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | Abyss:1  | Trontexar the Demonspawn Abyssal Knight began the quest for
+                  | the Orb.
+     0 | Abyss:1  | Reached XP level 1. HP: 18/18 MP: 2/2
+    41 | Abyss:1  | Noticed a hippogriff
+   116 | Abyss:1  | Noticed a starcursed mass
+   132 | D:1      | Escaped the Abyss
+   209 | D:1      | Slain by a hobgoblin
+
+Action                   || total
+-------------------------++-------
+Melee: Mace              ||    14
+Armor: Leather armour    ||     2
+Dodge: Dodged            ||    15
+

@@ -1,0 +1,314 @@
+Gorak
+
+Level 1 of the Dungeon
+(0, 0, D:1)
+  a +0 short sword
+(16, -17, D:1)
+  a +0 club
+(23, -6, D:1)
+  a +0 club
+(30, 9, D:1)
+  21 arrows
+(33, 17, D:1)
+  a +0 dagger
+(37, 22, D:1)
+  a +0 club
+(39, -6, D:1)
+  a +0 club
+(40, -6, D:1)
+  a +0 dagger
+(41, -10, D:1)
+  a +0 spear
+(64, -10, D:1)
+  a +0 club
+
+Level 2 of the Dungeon
+(0, 0, D:2)
+  a +0 short sword
+(17, -2, D:2)
+  4 curare-tipped needles
+(20, 42, D:2)
+  10 sling bullets
+(23, 9, D:2)
+  a +0 scale mail
+(27, -4, D:2)
+  a +0 club
+(28, 42, D:2)
+  a +0 dagger
+(39, 30, D:2)
+  a +0 club
+
+Level 3 of the Dungeon
+(15, -43, D:3)
+  a +0 scale mail of positive energy
+(16, -43, D:3)
+  a +0 mace
+  a +0 scale mail
+(16, -41, D:3)
+  a +0 hand axe
+(17, -43, D:3)
+  a +0 hunting sling
+(18, -23, D:3)
+  a +0 robe
+(20, -17, D:3)
+  a +0 dagger
+(27, -16, D:3)
+  a cursed +0 club
+(44, -10, D:3)
+  a tomahawk
+(45, -10, D:3)
+  a tomahawk
+(46, -35, D:3)
+  21 arrows
+(46, -9, D:3)
+  a +0 club
+(46, -8, D:3)
+  a +0 club
+  a +0 flail
+  a +0 ring mail
+(47, -8, D:3)
+  a +0 club
+  a +0 dagger
+(47, -5, D:3)
+  a +0 dagger
+  a +0 leather armour
+(48, -38, D:3)
+  a +0 dagger of venom
+(49, -36, D:3)
+  a cursed +0 robe
+  a +0 leather armour
+(50, -40, D:3)
+  a +0 spear
+(50, -19, D:3)
+  a +0 mace
+(54, -9, D:3)
+  a +0 club
+(55, -9, D:3)
+  a +0 club
+(56, -9, D:3)
+  a +0 dagger
+
+Level 4 of the Dungeon
+(0, 0, D:4)
+  a +0 trident
+(15, 7, D:4)
+  a +0 war axe
+(22, 22, D:4)
+  a +0 dagger
+(25, -9, D:4)
+  a +0 leather armour
+(25, 23, D:4)
+  a +0 trident
+(26, 23, D:4)
+  a +0 leather armour
+  a +0 hand axe
+  a +0 leather armour
+  a +0 club
+(26, 24, D:4)
+  a +0 club
+  a +0 club
+(27, 23, D:4)
+  a cursed -2 dagger
+  a +0 animal skin
+  a +0 helmet
+  a cursed -1 mace
+  a +0 chain mail
+  a +0 hunting sling
+  a +0 dagger
+  a +0 club
+(29, 23, D:4)
+  a +0 club
+(31, 4, D:4)
+  a +0 plate armour
+(31, 11, D:4)
+  a +0 giant club
+(32, 25, D:4)
+  a book of Geomancy
+(34, -6, D:4)
+  4 bolts
+(37, 27, D:4)
+  a +0 club
+(38, 25, D:4)
+  a +0 flail
+(39, 26, D:4)
+  a +0 chain mail
+(43, 38, D:4)
+  a cursed +0 giant spiked club
+(51, -11, D:4)
+  a +0 ring mail
+
+Level 5 of the Dungeon
+[Shop] Careotz's General Store
+  a +0 dagger (22 gold)
+  13 stones (14 gold)
+  a +4 ring mail (286 gold)
+  a potion of magic (88 gold)
+  a wand of clouds (6) (330 gold)
+  16 arrows (35 gold)
+  a ration (55 gold)
+  a scroll of teleportation (33 gold)
+  a scroll of fog (22 gold)
+(0, 0, D:5)
+  a +0 dagger
+(4, -21, D:5)
+  a +0 chain mail
+(20, -13, D:5)
+  a +0 shortbow
+  13 arrows
+(23, -14, D:5)
+  an arrow
+(24, -15, D:5)
+  2 arrows
+(25, 5, D:5)
+  21 arrows
+  a +0 shortbow
+(25, 7, D:5)
+  an arrow
+(25, 8, D:5)
+  an arrow
+(25, 10, D:5)
+  an arrow
+(36, -15, D:5)
+  a +0 club
+(38, -15, D:5)
+  2 arrows
+(39, -19, D:5)
+  an arrow
+(39, -18, D:5)
+  an arrow
+(41, -22, D:5)
+  a +0 shortbow
+  9 arrows
+
+Level 6 of the Dungeon
+(0, 0, D:6)
+  a +0 giant club
+(17, 9, D:6)
+  13 sling bullets
+(18, 10, D:6)
+  a +0 ring mail
+(18, 13, D:6)
+  a +0 falchion
+(18, 21, D:6)
+  a +0 hunting sling
+(20, 25, D:6)
+  a tomahawk
+(21, 8, D:6)
+  a +0 blowgun
+  14 poisoned needles
+(21, 9, D:6)
+  a +0 club
+(21, 26, D:6)
+  a tomahawk
+(22, 25, D:6)
+  a +0 club
+(23, 16, D:6)
+  a +0 club
+(24, 10, D:6)
+  a poisoned needle
+(24, 25, D:6)
+  a +0 hand axe
+  3 tomahawks
+(28, 14, D:6)
+  a +0 flail
+(29, 16, D:6)
+  a +0 flail
+(29, 17, D:6)
+  4 curare-tipped needles
+  a +0 club
+(30, 12, D:6)
+  a +0 club
+(30, 13, D:6)
+  a +0 flail
+  a +0 club
+  a +0 short sword
+(30, 16, D:6)
+  a +0 club
+  a +0 dagger
+  a +0 club
+(31, 16, D:6)
+  a +0 club
+  a +0 shortbow
+  46 arrows
+(32, 15, D:6)
+  a cursed -3 short sword
+(32, 16, D:6)
+  a +0 ring mail
+(33, 16, D:6)
+  a +1 halberd of venom
+(34, 21, D:6)
+  22 arrows
+(36, 4, D:6)
+  a +0 trident
+(45, -8, D:6)
+  19 arrows
+(45, 50, D:6)
+  a +0 robe
+(49, -14, D:6)
+  a +0 mace
+(55, 1, D:6)
+  12 sling bullets
+
+Level 7 of the Dungeon
+(0, 0, D:7)
+  a +0 club
+(7, 0, D:7)
+  a ration
+  (unseen)
+(21, -4, D:7)
+  a +0 long sword
+
+Level 8 of the Dungeon
+(0, 0, D:8)
+  a +0 dagger
+  a +0 robe
+(2, 38, D:8)
+  a +0 long sword
+(5, 15, D:8)
+  a +0 short sword
+(9, -12, D:8)
+  a book of the Tempests
+(11, 22, D:8)
+  18 arrows
+(14, 12, D:8)
+  a +0 giant club
+(16, 7, D:8)
+  a +0 dagger
+  a +0 robe
+  a +0 club
+  a +0 chain mail
+(16, 8, D:8)
+  a +0 whip
+  a cursed +0 leather armour
+(16, 28, D:8)
+  a +0 hand axe
+(33, -3, D:8)
+  4 tomahawks
+(33, 3, D:8)
+  7 bolts
+(35, -4, D:8)
+  a +0 club
+  a +0 chain mail
+(35, -3, D:8)
+  a +0 dagger
+  a +0 chain mail
+(36, -4, D:8)
+  a cursed -2 dagger
+  a +0 robe
+(38, -1, D:8)
+  a tomahawk
+(39, 2, D:8)
+  3 tomahawks
+(46, -10, D:8)
+  a +0 giant spiked club
+(47, 21, D:8)
+  12 arrows
+
+Level 9 of the Dungeon
+(0, 0, D:9)
+  a +0 spear
+(1, -5, D:9)
+  a scroll of enchant weapon
+(28, 7, D:9)
+  a hound corpse
+

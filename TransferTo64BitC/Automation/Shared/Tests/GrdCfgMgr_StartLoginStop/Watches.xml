@@ -1,0 +1,4 @@
+﻿<Properties>
+  <WatchEntry0 value="StringStartsWith(strMsg, arrFiles(i,1))" />
+  <WatchEntry1 value="arrFiles(i,1)" />
+</Properties>

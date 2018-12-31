@@ -1,0 +1,21 @@
+'Loop through all of the generated text files, checking for the first instance of the desired string.
+'bEmailFound is set to True if the expected string is found at least once within the searched files.
+
+bEmailFound = False
+ExpectedString = "UniSeries has detected a condition where serial numbers appear to be duplicated."
+
+Set FSO = CreateObject("Scripting.FileSystemObject")
+Set FilesObj = FSO.GetFolder("C:\Automation\Duplicate Check\Emails").Files
+
+
+For Each Files in FilesObj
+	Set TextFile = FSO.OpenTextFile(Files.Path)
+	EntireString = TextFile.ReadAll
+	If InStr (1, EntireString, ExpectedString, vbTextCompare) Then
+		bEmailFound = True
+	End If
+Next
+
+
+Set FilesObj = Nothing
+Set FSO = Nothing

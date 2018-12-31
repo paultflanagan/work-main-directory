@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<SOAP:Envelope xmlns:SOAP="http://schemas.xmlsoap.org/soap/envelope/">
+  <SOAP:Header />
+  <SOAP:Body>
+    <n0:NumberRangeResponseMessage xmlns:n0="http://sap.com/xi/AIN">
+      <ReceivingSystem>SYSTECH</ReceivingSystem>
+      <ActionCode>C</ActionCode>
+      <EncodingType>PT-SGTIN96Case</EncodingType>
+      <IDType>GS1_SER</IDType>
+      <Interval>
+        <NumberFrom>3018C2565312D04000000000</NumberFrom>
+        <NumberTo>3018C2565312D04000004E1F</NumberTo>
+      </Interval>
+      <ObjectKey>
+        <Name>GTIN</Name>
+        <Value>51990010000012</Value>
+      </ObjectKey>
+      <RandomizedNumberList />
+    </n0:NumberRangeResponseMessage>
+  </SOAP:Body>
+</SOAP:Envelope>

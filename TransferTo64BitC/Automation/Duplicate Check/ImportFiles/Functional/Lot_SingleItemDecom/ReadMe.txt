@@ -1,0 +1,1 @@
+2 duplicates @ position 10 in List file 5000

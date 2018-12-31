@@ -1,0 +1,2642 @@
+Dupes Troubleshooting 8.3.0_1stSafeguard
+
++++++++++++
+16-Nov-2018
++++++++++++
+The past 3 tests - 7.40.011, 8.1.7, and 8.2.1 - are all encountering the same error regarding Safeguard manipulation failure
+
+Discussion with Paul, Alex, and Vlad has led me to believe that this is not an issue I ought to fix by banging my head against it.
+Instead, I've let them know about the issue and tossed it over to whoever is most responsible for handling it (appears to be Vlad at this point, maybe?)
+    In other words, I'm letting it sit on the back burner while it circulates around
+        passively keeping an eye on it and working on it whenever it gets back to me and I can do something to help it forward
+This feels much better than banging my head against it, I must admit.
+
+Anyway, let's work on setting up the job for running.
+
+Seems pretty straight forward
+I've added calls to the preparatory and result scripts, verified that those are present
+
+However, I cannot find the "MainSuite.vbs", or anything resembling it, in any of the obvious locations
+    doing a quick search over the C:\ drive
+    No luck
+    
+I'll ask Alex
+He said that the file to find was called "8.3.0_1stSafeguard.vbs"
+    Makes sense
+Found it in C:\Automation\Duplicate Check\
+Renaming it to "MainSuite.vbs" (at Alex's suggestion) and moving it to C:\
+
+Let's crack it open and see if it has all the files it needs.
+
+So this script has a large chunk of what appear to be commented-out test steps
+I guess I'll just uncomment all of them and see what happens, since I know everyone loves making liberal use of code-commenting
+The issue is that I don't know if they were working on something broken or how long each of these had been commented
+    I don't know if some of them are commented because they are broken and some of them are commented to isolate some steps
+I suppose this is why code commenting is a bad practice?
+    But in this case I am led to believe that code commenting in and of itself is not a bad thing, as long as it's private
+        The moment you think someone else is going to be looking at what you've been working on, you need to clean that up
+        since they won't know what was commented why.
+I've saved a copy of the original commenting choices ("MainSuiteOriginal.vbs") just in case
+
+Back to checking for necessary files
+
+Previously unseen files:
+    ProvisionNew.xls                                C:\Automation\Duplicate Check\FT_Provisioning_Driver\
+    ProvisionUsed.xls                               C:\Automation\Duplicate Check\FT_Provisioning_Driver\
+    PreLot_Qsuspend.xls                             C:\Automation\Duplicate Check\FT_Provisioning_Driver\
+    PostLot_Qsuspend.xls                            C:\Automation\Duplicate Check\FT_Provisioning_Driver\
+    PreLot_Qcancel.xls                              C:\Automation\Duplicate Check\FT_Provisioning_Driver\
+    PostLot_Qcancel.xls                             C:\Automation\Duplicate Check\FT_Provisioning_Driver\
+    
+    ValidateProvisionNewEmail_Prospect\             C:\Automation\Duplicate Check\
+    ValidateProvisionUsedEmail_Prospect\            C:\Automation\Duplicate Check\
+    DuplicateCheckThreeLevel_SuspendAndResumeLot\   C:\Automation\Duplicate Check\
+    DuplicateCheckThreeLevel_CancelLot\             C:\Automation\Duplicate Check\
+    SafeguardChecks\                                C:\Automation\Duplicate Check\
+
+Missing referenced files:
+    none
+    
+So I'm seeing a lot of new files and tests I have not seen before
+If this test functions the same way as the others, however, most of these new parts are just responsible for piping in numbers
+    The bulk of the work has always been in the scripts which handle the results of those imports, which I've worked more with
+    I predict that the most I will have to do for a majority of these tests is point them to the correct VE_A
+    and for the Driver data files, I'll have to update the size numbers to match the rest of the tests.
+        This may mean it will run into the same issues as the last three tests, but I'll get to that later
+        
+The files that I'll take a closer look at are ProvisionNew.xls, ProvisionUsed.xls, and SafeguardChecks\.
+
+If it is how I suspect, this test may run into the same issue as the last three tests
+    especially since it uses PreLotRemove.xls...
+So I may just have to do what I've done with the other tests and get this test to as close as I can to working
+    such that the PreLotRemove issue is the last thing left to resolve
+    
+Let's just run down the list and check through everything first
+
+ProvisionNew.xls:
+Resembles the other driver files
+
+    Global:
+        doesn't appear to do anything
+        
+        
+        
+    Set_DuplicateSafeGuards:
+        Turns ON SafeGuard1 and SafeGuard2, and sets the Name as ProvisionNew
+        
+        
+        
+    Import_Range:
+        first takes from ImportFiles\Functional\NoError\ for carton, case, and pallet ranges
+        then it goes via ImportFiles\Functional\Error689\FT-B_RangeAlreadyImported_689_Carton_0.xml
+        and last through ImportFiles\Functional\Error845\FT-B_RangeOverlap_845_Carton_100.xml
+        
+        ImportFiles\Functional\NoError\ ranges:
+            Seems like standard clean lot. 
+            Available 1000 carton and case numbers, and 5000 pallet numbers
+            Hopefully I won't have to make the data set for this one larger. I feel like that would be a bit of a hassle.
+            
+        ImportFiles\Functional\Error689\FT-B_RangeAlreadyImported_689_Carton_0.xml:
+            Looks like there's supposed to be a file that shares numbers with the good lot
+            But I don't see any file named this; I see two other files and a README, but no one matching this one.
+            
+        ImportFiles\Functional\Error845\FT-B_RangeOverlap_845_Carton_100.xml
+            Seems to be in order
+            according to README, the start of this range is supposed to overlap the preexisting one.
+            
+            
+            
+    Import_FullyRandomList:
+        first takes from ImportFiles\Functional\NoError\ for carton, case, and pallet lists
+        then it goes via ImportFiles\Functional\Error855\FT-B_ListAlreadyImported_855_Carton_0.xml
+        then it goes via ImportFiles\Functional\Error853\FT-B_ListWithDuplicates_853_Carton.xml
+        and last through ImportFiles\Functional\Error854\FT-B_ListWithAvailable_854_Carton.xml
+        
+        ImportFiles\Functional\NoError\ lists:
+            again, standard clean lot.
+            Available 5000 carton, case, and pallet numbers 
+            
+        ImportFiles\Functional\Error855\FT-B_ListAlreadyImported_855_Carton_0.xml:
+            This file is a complete match of the NoError List file
+            
+        ImportFiles\Functional\Error853\FT-B_ListWithDuplicates_853_Carton.xml
+            This file is unique from the source, but contains duplicated items within itself
+            
+        ImportFiles\Functional\Error854\FT-B_ListWithAvailable_854_Carton.xml
+            This file is nonidentical to the source, but contains some matching items
+            
+            
+            
+    Import_AnimalHealth:
+        first takes from ImportFiles\Functional\NoError\2017000000000_Product FT-B.zip
+        then it goes via ImportFiles\Functional\Error822\2017000000822_Product FT-B.zip
+        then it goes via ImportFiles\Functional\Error854\2017000020854_Product FT-B.zip
+        and last through ImportFiles\Functional\Error853\2017000020853_Product FT-B.zip
+        
+        ImportFiles\Functional\NoError\2017000000000_Product FT-B.zip:
+            The baseline file
+            2017000000000_Product FT-B_1.txt:
+                5000 items
+            2017000000000_Product FT-B_2.txt:
+                5000 items
+                
+        ImportFiles\Functional\Error822\2017000000822_Product FT-B.zip:
+            "Copy of good file with a different filename"
+            2017000000000_Product FT-B_1.txt:
+                5000 items
+            2017000000000_Product FT-B_2.txt:
+                5000 items
+                
+        ImportFiles\Functional\Error854\2017000020854_Product FT-B.zip:
+            "New file and numbers with numbers from good file"
+            2017000020854_Product FT-B_1.txt:
+                10000 items
+            2017000020854_Product FT-B_2.txt:
+                10000 items
+                
+        ImportFiles\Functional\Error853\2017000020853_Product FT-B.zip:
+            "New file/numbers with numbers duplicated within file"
+            2017000020853_Product FT-B_1.txt:
+                10000 items
+            2017000020853_Product FT-B_2.txt:
+                10000 items
+                
+                
+                
+    Import_PartialRandomList:
+        ImportFiles\Functional\NoError\Product FT-B_20170000-000_9918802000000000-001_x1x_2.txt
+        ImportFiles\Functional\NoError\Product FT-B_20170000-000_9918803000000000-001_x1x_3.txt
+        ImportFiles\Functional\Error823\Product FT-B_20170000-000_9918802000000000-001_x1x_2.txt
+        ImportFiles\Functional\Error822\Product FT-B_20170000-822_9918802000000000-001_x1x_2.txt
+        ImportFiles\Functional\Error820\Product FT-B_20170010-820_9918802000010000-001_x1x_2.txt
+        ImportFiles\Functional\Error853\Product FT-B_20170010-853_9918802000010000-001_x1x_2.txt
+        
+        ImportFiles\Functional\NoError\Product FT-B_20170000-000_9918802000000000-001_x1x_2.txt:
+            baseline file 1
+            4999 items
+            
+        ImportFiles\Functional\NoError\Product FT-B_20170000-000_9918803000000000-001_x1x_3.txt:
+            baseline file 2
+            4999 items
+        
+        ImportFiles\Functional\Error823\Product FT-B_20170000-000_9918802000000000-001_x1x_2.txt:
+            "Copy of good file with same filename"
+            4999 items
+            
+        ImportFiles\Functional\Error822\Product FT-B_20170000-822_9918802000000000-001_x1x_2.txt:
+            "Copy of good file with different filename"
+            4999 items
+            
+        ImportFiles\Functional\Error820\Product FT-B_20170010-820_9918802000010000-001_x1x_2.txt:
+            "New file and numbers with 1 duplicate @ item 1"
+            9999 items 
+            
+        ImportFiles\Functional\Error853\Product FT-B_20170010-853_9918802000010000-001_x1x_2.txt:
+            "New file/numbers with numbers duplicated within file"
+            9999 items
+            
+        
+        
+    Import_PreprintedLabel:
+        ImportFiles\Functional\NoError\FT_Preprinted_Case_0.xml
+        ImportFiles\Functional\Error780\FT_Preprinted_FileCopy_780_0.xml
+        ImportFiles\Functional\Error781\FT_Preprinted_AlreadyAvailable_781_0.xml
+        
+        ImportFiles\Functional\NoError\FT_Preprinted_Case_0.xml:
+            baseline file
+            10 items
+            
+        ImportFiles\Functional\Error780\FT_Preprinted_FileCopy_780_0.xml:
+            "Copy of good file"
+            10 items
+            
+        ImportFiles\Functional\Error781\FT_Preprinted_AlreadyAvailable_781_0.xml:
+            "Copy of good file with new ReelId"
+            10 items
+            
+            
+            
+    Enter_Range:
+        no files attached, but appears to follow the same inbuilt error-catching pattern
+            that is, it starts with a good lot and then runs a bunch of improper sets in order to invoke error responses.
+            in this case, it just has the data right there in the base file
+        1 baseline entry, 4 error-triggering entries (Errors 689 and 845 twice, once with Product FT-A as Bottles and once with FT-B as Cartons)
+            
+            
+            
+    Request_Numbers:
+        as with Enter_Range, has data directly in this spreadsheet
+        2 baseline entries, 2 error-triggering entries (Errors 689 and 855)
+        
+        
+        
+    Disable_Numbers:
+        self-explanatory, no error-triggering here.
+        
+        
+        
+So, final impression, this file serves to test the in-built import-error-catching capabilities of the software.
+    Interestingly, I think that this serves to explore the issue that we have been encountering with the previous three tests
+        Again, it would be awesome if we could switch this off, but I think it would be better to try to work around it first.
+        How does number disabling work? Would it maybe help to disable all of the numbers that were in the previous data sets?
+            that is, regardless of whether they made it into a lot or not?
+    I'm getting off track, but it will behoove my success in fixing that issue to consider it in the light of this realization
+    
+One issue is that missing file, although honestly I feel like I might be able to recreate it based on the README file
+Hey, wait, just kidding, the file was there, but the full filename was cut off
+    I couldn't tell because it didn't end with a "..."
+Well that resolves that, then
+
+Let's move on to the next file
+
+
+ProvisionUsed.xml
+At first glance, seems a lot like ProvisionNew.xml, but without the baseline
+    I guess that this is run soon after ProvisionNew.xml, before totally clearing everything out
+    It must be like part 2 of the error-triggering data loading steps.
+    
+    Global:
+        just like ProvisionNew.xml
+        has letters A-U in the first row of each column and then the name of the config file in the V column.
+        
+        
+        
+    Set_DuplicateSafeGuards:
+        Turns ON SafeGuard1 and SafeGuard2, and sets the Name as ProvisionUsed
+        
+        
+        
+    Import_Range:
+        ImportFiles\Functional\Error845\FT-B_RangeOverlap_845_Carton_2900.xml
+            "Import range file with duplicates of prior import" - from main file
+            "New range where start of range overlaps good or used numbers" - from Error845\
+            14505 items
+            
+            
+            
+    Import_FullyRandomList:
+        ImportFiles\Functional\Error667\FT-B_ListWithUsed_667_Carton.xml:
+            "Import fully random list file with previously used numbers" - from main file
+            "New file and numbers with used numbers" - from Error667\
+            19 items
+            
+            
+            
+    Import_AnimalHealth:
+        ImportFiles\Functional\Error667\2017000020667_Product FT-B.zip:
+            "Import animal health file with duplicates of prior import " - from main file
+            "New file and numbers with used numbers" - from Error667\
+            2017000020667_Product FT-B_1:
+                10000 items
+            2017000020667_Product FT-B_2:
+                10000 items
+            
+            
+            
+    Import_PartialRandomList:
+        no imports in here...
+        "Impossible to import a used number to get error 857" - from main file
+        good to know
+        
+        
+        
+    Import_PreprintedLabel:
+        ImportFiles\Functional\Error689\FT_Preprinted_CaseWithUsed_689_0.xml:
+            "Import reprinted label file with duplicates of prior import" - from main file
+            "new file and numbers for preprinted with 2 duplicates @ item 11" - from Error689\
+            12 items
+            
+            
+            
+    Enter_Range:
+        data directly in this sheet
+        1 error-triggering entry (Error 845)
+        
+        
+        
+    Request_Numbers:
+        data directly in this sheet
+        2 error-triggering entries (Errors 845 and 667)
+        
+        
+        
+    Disable_Numbers:
+        self-explanatory, no error-triggering here.
+        
+        
+        
+Final impression, does the same error-triggering-thing as ProvisionNew.xml 
+    but, it attempts to catch off of numbers that had not been just entered
+    
+    
++++++++++++
+29-Nov-2018
++++++++++++
+Hit another wall, this time while working on 8.2.11, so I'm working here for what remains of today.
+picking back up right where I left off
+
+
+PreLot_Qsuspend.xls
+It looks like we're getting back to the sort of files I have seen before.
+
+    Global:
+        Sets config file as c:\UFT\UftConfig.xml
+        
+        
+        
+    Set_DuplicateSafeGuards:
+        Sets SafeGuard1 to OFF and SafeGuard2 to OFF. Sets Name to PreLot_Qsuspend
+        
+        
+        
+    Import_Range:
+        ImportFiles\Functional\Lot_Qsuspend\FT-B_Range_{Carton/Case/Pallet}_100000.xml:
+            30000 available carton, case, and pallet numbers
+            
+            
+            
+    Import_FullyRandomList:
+        ImportFiles\Functional\Lot_Qsuspend\FT-B_List_{Carton/Case/Pallet}_100000.xml:
+            30000 available carton, case, and pallet numbers 
+            
+            
+            
+    Import_AnimalHealth:
+        ImportFiles\Functional\Lot_Qsuspend\2017000100000_Product FT-B.zip:
+            2017000100000_Product FT-B_1.txt:
+                15000 items
+            2017000100000_Product FT-B_2.txt:
+                15000 items
+                
+                
+                
+    Import_PartialRandomList:
+        ImportFiles\Functional\Lot_Qsuspend\Product FT-B_20170100-000_9918802000100000-001_x1x_{2/3}.txt:
+            30000 items
+            
+            
+            
+    Import_PreprintedLabel:
+        empty
+        
+        
+        
+    Enter_Range:
+        empty
+        
+        
+        
+    Request_Numbers:
+        empty
+        
+        
+        
+    Disable_Numbers:
+        empty
+        
+        
+        
+Alright, seems like one of the standard Provisioning files I've been working with.
+
+
+PostLot_Qsuspend.xls
+Again, I'd guess it's just one of the standard provisioning files.
+
+    Global:
+        Sets ConfigFile as c:\UFT\UftConfig.xml
+        
+        
+        
+    Set_DuplicateSafeGuards:
+        Sets SafeGuard1 and 2 to ON, sets Name to PostLot_Qsuspend
+        
+        
+        
+    Import_Range:
+        empty
+        
+        
+        
+    Import_FullyRandomLst:
+        empty
+        
+        
+        
+    Import_AnimalHealth:
+        empty
+        
+        
+        
+    Import_PartialRandomList:
+        empty
+        
+        
+        
+    Import_PreprintedLabel:
+        empty
+        
+        
+        
+    Enter_Range:
+        empty
+        
+        
+        
+    Request_Numbers:
+        empty
+        
+        
+        
+    Disable_Numbers:
+        No file mentions
+        disables AI(01)+AI(21) 30000 for Carton, Case, Pallet
+        disables China Animal Health Tracing Code 15000 for Carton, Case
+        
+        
+        
+As expected, standard file
+
+
+PreLot_Qcancel.xls
+Likely standard
+
+    Global:
+        sets ConfigFile to c:\UFT\UftConfig.xml
+        
+        
+        
+    Set_DuplicateSafeGuards:
+        Sets Safeguard1 and 2 to OFF. Sets Name to PreLot_QCancel
+        
+        
+        
+    Import_Range:
+        ImportFiles\Functional\Lot_Qcancel\FT-B_Range_{Carton/Case/Pallet}_130000.xml
+            30000 items for each
+            
+            
+            
+    Import_FullyRandomList:
+        ImportFiles\Functional\Lot_Qcancel\FT-B_List_{Carton/Case/Pallet}_130000.xml
+            30000 items for each
+            
+            
+            
+    Import_AnimalHealth:
+        ImportFiles\Functional\Lot_Qcancel\2017000130000_Product FT-B.zip:
+            2017000130000_Product FT-B_1.txt:
+                15000 items
+            2017000130000_Product FT-B_2.txt:
+                15000 items
+                
+                
+                
+    Import_PartialRandomList:
+        ImportFiles\Functional\Lot_Qcancel\Product FT-B_20170130-000_9918802000130000-001_x1x_{2/3}.txt
+            30000 items each
+            
+            
+            
+    Import_PreprintedLabel:
+        empty
+        
+        
+        
+    Enter_Range:
+        empty
+        
+        
+        
+    Request_Numbers:
+        empty
+        
+        
+        
+    Disable_Numbers:
+        empty
+        
+        
+        
+Standard file again
+
+
+PostLot_Qcancel.xls
+
+    Global:
+        Sets ConfigFile to c:\UFT\UftConfig.xml
+        
+        
+        
+    Set_DuplicateSafeGuards:
+        Sets SafeGuard1 and 2 to ON. Sets Name to PostLot_Qcancel
+        
+        
+        
+    Import_Range:
+    Import_FullyRandomList:
+    Import_AnimalHealth:
+    Import_PartialRandomList:
+    Import_PreprintedLabel:
+    Enter_Range:
+    Request_Numbers:
+        all empty
+        
+        
+        
+    Disable_Numbers:
+        No file mentions
+        disables AI(01)+AI(21) 30000 for Carton, Case, Pallet
+        disables China Animal Health Tracing Code 15000 for Carton, Case
+        
+        
+        
+These next items are the UFT tests. Not sure how I want to analyze these.
+Maybe I just want to check them out in UFT itself?
+
+
+ValidateProvisionNewEmail_Prospect\
+    Makes a call to VerifyEmail_App_ProvisionNew
+        which was the one VE_A I did not touch yet
+    It shouldn't be too hard to get this one up to speed with the others
+    All the other actions just run PIM rows
+    
+ValidateProvisionUsedEmail_Prospect\
+    This one also uses VE_A_ProvisionNew, interestingly
+    Again, the rest are PIM row runs.
+    
+DuplicateCheckThreeLevel_SuspendAndResumeLot\
+    Has three Actions which are not just PIM row runs:
+        StartLot
+            Looks like it just picks out the product, but I think we have a shared action for that
+            I'll look into replacing that later
+        EndLot_Suspend
+            This one is not as clear, but I think it:
+            tries to close the lots, 
+            looks for a duplicate dialog,
+                does a test check,
+            Waits a minute,
+            Resumes the lot, 
+            Closes it and quarantines it,
+                does another test check,
+            and finishes.
+            Kind of reminds me of the standard quarantine steps?
+        VerifyEmail_App_Quarantne_Suspend
+            its own local VE_A
+    
+DuplicateCheckThreeLevel_CancelLot\
+    This one has two of the same actions as SuspendAndResumeLot (StartLot and EndLot)
+    But, it uses the VE_A_Quarantine.
+    
+SafeguardChecks\
+    Just 1 Action with 3 test checks.
+    They compare 3 pairs of strings. If they match, pass
+    Looking at it, though, the strings all seem empty.
+    It references the assumed string variables without setting them or anything.
+    
+    I'm going to double check the usage of this test
+    Yeah, it just runs that test, and the way it is set up, it just always returns 3 passes.
+    
+So that's all of the files.
+I guess the next thing to do is make a list of what I am confused about and what I think I'll probably have to modify
+
+
++++++++++++
+30-Nov-2018
++++++++++++
+Things that I assume I will need to fix:
+    SafeguardChecks\
+        The tests are currently invalid
+    DuplicateCheckThreeLevel_CancelLot\
+        I will have to add the baseline_target compatibility
+    VE_A_ProvisionNew
+        Update to match the other VE_As
+    VE_A_Quarantine_Suspend
+        Update this and probably turn it into a separate test, like the others
+    All of the PreLot_*.xls Provisioning files
+        I might need to modify the sizes of the import files for these, potentially
+
+Things that confuse me:
+    [most things]
+    DuplicateCheckThreeLevel_SuspendAndResumeLot\
+        I would like to take a closer look at this to confirm what it is trying to do and see if it does it
+        
+    
+One thing I realize I did not check was the PIM files for the new UFT scripts.
+Let's take a look
+
+ValidateProvisionNewEmail_Prospect\:
+    TestDataFile:   "ValidateProvisionNewEmail.xlsx"
+    Found in C:\PimLabTestData\
+    ... All of the steps appear to be entirely empty...
+    
+ValidateProvisionUsedEmail_Prospect\:
+    TestDataFile:   "ValidateProvisionNewEmail.xlsx"
+        Same as previous
+        
+DuplicateCheckThreeLevel_SuspendAndResumeLot\:
+    TestDataFile:   "DuplicateCheckPimLabTestData_3level_SuspendAndResumeLot.xlsx"
+    Found in C:\PimLabTestData\
+    All empty except Good1 page
+        Creates 1000 cartons, 20 cases, 1 pallet.
+        
+DuplicateCheckThreeLevel_CancelLot\:
+    TestDataFile:   "DuplicateCheckPimLabTestData_3level_CancelLot.xlsx"
+    Found in C:\PimLabTestData\
+    All empty except Good1 page
+        Creates 1000 cartons, 20 cases, 1 pallet.
+        
+SafeguardChecks\ (don't think this one will have an import file):
+    (It does not)
+    
+Pim files seem to be in order
+
+
+Let's start working down the line of assumed fixes and aim to get it ready for the first test run.
+
+SafeguardChecks\
+    I think I will need to ask someone about this, probably Paul when he gets back.
+    I'm not actually sure what it is trying to do
+    
+DuplicateCheckThreeLevel_CancelLot\
+    Add baseline_target functionality
+    I'll start by assuming that it will also look for the presence of at least one duplicate
+        it will be a simple task to change it if this is not the case.
+    Copied and pasted the relevant code into the Initialize action.
+    I'm also going to start to update the other actions - StartLot and EndLot_Cancel
+    StartLot:
+        Modeling this after the ones in DualFormat_AI21
+        Associating the Advisor_V2 Library for the boolFunc_SearchAndSelectProduct and boolFunc_StartLot functions.
+            Associating the AdvisorObjects.tsr repo to enable these functions
+        Running into a dynamic click issue
+        Let's see how AI21 handles it?
+            Appears to have a local object solution
+                Adding the local objects to shared repo.
+                Ok that didn't work.
+        Right now, AI21 and CancelLot both have the same version of AdvisorObjects.tsr, and the same Window("Menu") object
+            However, only the one in AI21 has the dynamicClick operation.
+    How about we jump ahead for now and get back to this one later
+    EndLot_Cancel:
+        This one looks a bit sloppy, but for now I'll leave it and only start to mess with it after I verify whether it works or not
+        
+VE_A_ProvisionNew\
+    seems like a standard email check without a database validation.
+    I'll grab from the first half of VE_A_Quarantine
+    VE_A has been updated
+
+DuplicateCheckThreeLevel_SuspendAndResumeLot\
+    just like CancelLot. Updated StartLot, associated Advisor_V2, had issue with dynamicClick, leaving EndLot_Suspend alone for now
+    Also contains VE_A_Quarantine_Suspend, that will be worked on below.
+    
+VE_A_Quarantine_Suspend\
+    Located within DuplicateCheckThreeLevel_SuspendAndResumeLot\
+    I would like to put this into its own shared job, like the other VE_As
+    Hey, cool: this looks like a copy of VE_A_Quarantine, but with a different target file
+        this is the reason I added the target file functionality, woo!
+    Adding the target file to be baseline_sg3suspend.txt
+    gave it an instance of VE_A_Quarantine in its script procedure, commented out the original one
+    
+I think that's it? Let's maybe try a run, if only to find what else I need to patch up first?
+
+Running test 0...
+Got up to case 25, when it appears to have gotten caught on an error message:
+"
+Error
+    780: Duplicated Label-Reel detected
+"
+    Prior to this, it has just been checking the functionality of the error catching
+        so my guess is that it was just supposed to acknowledge that this message appeared, click out of it, and move on
+    However, it got caught for some reason, maybe something with the UFT script not having the proper object in its repo.
+Let's check it out.
+Stopping Jenkins job, aborting script.
+
+It is importing from the \Error780\ folder, so it should obviously anticipate an error result
+Can't tell what's wrong with it just looking at the Provisioning Driver script, let's run the Suite with UFT open to see what goes wrong.
+
+
+Running test 0.1...
+Crashed again, and didn't give an error message in UFT, but I do have the Jenkins Console Output.
+I forgot to close the .xlsx file this time. Let's retry.
+
+
+Running test 0.1.1...
+Stuck in same place. No error message.
+Line stuck (Import_PreprintedLabel [GrdCfgMgr_LoadSptNumbers] line 60):
+If Not ImportProvisionFileReel(objWindow, BuildPath(ProjectWorkingPath, strFileName), strResult) Then
+
+Stepping into this, there's an indefinite Loop in the ImportProvisionFileReel, lines 525-530 of Guardian.Library.
+The loop is supposed to exit upon the detection of a "objWindow.Dialog("dlgMessage")"
+
+Seems like it does not recognize the error message that I see as a dlgMessage
+
+DEV01 was being slow so I'm resetting it.
+
+I set up a breakpoint so that it should pause when it sees one of the messages from the previous step.
+I'll verify what the script sees that successful one as, and maybe that will help me figure out what to do for this one.
+
+It skipped right over the breakpoint.
+
+let's try purging the data and then manually going through the import steps to try to trigger one of the messages.
+
+I came up with a workaround: I fudged the whole dang thing
+I grabbed the actual error message, put it into the correct object repository, renamed it and all of its sub-objects to match the original, and renamed the original to dlgMessage_OLD
+    Elegant solutions are for suckers
+        Weirdly, the _OLD version has a "btnOK" which isn't used by the China Animal Health example I grabbed
+        Another reason to use this new one?
+    
+Let's try again
+
+
+Running test 0.2...
+My final modification of the object repository did not go through for some unfortunate reason.
+Once again
+
+
+Running test 0.2.1...
+Aw damn it, the "Import completed" window for the first Preprinted Label import is considered one of the dlgMessage_OLD objects
+    this is unfortunate.
+    
+    
+So right now the issue I have is that the window for the initial import is the same type as the rest of the tests
+But, the window for the error import is oddly considered to be a different type. 
+    I think this also explains why _OLD has a "btnOK": the successful import messages don't have Yes/No, they just have an OK button
+    For every other step, the successful and error messages are the same type.
+Why is this one different?
+
+Unlike the dynamicClick issue, this one seems to be halting and not feasibly worked around, so it wouldn't make as much sense to just skip this.
+    Actually, I could probably just get rid of the dumb indefinite loop, but...
+
+It's getting late in the day, I'll ask Paul about it next time I'm working on this.
+
+
++++++++++++
+03-Dec-2018
++++++++++++
+I managed to finish up 8.2.11, getting consistent full clears, so I'm back onto this test.
+
+Talked to Paul about this issue early in the morning and he said that there might not be an elegant solution to this.
+
+Now that I've gotten the unofficial go ahead to play dirty, could I maybe have an additional repo with just that weird error message and name it dlgMessage as well?
+
+I've created an additional shared repo titled "GuardianConfigMgr.PreprintedLabelImport_Supplement.tsr"
+I renamed its SwfWindow to be "GuardianConfig_PreprintedLabel" to match the original, and gave it the one 
+    I feel so bad for whoever has to look at this next. I want to write a comment but I don't know how
+    I figured out a way, feel less bad now.
+    
+It matches according to all the ways I can find (same identifiers in the code, still highlights proper item)
+Let's see if it blows up in a test.
+
+
+Running test 0.3...
+Well... we got a full run... ish...
+There was a lot of hand holding and a lot of recurring issues I noticed, but it definitely warrants and allows for some more targeted analysis
+Results:
+	Run Time:		01:18:57
+	Success Totals:	75/100 (/?)
+	Failed Cases:	many, mainly import range and list steps, even more consistently ImportFullyRandomList [carton] steps
+    
+I'll be able to look into this tomorrow, maybe splitting up the test so I can isolate the issues
+
+
++++++++++++
+04-Dec-2018
++++++++++++
+I've been hesitant to begin just digging in and completely refactoring this code, since that tends to open up a can of worms
+    and unless I'm 100% sure of what it's trying to do and why, it ends up taking a lot of extra work.
+    
+I'm going to take out that infinite loop in the import 
+    actually I don't think I can, at least not without then resolving the pop-up window. Otherwise the test will break because of the stuck window.
+    
+Let's add a msgbox command before the check in Guardian.Library (line 528) to take a better look at each of the import windows.
+
+There were no message boxes that came up.
+Do the tests not use that command??
+I guess it didn't save, because I don't see it now...
+Try again.
+
+I'm scrutinizing the repo data for the successful and unsuccessful tests
+I see that in the description properties, most have either a glob for their "text" value or don't have one at all
+Perhaps the Description properties are not as arbitrary as they initially seemed.
+
+Import_Range:
+    "text" value:   [empty]
+    
+Import_FullyRandomList:
+    "text" value:   [empty]
+    
+Import_AnimalHealth:
+    "text" value:   "Import.*"
+    
+Import_PartialRandomList:
+    "text" value:   "Import"
+    
+Import_PreprintedLabel:
+    "text" value:   "Import Label Reel"
+    
+Enter_Range:
+    "text" value:   [empty]
+    
+
+For Import_PartialRandomList, both the successful and failed have the same title (text) "Import"
+
+I suspect that if I remove the "text" property from the PreprintedLabel object, I may find success.
+
+It is now acting in the same way as PartialRandomList: "Find in Repository" does not work, but "Highlight in Application does.
+Let's try a run.
+
+
+Running test 0.4...
+Cool, it got past that part
+It got stuck on another part.
+    Request_Numbers, on another error window
+    Let's do the same thing again, I guess.
+
+I'm just going to try removing all of the text properties of the problematic items first.
+    The hesitation I have with this is that then there is nothing differentiating correct notifications from incorrect ones
+    Wait, there already is another catch in place for verifying it.
+    I don't see anything wrong with doing this.
+    
+Checking for remaining message issues
+
+Said something about cannot find the file specified
+Here's the error details:
+"
+Title: Request SPT Numbers
+Date: 12/4/2018 10:24:01 AM
+
+System.Exception: xp_SetNamedWinEvent::OpenEvent for 'Systech.RequestSPTNumbers': The system cannot find the file specified.
+   at GuardianConfig.ImportSPT.cmdImport_Click(Object sender, EventArgs e)
+"
+Try again, keeping a closer watch
+The first failure is with the first request (the most recent logged result in Results.txt is from the previous sheet)
+Not even sure what this action is supposed to be doing, I'll ask Paul about it.
+
+Paul said that the reason it was broken may have been because the ERP server was down.
+Failed again.
+I'll ask Paul for the next step to check
+
+Paul said to ask Alex.
+
+Alex said to email a guy named Rich Niedzwiecki
+
+Rich replied by including Vlad into the email conversation
+
+Vlad said to verify that Systech Communication agent was installed and running
+    It was not running
+    Turned it on and started a new run to see if that fixed it.
+    
+Seems to be running fine
+
+Got stuck on DuplicateCheckThreeLevel, but that's another issue
+Thanked everyone in the email conversation, getting back to work.
+
+I'm realizing again that I have no idea how many test cases are supposed to be in this script.
+We're already up to 92
+
+We've hit the one hour mark with 121 tests and showing no sign of stopping
+
+Need to fix the StartLot commands in some of the tests, I think
+2 out of the 3 I've seen so far have had issue
+
+Big angry error:
+{"
+Windows Script Host
+    Script:     C:\MainSuite.vbs
+    Line:       226
+    Char:       2
+    Error:      Cannot open test.
+    Code:       800A03EE
+    Source:     HP Unified Functional Testing
+"}
+That line location just points to the RunAdvisor function
+Looking at the QTPrintLog, my guess is that it left off after the PreLot_Qsuspend.xls call.
+That would be... "DuplicateCheckThreeLevel_SuspendAndResumelLot"
+    Another wonderful typo
+But the typo is consistent with the filenames, it would appear. Why did it crash just now?
+    renamed the folder, .USR file, and the reference in MainSuite.vbs for my own sanity
+Oh wait, I was looking at "DuplicateCheckThreeLevel_OverrideQuarantinelLot"
+    which was also misspelled in the script and in the files, which I have fixed.
+This one was spelled incorrectly in the script, but correctly spelled in the files.
+I've matched them up.
+Trying to resume test?
+
+oh no, I think it just gave up on me 
+
+Well, we learned a lot.
+Let's give it another run before I leave
+
+
+Running test 0.5...
+Guardian loaded without resizing so some of the buttons were off screen.
+Trying again
+
+
+Running test 0.5.1...
+I notice it getting stuck in the importing fully random list step again
+Got an Unexpected result in the lot run, I stopped it
+
+Probably not going to get a good run before I leave today.
+
+Let's take a look at the Res## files for the FT_Provisioning_Driver, hopefully finding the one for the GoodLot where it failed
+    It should be the most recent one
+Yep, found as Res47, the most recent folder.
+    Confirmed by comparing the QTPrintLog timestamp for the "PROCESSING TEST: PreLot_Good" step to the Execution Time for Res47
+    
+Alright, it would appear as if, during the Import of the SAP file, there was an Error 854 trigger: "Supplied SPT Numbers has(sic) been found in available numbers pool"
+Also, during the Disable_Numbers step, there are several instances of it failing to recognize buttons on screen
+    Actually, just btnClose's. 
+    Doesn't seem fatal, but I probably should go in and redirect the object properties at some point.
+    
+Looking into the info I can find about 854 doesn't help too much, just reiterates that there were indeed copied numbers during the import.
+
+Let's go back into fixing this tomorrow
+
+
++++++++++++
+05-Dec-2018
++++++++++++
+Let's start off with a run of the test
+Actually, should I?
+Maybe I want to take a look at the fully random lists?
+Eh, I'm not sure if I'd be able to tell what is going on without doing a run first.
+Let's clear out all of the Res## files so we can get a clean environment to look at after it crashes.
+    I seriously need to figure out globs so I can write a program to do this
+        is it pronounced "globes" or "glawbs?"
+    I suspect, seeing how long this test seems to be taking, that I will have plenty of time to work on this, though.
+
+
+Running test 0.6...
+Another issue with file import when setting up the first Good_Lot
+Same situation, with an Error 854 trigger.
+I think what's happening is that, since I have modified the contents of the source file for the goodLot.
+It's possible that the new ranges I gave it overlaps with the numbers in the files used at the beginning of the test to check the error handling.
+One way I could test this would be by cutting off the first half of the test and just running it from PreLotGood onwards
+
+Let's do that and see what happens
+
+
+Running test 0.6.a...
+It's freezing up right before the Lot Start now
+I'm guessing I'll have to re-factor that code.
+
+I'm going to try to just match it to the other versions
+
+Found the code in Action 12 of GoodLot, and Action 12 of AI21
+Seems compatible, copied over the code and associated the Advisor_V2 library for the boolFunc's
+
+May as well save time and copy over to all of the StartLots?
+
+Added code to 2ndSafeGuard Lot and associated Advisor_V2 library
+Added code to OverrideQuarantine Lot and associated Advisor_V2 library
+Added code to SuspendAndResume Lot and associated Advisor_V2 library
+Added code to Cancel Lot and associated Advisor_V2 library
+Added code to ExDataNames Lot and associated Advisor_V2 library
+
+Ok, let's try this out.
+
+
+Running test 0.6.a.1...
+More damned dynamicClick issues.
+Perhaps now that I've had a bit of experience with manipulating Object Repositories, I might be able to tackle this?
+
+The line in question:
+{"
+If Window("Menu").dynamicClick("StartLot") = True
+"}
+    (from line 134 of Advisor_V2)
+    
+So I've compared that StartLot buttons between the two tests and they seem identical
+    side note, in the repo they are "Start Lot", but in the code they are "StartLot"
+    not sure if meaningful
+Trying a comparison of the Menu windows, they seem to match as well
+They both properly work in terms of the highlighting tool
+
+Ohhh, it's in another Function Library
+Found in GlobalVariableList
+Let's just go ahead and associate this other library with all of the tests
+The annoying part is that, because of the error message wording, I figured the function was accessible to the test but the object was broken
+
+Adding GlobalVariableList to:
+
+Good Lot:               check
+2ndSafeGuard Lot:       check
+OverrideQuarantine Lot: check
+SuspendAndResume Lot:   check
+Cancel Lot:             check
+ExDataNames Lot:        check
+
+Alright, let's try again
+
+
+Running test 0.6.a.2...
+I need to fix some waits from Lot Stops
+It seems to have skipped over the full lot run in the Remove Lot section
+    That is, it started the run, but then immediately jumped to the PostLot without waiting for the lot to complete.
+    Then it tried disabling the numbers while the lot was still running, giving the Error 833 trigger and interrupting the rest of the test
+I believe that this has halted the test. 
+I suspect that I will be able to compare this case to the others and try to figure out why this failed when the others did not.
+the Res## files will likely be a good place to start looking.
+
+There was no Res## folder for CancelLot...
+Looking at the QTPrintLog, it looks like the test skipped right over that step entirely?
+    It would appear as if the only indicator that a Lot Step occurred is one of the "WaitUntil:PalletsCreated=" lines
+        of which there is none tied to the Cancel lot, but that doesn't tell me much
+        I already knew that the lot processing got skipped, I want to see if the step was run at all
+        
+So I can't think of a good way to look back on what actually happened, I may have to go straight in and look at the code
+
+Considered possibilities of location of error:
+    The PIM data
+    The EndLot code
+    
+PIM data
+    well, the only difference between the GoodLot and the CancelLot sheets I can find is that the GoodLot capitalized the EPCGenStart (vs EpcGenStart)
+    
+The EndLot code
+    So, the Cancel Lot doesn't have a typical EndLot, but it has a different EndLot_Cancel step
+    This action seems very strange, and I remember seeing it earlier, but deciding I didn't want to dig into it for that reason.
+Let's run it isolated to see what's up
+
+The code references a "frmDuplicateAction_original", but in the Repository I only see a "frmDuplicateAction"
+    Let's point the code to the actual object and see what happens
+Seems to have worked fine as a substitute
+Let's try another run?
+
+
+Running test 0.6.a.3...
+As a side note, almost as a reminder to myself, I'm not currently trying to go through and get everything passing
+I'm currently just trying to iron out the fatal issues so that I can run end to end without crashing
+after that, I plan on going in and fixing everything, but not yet
+Got caught in the Suspend and Resume Lot, stuck in the Lot generation?
+Doesn't appear to have started the lot, actually.
+I'll... try jump starting it?
+Selected the product and started the lot
+If I'm lucky, this will get the lot running and it will carry on
+but, I'll have to look into this afterwards
+The test did continue, but it is now stuck trying to resume the lot.
+I just jumped ahead to the next part
+This test never ends
+...
+It's finally done
+106 test steps and over two hours
+Results:
+	Run Time:		02:08:13
+	Success Totals:	89/106
+	Failed Cases:	many
+    
+I'm not even sure how to start to process this
+
+First, for the purposes of this test, let's break it up into two parts:
+A - the import error catching part (with no running lots)
+B - the Gigantic lot running section
+
+B is a monster of a test. It took over two hours to run just by itself
+
+Let's work on A first.
+    But I feel like the first part is pretty much solved
+I will also need to go through all of the part A import data to make sure it does not overlap with the part B data.
+
+After all that, the LotContentFinder could only find 3 existing lots.
+    aaaaand the first one is empty
+    second two contain 10423 and 5102 items, respectively
+    
+I can already tell how much fun this is going to be.
+
+
++++++++++++
+06-Dec-2018
++++++++++++
+Let's start out with just the part A of this test.
+Modifying the MainSuite.vbs to stop after ValidateProvisionNewEmail_Prospect
+    I believe that it needs to run past ValidateProvisionUsedEmail_Prospect to test everything, though
+    This would include running the goodLot, unfortunately.
+I may want to handle that sooner rather than later.
+So, plan going forward:
+    Run Part A, make sure everything works
+    Settle issues with data import between GoodLot and the preceding files
+    Run Part A2 (up to and including ValidateProvisionUsedEmail_Prospect), get it all working
+    Tackle the behemoth that is Part B.
+    
+I told Paul about how time consuming this test was and he said that he was aware, and he said that we may want to get another box to run this on in the background so I don't die of inactivity
+    I got the impression, however, that if I just sit around waiting for a box for me to use, it won't happen
+    I may have to take some initiative and be proactive about this, asking him what steps I need to take to set up a new box and server.
+    
+Running test A 0...
+Results:
+	Run Time:		00:08:45
+	Success Totals:	36/37
+	Failed Cases:	Request_Numbers                                     (33)
+This import step was supposed to succeed, but something caused it to fail.
+Let's check the PrintLog
+Found the location, but it doesn't give any info, other than that the import was indeed attempted.
+Checking the Res## files next
+Should be under FT_Provisioning_Driver
+I found some data detailing the error event itself, but I'd like to try to reproduce the error first
+
+
+Running test A 0.1...
+Results:
+	Run Time:		00:06:14
+	Success Totals:	37/37
+	Failed Cases:	none
+cool, one last test for consistency
+
+
+Running test A (consistency)...
+Results:
+	Run Time:		00:05:18
+	Success Totals:	37/37
+	Failed Cases:	none
+
+Now, the next thing to do will be to attempt to reconcile the GoodLot import numbers with the error testing ones.
+I will now extend the test section to include up to ValidateProvisionUsedEmail_Prospect (A2)
+Let's begin the arduous task of comparing each of the import files.
+    I wish it would tell me which numbers exactly triggered the issue, but oh well
+Actually, maybe if I just run this new extended A then I may be able to tell where it trips up, if I pay close enough attention.
+
+
+Running test A2 0...
+Left the UFT visibility to false, might change back later
+Actually, accidentally forgot to save the test.
+Here's another A test
+
+Running test A (again)...
+Results:
+	Run Time:		00:05:46
+	Success Totals:	37/37
+	Failed Cases:	none
+Let's try again
+
+
+Running test A2 0...
+fine through A1
+issue with fully random list import for Carton (ImportFiles\Functional\Lot_Good\FT-B_List_Carton_10000.xml)
+other issues as the test went on
+Results:
+	Run Time:		00:18:00
+	Success Totals:	57/63
+	Failed Cases:	Import_FullyRandomList  [Lot 1, Carton]             (43),
+                    Ending First Good Lot                               (49),
+                    Email Validation                                    (50),
+                    Import_FullyRandomList  [PostLot]                   (57),
+                    Import_AnimalHealth     [PostLot]                   (58),
+                    Import_PreprintedLabel  [PostLot]                   (59)
+Surprisingly, these test descriptions are useful: they provide the file location used for each import step
+
+My first plan of action is to try to reconcile FT-B_List_Carton_10000.xml with any other similar files used in the starting steps
+This should be a bit easier than it could have been, since I should be able to just look through the .pdf for file locations.
+
+I see that the most likely sources of issue would be from steps 8, 11, 12, and 13: these are all fully random list carton imports.
+Locations:
+GoodLot:    ImportFiles\Functional\Lot_Good\FT-B_List_Carton_10000.xml
+
+Step 8:     ImportFiles\Functional\NoError\FT-B_List_Carton_0.xml
+Step 11:    ImportFiles\Functional\Error855\FT-B_ListAlreadyImported_855_Carton_0.xml
+Step 12:    ImportFiles\Functional\Error853\FT-B_ListWithDuplicates_853_Carton.xml
+Step 13:    ImportFiles\Functional\Error854\FT-B_ListWithAvailable_854_Carton.xml
+
+Thinking about it further, I would think that the issue would have to stem from step 8.
+    All the other steps fail their import for reasons tied to this one.
+However, I would still need to modify the other 3 to make sure they still catch with Step 8
+
+Let's open up all of the files and begin comparison.
+GoodLot to Step 8:
+    match with 0000101371
+    match with 0000116017
+    
+GoodLot to Step 11:
+    match with 0000101371
+    match with 0000116017
+
+GoodLot to Step 12:
+    no matches
+
+GoodLot to Step 13:
+    match with 0000101371
+    
+So, I think if I change all instances of "0000101371" and "0000116017" to "0100101371" and "0100116017" respectively it should work
+
+Ok, taken care of. Let's try a run and see what happens
+
+
+Running test A2 1...
+I'll want to pay attention during the edited import steps and the PreLot_Good step.
+no issue with the first import steps
+hey, the GoodLot import succeeded as well
+Results:
+	Run Time:		00:17:49
+	Success Totals:	59/63
+	Failed Cases:	Ending First Good Lot                               (49),
+                    Import_FullyRandomList  [PostLot]                   (57),
+                    Import_AnimalHealth     [PostLot]                   (58),
+                    Import_PreprintedLabel  [PostLot]                   (59)
+Better.
+Let's take a look at the Lot check logic next.
+
+I see the issue right away: it is attempting to check for "frmDuplicateAction_original", which I know to be the wrong name for this object.
+    again, for some reason, when the script can't identify an object in a conditional, it assumes the condition to be true
+        totally backwards in my opinion, oh well
+Should be able to get through the entire good lot now. Let's do a run.
+
+
+Running test A2 2...
+Results:
+	Run Time:		00:17:49
+	Success Totals:	60/63
+	Failed Cases:	Import_FullyRandomList  [PostLot]                   (57),
+                    Import_AnimalHealth     [PostLot]                   (58),
+                    Import_PreprintedLabel  [PostLot]                   (59)
+Making progress
+Next up would be the last three failed import steps
+Res## should be under ValidateProvisionUsedEmail_Prospect
+Wait, never mind, under FT_Provisioning_Driver
+    most likely the most recent?
+    
+Found info:
+First error:
+    expected '667' and received: SPT Numbers have been imported into the system successfully
+    Unexpected results importing file ImportFiles\Functional\Error667\FT-B_ListWithUsed_667_Carton.xml
+Second error:
+    expected '667' and received: File_1 completed successfully
+    Unexpected results importing file ImportFiles\Functional\Error667\2017000020667_Product FT-B.zip
+Third error:
+    expected '689' and received: Import completed
+    Unexpected results importing file ImportFiles\Functional\Error689\FT_Preprinted_CaseWithUsed_689_0.xml
+
+I think these may also have to do with the changed import files for the GoodLot
+    assuming the "Used" numbers come from the GoodLot
+    
+Let's compare each of these issue files with what I can guess to be the associated GoodLot file.
+
+Error667\FT-B_ListWithUsed_667_Carton.xml
+    predicted analog: Lot_Good\FT-B_List_Carton_10000.xml
+    according to the ReadMe, should have a duplicate at 10th item.
+    10th item currently:    0100100627
+    changed to match:       0000100627
+        funny, I added a 1 there to differentiate between GoodLot data and the Pre-Lot error check data earlier
+    
+Error667\2017000020667_Product FT-B.zip
+    predicted analog: Lot_Good\2017000010000_Product FT-B.zip
+    according to readme, should have a duplicate at 11th item.
+    11th item currently:    201700001000000100100904
+    changed to match:       201700001000000000100582
+    
+Error689\FT_Preprinted_CaseWithUsed_689_0.xml
+    predicted analog: Lot_Good\FT-B_Range_Case_10000.xml
+    according to ReadMe, should have two duplicates at 11th and 12th items
+    I can't quite tell how to change these into GoodLot numbers just by comparing these two files.
+    I'm not even sure if I picked the right predicted analog
+    I may have to check in the actual lot contents
+    I don't see anything resembling one of these numbers within the actual lot contents
+        in terms of similar numbers or same length
+    I may want to ask Paul about this when I see him next
+    
+    0131880030000023211000000019        non duplicate from error source
+    0121880020000029210100100627        first duplicate from error source
+    0121880020000029210100116273        second duplicate from error source
+      31880020000019                    "Object key value" from Good source
+      3018B7988B71B04000002710          interval start from Good source
+
+    11th item currently:    0121880020000029210100100627
+    12th item currently:    0121880020000029210100116273
+
+    Paul informed me that this number format was actually a hidden AI(01)+AI(21) format.
+        adding parentheses changes it to (01)21880020000029(21)0100100627, which is much more recognizable
+    
+    11th item currently:    0121880020000029210100100627
+    changed to match:       0121880020000029210000123378
+    12th item currently:    0121880020000029210100116273
+    changed to match:       0121880020000029210000130234
+    
+cool, that's all three. Let's give it another go
+
+
+Running test A2 3...
+Results:
+	Run Time:		00:17:34
+	Success Totals:	60/63
+	Failed Cases:	Import_FullyRandomList  [PostLot]                   (57),
+                    Import_AnimalHealth     [PostLot]                   (58),
+                    Import_PreprintedLabel  [PostLot]                   (59)
+The fix did not fix.
+
+Maybe I need it to be set to a number which will actually appear in the lot?
+The results (lot contents) from the previous two runs.
+I'll take a number from the needed location to fit into each of the three files.
+
+Error667\FT-B_ListWithUsed_667_Carton.xml
+    10th item currently:    0000100627
+    changed to match:       0000090497
+    (original:              0100100627)
+    
+Error667\2017000020667_Product FT-B.zip
+    11th item currently:    201700001000000000100582
+    changed to match:       201700000000000000102564
+    (original:              201700001000000100100904)
+
+So now, the issue is that I did take directly from the lot data to grab the numbers for the third test case
+Let's just see what happens
+
+
+Running test A2 3.1...
+Results:
+	Run Time:		00:18:00
+	Success Totals:	62/63
+	Failed Cases:	Import_PreprintedLabel  [PostLot]                   (59)
+Interesting.
+This approach fixed all but the last case
+Let's check the Res## files to see what happened (although it will likely be the same as last time)
+
+Suggested that perhaps the Manufacturer was not properly checking the data type used by that remaining issue file
+
+The spiderweb used to check the setting:
+    from the source file
+        know that the data type = AI(01)+AI(21)
+        Product Class ID = FT02L
+    IpsStream
+        "DataName" for AI(01)+AI(21) = GS1
+    Guardian > Lines and Products > Products
+        Manufacturer for FT02L = Manufacturer FT-C
+    Guardian > Site Setup > Manufacturers
+        Duplicate Serial Number Check for Manufacturer FT-C:
+            Should have GS1, or else it will not check for that data type
+            it does not
+So, we see that Guardian is not checking GS1 data from Manufacturer FT-C
+
+Changed it to check correctly.
+Trying again
+
+
+Running test A2 3.2...
+Got stuck in the Data Purge.
+aborted
+
+Attempting to manually start up Guardian and purge the data.
+Computer is being very slow
+
+I think I'll need to go ahead and reset it.
+Machine reset. Trying again.
+
+
+Running test A2 3.2.1...
+Results:
+	Run Time:		00:19:05
+	Success Totals:	62/63
+	Failed Cases:	Import_PreprintedLabel  [PostLot]                   (59)
+Darn it, no luck
+
+
++++++++++++
+11-Dec-2018
++++++++++++
+Well, I've put off this test for as long as I could, but it is now the only remaining Dupes job.
+the good news is that I now have a side project to work on during this test's excruciating run times
+Let's put up a run
+
+
+Running test A2 3.3...
+Results:
+	Run Time:		00:24:42
+	Success Totals:	60/63
+	Failed Cases:	Request_Numbers [Auto provision range of dupes]     (34),
+                    Request_Numbers [Auto provision list of dupes]      (35),
+                    Import_PreprintedLabel  [PostLot]                   (59)
+Well shoot, what happened there
+checking for consistency
+
+
+Running test A2 3.3.1...
+Results:
+	Run Time:		00:24:08
+	Success Totals:	60/63
+	Failed Cases:	Request_Numbers [Auto provision range of dupes]     (34),
+                    Request_Numbers [Auto provision list of dupes]      (35),
+                    Import_PreprintedLabel  [PostLot]                   (59)
+Ok.
+Let's look into why the Request_Numbers is failing
+My guess is it would be in the 4th most recent FT_Provisioning_Driver Res## folder
+Found.
+Steps 7.3 and 7.4:
+Request of SPT Numbers generated unexpected result; expected ['689'/'855'] and received no error
+
+Let's look into the files themselves
+Opening C:\Automation\Duplicate Check\FT_Provisioning_Driver\ProvisionNew.xls
+In Request_Numbers sheet
+I see the steps it is looking for but no other info
+Stepping into the UFT script
+
+FT_Provisioning_Driver > Request_Numbers, line 67
+Guardian.Library > SubmitSPTNumberRequest, line 575
+
+it loads in the data off of the .xls file and attempts to provision numbers with the data.
+    which numbers or why I couldn't say
+I do see what the structure is now, though, so I'll run it up to that point and then walk through it to see what goes wrong.
+
+Walking through, I still see the same error, although I do not notice anything going wrong which could cause it
+My assumption is that attempting to provision the same thing twice should give an error, but it is not in this case
+I'll ask Paul about it next time I see him
+
+Paul pointed out a setting on the ERP simulator on DupeServer which whs not properly set.
+I've fixed that and am running again.
+
+That seems to have fixed it.
+Let's make another run to verify
+
+Running test A2 3.4...
+Results:
+	Run Time:		00:21:02
+	Success Totals:	62/63
+	Failed Cases:	Import_PreprintedLabel  [PostLot]                   (59)
+Alright, back where we started
+
+I asked Alex about it and he said that it could be as simple as putting parentheses in the proper spot for the import file
+    only on the last two, and not all of them, though
+    this goes against my assumption that the import data was more rigorously checked than this, but oh well
+Starting another run
+
+
+
+
++++++++++++
+12-Dec-2018
++++++++++++
+I think I just lost a lot of test data...
+My computer reset after I set it back into its port, and I guess I hadn't saved this document at the end of yesterday
+Regardless, I know that Alex's suggestion worked and I'm moving on to part B, which I left running as I went home
+Results from B 0 came in
+Results:
+	Run Time:		00:41:39
+	Success Totals:	55/57 (/??)
+	Failed Cases:	Import_Range    [Carton, Qsuspend]                  (47),
+                    Resuming A Lot                                      (57)
+I'll want to run another test to double check these results.
+
+Running test B 0.1...
+Got stuck on one step for 20 minutes, let's try opening UFT on the fly and see where it is stuck.
+    Otherwise, I'll turn UFT Visibility on for next run
+UFT will not open
+Aborting, hopefully the results will still be piped through
+Results:
+	Run Time:		00:48:05
+	Success Totals:	55/57
+	Failed Cases:	Import_Range    [Carton, Qsuspend]                  (47),
+                    Resuming A Lot                                      (57)
+Same results as last time, consistent issue
+I'd like to do another run with UFT Visible
+
+
+Running test B 0.2...
+Got up to the same spot, still frozen
+
+It's stuck in a weird looking Function called "LotResume()" within the Advisor Library, line 447
+was called in the "EndLot_Suspend" Action of SuspendAndResumeLot, line 31
+    side note, I also see this action using "frmDuplicateAction_original"
+        I'll have to fix this later
+    I might just have to refactor this whole bit
+I feel like there should be a better lot resume function too, maybe in Advisor_V2
+
+Aborting the script
+Now I'll try resuming and closing out the script myself to verify what it is trying to do.
+There are no lots to resume
+I also don't recall seeing the DuplicateAction window at all.
+I suppose that the script might actually work, but it had been failing since the lot was never suspended
+This may have to do with the failed case 47
+If the duplicate numbers were never imported, then it would never have anything to trigger the window
+    and the window triggering issue would never have been recorded since the object was misnamed
+        and I shall have yet again been foiled by that ridiculous interaction where a missing object passes conditionals
+        
+Let's fix the "fmrDuplicateAction_orignal" and then take a look at the import issue.
+
+So: the import error should have occurred in the most recent Res## file of FT_Provisioning_Driver
+Error located:  Import SAP file and Step 40.1
+"Import of SAP file failed; received error: 845: SPT Numbers Range is out of sequence!"
+"ImportFiles\Functional\Lot_Qsuspend\FT-B_Range_Carton_100000.xml"
+According to the corresponding ReadMe file, an 845 error is triggered "where start of range overlaps good or used numbers"
+
+Checking the file itself:
+Start and end:
+3018B79887A12040000186A0 - 3018B79887A120400001FBCF
+Assumed conflicting file (\Lot_Good\FT-B_Range_Carton_10000.xml) ranges:
+3018B79887A1204000002710 - 3018B79887A1204000109C3F
+
+They do indeed overlap
+According to the readme for Lot_Qsuspend, the only dupes are supposed to be in List_Carton
+let's just try bumping up one of the column values by 1?
+
+Changing from original:
+3018B79887A12040000186A0 - 3018B79887A120400001FBCF to
+3018B79887A12041000186A0 - 3018B79887A120410001FBCF
+
+Starting another test, I think I'll keep UFT visible
+
+
+Running test B 0.3...
+It got through the previously failed part, but there was still no DuplicateAction window triggered.
+I'll need to check in the List_Carton file for Lot_Qsuspend to verify that it contains a duplicate number
+It's back up to where it has been getting stuck, so I will probably short the build and take a look into the List_Carton data
+Actually, I hit stop on the UFT tool bar and it just jumped ahead to the next test step
+I may just let it run until it either finishes or gets stuck again.
+It finished.
+Results:
+	Run Time:		01:20:27
+	Success Totals:	85/93
+	Failed Cases:	Suspend and Resume Use Case [Qsuspend]              (56),
+                    Resuming A Lot  [Qsuspend]                          (57),
+                    Import_Range    [Qcancel]                           (63),
+                    Import_FullyRandomList  [Qcancel]                   (66),
+                    Cancel Lot and Rework Use Case  [Qcancel]           (72),
+                    Preview of Report from Duplicate Dialog [Qcancel]   (73),
+                    Database Validation [Qcancel]                       (76),
+                    Import_Range    [ExcludeDataname]                   (82)
+That's a lot.
+
+Let's start out by looking into the Qsuspend List_Carton file
+Again, supposed to have 5 duplicates starting at entry 11
+
+10      <SerialNo>1000093489</SerialNo>
+11      <SerialNo>0100100627</SerialNo> \
+12      <SerialNo>0100116273</SerialNo>  |
+13      <SerialNo>0100121245</SerialNo>  | - - - the dupes in question
+14      <SerialNo>0100138723</SerialNo>  |
+15      <SerialNo>0100145774</SerialNo> /
+16      <SerialNo>1000154211</SerialNo>
+
+going to replace them with numbers I have found within the actual lot contents
+
+New Values:
+
+10      <SerialNo>1000093489</SerialNo>
+11      <SerialNo>0000100017</SerialNo>
+12      <SerialNo>0000100019</SerialNo>
+13      <SerialNo>0000100021</SerialNo>
+14      <SerialNo>0000100023</SerialNo>
+15      <SerialNo>0000100025</SerialNo>
+16      <SerialNo>1000154211</SerialNo>
+
+So now the test should properly trigger a DuplicateAction window and I will finally be able to verify whether it handles it properly or not.
+
+
+Running test B 0.4...
+It still failed the two Qsuspend steps
+I took a look at the LotDataHandler.py, and it seems like there's only been one lot created.
+Was this lot even started?
+Aborting to take a look.
+
+Running through it manually, some issues I noticed:
+    The Screen Manager was not on the correct window and it could not start the lot
+    The ResumeLot() function attempts to press the ResumeLot button, but the script already presses it
+    The second sig verification window is inaccessible (likely due to not having the proper repository)
+at least now I see two lots...
+
+So the other two are easy fixes, but I need to know how to get the Screen Manager onto the Home screen so that the lot selection succeeds
+There may be a simple fix, but it could be meticulous
+As long as I can make sure each test starts and ends on the main screen I won't have to worry about figuring out a way to always end back there
+    it'd be great if there were one button always there on the menu no matter where you were, but that's out of my control
+I do think I remember something like this from previous tests, so it might be there at the end of good lot but not at the end of every test?
+    Alternatively, how is the transition from GoodLot to RemoveLot handled?
+Let's check the previous tests?
+
+Ohhh, it isn't
+But, since RemoveLot counts on not having any issues, it sees a null run as a successful one.
+Let's go through and set up this Main-centric consistency.
+    In each of the LotEnd actions, I am making sure that they end with a command to return to the Main screen.
+
+UFT keeps crashing every time I try to open Object Repository Manager
+
+Leaving it be for the rest of today, not enough time to do anything meaningful with this test
+I'll work on Groovy_Script and pick up tomorrow.
+
+
++++++++++++
+13-Dec-2018
++++++++++++
+I've done everything to fix the three issues I noticed other than associate the proper repository for the SecondSig handling
+    UFT is still crashing every time I try to open an object repo
+I'm going to reset the box.
+
+That seemed to work
+Found the Second User Entry objects in the AdvisorObjects_V2.tsr repo
+Associating it with the EndLots of OverrideQuarantineLot, SuspendAndResumeLot, and CancelLot
+Ok, let's start a build
+
+
+Running test B 0.5...
+Some VisDim error or something?
+I think that may have messed it up
+Retrying
+
+
+Running test B 0.5.1...
+Something happened and most of the import steps were failing
+Aborted
+Try again?
+
+
+Running test B 0.5.2...
+It looks like it just skipped the LotRemove run
+the QTPrint log does not have a list of the run process
+I'll abort and look into why it may have skipped
+Looking at the Res## file, it looks like it could not locate the "Abort" button of "frmStatus", so it manually exited the test.
+I see it located in the AdvisorObjects_V2.tsr 
+Let's go associate that to all the actions that need it
+    I don't actually know why the commands in question check for the Abort button before the Retry button, though
+    I may swap those around
+Preemptively associating AdvisorObjects_V2.tsr to the StartLot, EndLot, and VE_A actions of all the jobs.
+Starting again
+
+
+Running test B 0.5.3...
+Been stuck on a test step for 15 minutes and has some failed cases, so I'll halt the build and take a look into what happened.
+Results:
+	Run Time:		01:01:28
+	Success Totals:	57/62
+	Failed Cases:	Email Validation    [LotGood]                       (13),
+                    Email Validation    [LotRemove]                     (29),
+                    Override Quarantine Use Case                        (44),
+                    Second User Entry dialog for Override Quarantine    (45),
+                    Email Validation    [LotAccept]                     (46)
+Test halted while attempting to resume the suspended lot
+    I'm probably just going to go ahead and check to see if there are any more updated alternatives to the ResumeLot() function
+        it has given me little more than issues so far
+        
+Let's look into the Email Validations first
+Checking the EmailCheckCumulative.txt log
+    my hope was that I had just forgotten to clear out the email table after closing out the previous test, but the other steps besides LotGood failing too raises additional suspicion.
+    As a side note, I may want to simply add a command to run the table clear to the environment setup script
+        I can't remember if I had a reason for refraining from doing that earlier or not, but I may as well just throw it in and see what happens
+Aw, these logs don't have timestamps...
+I'm afraid I won't be able to get much useful info without the timestamps.
+Oh wait, does OverrideQuarantineLot still use the old scrapper-based VE_A?
+I think it does
+Let's rework that.
+
+I found the commands I used to add timestamps to the EmailLogs. I'll toss those into the the UFT scripts.
+
+Let's see if we can get any info on what happened from the Res## files.
+    Important note: the res files for external actions called by the main scripts do not appear in the main script's results
+    which is very annoying
+So I guess I can't get much info in this case for the results of the email checks
+
+Moving on to the case of the failure to generate the DuplicateAction window.
+    It's possible that I need to fix the import files? Let's look into those.
+    Yeah there isn't any overlap, since I changed the Qaccept files to have unique AI(01)+AI(21) data.
+    Would it break the other tests to give back five of the items to be dupes? Let's find out.
+    
+Changing items 11-15 of \Lot_Qaccept\FT-B_List_Carton_70000.xml:
+
+10      0000300021      0000300021
+11      0000300023  ->  0000100023
+12      0000300025  ->  0000100025
+13      0000300027  ->  0000100027
+14      0000300029  ->  0000100029
+15      0000300031  ->  0000100031
+16      0000300033      0000300033
+
+Cool, let's see what unforeseen ramifications that will have
+But first, adding a call to C:\EmailTableChecks\EmailTableClear.bat to C:\SetupEnv.vbs
+Wait, I'm an idiot? I already did that?
+    Am confuse
+    not sure what this means or what caused the things I saw then, but I'll try not to think about it too hard and I'll just set up another test.
+    
+    I did remove the commands to delete the old scrapper related files, though, since I'm pretty sure it's been fully phased out by now.
+starting another test.
+
+
+Running test B 0.6...
+I think I see the issue with the GoodLot emails
+There are lingering emails in the table left over from when the 11st safeguard import checks were performed
+I'll need to find a good place to put an additional EmailTableClear.bat call command some place between the end of those import checks and the beginning of the GoodLot run.
+The test is now running into issues:
+The cancel lot failed to produce a DuplicateAction window, and is failing its subsequent duplicate handling checks because none were triggered
+It managed to crawl through that, though, and continued along.
+After getting to what might be the end, I think the Results generation failed...
+    The text file is in there and so is the intermediary .xlsx file, but it is not proceeding, and wscript.exe is not running.
+Halting the Project Report and starting a fresh one manually.
+Went through this time.
+Results:
+	Run Time:		01:48:37
+	Success Totals:	94/104
+	Failed Cases:	Email Validation    [LotGood]                       (13),
+                    Email Validation    [LotRemove]                     (29),
+                    Database Validation [LotQaccept]                    (66),
+                    Import_Range    [Carton, LotQcancel]                (72),
+                    Cancel Lot and Rework Use Case                      (81),
+                    Preview of Report from Duplicate Dialog             (82),
+                    Cancel and Rework Use Case                          (83),
+                    Email Validation    [LotQcancel]                    (84),
+                    Database Validation [LotQcancel]                    (85),
+                    Import_Range    [Carton, LotExclude]                (91)
+Oh hey, there were no failures from LotResume
+    Could I technically just cut it out for now and just run the tests I need to work (along with LotGood)?
+    I'll think about it
+These failures make sense for the most part
+6 case failures stemmed from, I would guess, the failed import of LotQcancel's Carton range
+    and my guess is that its failure was because LotGood data was changed and its own data was not changed to accommodate it.
+    This is probably the issue with the last failure as well.
+As for the first three failures:
+    I think that LotGood Email failure will be fixed once I find a place for an additional EmailTableClear.bat call.
+    Not sure what happened to 29 or 66, though.
+    Let's see what I can dig up
+    
+I think I'll have a tough time getting anything for 66. 
+    My first guess would be to check the 3rdSafeguard.txt files, but the LotQaccept ones have been overwritten by the LotQcancel ones.
+As for 29, let's take a look into the EmailCheckCumulative.txt file.
+    I don't see any logs corresponding to the RemoveLot
+        This could be indicative of the problem
+    Let's see the Res## file for _GoodLot2ndSafeguard   (Res12)
+        Huh, according to this I forgot to apply the updated VE_A..?
+        Let's check that.
+            Yeah, I did not, dang.
+            Fixing this...
+        That should take care of that.
+Not enough time to run any more tests, so I'll leave it there until tomorrow
+
+
++++++++++++
+14-Dec-2018
++++++++++++
+Putting a test in motion first thing
+
+
+Running test B 1...
+It has frozen for 15 minutes on the first attempt at starting the lot, on a "Sending data to Station SIM-TAG" window
+Let's abort and try again
+
+
+Running test B 1.0.1...
+"Failed to start the test application"
+Try again, think about refreshing machine?
+
+Yeah I'm just going to restart.
+
+
+Running test B 1.0.2...
+Failed because it could not Purge: Production lots are in progress
+Executing Advisor.usp_OperationEndLot:
+    1, null, null, null, 1
+    
+    
+Running test B 1.0.3...
+Results:
+	Run Time:		01:49:27
+	Success Totals:	96/104
+	Failed Cases:	Database Validation [LotQaccept]                    (66),
+                    Import_Range    [Carton, LotQcancel]                (72),
+                    Cancel Lot and Rework Use Case                      (81),
+                    Preview of Report from Duplicate Dialog             (82),
+                    Cancel and Rework Use Case                          (83),
+                    Email Validation    [LotQcancel]                    (84),
+                    Database Validation [LotQcancel]                    (85),
+                    Import_Range    [Carton, LotExclude]                (91)
+Lots completed without issue: LotRemove, LotQsuspend
+    I'm going to go ahead and comment these out for with the intention of shortening the test duration
+Commenting out the three steps for each of the two lots, LotRemove and LotQsuspend
+This shortened test will be test B2
+
+On to the remaining issues:
+66: I will be sure to pay close attention to the 3rd_Safeguard.txt files as LotQaccept finishes up
+
+72: Let's look into the Carton Range import for LotQcancel
+        my guess is that it overlaps with the modified LotGood data, and it will be an easy fix to just shift the numbers up.
+    Start and end of range from ImportFiles\Functional\Lot_Qcancel\FT-B_Range_Carton_130000.xml:
+        3018B79887A120400001FBD0 - 3018B79887A12040000270FF
+    The same from ImportFiles\Functional\Lot_Good\FT-B_Range_Carton_10000.xml:
+        3018B79887A1204000002710 - 3018B79887A1204000109C3F
+    There is indeed an overlap.
+    Modifying the ranges:
+        3018B79887A120400001FBD0 - 3018B79887A12040000270FF     old
+        3018B79887A120410001FBD0 - 3018B79887A12041000270FF     new
+    
+My assumption is that 81-85 all failed in some part due to the unsuccessful import of the Range file
+    or at least, meaningful progress towards remaining issues cannot be made until this issue is confirmed as resolved first.
+    
+91: Another carton range import error
+    Start and end of range from ImportFiles\Functional\Lot_ExcludeDataname\FT-B_Range_Carton_160000.xml:
+        3018B79887A1204000327100 - 3018B79887A120400032E248
+    The same from ImportFiles\Functional\Lot_Good\FT-B_Range_Carton_10000.xml:
+        3018B79887A1204000002710 - 3018B79887A1204000109C3F
+        
+    Actually, I don't think these overlap each other.
+    I suppose the next thing to do will be to check the Res## files
+    I think it will be the second most recent FT_Provisioning_Driver result (the first most being the post lot of LotExclude)
+        "Import of SAP file failed; received error: 845: SPT Numbers Range is out of sequence!"
+    Error 845 ReadMe.txt info:
+        "New range where start of range overlaps good or used numbers"
+    Ok, so I guess it does overlap with another data range, but it just isn't the LotGood one?
+    Mostly because I can't think of something else to try at the moment (besides searching every import range), let's just fix it the same way we did the others.
+    Modifying the ranges:
+        3018B79887A1204000327100 - 3018B79887A120400032E248     old
+        3018B79887A1204100327100 - 3018B79887A120410032E248     new
+        
+Pass through of the remaining issues complete.
+Starting new run
+    I predict that this B2 test will have 16 + 19 = 25 less test steps than B due to the removal of LotRemove and LotQsuspend 
+    giving a total of 79 steps
+    
+    
+Running test B2 0...
+As a side note, I predict that the full MainSuite test will have (A2 step number) + (B step number) - (LotGood step number) test steps
+    That would be 63 + 104 - 16 = 151 steps, potentially?
+As for total runtime, any guess under two hours would probably be optimistic, unfortunately.
+Results:
+	Run Time:		00:54:45
+	Success Totals:	64/69
+	Failed Cases:	Cancel Lot and Rework Use Case                      (46),
+                    Preview of Report from Duplicate Dialog             (47),
+                    Cancel and Rework Use Case                          (48),
+                    Email Validation    [LotQcancel]                    (49),
+                    Database Validation [LotQcancel]                    (50),
+Oh, it looks like everything fixed itself other than LotQcancel?
+
+A bit suspicious, but not too bad.
+Also my guess of 79 steps was off. What happened to the other steps?
+
+Well, first of all, I misread the results of B 1.0.3: step 66 wasn't from LotQaccept, it was from LotQsuspend
+I should have taken out LotQaccept, not LotQsuspend.
+
+I just went down each results side by side and everything matched
+    I guess I just can't count
+    
+These remaining failed cases:
+My next guess is that the previous overlap is misaligned since I changed all of the LotGood data
+Checking into the LotQcancel Import Files
+    "5 duplicates in List_Carton @ item 11"
+
+10      1300092868
+11      0100100627
+12      0100116273
+13      0100121245
+14      0100138723
+15      0100145774
+16      1300155321
+    
+11      0000100017
+12      0000100019
+13      0000100021
+14      0000100023
+15      0000100025
+    
+Fixed
+
+Not enough time to make another run though, so I'll pick up on Monday.
+
+
++++++++++++
+17-Dec-2018
++++++++++++
+Starting straight off with a run, since I made changes on Friday but I didn't get a chance to make a run.
+
+
+Running test B2 0.1...
+Results:
+	Run Time:		00:47:24
+	Success Totals:	69/69
+	Failed Cases:	none
+That's cool, but first let me check to make sure that I used the proper version of MainSuite.vbs
+Rats, I forgot to swap out LotQaccept for LotQsuspend
+Taking out everything other than LotGood and LotQsuspend (test B3?)
+
+
+Running test B3 0...
+Appears to be held up on the LotResume() of the EndLot_Suspend action
+On Screen:
+{"
+Active Lot is Present
+Lot Resume Not Available
+"}
+Maybe the attempt to close the lot was unsuccessful?
+The stuck line was a non-limited wait for "UIAWindow("Web Browser ResumeLotSelection").UIAObject("Resume Lot Selection").UIATable("Table").UIAObject("Active Lot is Present")" to exist.
+I don't find such an item registered in the object repository
+However, I do see a "UIAWindow("Web Browser ResumeLotSelection").UIAObject("Resume Lot Selection").UIAObject("Active Lot is Present")"
+    That is, without the table object
+Attempting to highlight it does point to what I assume the script is attempting to locate
+Let's try removing the reference to the Table object 
+Although, this code is in the advisor library, and I try to avoid modifying the shared libraries when possible
+
+I asked Paul about it and he suggested that I ask Brendan about it since he is currently working on SuspendResume things.
+He's going to send over the library he has been using and I'll take a look at it
+
+Found the needed functions: boolFunc_ResumeLot and intFunc_ParseButtonIndex
+Parameters: strLotCode, strLineNumber, dtStartDateTime
+What I need:
+    strLotCode:         not sure, doesn't this depend on what time the lot was started?
+    strLineNumber:      "DEV01 line", I would assume
+    dtStartDateTime:    "now()" is my best guess, it doesn't seem to be called anywhere?
+
+I see a function that lets you set the LotCode for the current lot.
+You may need to set the LotCode before the lot is run?
+Let's give it a shot.
+
+
+Running test B3 0.0.1...
+A required object was not found in the repository.
+"SuspendedLotList" in Advisor_V2.qfl line 199:
+    "With Dialog("Web Browser ResumeLotSelection").Page("name=*").WebTable("SuspendedLotList")"
+I see one item in AdvisorObjects_V2 which might (?) be it, titled "Error Resuming Lot: 180313-03"
+Let's just... rename the item.
+
+
+Running test B3 0.0.2...
+Nope
+
+Alex pointed me to the function library currently being used by Bhagy
+Nope again
+
+
+I am so disappointed with all of these function libraries
+I'm just going to hack it apart, take what I want from the original library, and modify what I need.
+Hey wow it works fine now
+
+
+Running test B3 0.0.3...
+Got through the test fine
+Results:
+	Run Time:		00:23:12
+	Success Totals:	33/35
+	Failed Cases:	Email Validation                                    (13),
+                    Database Validation                                 (32)
+Not bad
+I got that annoying thing where LotGood triggers emails for no discernible reason
+    my guess has been that the email tables have not been cleared, but this happened after I verified that a command to do that was at the start of the test.
+    
+Reason I suspect that 32 failed: I have not updated the target file to match the changes I've made to the data sources.
+I've changed the target file, baseline_sg3suspend.txt, to match the current (hopefully consistent?) results.
+Let's see if there's time for one last test
+
+
+Running test B3 1...
+
+No time to wait until the end of this test. I'll check on it tomorrow
+
+
++++++++++++
+18-Dec-2018
++++++++++++
+Test B3 1 Results:
+	Run Time:		00:26:15
+	Success Totals:	35/35
+	Failed Cases:	none
+    
+Cool. Let's add back the other steps for B
+Uncommented all of the steps after the ValidateProvisionUsedEmail_Prospect step
+
+
+Running test B 2...
+"Lot ID %% was used on: 9/13/2018 at 3:45:32 PM. Reuse lot?"
+Script is stuck here? 
+part of 2nd safeguard lot
+let's retry.
+
+
+Running test B 2.0.1...
+Failed on the database validation of LotQsuspend
+Quickly grabbed the 3rdSafeguard.txt results before they were overwritten:
+{"
+Changed database context to 'Guardian'.
+SPTNumber                                                                                                                                                                                                SPTFormatId SPTObjectTypeId
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ----------- ---------------
+(01)21880020000029(21)0000100017                                                                                                                                                                                  20              50
+(01)21880020000029(21)0000100019                                                                                                                                                                                  20              50
+(01)21880020000029(21)0000100021                                                                                                                                                                                  20              50
+(01)21880020000029(21)0000100023                                                                                                                                                                                  20              50
+(01)21880020000029(21)0000100023                                                                                                                                                                                  20              50
+(01)21880020000029(21)0000100025                                                                                                                                                                                  20              50
+(01)21880020000029(21)0000100025                                                                                                                                                                                  20              50
+
+(7 rows affected)
+"}
+
+The target file, baseline_sg3suspend.txt:
+{"
+Changed database context to 'Guardian'.
+SPTNumber                                                                                                                                                                                                SPTFormatId SPTObjectTypeId
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ----------- ---------------
+(01)21880020000029(21)0000100017                                                                                                                                                                                  20              50
+(01)21880020000029(21)0000100019                                                                                                                                                                                  20              50
+(01)21880020000029(21)0000100021                                                                                                                                                                                  20              50
+(01)21880020000029(21)0000100023                                                                                                                                                                                  20              50
+(01)21880020000029(21)0000100025                                                                                                                                                                                  20              50
+
+(5 rows affected)
+"}
+
+Results:
+	Run Time:		01:21:23
+	Success Totals:	103/104
+	Failed Cases:	Database Validation [LotQsuspend]                   (66)
+Not too bad, although that one failure is irritating.
+From what I can tell, the planned overlap of LotQsuspend carton list with LotGood also overlaps with that of either LotQaccept or LotRemove.
+Let's check the import data ReadMe files
+
+Yes, there was a small overlap with the LotQaccept data.
+I've shifted the planned overlap from 
+{"
+(01)21880020000029(21)0000100017
+(01)21880020000029(21)0000100019
+(01)21880020000029(21)0000100021
+(01)21880020000029(21)0000100023
+(01)21880020000029(21)0000100025
+"}
+to
+{"
+(01)21880020000029(21)0000100013
+(01)21880020000029(21)0000100015
+(01)21880020000029(21)0000100017
+(01)21880020000029(21)0000100019
+(01)21880020000029(21)0000100021
+"}
+
+changing the baseline_sg3suspend.txt file to reflect this change.
+
+So I think I'll still go ahead and put the rest of the test back together.
+    especially since I'll never get through more than a few full runs of this test in a day.
+Let's go
+
+
+Running test 1...
+Import failed for LotRemove Carton List
+    My guess is that there was an overseen overlap between the file in question and one of the part A import test data.
+If I'm lucky this won't be enough to halt the test and I can let it run through to check for other similar overlaps without having to run multiple times.
+    I would predict that the test should proceed without issue, however.
+After checking the Res File, there was indeed a failure due to Error 854: "Supplied SPT Numbers has been found in available numbers pool"
+(Email validation step also failed, presumably because of the import error)
+Later on, in LotResume I think:
+{"
+IPS Engine Stop
+    The following condition(s) have stopped the line:
+        'IPS\CaseToPalletAggregation'::Run exception ACCESS_VIOLATION at address 0x1CBCCF71 reading 0xC484AD6A
+"}
+
+After talking to Paul and Lee Clark about it, they said to just ignore it for now and we'll get someone to track it down if it recurs enough.
+
+As for the LotRemove issue:
+File in question:
+ImportFiles\Functional\Lot_RemoveDuplicates\FT-B_List_Carton_40000.xml
+Do I have to just go through every import testing file to look for overlap?
+Ugh
+Just the List_Cartons I suppose, but still
+
+I did find an overlap:
+ImportFiles\Functional\Error855\FT-B_ListAlreadyImported_855_Carton_0.xml
+Both lists share number "0000407145"
+Since the LotRemove set only has odd numbers, I'll change the Import Test number to be "0000407144"
+Let's run it again and see if that other issue comes up again
+
+
+Running test 1.1...
+The LotRemove Carton List Import still failed
+I forgot to check the NoError data
+It also had a 0000407145 number
+I changed it to 0000407144.
+Results:
+	Run Time:		01:12:04
+	Success Totals:	149/151
+	Failed Cases:	Import_FullyRandomList  [Carton, LotRemove]         (69),
+                    Email Validation    [LotRemove]                     (76)
+Wow, that's like a test for every Gen 1 Pokemon
+pretty good, though
+I've made the change to the conflicts with the import files, though, so I guess the only thing to do is make another run?
+I'd also like to turn off UFT visibility
+Starting next build
+
+Running test 1.2...
+Man, LotRemove Carton List import failed again.
+Aborting test
+
+
+After much headache, I used the old outlook email attachments to find that the issue was right in front of me the whole time:
+    It was the very first item in the list, 0000100003.
+Now the reason this is annoying is because I'm pretty sure that having this item is necessary for other tests to work properly, so modification is not an option
+    and I have no idea why it works fine with the other tests but not this one.
+Perhaps the safeguards are not being properly set?
+
+The code calls to fix the Safeguards at all the correct spots leading up to the test section in question.
+Paul said I should prepare to show Vlad by setting everything up and getting the test in running condition with the issue displayed
+
+First, I'd like to run just B again to see if it still successfully runs without the import test steps
+    if the issue is in fact something with the 1stSafeguard, then why would the file import succeed only without the import testing steps?
+Also, I'd like to check for locations of the offending number, (01)21880020000029(21)0000100003, in the import test files.
+    this is my leading hypothesis as to what is wrong with the state of the test
+After that, I'll go ahead with the Issue Demonstration Plan
+
+Plan for demo:
+I'll cut it to run up to PreLot_Remove
+run just the code to turn off the 1stSafeGuard
+Attempt to import the Carton List
+If it doesn't work, pull up the Outlook attachment 
+Pull up the lot contents, showing that the number which caused the import failure was present in the run LotGood.
+    if 1st Safeguard were off, the number being present in a run lot should not have caused the import to fail
+Pull up SQL tables verifying the state of the Safeguards.
+
+
++++++++++++
+19-Dec-2018
++++++++++++
+Alright, let's run a B test to see if the error is still present.
+Actually, first a standard run to make sure it didn't resolve over night or anything.
+
+Running test 1.3...
+Guardian froze up.
+Retrying
+
+
+Running test 1.3.1...
+Got stuck in the first lot creation without any failed test cases.
+I'm going to refresh the box and try again
+
+I think DupeServer crashed?
+
+This is turning out to be such a time sink.
+Trying again?
+
+
+Running test 1.3.2...
+Nope, one of the lots is stuck open again
+
+On DupeServer SQL, executing Advisor.usp_OperationEndLot:
+    1, null, null, null, 1
+
+Is letting me purge now.
+Once again
+
+
+Running test 1.3.3...
+stuck on not being able to reuse a lot again.
+Retrying
+
+
+Running test 1.3.4...
+"COM Surrogate has stopped working"
+    doesn't appear to be interrupting the test, though?
+Nope, all the import steps are failing.
+Trying again...
+
+
+Running test 1.3.5...
+This junk keeps crashing
+Guardian has frozen on an import step and the Script is still waiting for it to return a prompt
+
+I wanted to avoid restarting the DupeServer machine, but I think I'll have to end up biting the bullet and going ahead with it.
+Let's just hope that I manage to set the same options back up
+
+The setup was sluggish, the machines still run slow. Guardian crashed again on DEV01 while requesting SPT numbers.
+Might have been something with the DUPESERVER?
+I'll try connecting SQL Server Studio to DEV01?
+
+Nope. Paul suggested I try migrating over to ENGSERQAGRDAUTO while the other network is bogged down.
+Unfortunately, this box does not have ERP Simulator installed
+Attempting to install it fails every time, and the only advice the installation software gives is to try again.
+
+After this slow day, I can only hope that things haven't been messed up so bad as to interfere with the nightly tests, although I won't be holding my breath.
+
+
++++++++++++
+21-Dec-2018
++++++++++++
+Yesterday's results were not saved. my computer shut itself off overnight
+Basically: After resetting the boxes one last time and seeing that they were running a bit better, I ran the tests I had wanted to do the day before
+I confirmed that the issue was only present if part A2 was run, showing that the issue had something to do with the Import Testing files
+However, I was unable to find (01)21880020000029(21)0000100003 in the NoError Fully Random AI0121 Carton List.
+So, I decided to put together the demonstration so that someone else might be able to help me.
+
+It took a while to set the box back up but I think we're ready to proceed, finally.
+Let's trim the full test down to go up to right before PreLot_Remove ("test Demo")
+I'll have to find a way to manually swap the Safeguards, though
+
+
+Running test Demo 0...
+Error message: cannot purge while lots are in progress
+Executing engadvdev01 > Databases > TipsDB > Programmability > Stored Procedures > Advisor.usp_OperationEndLot:
+    options: 1, null, null, null, 1
+Wait, it may be because the DEV06 crashed last night
+Yeah, I shut that off and it's letting me purge now.
+Trying again
+
+
+Running test Demo 0.0.1...
+Forgot to turn on "Do not update Start Number" in ERP Simulator's SAP Provisioning window.
+Retrying
+
+
+Running test Demo 0.0.2...
+Ok. I've got to the end of the procedure.
+Let's find out how to alter the Safeguards.
+
+Suddenly, I can't get UFT to open
+Gotta refresh the system and rerun the demo
+
+What I am able to parse from the Set_DuplicateSafeGuards action in FT_Provisioning_Driver:
+
+"UPDATE [Guardian].[ProvisioningConfiguration] SET CheckUsedSPTNumbers = 0 WHERE ProductId IN (ProductName IN ('Product FT-A', 'Product FT-B', 'Product FT-C'))"
+Let's give that a shot into the SQL Server Manager
+
+This was improperly formatted. 
+correct command:
+UPDATE [Guardian].[Guardian].[ProvisioningConfiguration] SET CheckUsedSPTNumbers = 0 WHERE ProductId IN (3, 4, 5)
+
+Now, once again, attempting to manually import the file gives an Error 854 message
+Checking the Systech QA email on Outlook online (password = Baqo7783)
+Again, I see the email with an attachment containing 1 item: 
+(01)21880020000029(21)0000100003    AI(01)+AI(21)   Carton
+Grabbing the lot contents from LotGood:
+
+
++++++++++++
+26-Dec-2018
++++++++++++
+More demo crafting
+
+Verifying that the error is still present
+
+So I just noticed that for some reason only one lot is present and none of LotGood's AI0121 numbers are in it.
+Let's run again and keep pinging with the LotContentFinder to figure out what's going on.
+
+The lot was created in the proper place.
+Perhaps the lot is being populated with items from the previous import?
+I think this is my next working theory: that the LotGood is taking its data from the import test files
+Trying again
+
+Yeah, it looks like it's taking items from the first import files
+
+Let's try having just the LotGood and the UsedProvisioningTest to see if I can just wipe the system so that those numbers are freed up
+
+The tests which failed without having ProvisionNew:
+Import_FullyRandomList  [Error667\FT-B_ListWithUsed_667_Carton.xml]
+Import_AnimalHealth     [Error667\2017000020667_Product FT-B.zip]
+Import_PreprintedLabel  [Error689\FT_Preprinted_CaseWithUsed_689_0.xml]
+
+My new idea: have another purge and LotGood run after ValidateProvisionUsedEmail_Prospect
+
+I talked with Alex about it and he told me that the intention is for ProvisionUsed to not have anything to do with ProvisionNew
+    So, all I should need would be a PurgeData after the end of the ProvisionNew steps
+This does raise the concern that I may have "calibrated" the ProvisionUsed steps to look for the ProvisionNew data
+However, I think this will be an easy fix if it is the case.
+
+Including additional PurgeData command and starting a new run of the modified A2
+
+
+Running test A2 4...
+Results:
+	Run Time:		00:27:51
+	Success Totals:	58/63
+	Failed Cases:	Import_FullyRandomList  [Error667\FT-B_ListWithUsed_667_Carton.xml]     (57),
+                    Import_AnimalHealth     [Error667\2017000020667_Product FT-B.zip]       (58),
+                    Import_PreprintedLabel  [Error689\FT_Preprinted_CaseWithUsed_689_0.xml] (59),
+                    Request_Numbers         [anticipated failure with Error 667]            (62),
+                    Email Validation        [expects an email]                              (63)
+My guess is that recalibrating the three import step data sets to match LotGood data will fix the other two steps as well
+
+Grabbing the lot contents
+As expected, contains the data from the LotGood import files, not from the ProvisionNew ones
+
+Checking the first failed test's data
+Error667\FT-B_ListWithUsed_667_Carton.xml, Item 10:
+    0000090497  ->
+    0000100021
+    
+Checking the second failed test's data
+Error667\2017000020667_Product FT-B.zip, Item 11:
+    201700000000000000102564    ->
+    201700001000000211308673
+    
+Checking the third failed test's data
+Error689\FT_Preprinted_CaseWithUsed_689_0.xml, Item 11, 12:
+    (01)21880020000029(21)0000123378    ->
+    (01)21880020000029(21)0000100023    ;
+    (01)21880020000029(21)0000130234    ->
+    (01)21880020000029(21)0000100025
+
+Let's give another run to see what that did.
+
+
+Running test A2 4.1...
+Results:
+	Run Time:		00:26:51
+	Success Totals:	61/63
+	Failed Cases:	Import_AnimalHealth     [Error667\2017000020667_Product FT-B.zip]       (58),
+                    Request_Numbers         [anticipated failure with Error 667]            (62)
+Hmm, did I forget to save the changes for step 58?
+What happened with step 62?
+
+Let's check the Res files
+Both would be in the most recent FT_Provisioning_Driver
+
+the first expected Error667, got Error854
+the second expected Error667, got no error.
+
+According to the ReadMe files, Error667 catches:
+"New file and numbers with used numbers"
+and Error854 catches:
+"New file and numbers with numbers from good file"
+
+I have no idea what the difference between these would be.
+Let's check the lot contents?
+Contents seem good.
+Checking the outlook inbox
+Found an attachment regarding AnimalHealth duplicates "in the availability serial numbers pool":
+{"
+Serial Number               Format Name                                        Type Name
+201700001000000211308673    China Animal Health Tracing Code                   Carton
+"}
+
+Odd, that number doesn't appear in the most recent lot
+I may just want to rerun the lot to determine the consistency of the actually used AnimalHealth data
+For now, I'll take note of the data at the place where 201700001000000211308673 would be:
+"201700001000000000100582"
+
+Thinking about it more, let's take a look at the import data of LotGood itself and see which numbers it uses.
+Well, it uses both. 201700001000000000100582 is closer to the top, though?
+Let's try using 201700001000000000100582 for now and wait for the next test to see if it works.
+
+
+As for step 62, I have no idea what it's trying to do, still.
+Let's try another run
+
+
+Running test A2 4.2...
+Results:
+	Run Time:		00:26:37
+	Success Totals:	62/63
+	Failed Cases:	Request_Numbers         [anticipated failure with Error 667]            (62)
+Just one left
+
+Let's check the FT_Provisioning_Driver sheets
+LotGood doesn't even have any Request_Numbers entries
+
+On a whim, I've modified the ERP Simulator > SAP Provisioning settings for FTB-AI0121Carton and its Start Number
+Swapped it from (01)21880020000029(21)0000260004 to
+                (01)21880020000029(21)0000100003
+Let's give this a shot, and if it blows up again I'll ask Alex about it.
+
+
+Running test A2 4.3...
+I left the excel files open by accident
+Trying again
+
+
+Running test A2 4.3.1...
+Results:
+	Run Time:		00:36:21
+	Success Totals:	63/63
+	Failed Cases:	none
+Sweet, let's throw the whole thing together
+
+
+Running test 2...
+Failed to start test application
+Retrying
+
+
+Running test 2.0.1...
+Failed to start test application
+Refreshing machine
+
+
+Running test 2.0.2...
+started up fine
+Don't think I'll have time to catch the end results of this test
+I think I only want to see if the first few tests crash or not
+
+
++++++++++++
+28-Dec-2018
++++++++++++
+Test froze up for a few hours and interrupted the overnight tests.
+Results:
+	Run Time:		00:22:25
+	Success Totals:	74/74
+	Failed Cases:	none
+    Missing Cases:  many
+    
+Kicking off another run right away.
+
+
+Running test 2.1...
+Was in Power Fail mode, had to abort and close out a lot
+Retrying
+
+
+Running test 2.1.1...
+Results:
+	Run Time:		01:08:18
+	Success Totals:	151/151
+	Failed Cases:	none
+Awesome
+
+So now the only thing which might be left to do is to reexamine the very last UFT step which I have been ignoring, SafeguardChecks
+It honestly looks like non-functional code, but I'll show it to Alex and ask him what he thinks about it.
+
+Alex agreed that it was superfluous, and I have taken it out.
+
+So, 8.3.0 is pretty much done
+Let's just make one last consistency run and then work on commenting and cleaning up all the code.
+
+
+Running test (consistency)...
+Got stuck in the very last lot running
+Aborting and trying to gather the results
+Results:
+	Run Time:		01:03:07
+	Success Totals:	139/146 (/151)
+	Failed Cases:	Import_AnimalHealth [ProvisionUsed]                 (58),
+                    Import_Range    [LotExclude, Carton]                (138),
+                    Import_Range    [LotExclude, Case]                  (139),
+                    Import_Range    [LotExclude, Pallet]                (140),
+                    Import_FullyRandomList  [LotExclude, Carton]        (141),
+                    Import_FullyRandomList  [LotExclude, Case]          (142),
+                    Import_FullyRandomList  [LotExclude, Pallet]        (143)
+    Missing Cases:  (147 - 151) [All post-abort]
+That's annoying.
+Looks like perhaps the Animal Health numbers for LotGood are indeed randomly selected, which would mean that picking out one dupe to be caught each time will be difficult.
+No guesses as to what happened with LotExclude's imports, though
+
+Checking the contents of LotGood...
+Searching for presence of set duplicate, 201700001000000000100582...
+Not found.
+Searching for presence of previously set duplicate, 201700001000000211308673...
+Also not found.
+Start value of LotGood's Animal Health data:    201700001000000242881524
+End value of LotGood's Animal Health data:      201700001000000252878224
+
+Here's one idea: figure out the range size N used by LotGood and give the ProvisionUsed import data set every Nth item.
+Each pulled set contains 1000 items
+    n.b. the numbers increment by 10000, so instead of the interval being [...242881524, ...252878224], it's really [...24288, ...25287]
+N = 1000.
+How many numbers are in the LotGood source data?
+    a lot.
+3 files in the .zip.
+However, if I remember correctly, each file corresponds to one of the packaging types.
+Since I'm only dealing with the cartons, I only need the *_1.txt file
+File contains 32,000 items.
+Will need to grab 32 of these items.
+I'll take items 1, 1001, 2001... 30001, and 31001
+I'll also grab 32000 for good measure (33 items)
+
+201700001000000000005052
+201700001000000010005715
+201700001000000020001424
+201700001000000030009243
+201700001000000040007691
+201700001000000050009043
+201700001000000060004902
+201700001000000070007024
+201700001000000080000651
+201700001000000090004793
+201700001000000100008887
+201700001000000110008199
+201700001000000120001844
+201700001000000130004718
+201700001000000140007342
+201700001000000150009425
+201700001000000160009116
+201700001000000170006794
+201700001000000180000381
+201700001000000190001565
+201700001000000200005803
+201700001000000210003437
+201700001000000220002258
+201700001000000230006464
+201700001000000240009819
+201700001000000250000022
+201700001000000260001401
+201700001000000270008562
+201700001000000280005078
+201700001000000290003198
+201700001000000300003806
+201700001000000310007699
+201700001000000319993088
+
+Cool, let's add these to the ProvisionUsed import data.
+ImportFiles\Functional\Error667\2017000020667_Product FT-B.zip
+I notice that this file contains 10,000 items.
+Depending on how the numbers are taken from this one, there may be a problem here.
+I have an idea of how to fix it if it does take a random 1000 items from this file, but it would be tedious to implement
+    put 33 items at the start of every 1000-length interval, but shift each by 1, i.e [0000, 1000, 2000...], [0001, 1001, 2001...], [0002, 1002, 2002...]
+        The tedious part is that I would have to end up cutting and pasting 288 more items.
+For now, let's just toss these at the start of the set.
+Numbers taken out, for potential future reference:
+
+201700001000000100004431
+201700002000000200015648
+201700002000000200028676
+201700002000000200034693
+201700002000000200043402
+201700002000000200050973
+201700002000000200062438
+201700002000000200071044
+201700002000000200083570
+201700002000000200097861
+201700001000000000100582
+201700002000000200110455
+201700002000000200121960
+201700002000000200130388
+201700002000000200149751
+201700002000000200158913
+201700002000000200167440
+201700002000000200174643
+201700002000000200183392
+201700002000000200197564
+201700002000000200202409
+201700002000000200212426
+201700002000000200221308
+201700002000000200238363
+201700002000000200242839
+201700002000000200252053
+201700002000000200266231
+201700002000000200275559
+201700002000000200281304
+201700002000000200298889
+201700002000000200308665
+201700002000000200317153
+201700002000000200323582
+
+Done. Fingers crossed.
+
+
+As for the failed LotExclude imports:
+My hope is that it was just a fluke with Guardian or something, but I want to check to be sure.
+Checking Res files
+    Should be in the most recent FT_Provisioning_Driver run.
+Found, timestamped at 11:02 AM
+    matches up with the end of LotExclude Import timestamps found in QTPrintLog.txt
+    
+I see the errors: Each one says that it [Cannot identify the object "btnImport" (of class SwfButton).]
+Luckily, they do have a screen shot attached to each: in each case, a "Host Process for Windows Tasks has stopped working" window is present.
+    I have so much appreciation for that feature.
+So it was probably a fluke? I think I remember Paul saying something about this particular issue having to do with the limited memory issues that come from working on a 32-bit machine.
+So, let's run again, I guess.
+
+
+Running test 3...
+The only part I changed was the ProvisionUsed section, so I'll be able to see if it fails pretty quickly and abort without wasting too much time, if I have to.
+Guardian froze during LotGood imports.
+Retrying
+
+
+Running test 3.0.1...
+Checking the LotGood contents quickly, I see that the range of Animal Health numbers is [201700001000000063360621, 201700001000000073359142]
+    or rather, [6336, 7335]
+The set does contain 201700001000000070007024 (7000), which suggests that step 58 should pass.
+Test step 58 has passed, as expected
+"Search box contains an invalid product!"
+No idea.
+Results (so far):
+    Run Time:       a little under an hour
+    Success Totals: 103/108 (/151)
+    Failed Cases:   Email Validation    [LotRemove]                     (76),
+                    Override Quarantine Use Case                        (91),
+                    Second User Entry dialog for Override Quarantine    (92),
+                    Email Validation    [LotQaccept]                    (93),
+                    Database Validation [LotQaccept]                    (94)
+Aborting, retrying.
+
+Checking Email table logs:
+No luck.
+For the others, the lots did not trigger dupes warnings for some reason.
+I don't understand why my change might affect these other parts of the test
+I only modified the data of the ProvisionUsed sets, not the LotGood ones.
+
+
+Running test 3.0.2...
+Got past step 94 with no fuss
+Step 127:
+{"
+Screen Manager
+    The DDE App Command [[AppCommand[End()]]] returned error ['Lotctrl' timed out executing command: '[AppCommand[End()]]'.]
+"}
+I clicked on the end lot button again.
+It stopped the lot successfully.
+Found error in IPS Test Screen
+Messages:
+{"
+12/28/2018 14:59:59.368 Start Completed (IPS)
+12/28/2018 15:01:41.531 'IPS\CartonToCaseAggregation'::Run exception ACCESS_VIOLATION at address 0x1CDA5E5B reading 0x00000000
+12/28/2018 15:01:41.582 'IPS\CartonToCaseAggregation'::Run exception ACCESS_VIOLATION at address 0x1CD1CF71 reading 0xC2C20AAD
+12/28/2018 15:01:41.632 'IPS\CartonToCaseAggregation'::Run exception ACCESS_VIOLATION at address 0x1CD1CF71 reading 0xC2C20AAD
+[...]
+12/28/2018 15:01:46.455 'IPS\CartonToCaseAggregation'::Run exception ACCESS_VIOLATION at address 0x1CD1CF71 reading 0xC2C20AAD
+12/28/2018 15:02:59.858 Guardian (DUPESERVER) not responding
+12/28/2018 15:08:19.858 Guardian (DUPESERVER) not responding
+12/28/2018 15:18:33.858 Guardian (DUPESERVER) not responding
+
+So that's great
+Going to have to abort the test.
+
+and now TIPS won't let me close out the lot.
+Attempting to suspend the lot, it tells me that there is no lot currently open.
+
+just kidding, suddenly I can close the lot again.
+
+Well, I never got a chance to complete another run before I had to leave, but hopefully it won't mess up the tests over the weekend.
+
+
+
+
+
+
+
+
+
+Results:
+    Run Time:       
+    Success Totals: 
+    Failed Cases:   

@@ -1,0 +1,138 @@
+Safeguard Switch Bug Demo Outline
+~~~~~~~~~~~
+16-Nov-2018
+~~~~~~~~~~~
+The issue:  The script successfully turns off the 1st Safeguard for lot entry duplicate detection
+                However, the software still prevents the import of duplicate numbers
+                This prevents the testing of the 2nd Safeguard functionality
+                
+Issue has been reproduced consistently for 10 runs or so
+Running another demo will take about 20 minutes if more recent results are requested.
+
+Issue lead up, Run "OlderAdvisorTest_740011_BugDemo.vbs":
+    Loads, runs, and closes out one full lot
+    Turns off the 1st Safeguard
+    Attempts to load data for a second lot, containing some numbers shared with the previous lot
+    Lot import fails
+    
+Issue documentation on SQL Database:
+    First Query Window:     ProductId of target product (Product FT-B) is 4
+    Second Query Window:    Shows that the First Safeguard is Off (0), Second is on (1) for ProductId 4
+    Third Query Window:     Displays the Error Message resulting from the run, showing that the File import was rejected.
+    
+    
+Questions for Vlad:
+Is there another way to verify the condition of the Safeguard Statuses?
+    Perhaps this SQL table doesn't necessarily reflect the actual state of the software?
+Would there be anything else responsible for rejecting these duplicated contents?
+
+
+
+
+
+
+
+
+
+
+Contents of "OlderAdvisorTest_740011_BugDemo.vbs":
+{
+Option Explicit
+
+' PRE-REQUISITE: ERP Simulator must be running on Guardian server with custom WSEPCConfig.xml and option 'Do not change start number' enabled
+' PRE-REQUISITE: UFT must be running (otherwise uncomment Launch command below)
+
+Dim strStatus : strStatus = "Passed"
+Dim strRoot : strRoot = "C:\Automation\Duplicate Check"
+Dim qtApp 'As QuickTest.Application ' Declare the Application object variable
+Set qtApp = CreateObject("QuickTest.Application") ' Create the Application object
+qtApp.Launch ' Start UFT
+qtApp.Visible = False ' Make the UFT application visible
+
+' Set UFT run options
+qtApp.Options.Run.ImageCaptureForTestResults = "OnError"
+qtApp.Options.Run.RunMode = "Normal"	' [Normal or Fast]
+qtApp.Options.Run.ViewResults = False
+
+
+'''PurgeData''''
+strStatus = RunAdvisor("PurgeData")
+
+''' Run GOOD lot ''''''''''''''''''''
+strStatus = RunGuardian("PreLot_Good.xls")	' import numbers
+strStatus = RunAdvisor("DuplicateCheckThreeLevel_GoodLot_81x") ' run lot
+strStatus = RunGuardian("PostLot_Good.xls")	' disable numbers
+
+''' Run SAFEGUARD2 lot/When Lot Starts, it should delete dupes, email should be sent   ''''''''''''''''''''
+strStatus = RunGuardian("PreLot_Remove.xls")    'disable 1st Safeguard
+}
+
+
+
+
+
+Annotated Results of Demo:
+{
+****Initially Setting both Safeguards to ON for 1st lot****
+11/16/2018 8:36:21 AM#11/16/2018 8:36:23 AM#True#Set_DuplicateSafeGuards#N/A#Set SafeGuard1 = ON#SafeGuard1 = ON
+11/16/2018 8:36:23 AM#11/16/2018 8:36:24 AM#True#Set_DuplicateSafeGuards#N/A#Set SafeGuard2 = ON#SafeGuard2 = ON
+
+****Importing the data for the initial good lot****
+11/16/2018 8:36:32 AM#11/16/2018 8:36:36 AM#True#Import_Range#N/A#Import range file for Carton [ImportFiles\Functional\Lot_Good\FT-B_Range_Carton_10000.xml]#File import succeeded
+11/16/2018 8:36:36 AM#11/16/2018 8:36:40 AM#True#Import_Range#N/A#Import range file for Case [ImportFiles\Functional\Lot_Good\FT-B_Range_Case_10000.xml]#File import succeeded
+11/16/2018 8:36:40 AM#11/16/2018 8:36:42 AM#True#Import_Range#N/A#Import range file for Pallet [ImportFiles\Functional\Lot_Good\FT-B_Range_Pallet_10000.xml]#File import succeeded
+11/16/2018 8:36:49 AM#11/16/2018 8:36:55 AM#True#Import_FullyRandomList#N/A#Import fully random list file for Carton [ImportFiles\Functional\Lot_Good\FT-B_List_Carton_10000.xml]#File import succeeded
+11/16/2018 8:36:55 AM#11/16/2018 8:37:01 AM#True#Import_FullyRandomList#N/A#Import fully random list file for Case [ImportFiles\Functional\Lot_Good\FT-B_List_Case_10000.xml]#File import succeeded
+11/16/2018 8:37:01 AM#11/16/2018 8:37:06 AM#True#Import_FullyRandomList#N/A#Import fully random list file for Pallet [ImportFiles\Functional\Lot_Good\FT-B_List_Pallet_10000.xml]#File import succeeded
+11/16/2018 8:37:13 AM#11/16/2018 8:37:39 AM#True#Import_AnimalHealth#N/A#Import animal health list file for Carton and Case [ImportFiles\Functional\Lot_Good\2017000010000_Product FT-B.zip]#File import succeeded
+11/16/2018 8:37:46 AM#11/16/2018 8:37:50 AM#True#Import_PartialRandomList#N/A#Import partial random list file for Carton [ImportFiles\Functional\Lot_Good\Product FT-B_20170010-000_9918802000010000-001_x1x_2.txt]#File import succeeded
+11/16/2018 8:37:50 AM#11/16/2018 8:37:54 AM#True#Import_PartialRandomList#N/A#Import partial random list file for Case [ImportFiles\Functional\Lot_Good\Product FT-B_20170010-000_9918803000010000-001_x1x_3.txt]#File import succeeded
+
+****Notification-based verification of clean lot****
+11/16/2018 8:52:30 AM#11/16/2018 8:52:30 AM#True#Dataname excluded from duplicate check use case#UNSS-3159#Validate email is not received when dataname is excluded from duplicate check.#Email is not received.
+
+****Closing out the first lot****
+11/16/2018 8:52:33 AM#11/16/2018 8:52:34 AM#True#Set_DuplicateSafeGuards#N/A#Set SafeGuard1 = ON#SafeGuard1 = ON
+11/16/2018 8:52:34 AM#11/16/2018 8:52:34 AM#True#Set_DuplicateSafeGuards#N/A#Set SafeGuard2 = ON#SafeGuard2 = ON
+11/16/2018 8:52:35 AM#11/16/2018 8:54:17 AM#True#Disable_Numbers#N/A#Disable SPT Numbers#Remaining SPT Numbers disabled
+
+****Setting the 1stSafeGuard OFF and the 2ndSafeGuard OFF****
+11/16/2018 8:54:19 AM#11/16/2018 8:54:20 AM#True#Set_DuplicateSafeGuards#N/A#Set SafeGuard1 = OFF#SafeGuard1 = OFF
+11/16/2018 8:54:20 AM#11/16/2018 8:54:20 AM#True#Set_DuplicateSafeGuards#N/A#Set SafeGuard2 = ON#SafeGuard2 = ON
+
+****Importing the data for the second lot****
+11/16/2018 8:54:22 AM#11/16/2018 8:54:25 AM#True#Import_Range#N/A#Import range file for Carton [ImportFiles\Functional\Lot_RemoveDuplicates\FT-B_Range_Carton_40000.xml]#File import succeeded
+11/16/2018 8:54:25 AM#11/16/2018 8:54:27 AM#True#Import_Range#N/A#Import range file forCase [ImportFiles\Functional\Lot_RemoveDuplicates\FT-B_Range_Case_40000.xml]#File import succeeded
+11/16/2018 8:54:27 AM#11/16/2018 8:54:30 AM#True#Import_Range#N/A#Import range file for Pallet [ImportFiles\Functional\Lot_RemoveDuplicates\FT-B_Range_Pallet_40000.xml]#File import succeeded
+
+*!*!ERROR: Import of data set containing duplicate numbers is rejected*!*!
+11/16/2018 8:54:37 AM#11/16/2018 8:54:42 AM#False#Import_FullyRandomList#N/A#Import fully random list file for Carton [ImportFiles\Functional\Lot_RemoveDuplicates\FT-B_List_Carton_40000.xml]#File import succeeded
+
+****Continued successful import of non duplicate contents****
+11/16/2018 8:54:42 AM#11/16/2018 8:54:55 AM#True#Import_FullyRandomList#N/A#Import fully random list file for Case [ImportFiles\Functional\Lot_RemoveDuplicates\FT-B_List_Case_40000.xml]#File import succeeded
+11/16/2018 8:54:55 AM#11/16/2018 8:55:00 AM#True#Import_FullyRandomList#N/A#Import fully random list file for Pallet [ImportFiles\Functional\Lot_RemoveDuplicates\FT-B_List_Pallet_40000.xml]#File import succeeded
+11/16/2018 8:55:07 AM#11/16/2018 8:55:34 AM#True#Import_AnimalHealth#N/A#Import animal health list file for Carton and Case [ImportFiles\Functional\Lot_RemoveDuplicates\2017000040000_Product FT-B.zip]#File import succeeded
+11/16/2018 8:55:41 AM#11/16/2018 8:55:47 AM#True#Import_PartialRandomList#N/A#Import partial random list file for Carton [ImportFiles\Functional\Lot_RemoveDuplicates\Product FT-B_20170040-000_9918802000040000-001_x1x_2.txt]#File import succeeded
+11/16/2018 8:55:47 AM#11/16/2018 8:55:52 AM#True#Import_PartialRandomList#N/A#Import partial random list file for Case [ImportFiles\Functional\Lot_RemoveDuplicates\Product FT-B_20170040-000_9918803000040000-001_x1x_3.txt]#File import succeeded
+
+****End of Demo****
+}
+
+
+
+
+
+Contents of Error Notification:
+{
+Warning:  UniSeries has detected a condition where serial numbers to be imported into Guardian system appear to be duplicated.
+Duplicates have been detected in the availability serial numbers pool
+
+Provisioning Import XML has been rejected.
+
+Please review the following information and ensure that this does not violate any company serialization policies.
+
+Provisioning Import XML has been received for		:	Manufacturer: Manufacturer FT-B, Product: Product FT-B, Format: AI(01)+AI(21), Packaging Level:  Carton
+
+Please see the attached file for a list of duplicated serial numbers.
+Attached file is limited to 1000 records.
+}

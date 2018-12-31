@@ -1,0 +1,30 @@
+//Because I did not set up PaulTest3's C:\ as a git repo (and because I don't want to now) I will be keeping track of the changes I make so that I can more easily transfer them to my own machine for pushing to the remote repository
+//This is a temporary solution which will not be used for future boxes. It's just here to help me out until then
+
+//Format:
+//~~~~~~~~~~~
+//[Date of transfer with intended commit message]
+//~~~~~~~~~~~
+//
+//[deltas go here]
+//
+//~~~~~~~~~~~
+//[Date of next transfer with intended commit message]
+//~~~~~~~~~~~
+//[etc.]
+
+~~~~~~~~~~~
+07-Sep-2018: 'Result Gen procedure stabilized, improving test performance'
+~~~~~~~~~~~
+
+Modified:
+	Various files in C:\Automation\Duplicate Check\
+
+To Delete:
+	All ~\Automation\Duplicate Check\[...]\Report\ folders and their contents
+	All ~\Automation\Duplicate Check\[...]\Snapshot\ folders and their contents
+
+~~~~~~~~~~~
+10-Sep-2018: 'Bugfixing and rewriting to Improve Test Performance consistency'
+~~~~~~~~~~~
+

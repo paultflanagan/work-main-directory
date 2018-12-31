@@ -1,0 +1,312 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+743 Prenyash the Twirler (level 7, -6/52 HPs)
+             Began as a Demonspawn Gladiator on Nov 14, 2018.
+             Splashed by Ijyb's acid (12 damage)
+             ... on level 5 of the Dungeon.
+             The game lasted 00:15:33 (3420 turns).
+
+Prenyash the Twirler (Demonspawn Gladiator)         Turns: 3420, Time: 00:15:33
+
+Health: -6/52      AC:  2    Str: 14    XL:     7   Next: 47%
+Magic:  10/10      EV: 17    Int: 10    God:    
+Gold:   264        SH:  0    Dex: 16    Spells: 10/11 levels left
+
+rFire    . . .     SeeInvis .   a - +0 quarterstaff
+rCold    . . .     Gourm    .   (shield currently unavailable)
+rNeg     . . .     Faith    .   s - +0 scale mail
+rPois    +         Spirit   .   (helmet restricted)
+rElec    .         Reflect  .   (no cloak)
+rCorr    .         Harm     .   (no gloves)
+MR       .....                  (no boots)
+Stlth    ..........             (no amulet)
+HPRegen  0.17/turn              l - +5 ring of evasion
+MPRegen  0.12/turn              r - ring of poison resistance
+
+@: corroded
+A: horns 1, demonic guardian 1, foul stench 1, rot immunity, sturdy frame 1
+a: no special abilities
+
+
+You were on level 5 of the Dungeon.
+You were very hungry.
+
+You visited 2 branches of the dungeon, and saw 6 of its levels.
+
+You collected 264 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +0 quarterstaff (weapon)
+Missiles
+ d - 2 throwing nets (quivered)
+Armour
+ b - a +0 leather armour
+ c - a +0 helmet
+ g - a +0 helmet
+ h - a +0 ring mail
+ s - a +0 scale mail (worn)
+ w - a +0 robe of fire resistance
+Jewellery
+ l - a +5 ring of evasion (left hand)
+ r - a ring of poison resistance (right hand)
+ A - an uncursed ring of poison resistance
+Wands
+ v - a wand of scattershot (5)
+Scrolls
+ k - 4 scrolls of identify {unknown}
+ m - 3 scrolls of enchant armour {unknown}
+ o - a scroll of magic mapping {unknown}
+ p - a scroll of remove curse {unknown}
+ q - a scroll of enchant weapon {unknown}
+ u - 2 scrolls of amnesia {unknown}
+ x - 2 scrolls of teleportation {unknown}
+ y - a scroll of holy word {unknown}
+ z - a scroll of blinking {unknown}
+Potions
+ e - a potion of brilliance
+ i - 3 potions of mutation {unknown}
+ n - 2 potions of might {unknown}
+ t - a potion of curing {unknown}
+ B - a potion of agility {unknown}
+Comestibles
+ f - 7 rations
+
+
+   Skills:
+ * Level 3.1 Fighting
+ * Level 5.3 Staves
+ + Level 1.7 Throwing
+ * Level 3.3 Armour
+ * Level 3.7 Dodging
+ + Level 0.5 Stealth
+ * Level 2.5 Spellcasting
+ + Level 1.0 Transmutations
+
+
+You had 10 spell levels left.
+You knew the following spells:
+
+ Your Spells              Type           Power        Failure   Level  Hunger
+a - Beastly Appendage     Tmut           #.....       43%         1    ##.....
+
+Your spell library contained the following spells:
+
+ Spells                   Type           Power        Failure   Level  Hunger
+ Sticks to Snakes         Tmut           #.......     58%         2    ###....
+ Spider Form              Tmut/Pois      #.........   87%         3    ####...
+ Ice Form                 Ice/Tmut       #.......     99%         4    #####..
+ Blade Hands              Tmut           #.........   100%        5    ######.
+
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (5/15)             Temple (1/1) D:5         
+
+Altars:
+Ashenzari
+Cheibriados
+Dithmenos
+Fedhas
+Gozag
+Hepliaklqana
+Kikubaaqudgha
+Makhleb
+Nemelex Xobeh
+Okawaru
+Qazlal
+Ru
+Sif Muna
+Trog
+Uskayaw
+Vehumet
+Wu Jian
+Xom
+Yredelemnul
+Zin
+The Shining One
+
+Annotations:
+D:5 2 transporters, Ijyb
+
+
+Innate Abilities, Weirdness & Mutations
+
+You have a pair of small horns on your head.
+A weak demonic guardian rushes to your aid.
+You may emit foul miasma when damaged in melee.
+You are immune to rotting.
+Your movements are slightly less encumbered by armour. (ER -2)
+
+
+Message History
+
+You closely miss Ijyb. You headbutt Ijyb, but do no damage.
+Ijyb is severely wounded.
+Ijyb zaps a wand. The bolt of acid hits you! You are splashed with acid! The
+* * * LOW HITPOINT WARNING * * *
+Your shadow imp misses Ijyb.
+You closely miss Ijyb.
+Ijyb is severely wounded.
+Ijyb hits you with a dagger.
+* * * LOW HITPOINT WARNING * * *
+Your shadow imp barely misses Ijyb.
+You barely miss Ijyb. Your headbutt misses Ijyb.
+Ijyb is severely wounded.
+Ijyb closely misses you.
+Your shadow imp hits Ijyb but does no damage.
+You barely miss Ijyb.
+Ijyb is severely wounded.
+Ijyb zaps a wand. The bolt of acid hits you!
+* * * LOW HITPOINT WARNING * * *
+The acid corrodes you! You are splashed with acid! The acid burns!
+You die...
+
+..8#.###.##.####..##..
+#$c#.....#............
+.$a#...###...#...#....
+.$a#©..# #...#.(.#  .#
+.%S#..## #.###...###.#
+#=$#...# #...........#
+..8#.#.###..(..>..(..#
+..##.#.#.............#
+###....#.#.###...###.#
+....##.# #.  #.(.#...##
+.##.##.# #..:#..@#!...#
+.......# #......g5....#
+.##.##.# ##..########.#
+###.##.#  #.#
+  #.##.# ...
+  #.##.####
+  #.##..##
+  #.##.#.##
+  #...###.##
+  #..## ##.##
+###.##   ##.#
+
+
+You could see Ijyb and a friendly shadow imp.
+
+Vanquished Creatures
+  Sigmund (D:5)
+  An ogre (D:5)
+  2 scorpions
+  A hound (D:5)
+  A centaur skeleton (D:4)
+  Terence (D:3)
+  An iguana (D:4)
+  2 worker ants
+  2 gnolls
+  7 adders
+  A shadow imp (D:5)
+  2 oozes
+  An adder skeleton (D:4)
+  2 adder zombies
+  2 dart slugs
+  2 worms
+  A leopard gecko (D:3)
+  2 bats
+  A bat zombie (D:2)
+  A giant cockroach (D:4)
+  9 goblins
+  11 hobgoblins
+  6 jackals
+  2 quokkas
+  4 frilled lizards
+  A giant cockroach zombie (D:2)
+  A jackal zombie (D:2)
+  7 kobolds
+  2 quokka zombies (D:2)
+  11 rats
+88 creatures vanquished.
+
+Vanquished Creatures (collateral kills)
+  A sky beast (D:5)
+  4 gnolls
+  A rat (D:2)
+6 creatures vanquished.
+
+Grand Total: 94 creatures vanquished
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | Prenyash the Demonspawn Gladiator began the quest for the
+                  | Orb.
+     0 | D:1      | Reached XP level 1. HP: 16/16 MP: 1/1
+   252 | D:1      | Reached skill level 3 in Staves
+   310 | D:1      | Gained mutation: You have a pair of small horns on your
+                  | head. [demonic ancestry]
+   310 | D:1      | Reached XP level 2. HP: 22/22 MP: 2/2
+   823 | D:2      | Gained mutation: A weak demonic guardian rushes to your
+                  | aid. [demonic ancestry]
+   823 | D:2      | Reached XP level 3. HP: 27/27 MP: 3/3
+   832 | D:2      | Found a radiant altar of Vehumet.
+   951 | D:2      | Reached skill level 1 in Armour
+   954 | D:2      | Gained mutation: Your movements are slightly less
+                  | encumbered by armour. (ER -2) [demonic ancestry]
+   954 | D:2      | Reached XP level 4. HP: 31/33 MP: 3/5
+  1254 | D:2      | Reached skill level 1 in Spellcasting
+  1458 | D:3      | Reached skill level 4 in Staves
+  1535 | D:3      | Reached XP level 5. HP: 39/39 MP: 6/6
+  1871 | D:3      | Found a deep blue altar of Sif Muna.
+  1915 | D:3      | Noticed Terence
+  1924 | D:3      | Killed Terence
+  2050 | D:3      | Learned a level 1 spell: Beastly Appendage
+  2156 | D:3      | Found a glowing silver altar of Zin.
+  2456 | D:4      | Gained mutation: You are immune to rotting. [demonic
+                  | ancestry]
+  2456 | D:4      | Reached XP level 6. HP: 46/46 MP: 5/8
+  2530 | D:4      | Found a bloodstained altar of Trog.
+  2531 | D:4      | Found an opulent altar of Gozag.
+  2534 | D:4      | Found an ornate altar of the Wu Jian Council.
+  2535 | D:4      | Found a sacrificial altar of Ru.
+  2751 | D:5      | Entered Level 5 of the Dungeon
+  2809 | D:5      | Found an iron altar of Okawaru.
+  2812 | D:5      | Found a transporter.
+  2820 | D:5      | Found a transporter.
+  2891 | D:5      | Found a stormy altar of Qazlal.
+  2946 | D:5      | Noticed a sky beast
+  2955 | D:5      | Killed a sky beast
+  2955 | D:5      | Reached skill level 5 in Staves
+  2955 | D:5      | Gained mutation: You may emit foul miasma when damaged in
+                  | melee. [demonic ancestry]
+  2955 | D:5      | Reached XP level 7. HP: 26/51 MP: 7/10
+  3113 | D:5      | Noticed Sigmund
+  3129 | D:5      | Killed Sigmund
+  3129 | D:5      | Reached skill level 1 in Transmutations
+  3203 | D:5      | Found a hide-covered altar of Uskayaw.
+  3294 | D:5      | Found a staircase to the Ecumenical Temple.
+  3306 | Temple   | Entered the Ecumenical Temple
+  3401 | D:5      | Noticed Ijyb
+  3420 | D:5      | Splashed by Ijyb's acid
+
+Skill      XL: |  1  2  3  4  5  6  7 |
+---------------+----------------------+-----
+Staves         |  3        4     5    |  5.3
+Dodging        |     3                |  3.7
+Armour         |        1     2  3    |  3.3
+Spellcasting   |           1     2    |  2.5
+Fighting       |                    3 |  3.1
+Transmutations |                    1 |  1.0
+Throwing       |                      |  1.7
+Stealth        |                      |  0.5
+
+Action                   |  1- 3 |  4- 6 |  7- 9 || total
+-------------------------+-------+-------+-------++-------
+Melee: Quarterstaff      |    68 |   189 |    39 ||   296
+       Headbutt          |     8 |    36 |     8 ||    52
+       Kick              |       |    13 |     3 ||    16
+Throw: Throwing net      |       |     1 |       ||     1
+ Cast: Beastly Appendage |       |    13 |     2 ||    15
+  Use: Potion            |       |     2 |     1 ||     3
+ Stab: Sleeping          |     2 |     1 |       ||     3
+       Distracted        |       |       |     2 ||     2
+  Eat: Chunk             |       |     7 |     1 ||     8
+Armor: Leather armour    |     4 |     2 |       ||     6
+       Ring mail         |       |    26 |       ||    26
+       Scale mail        |       |     2 |     6 ||     8
+Dodge: Dodged            |    46 |   157 |    25 ||   228
+

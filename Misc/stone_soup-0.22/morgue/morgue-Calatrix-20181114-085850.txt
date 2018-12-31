@@ -1,0 +1,214 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+156 Calatrix the Skirmisher (level 5, -9/42 HPs)
+             Began as a Demonspawn Abyssal Knight on Nov 14, 2018.
+             Was a Believer of Lugonu.
+             Killed by divine providence
+             ... invoked by an orc priest
+              (12 damage)
+             ... on level 3 of the Dungeon.
+             The game lasted 00:09:15 (3181 turns).
+
+Calatrix the Skirmisher (Demonspawn Abyssal Knight) Turns: 3181, Time: 00:09:16
+
+Health: -9/42      AC:  4    Str: 12    XL:     5   Next: 14%
+Magic:  6/6        EV: 11    Int: 14    God:    Lugonu [**....]
+Gold:   118        SH:  0    Dex: 13    Spells: 4/4 levels left
+
+rFire    . . .     SeeInvis .   p - +0 whip
+rCold    . . .     Gourm    .   (no shield)
+rNeg     + . .     Faith    .   b - +0 leather armour
+rPois    .         Spirit   .   (helmet restricted)
+rElec    .         Reflect  .   (no cloak)
+rCorr    .         Harm     .   t - +0 pair of gloves
+MR       .....                  (no boots)
+Stlth    +.........             (no amulet)
+HPRegen  0.14/turn              g - ring of positive energy
+MPRegen  0.10/turn              (no ring)
+
+@: no status effects
+A: claws 1, horns 1
+a: Depart the Abyss, Bend Space, Renounce Religion
+
+
+You were on level 3 of the Dungeon.
+You worshipped Lugonu.
+Lugonu was pleased with you.
+You were not hungry.
+
+You visited 1 branch of the dungeon, and saw 3 of its levels.
+You visited the Abyss 1 time.
+
+You collected 118 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +1 mace
+ p - a +0 whip (weapon)
+Armour
+ b - a +0 leather armour (worn)
+ k - a +0 plate armour
+ r - a +0 scale mail
+ t - a +0 pair of gloves (worn)
+Jewellery
+ g - a ring of positive energy (left hand)
+Scrolls
+ d - 3 scrolls of teleportation
+ e - a scroll of remove curse {unknown}
+ h - a scroll of noise {unknown}
+ j - 3 scrolls of identify
+ l - a scroll of enchant weapon {unknown}
+ o - a scroll of immolation {unknown}
+ s - 2 scrolls of amnesia
+ u - a scroll of blinking
+Potions
+ f - a potion of heal wounds
+ i - a potion of cancellation
+ m - a potion of flight {unknown}
+ n - a potion of curing
+Comestibles
+ c - 9 rations
+ q - 4 chunks of flesh
+
+
+   Skills:
+ * Level 4.3 Fighting
+ * Level 3.3 Maces & Flails
+ * Level 2.2 Armour
+ * Level 1.4 Dodging
+ + Level 0.3 Stealth
+ * Level 2.5 Invocations
+
+
+You had 4 spell levels left.
+You didn't know any spells.
+Your spell library was empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (3/15)            
+
+Altars:
+Uskayaw
+
+
+Innate Abilities, Weirdness & Mutations
+
+You have sharp fingernails.
+You have a pair of small horns on your head.
+
+
+Message History
+
+The orc wizard is severely wounded.
+The orc wizard hits you but does no damage.
+The orc wizard gestures wildly while chanting.
+The orc wizard blinks!
+The orc priest hits you.
+You barely miss the orc priest. The orc priest closely misses you.
+The orc wizard mumbles some strange words.
+The orc wizard blinks!
+You hit the orc priest but do no damage.
+You headbutt the orc priest, but do no damage.
+The orc priest calls down the wrath of Beogh upon you.
+Beogh smites you!
+* * * LOW HITPOINT WARNING * * *
+You barely miss the orc priest. You headbutt the orc priest.
+The orc priest is lightly wounded.
+The orc wizard gestures wildly while chanting.
+The orc wizard blinks!
+The orc priest calls down the wrath of Beogh upon you.
+Beogh smites you!
+You die...
+
+# #.####..#....#.#
+# #....#..#.##.#.#
+# ####.#..#.##.#.#
+#    #.#..#.##.#§#
+#  ###.#..#.##.#.#
+#  #......#.##.#.#
+#  #>#.####.##.#.#
+#  #........##.#o#
+##############.#.#
+...............#.#
+################@#
+               #o#
+ #o#############o#
+ #........o.o....#
+ #################
+
+
+You could see an orc priest, an orc wizard and an orc.
+
+Vanquished Creatures
+  Terence (D:2)
+  A gnoll (D:1)
+  2 adders
+  2 oozes
+  An adder skeleton (D:3)
+  A worm (D:3)
+  5 dart slugs
+  3 leopard geckos
+  7 orcs (D:3)
+  3 ball pythons
+  7 giant cockroaches
+  8 goblins
+  5 hobgoblins
+  7 kobolds
+  2 quokkas (D:3)
+  5 bats
+  2 frilled lizards (D:2)
+  6 rats
+68 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | Abyss:1  | Calatrix the Demonspawn Abyssal Knight began the quest for
+                  | the Orb.
+     0 | Abyss:1  | Reached XP level 1. HP: 18/18 MP: 2/2
+    82 | Abyss:1  | Noticed an efreet
+    83 | Abyss:1  | Noticed a large abomination
+    84 | D:1      | Escaped the Abyss
+   379 | D:1      | Gained mutation: You have a pair of small horns on your
+                  | head. [demonic ancestry]
+   379 | D:1      | Reached XP level 2. HP: 24/24 MP: 3/3
+   405 | D:1      | Reached * piety under Lugonu
+   587 | D:1      | Reached XP level 3. HP: 20/30 MP: 4/4
+  1191 | D:2      | Found a faded altar of an unknown god.
+  1407 | D:2      | Reached skill level 4 in Fighting
+  1699 | D:2      | Noticed Terence
+  1715 | D:2      | Killed Terence
+  1715 | D:2      | Reached skill level 1 in Dodging
+  1715 | D:2      | Gained mutation: You have sharp fingernails. [demonic
+                  | ancestry]
+  1715 | D:2      | Reached XP level 4. HP: 22/37 MP: 5/5
+  1946 | D:2      | Found a hide-covered altar of Uskayaw.
+  2833 | D:3      | Reached XP level 5. HP: 37/42 MP: 6/6
+  2892 | D:3      | Reached ** piety under Lugonu
+  3181 | D:3      | Killed from afar by an orc priest
+
+Skill      XL: |  1  2  3  4 |
+---------------+-------------+-----
+Maces & Flails |     2     3 |  3.3
+Armour         |        2    |  2.2
+Fighting       |        4    |  4.3
+Dodging        |        1    |  1.4
+Stealth        |             |  0.3
+Invocations    |             |  2.5
+
+Action                   |  1- 3 |  4- 6 || total
+-------------------------+-------+-------++-------
+Melee: Mace              |    70 |     8 ||    78
+       Headbutt          |    13 |    26 ||    39
+       Whip              |    11 |   144 ||   155
+Invok: Depart the Abyss  |     1 |       ||     1
+  Use: Scroll            |       |     4 ||     4
+       Potion            |       |     4 ||     4
+ Stab: Sleeping          |     1 |     1 ||     2
+  Eat: Chunk             |     2 |     5 ||     7
+Armor: Leather armour    |    23 |    48 ||    71
+Dodge: Dodged            |    41 |    85 ||   126
+

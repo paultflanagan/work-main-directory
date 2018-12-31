@@ -1,0 +1,55 @@
+I suppose it would make sense to take out the cleanup commands I have in RunDualFormat.vbs and put them in the new UFT script.
+
+Should make a call like 
+	strStatus = RunAdvisor("SetupEnv")
+before all of the other calls
+
+Structure of SetupEnv:
+	1. FilePrepare
+		Where I would put the commands I took out of RunDualFormat.vbs
+	2. GuardianPrepare
+		Kill Guardian
+		Reopen
+		Look enter username and password, login
+		resize window
+	3. TIPSPrepare
+		TipsKillAll.bat
+		Reopen
+		Start>Diagnostic
+		(wait for login button)
+		enter credentiatls and login
+
+Creating
+GUI Test in C:\Automation\Duplicate Check, right?
+Created the three Call-to-Actions (why are they called that)
+
+Added all commands to action 1, should be done
+skipping action 2 for now
+In action three I plan on running TipsKillAll.bat
+	but it has two pauses that require a key press to continue
+	Should I make a new batch file with those taken out or tell UFT to make the key presses?
+	Paul recommends I go with path 2
+How can I be sure UFT knows when to key press?
+	Have timed waits?					NO
+	Create a zzflag.exe in the Bin, open it before,
+		and wait for it to be closed last?		Maybe?
+	Have it press a key every second until the
+		cmd window disappears?				Maybe?
+	Paul says option 3
+
+I've decided, at Paul's suggestion, to rearrange some of the commands, namely, to move all of the kill sections to the first action to keep them all in one place.
+So, I renamed the first action to "EnvironmentClear":
+Updated Structure of SetupEnv:
+	1. EnvironmentClear
+		Where I would put the commands I took out of RunDualFormat.vbs
+	2. GuardianPrepare
+		Kill Guardian
+		Reopen
+		Look enter username and password, login
+		resize window
+	3. TIPSPrepare
+		TipsKillAll.bat
+		Reopen
+		Start>Diagnostic
+		(wait for login button)
+		enter credentiatls and login

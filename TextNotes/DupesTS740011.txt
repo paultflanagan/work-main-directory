@@ -1,0 +1,1555 @@
+Dupes Troubleshooting: 7.40.011
+
++++++++++++
+21-Sep-2018
++++++++++++
+Alex told me about the ENGADVDEV06 machine which was already set to the version I needed.
+Still working to set it up
+Has TIPS on the C:\ drive, and the OS is on D:\, which might get confusing.
+Every time I open a Jenkins page it gives me an warning about being in document mode, and I can't figure out how to fix it.
+On Jenkins, I can't seem to find any Build Executors assigned to this machine
+
+
+It's actually mostly run through ENGADVDEV01, and then the UFT script on that box points to DEV06, which only runs the TIPS and VisionSimulator instances
+That's simpler than it could have been, for sure.
+	It might even be worth it to set up DEV01 as a local git repo now
+I'll do a precursory test to see how things are working
+
+
+Running Test 0...
+Not sure if the purge went off correctly
+"File Open Failed" titled, otherwise blank message box
+pretty sure it was connected to the wrong server (i.e. not DupeServer)
+Aborted
+
+Added new unique line, DEV06 line.
+Line Connection>new,
+back on DEV06, used connection manager to link to DupeServer
+got an error saying the SQL server blocked access to something
+
+Checking on DupeServer itself
+
+After letting Alex do his thing for a while, he said that it was probably ready to go.
+Starting next run
+
+
+Running Test 0.1...
+Forgot to add in the Final_results.bat call to the Jenkins procedure.
+	ran it and the .pdf gen script on ENGSEC830QA manually.
+Results:
+	Run Time:		00:29:58
+	Success Totals:	56/60
+	Failed Cases:	21,	27,	36,	42
+	
+	# :	Name							Expected Desc.								Resulting Desc.
+	21:	Import_FullyRandomList			... "for Carton" ... FT-B 4000 xml			File import succeeded	(?)
+	27:	Email Validation				Validate the email							Email is not received
+	36:	Import_FullyRandomList			... "for Carton" ... FT-B 70000 xml			File import succeeded	(?)
+	42:	Email Validation				Validate the email							Email is not received
+	
+The way these errors are arranged would seem to imply that either the same action is used twice, maybe once for each testing instances
+Or, the broken code was just copy pasted from one place to the other
+It's also possible that it isn't a code error and is something wrong with an external factor, like the server settings.
+Bottom line I suppose would be that fixing one will make the other easier to fix, if make the other fixed as well
+
+Looking in to find the LogResults in question.
+UFT scripts called:
+	DuplicateCheckThreeLevel_OverrideQuarantineLot_81x
+	DuplicateCheckThreeLevel_GoodLotExDataNames_81x
+	FT_Provisioning_Driver
+	
+Data sheets used:
+	[Pre/Post]Lot_Qaccept.xls
+	[Pre/Post]Lot_ExcludeDataname.xls
+	
+	
+Case 27:	DCTL_OverrideQuarantineLot_81x > VerifyEmail_App_Quarantine [VerifyEmail_App_Quarantine] [2] > Line 12-16
+	After seeing that I couldn't edit the action, Alex confirmed my suspicion about the action being used twice, that is in fact how it was set up.	
+	Since it's just pointing to an action in another location, I have to go to that file itself to edit it.
+			VerifyEmail_App_Quarantine > Line 12-14
+Seems like the same code from the email scrap(p)er sections of the other tests.
+I should think I'll be able to copy the way I got those to work and it would work here, too
+	The code is identical to what is written in the earlier test.
+Checking the notes from previous test to see if there was something I did to make it work?
+
+
+
++++++++++++
+02-Oct-2018
++++++++++++
+Returning as part of my attempts to set up tests for nightly automation
+
+Looks like I never got this one to full passing status, but maybe I'll do a dry run anyway to see if anyone else made any progress?
+Actually, I talked to Paul about it and he said that he and Alex worked on it for a bit.
+He says I'll have to roll back to a snapshot to get to it, though, so I should push all my recent changes to git first.
+
+
+After wasting a lot of time trying to make git work properly, I've got everything backed up and pointing to the RRepo.
+AND, it turns out I won't need to change snapshots for this test. Cool.
+
+On top of all that, after struggling to grab a scrap of code out of one of the UFT tests for Paul,
+    it's getting late and I have to leave on time today, and I don't want to leave a test running when I go, in case it interrupts the nightly tests.
+
+I'll pickup fresh tomorrow, I suppose.
+
+
++++++++++++
+03-Oct-2018
++++++++++++
+Picking up with testing.
+
+Running test 0...
+"COM Surrogate has stopped working"
+Might still be working?
+    It's still navigating, but it may have skipped a step, I'm not sure.
+Getting errors with the number allocation (no random SPT numbers nlock)
+    guessing something did go wrong
+basically doing nothing now
+Aborting
+Trying again
+
+Running Test 0.1...
+No issue getting started
+Results:
+	Run Time:		00:38:02
+	Success Totals:	56/59
+	Failed Cases:	12, 27, 42
+
+	# :	Name							Expected Desc.								Resulting Desc.
+    12: Email Validation                Verify Email is Not Generated NOT EXPECTED  Email is not generated NOT EXPECTED
+    27: Email Validation                Validate the email                          Email is not received
+    42: Email Validation                Validate the email                          Email is not received
+    
+It would appear as if all these errors have to do with not receiving emails
+In fact, these three failed tests are all the email interactions.
+
+Locations:
+    12:     DuplicateCheckThreeLevel_GoodLot_81x > VerifyEmail_App_GoodLot
+    27:     DuplicateCheckThreeLevel_OverrideQuarantineLot_81x > VerifyEmail_App_Quarantine
+    42:     DuplicateCheckThreeLevel_GoodLotExDataNames_81x > VerifyEmail_App_ExcludeDataname
+    
+So in the second two actions are a bunch of hard coded waits, weird structures, and references to the old scrapper script.
+For now, for those two, I'll just point it to the new script and change the method of waiting, copying over from VE_A_GoodLot.
+As for the first one, it wants to not have any emails in the Duplicate Check inbox, but it is seeing one, but the email is not a 
+
+Ohhh, wait, I had deleted the \Emails\ directory and forgot to put a new one in or modify the script to ensure presence of one.
+
+Alright, I probably took too much time doing it, but I edited the EmailScrapperPoll.py to always start with a fresh \Emails\ folder.
+
+Editing second two VE_As to point to EmailScrapperPoll
+Starting new test
+
+Running Test 1...
+Results:
+	Run Time:		00:40:04
+	Success Totals:	56/59
+	Failed Cases:	12, 27, 42
+    
+12: same
+27: same
+42: same
+
+Damn it, my syntax was off for the try statements, too
+    I could have just removed the except block
+    code modified and tested to run properly
+
+Looking back into the outlook inbox I only see one email from this test, timestamped at 11:05 AM.
+Checking that against the results.txt, I see that the closest corresponding test would be 27
+    However, if the email scrapper was never even running, I think that these results would be moot.
+I need to get a run in where the email scrapper runs properly before I can make judgments about the integrity of the rest of the code.
+Starting new run
+
+
+Running Test 2...
+The length of this test is so painful, but I am going to lunch now, so I'll leave this running in the background.
+When I get back, I'll check the results, and then not start a new test until after I've gone through most of this manually and deliberately.
+
+God damn it, the program got stuck before it even logged in to Guardian
+
+Aborting
+
+Just going to go ahead and clean up the VE_A code and any other tidying I can think of so I won't have to wait another 40+ minutes
+Also, I see a total of five VE_As in the Duplicate Check directory. I've worked on one and this current test uses two others
+    should I update all five? Probably not, since I don't know exactly what the use cases for each of the actions are, even if I could guess.
+   
+VE_A_Quarantine looks so out of whack 
+it was set to copy the data from Email_1... before running the scrapper.
+WTFITS
+
+So now that I've gotten a better look at the inside of this script, it would appear as if there supposed to be only one email generated:
+    1.  Clean lot is run, the VE_A_GoodLot is run to make sure no warning emails are sent
+    2.  Dupe lot is run, the VE_A_Quarantine is run to ensure the duplicates are detected and locked away
+    3.  (What I think is the Dupe lot minus the dupes) lot is run, the VE_A_ExcludeDataname is run to make sure all the issues have been squared away
+    
+I've updated all the VE_As. Hopefully I'll get a more workable result this next time.
+Starting new test.
+
+
+Running Test 3...
+File Open failed - otherwise empty msgbox
+Hit ok and the test appears to be continuing for now
+Results:
+	Run Time:		00:32:05
+	Success Totals:	58/59
+	Failed Cases:	27
+    
+Cool, so it looks like I got two of them to work, I'll just take another look at the Quarantine one
+Also I'm confused about the File Open Failed message, but maybe it was trivial.
+I won't worry about it unless it happens again.
+
+Ok so I'm an idiot, 27 wasn't running VE_A_Quarantine, it was running a fourth action, VE_A_2ndSafeguard
+    somehow I completely missed that, it was right there in the wrapper vbs script the whole time...
+Modifying that VE_A to match the other three.
+So now I think the only VE_A I haven't fixed is VE_A_ProvisionNew
+    It'll probably come up eventually, but at least I'll have an idea of how to handle it.
+Starting new Test
+
+
+Running Test 4...
+Results:
+	Run Time:		00:35:41
+	Success Totals:	60/60
+	Failed Cases:	none
+    
+... We appear to have taken on an extra test, but, hey! Full pass!
+I know I need to run for consistency but the runs just take so damn long.
+    Maybe I'll just do one extra consistency run, and if that passes I'll move on.
+Starting consistency run
+
+
+Running Test 5...
+"File open failed" again...
+Results:
+	Run Time:		00:31:11
+	Success Totals:	57/59
+	Failed Cases:	26, 41
+
+What
+It got rid of one test case, and two of the email validations failed.
+The removed test case was the first email validation.
+Might be related to the "File Open Failed" message?
+
+Paul looked through it with me, and we cleaned up some of the potentially problematic redundancies in VE_A_GoodLot
+    If this were the problem, then I don't understand why it ran fine in the first place, but no matter.
+    It's good to be able to neaten up the code whenever possible.
+Finished tidying up VE_A_GoodLot and started new test.
+
+
+Running Test 6...
+Looking ahead, it appears to have skipped over the first email check again.
+I'll record the results once this has finished, set up the machine for overnight testing, and then pick up again tomorrow.
+Results:
+	Run Time:		00:38:23
+	Success Totals:	58/59
+	Failed Cases:	41
+
+I threw 740011 onto the auto testing too, just for the hell of it.
+
+
++++++++++++
+04-Oct-2018
++++++++++++
+I got non-useful results from overnight run: first one froze and it messed up the other two.
+Ran each of the tests once back to back as a proof of concept of sorts.
+Below is the result from that test, copied over from DailyLog.txt:
+
+Running Test 6...
+    "File Open Failed"
+    Oh damn I forgot to show Paul
+    9:48/9:47
+    Test Summary: Full Clear-ish?? (00:32:18)
+        It says 100%, but it only has 58 entries...
+        Missing: First Email Validation, and this time, Third Email Validation test.
+//End copy
+
+I believe that this is more evidence for Paul's interpretation of what was causing the "File Open Failed"
+If his idea is correct, then the reason for the file open failed error was the script attempting open the items in an empty collection
+    I was assuming that, since it called for each item in the collection, if the collection had no items, it wouldn't run the commands even once
+    But it seems likely that there is a discrepancy between how I assumed the data structure worked and how it was actually built.
+So I suppose the next step will be to modify the VE_As which expect no emails to resemble the current state of VE_A_GoodLot.
+    Although, it may make more sense to get VE_A_GoodLot airtight first
+        Particularly, figure out why its LogResult has been consistently skipped over in recent tests.
+I think the best way to go about this will be the artificial breakpoint via msgbox method
+    put it at the beginning of the test which runs VE_A_GoodLot (DuplicateCheckThreeLevel_GoodLot_81x)
+    Run via Jenkins, abort the job and halt the script upon arrival, then step in and run it manually.
+    
+So, I looked at the VE_A_GoodLot code, and, because I'm an idiot, I forgot to add the "End If" line at the end of the action.
+    Cool.
+    
+Starting setup for manual run...
+Artificial Breakpoint reached
+Aborting Jenkins job...
+Killing UFT scripts...
+Opening UFT test...
+Adding breakpoints...
+Running Test Manually...
+
+"File Open Failed"
+Actually this seems like a good time to address this. 
+The box came up while the script was running the PIM.InitializeFromData() in Initialize in DuplicateCheckThreeLevel_GoodLot_81x
+    This is interesting, since I had figured the error would have popped up during the VE_A_GoodLot action.
+    To be honest, I have absolutely no idea what PIM.InitializeFromData() does.
+    I guess it's time to look into it?
+Ok so it failed that first time, but when I ran it again step-by-step, there was no error.
+Paul says that this inconsistency is a big part of what has been making this error such a nuisance
+One really sloppy suggestion he had was to, upon detection of the particular message, abort and run the action again.
+    I'm not sure how I would implement that, though, since the presence of the message holds up the flow of the script.
+
+Anyway, once I reran the test and got through without getting the error message, the VE_A worked fine.
+Going to run just the VE_A with a dummy email in the inbox to make sure it responds properly.
+Result is appropriate.
+
+I'm starting to dislike the way I coded the wait again, though
+I may as well fix it now, I guess, since I'm pretty much just waiting on Paul to come and help me with this Heisenbug (Schrodenbug?)
+Fixing VE_A_GoodLot to wait for the python shell to go away instead of for the file to appear...
+Done. Adding section of code to the other VE_As and associating the new Shared Object Repository I made with them.
+All VE_As (including VE_A_ProvisionNew) are now updated.
+May as well run again, see what happens.
+Starting new test
+
+
+Running Test 7...
+Note to self: remove artificial breakpoint.
+Results:
+	Run Time:		00:40:40
+	Success Totals:	51/60
+	Failed Cases:	48, 49, 50, 51, 52, 53, 54, 55, 56
+Failed cases were all the import steps of Prelot_ExcludeDataname
+    If I had to guess right now, I would think that something went wrong in the first one and that caused the rest to fail
+        Maybe it was a Guardian navigation hiccup which threw off the rest of the steps?
+    Alternatively, one separate agent or driver malfunctioned, which caused all of the tests to fail for the same reason, but not as a result of a cascade
+        If this is the case, maybe it was a server issue?
+Removing artificial breakpoint and starting again to see if this is a consistent problem
+
+
+Running Test 7.1...
+Results:
+	Run Time:		00:33:44
+	Success Totals:	59/60
+	Failed Cases:	42
+I don't believe it was the reporter which malfunctioned this time, I think it was the software.
+I looked in the deleted inbox items and could only find one email which appeared to come from this most recent test
+I think I want to update the logging capability of the EmailScrapperPoll script to indicate when it starts and stops a run 
+    currently all the logs just string together as one
+        I hope there isn't some other script which relies upon that log file being formatted in a certain way
+            Although, the willingness of Josh to update the log function earlier makes me think there isn't, if I remember correctly
+Let's see what we can do...
+Bookended the script's main loop with 2 additional log_output calls, which indicate the start and end of each instance of Email Scrapping.
+    Additionally, the final log_output returns the total number of emails downloaded that run.
+Cool, now the log should be even more useful.
+Trying again
+
+
+Running Test 7.2...
+Results:
+	Run Time:		00:33:18
+	Success Totals:	59/60
+	Failed Cases:	42
+Ok, let's look at the improved log.
+Should be a total of 4 calls to the python script, so I'll look at the four most recent groupings.
+Results of 0, 1, 0, and 0 emails received.
+I believe the intended array would be 0, 1, 1, 0 (at least, this is what I expect according to the wording of the results structures)
+Corresponding to:
+    DuplicateCheckThreeLevel_GoodLot_81x
+        >VE_A_GoodLot
+    DuplicateCheckThreeLevel_GoodLot2ndSafeguard_81x
+        >VE_A_2ndSafeguard
+    DuplicateCheckThreeLevel_OverrideQuarantineLot_81x
+        >VE_A_Quarantine
+    DuplicateCheckThreeLevel_GoodLotExDataNames_81x
+        >VE_A_ExcludeDataname
+
+Currently, the error is occurring during VE_A_Quarantine
+Since I have confirmed that no email is generated during its window, I feel I have confirmed that the issue is not with the VE_A itself.
+Now, I just need to figure out why the email is not being sent.
+    easier said than done
+I suppose one place to start would be to use an artificial breakpoint
+    Insert at the start of DCTL_OverrideQuarantineLot_81x, then run manually, watching for crashes
+    This would determine whether the issue is a coding error (outside of the VE_As I've been working with), or something with the software.
+
+Starting setup for manual run...
+Artificial Breakpoint reached
+Aborting Jenkins job...
+Killing UFT scripts...
+Opening UFT test...
+Adding breakpoints...
+Running Test Manually...
+
+Got to the end with no issue.
+I have confirmed that the issue is with either the software or the server
+    Here we go again.
+Time to break out that checklist...
+
+Guesses:
+    Some configuration setting was not properly updated.
+        Might have to do with not checking the correct product types,
+        wrong manufacturer settings,
+        incorrect notification triggers,
+    ... that's my only lead so far.
+I've been looking at the Initial and Failed Notifications tabs in Manual Notification Resend
+    Interestingly I see what I believe to be the most recent 2ndSafeguard lot (1810040-154209) in the Failed section, even though it appears to have succeeded.
+    I also see one lot (181004-160040) corresponding to the manual run through of QuarantineLot
+    Finally, a third lot (181004-153356) I can't identify, possibly from the previous run of QuarantineLot?
+Also, looking at the Notification logs, I see the same number (3) of sets of three notifications, with the same lot codes
+    The server is seeing the notifications and registering them, but it is not sending emails for them?
+Error Log: I see four total Errors, one corresponding to each of the established times, and a fourth occurring between 154209 and 160040, stamped 4:01:04 PM
+
+
++++++++++++
+05-Oct-2018
++++++++++++
+Results from overnight test:
+    Same as the night before, first one timed out, second two failed because of the locked up UFT
+    I've been talking with Paul about it, who is working from home today, but in the meanwhile I'll continue running 740011 tests.
+Resuming troubleshooting
+
+
+Running Test 7.3...
+Results:
+	Run Time:		00:32:04
+	Success Totals:	59/60
+	Failed Cases:	42
+    
+Yep, nothing has changed since I left (worth a shot)
+So my leading theory is that there's something wrong server-side
+    This is probably something I'll have to bug Alex about.
+What, there's four lots under the Manual Notification window this time, all timestamped from the test I ran this morning.
+    
+Gathering info to one place:
+Manual Notification Resend
+    Manufacturer FT-B
+        4 Lots detected: (181005-)075313, 080104, 080911, 081712 (A,B,C,D)
+    All four have 1 Remaining Not Sent item, Pallet type
+    Appear in Initial Notifications and Failed Notifications, State: Pending.
+    Nothing appears under Successful Notifications
+Notification Log
+    total of 12 entries, 1 of each of 3 types for the 4 lots
+        GS1 Commissioning, SAP ATTP Commissioning, TraceLink Commissioning
+    Appear ~2min12sec after the creation of each lot
+    State: Pending, for all
+    Notification Method: Completed Lot Notification, for all
+Error Log
+    6(??) entries
+        The last one is 40+ minutes after the second to last, and definitely after the end of the test...
+    All entries:
+        Process Name:   Invoke Communication Agent
+        Source:         [Guardian].usp_InvokeAgentOneCall
+        Description:    xp_SetNamedWinEvent::OpenEvent for 'Systech.SendNotification': The system cannot find the file specified.
+    As for the other five's appearance times relative to the lots:
+        1:  A + 2m14s
+        2:  B
+        3:  B + 2m16s
+        4:  C + 2m16s
+        5:  D + 2m15s
+I think I should ask Alex what "Invoke Agent One Call" is once he gets off the phone.
+
+He told me that the notifications actually have nothing to do with the emails being generated or not
+    The email should be created as soon as the duplicates are detected.
+We turned them off, just because
+    Although actually mostly just to help in isolating the cause of the problem.
+    
+
+
+Running Test 8...
+11:34 I don't know if it disabled any numbers
+    It just navigated to the Data Viewers (Number Ranges, Number Lists, and China SFDA Allocations) and waited a few seconds before moving on.
+11:42 Again, I don't think the disable numbers steps did anything
+    There was a "Disable" button I saw, but nothing was pressed.
+    I'll have to look through the Driver later
+So, I looked through the Disable_Numbers action, and it looks like it isn't supposed to be pressing any of the buttons, so never mind.
+
+The closest semblance to a next idea I have is to Artificial Breakpoint the start of _OverrideQuarantineLot_81x and keep an eye on DEV06 as I step through
+
+
+We've been doing the breakpoint a couple times, and, lo and behold, it has generated an email.
+    No idea why.
+    Might have something to do with the Pauses??
+        But that wouldn't make sense, because the UFT script has pauses coded in
+        Why on Earth would the Server not be able to send out a notification email while DEV01 is running UFT??
+        
+Running again, taking out the Artificial Breakpoint, seeing if it magically fixed itself
+    which, don't get me wrong, would be cool, but would also be very frustrating.
+So it seems to not be sending an email this time.
+
+Could it be that continuing the UFT script actually Does abort something?
+Do we need to get it to wait longer by watching out for something?
+
+4:32 - Stopped
+4:33 - Resumed
+4:35 - Email received
+        In the middle of Good1's PIM.RunGridRow
+        
+Why is the software like this
+
+Is it possible that the same agent or program or whatever (excel?) is used in both scripts (the FT_Provisioning_Driver and DCTL_OverrideQuarantineLot_81x)?
+    Perhaps jumping straight to the second script interrupts the progress being made by the first?
+    But that makes like zero sense.
+    
+    
++++++++++++
+08-Oct-2018
++++++++++++
+Running a test upon getting in today.
+Overnight results were not encouraging: mostly fails, mostly having to do with data importing
+And for some reason DualFormat is still getting stuck in the Diagnostic Screen Manager opening step.
+
+Running Test 8.1...
+Results:
+	Run Time:		00:47:31
+	Success Totals:	59/60
+	Failed Cases:	42
+No surprises here
+    Run time was a bit longer because I realize I forgot to remove my most recent Artificial Breakpoint.
+
+Probably worth checking in with Paul and letting him know what I've been working on and asking for suggestions at this point.
+
+Removing Artificial Breakpoint.
+
+I let Paul know and he said he'll come over and do a mini code review in half an hour.
+Until then I can't think of anything I ought to do testing-wise.
+    All of the tests either work fine when I run them manually (DF and ILCD) or have one issue which testing hasn't helped me track down (740011)
+
+    
++++++++++++
+09-Oct-2018
++++++++++++
+The event went well, although that one orcish couldn't stop chewing on the silverware and got us kicked out
+So I guess it actually did not go well. At all.
+
+Results from last night's test were pretty much the same.
+
+
+Running Test 8.2...
+As of 9:00, test has frozen. Test has been running for almost an hour. Killing script to force a publish of results.
+Results:
+	Run Time:		00:22:24
+	Success Totals:	41/42
+	Failed Cases:	42
+Odd how the test froze like that. Still, the results were otherwise familiar.
+I forgot that running ScriptForcequit would prevent me from being able to see which script it was caught on by reopening UFT. Oh well.
+Retrying while I finish working on my interpretation of last night's automated results.
+Actually, I want to read up on some methods with UFT's help window.
+UFT Help window did not help, but I found something online which appears to be what I'm looking for.
+Retrying Test
+
+
+Running Test 8.3...
+"RDP Clip Monitor has stopped working"
+Interesting development:
+    The current test is progressing very slowly. I checked the results.txt file and found a whole bunch of errors
+    The pattern of failed tests exactly matches that of the failed 7.40.011 automated test of last night
+    I looked on the ENGADVDEV06 machine and saw an "IPS Engine Stop" error:
+        "The following condition(s) have stopped the line:
+            CaseSetSEQNumber: Error (80004005):'Timeout expired' establishing database connection
+            CartonGetGtinNumber: 707: Request for Initial Block of SPT numbers cannot be satisfied. Requested 10010 and received from Guardian 9980!
+        "
+    Is it possible that this is close to what happened overnight?
+My initial guess is that, in this case, the RDP Clip Monitor halted Guardian navigation
+When the IPS Engine on ENGADVDEV06 attempted to connect to the server to read the product info, it saw that nothing had been created and crashed.
+As for the night cases, one other issue is causing Guardian to malfunction each night
+    But, the missing Guardian setup caused the same results on the IPS Engine's side.
+If my guess is correct, I just need to find out that reason why Guardian isn't working, then the rest should work
+
+
++++++++++++
+10-Oct-2018
++++++++++++
+I ran a few times but I've been getting that "File Open Failed" issue repeatedly, and occasionally the RDP crash.
+
+I'll keep trying, undocumented, until Paul gets back and I can ask him about it.
+This time, it's been apparently before any data has been loaded, whereas, most of the other times, it has been during the attempts to read the Email text files.
+
+On DEV01: Appears to give the error at each "ACTION END: Disable_Numbers" step?
+On DEV06:   "Error:PalletGetSSCCNumber: 707: Request for Initial Block of SPT numbers cannot be satisfied.
+             Requested 21 and received from Guardian 0!"
+             
+I believe these errors are appearing either in or right before the VE_As. I'll look around those to see what's up.
+    Might be another issue with trying to read files which do not exist.
+The Results files show 100% pass, but only with 56/56 tests instead of 60
+    Again leads me to believe that the four VE_As are having trouble and likely being skipped.
+Checking EmailScrapper.log shows that no email checking attempts have been made from the past tests
+    Not since 08:49:18 (Current time is 10:54:15)
+Interestingly, checking the Duplicate email inbox and the Deleted Items of outlook shows that no emails have been received since then either
+It's possible that the root of the issue is not with the VE_As, but the VE_As are failing because of another issue.
+I'll check for the location of the "ACTION END: Disable_Numbers" print log along the UFT script.
+
+Checking the locations of the print calls throughout the script...
+I believe I can confidently place the issue as occurring after the end of each FT_Provisioning_Driver action.
+
+I finally managed to set it up properly, and it is failing at the "call PIM.InitializeFromData()" step in the Initialize actions.
+So, it just hits that one issue in the Initialize action, and then I guess it completely aborts the rest of the whole script, including the VE_A.
+
+My guess would be that it is getting caught up on locating the C:\PimLabTestData\DuplicateCheckPimLabTestData_3level_AcceptQuarantine_810.xlsx
+    but, that's only because I don't think I see it attempting to open any other files.
+I have no idea why it is unable to detect the presence of the .xlsx file, I have confirmed its existence and that the program has the correct path.
+I'm pretty sure I even see the exact step it is getting caught on, but I will try stepping through it to be sure
+    However, I anticipate that it may work fine when running manually, like how the Dupes Failure detection works when run manually.
+Let's find out.
+It got past the first spot I thought it would crash at and it did not crash.
+OK I wasn't paying close enough attention but something happened and it still gave the File Open Failed box
+Appears to have called a subroutine called MyReportEvent and lets see what caused it to appear this time
+OK it was in the IpsOpen(sDirectory,sStationFiles) sub and it was line 1232
+So it appears to have been something else entirely where sStationFiles is "DuplicateCheck3level.ips" and sDirectory is "D:\\tips\\pimlab\\"
+sMsg is "", it is set on line 1228 with sMsg = VisionSim.IpsOpen(sDirectory,sStationFiles)
+Since sMsg length is 0 (and the second char is not '*'), it is triggering the error.
+Why does sDirectory have double slashes ("\\") 
+Looking for this new D:
+Line 496
+Line 1225 - StatonFiles, should be StationFiles?
+Line 1228 - why did it call get VisionSim?
+
+Paul brought over a guy who, as Paul later told me, is the CTO of the company
+We walked him through it, but after taking that extra time and then getting to the step where it would fail, it did not throw the error.
+We're now waiting for him to find the source code of the VisionSimulator window itself, since we want to let it wait for longer before moving on
+    This reminds me a lot of the email issue, where it seems as if giving the server more time to interpret the data removes the issue.
+The current timeout is apparently set to 10 seconds.
+
+To-do:
+    Take the updated version of Vision Simulator from my PDQA directory and put it onto the DEV01 box (probably not also the DEV06?)
+        Might help
+        
+        
++++++++++++
+12-Oct-2018
++++++++++++
+I had been making progress on ILCD today, but I hit a wall, so I'm moving over here for the rest of the day.
+Starting orientation run, see where we're at
+    I did add the latest version of Vision Simulator here, so we'll see what that does for us.
+
+Turns out this test had a VE_A_Quarantine reference as well.
+
+
++++++++++++
+16-Oct-2018
++++++++++++
+Started working here today, running tests while I tried to figure out what happened with last night's tests.
+
+I've lost track of my test numbers, since I've made changes and ran tests without recording it very well here.
+Let's say we're at 9.
+
+
+Running Test 9...
+Results:
+	Run Time:		00:34:13
+	Success Totals:	60/61
+	Failed Cases:	43
+43 is the Database validation one I messed with recently.
+I guess I'll look at the compared files (the target, baseline_740011.txt, and what I assume is the live data one, 3rdSafeguard.txt)
+Well that sucks, they're identical.
+Let's crack open the code?
+    But it's a shared action, so I don't know why it would fail only here...
+Wrong! They're not identical! I compared the wrong two files (like a dingus)
+The live data set contained info for 1000 items, while the stored one only had for 833 items.
+Which is correct? Is it supposed to be 1000? Is it never the same? Is it not intended to be consistent?
+Let's run again and try to find out.
+
+I renamed the old stored data to baseline_740011_less.txt, and renamed a copy of the live set to baseline_740011.txt.
+Starting new test.
+
+Running Test 10...
+Results:
+	Run Time:		00:33:56
+	Success Totals:	59/61
+	Failed Cases:	42, 43
+So this time, no email was sent, so I couldn't check whether the baseline was correct or not.
+    Whoopee, I get to wait another 30+ minutes for more data.
+Nothing unexpected besides that.
+Trying again.
+
+Running Test 10.1...
+On DEV06:
+    "Operation Failed   SptLotInfo: Advisor Connection Error"
+There appears to have been a connection error on the DEV06 side. I anticipate that this may disrupt the test results.
+There's... no .pdf attached to the email I got from the test...
+On the Report Job Console:
+    ...PDF_duplicatecheck.vbs(250, 3) Microsoft VBScript runtime error: The remote server machine does not exist or is unavailable: 'WSObj.Range'
+    ... did someone else use the ENGSEC830QA box when my test was running?
+Pushed it through, got result.
+Results:
+	Run Time:		00:40:14
+	Success Totals:	60/61
+	Failed Cases:	43
+This time, both data sets had the same number of entries, but different product IDs.
+    This leads me to suspect that this test is not supposed to be validated against a baseline.
+I have an idea for a workaround if it doesn't want the baseline check, but I'll ask Alex first.
+Alex said he wasn't sure, but that he thought they were supposed to use the same data each time.
+I'll run a third time and see what I get 
+(No .pdf generation issue this time, too)
+
+So this time when I ran I got (along with a similar results .pdf) a 3rdSafeguard.txt file that matched baseline_740011_less.txt
+Am confuse
+Trying again to see if it loops or something, I don't know
+(Also, I went ahead and coded in the option to run around the file check if we don't want it to.)
+
+
+Running Test 10.2...
+Results:
+	Run Time:		00:40:14
+	Success Totals:	60/61
+	Failed Cases:	43
+Ok so this time, 3rdSafeguard.txt was identical to baseline_740011.txt
+    but it STILL FAILED.
+Wait hang on those are the same results from last time
+Thanks Jenkins
+"...PDF_duplicatecheck.vbs(20, 2) Microsoft VBScript runtime error: Permission denied"
+    no idea
+    
+Actual results:
+	Run Time:		00:33:17
+	Success Totals:	61/61
+	Failed Cases:	none
+Ok so that time it actually passed, thank goodness.
+So at least the checker code isn't broken, but I have no idea why it appears to be cycling through the possible item sets
+Let's run one last time to be sure?
+
+
+Running Test 10.3...
+Results:
+	Run Time:		00:34:15
+	Success Totals:	59/61
+	Failed Cases:	42, 43
+This time, no email (42)
+
+
+Running Test 10.4...
+Results:
+	Run Time:		00:45:41
+	Success Totals:	60/61
+	Failed Cases:	43
+3rdSafeguard.txt was completely unique and only had 818 items.
+That's it, I give up
+    I'm going to ask Paul or Alex to help me find exactly where the data comes from to confirm if it is random.
+    
+Paul said the more pressing issue is that I am not getting 1000 items each time.
+He thinks it may have to do with the batch file pulling the results before the server finishes creating them.
+I wrote a quick script that should wait until the server has completely finished checking the items before continuing
+    If we implement this and still get runs with less than 1000 items, we have a bigger problem.
+I haven't had a chance to test it before I had to leave, so I commented it and will test and implement it tomorrow.
+
+
++++++++++++
+17-Oct-2018
++++++++++++
+I'll uncomment the code from VE_A_Quarantine and run DualFormat to test it, since it has a much shorter run time.
+
+It appears to be running properly, but I still want to cut down the wait times and run through it via UFT before I try it in 740011.
+Shortened the waits in VE_A_Quarantine, created RunDualFormat_Abridged.vbs to run through manually, will jump into UFT when it's done.
+
+To-do: Shorten the waits for the loss of connection checks
+Advisor_V2: 273: invalid or unqualified reference 
+Oh dang, I forgot to remove the damned 6 minute wait in the middle of VE_A_Quarantine
+Also need to add the C:\Windows\System32\cmd.exe to the object repository
+
+I've resolved all of these except the Advisor_V2 error.
+I got Paul to take a look at it and he said that he thinks it is trying to point to the Abort/Retry window, but he isn't sure what's going wrong.
+He said I should ask Alex, and I will once he's free.
+In the meantime, I'll shift to ILCD and see where I'm at there.
+
+Alex confirmed that it was looking for that window, checked one of the updated online versions, and I fixed the code to match it.
+
+Now I'll do a full DualFormat run through Jenkins to make sure the sql loop works.
+    Trim up wait after duplicate serial numbers detected window pops up?
+    Appears to be a deeper issue. The Advisor_V2 function was not built to properly handle the duplicates case
+Fixed it.
+Seems to work just fine. Switching back to 740011.
+
+
+Running Test 11...
+Results:
+	Run Time:		00:34:25
+	Success Totals:	61/61
+	Failed Cases:	none
+Full clear, but what I'm looking for is consistency of the number of results from the sql script.
+Number of results in 3rdSafeguard.txt: 1000
+Next test for consistency.
+
+
+Running Test 11.1...
+Results:
+	Run Time:		00:34:53
+	Success Totals:	60/61
+	Failed Cases:	43
+Number of results in 3rdSafeguard.txt: 880
+OK, problematic.
+Notified Paul. He said, as an additional confirmation, to write the results from each sql poll loop to a separate text file
+    Now we may be able to better tell if we're just not giving it enough time, or if it completes right away.
+Trying again
+
+
+Running Test 11.2...
+Results:
+	Run Time:		00:39:37
+	Success Totals:	59/61
+	Failed Cases:	42, 43
+No emails received, no 3rdSafeguard.txt files generated.
+Trying again.
+
+
+Running Test 11.3...
+Results:
+	Run Time:		00:42:01
+	Success Totals:	60/61
+	Failed Cases:	43
+Strange, no additional 3rdSafeguard.txt files.
+That's annoying. I'll look at it tomorrow.
+
+
++++++++++++
+18-Oct-2018
++++++++++++
+So last time I did not get any separate 3rdSafeguard_*.txt files, even though I would have expected at least one
+    I believe the way I wrote the loop would cause it to make the log immediately after checking the contents of 3rdSafeguard.txt
+    that way, it should create one log file even if the results are complete by the first time the loop completes.
+If I had to guess, I probably just used incorrect syntax for the writing portion 
+    and it's doing that annoying thing where it just skips over the line instead of giving an additional info through an error message.
+I'll run again to confirm the result, and in the meanwhile I'll get back to trying to digest the results from last night's Automated tests.
+
+
+Running Test 11.4...
+Watched and counted, it ran the loop all 6 times. 
+Results:
+	Run Time:		00:37:19
+	Success Totals:	60/61
+	Failed Cases:	43
+Number of results in 3rdSafeguard.txt: 784
+    Otherwise, it matches the baseline_740011_base.txt
+No 3rdSafeguard_*.txt files either.
+I'll do a manual run with OlderAdvisorTest_740011_Abridged.vbs and then walk through the loop to see what goes wrong.
+Yeah, I'm a fool in a man's shoes: I forgot to set the boolean "create" value in the OpenTextFile method call to "True"
+OK, now that that's fixed, let's try for real this time.
+
+
+Running Test 11.5...
+Results:
+	Run Time:		00:34:41
+	Success Totals:	59/61
+	Failed Cases:	42, 43
+Drat, I have no idea why 42 still fails occasionally.
+Since 42 failed, no files could be created because no data was received.
+Trying again
+
+
+Running Test 11.6...
+Results:
+	Run Time:		00:35:09
+	Success Totals:	61/61
+	Failed Cases:	none
+Number of results in 3rdSafeguard.txt: 1000
+    Matches the base
+Only 1 3rdSafeguard_*.txt generated, showing that it only took one loop to get the result
+Good to know, but I want to hold out for a failed result to see if it's getting the incomplete list right away of if it builds up.
+Trying again
+
+
+Running Test 11.7...
+Got the same issue with email not having .pdf, with a console output of:
+    "Microsoft VBScript runtime error: The remote server machine does not exist or is unavailable: 'WSObj.Range'"
+Which I'm pretty sure was caused by someone using the machine at the same time I did.
+The result text file is still there, though, so I'll just run the result job again.
+
+Results:
+	Run Time:		00:34:59
+	Success Totals:	59/61
+	Failed Cases:	42, 43
+Another instance of that annoying case, I'll have to get back around to that once I resolve this.
+    No emails, no 3rdSafeguard progress files
+Trying again.
+
+
+Running test 11.8...
+Results:
+	Run Time:		00:25:27
+	Success Totals:	61/61
+	Failed Cases:	none
+Number of results in 3rdSafeguard.txt: 1000
+    Matches the base
+damn it, I didn't want a full pass this time.
+Trying again
+
+
+Running Test 11.9...
+Results:
+	Run Time:		00:34:09
+	Success Totals:	61/61
+	Failed Cases:   none
+Number of results in 3rdSafeguard.txt: 1000
+    Matches the base
+Why can't this program tell I want it to fail...
+Trying one last time, if it still either passes or fails both 42 and 43, I'll go consult Paul
+
+
+Running Test 11.10...
+Results:
+	Run Time:		00:40:13
+	Success Totals:	59/61
+	Failed Cases:	42, 43
+
+
++++++++++++
+19-Oct-2018
++++++++++++
+Running a test to see if anything has changed, and to check on case 27, which failed last night, out of the blue.
+
+
+Running Test 12...
+Watching the test run, it appears to be just leaving the python shell windows up??
+Results:
+	Run Time:		00:33:56
+	Success Totals:	59/61
+	Failed Cases:	27, 42
+What is going on, why did 42 fail but 43 pass, why did 27 fail again, did it have anything to do with the lingering python shells?
+Checking EmailScrapper.log
+Oh wait, I think I remember I extended the wait in the EmailScrapperPoll.py script to like 10 minutes or something
+That would probably explain why they were open for so long
+but then, what I forgot to do was accommodate for that extension in the main testing script:
+    I should have extended the loop that waited for the python shell to go away, as well.
+So, two total emails were in fact received from this most recent test.
+The only issue is that the times are all scrambled and not useful because the UFT script continued without the python keeping up.
+If it were more in sync, I could get an idea of how long I might have to wait for the DEV06 box to finish processing the results.
+Paul suggested I make the UFT test have ludicrous waits as well, even just once, to get an idea of how long the waits might need to be
+
+Running Test 12.1...
+Results:
+	Run Time:		01:31:19
+	Success Totals:	60/61
+	Failed Cases:	43
+Wow that took forever.
+I'll review the results once I get back from lunch.
+
+The emails were sent and registered both times
+So, the way I'll want to do this will probably be to look at the emails and compare their timestamps to those in the EmailScrapper.log file.
+First email:    received 10:37, corresponding python run began polling at 10:43:54, and detected the email at 10:43:59
+Second email:   received 11:02, corresponding python run began polling at 11:02:52, and detected the email at 11:02:57
+
+I'm not sure how to interpret this.
+One possibility is that in this case the server had a very snappy response and put out the emails as soon as the lot ended.
+    If this is consistently the case, that would be awesome.
+However, I am not ready to assume that the code has been magically fixed, so I need a better way to do this.
+I went ahead and modified the python script. Now, after the first email is received, the wait duration decreases significantly
+    in this way, The script won't be waiting around for ten minutes if the emails are generated instantly like in this last case.
+I do not think this can be a long term solution, though, because in this way the tests that don't want to receive any emails will be forced to wait around for the full ten minutes.
+It will work for now, though. Starting next test.
+
+
+Running test 12.2...
+Results:
+	Run Time:		01:16:43
+	Success Totals:	59/61
+	Failed Cases:	42, 43
+That one also took forever, darn it.
+    Although actually, I suppose it makes sense:
+        in this case, three of the checks did not receive emails, intentionally or not, which meant 30 extra minutes of waiting.
+Unsurprisingly, 3rdSafeguard_*.txt files started out empty and ended empty.
+According to EmailScreapper.log, the first expected email, the second total check, was received immediately.
+The second expected email, the third total check, did not arrive over the course of the full 10 minutes.
+    On a positive note, the loop modifications appear to have been successful.
+I'll let Paul know what happened
+
+Spent time looking over the Server and other things with Paul and Alex, we're getting close to sure that it's a software issue, not a code one.
+What we've done is create a file that is entirely duplicated off of the first GoodLot (not just a few items)
+This way we can be even more sure that it isn't just skipping over a few of the entires or whatever (I wasn't 100% following the reasoning behind it, but it still seemed like a good idea)
+
+
++++++++++++
+22-Oct-2018
++++++++++++
+Performing daily check-in test
+
+
+Running Test 12.3...
+Results:
+	Run Time:		00:17:37
+	Success Totals:	32/41 (/61)
+	Failed Cases:	33-41
+I'm remembering what we were doing on Friday. We had cut off the end of the test to troubleshoot the server's ability to detect the duplicates
+The intention was for the 3rd lot to be an exact copy of the 1st, using the same data sources.
+However, I noticed an error pop-up on DEV06, and it appears as if the lot was not even started (which may explain the failures of the test)
+I'm going to try again and keep a closer watch on DEV06 to see if the error reappears.
+
+I've been working with Alex on trying to resolve this last discrepancy again. We've set up the job and run it a couple times to get the results.
+    We were having issues, however, with getting the server to accept the new full duplicate lot we put together
+We called over Vlad once we thought we'd finally manually gotten it set up correctly, but then we received the email.
+We're trying again, giving it over to the automation and letting it run all the way though to closing out the third lot.
+
+This time we were able to reproduce the error. Vlad took a look at it and was able to tell us that in this case, the dupes actually were identified by the software.
+That is, he confirmed, and showed us how to confirm via the SQL server, that the software had attempted to send off the emails correctly
+The issue now is that, if the script sent in the correct data and the server produced the correct response, what happened to the emails?
+Alex and Paul suggested that it may be an issue with the email server, in that it isn't properly receiving, handling, or delivering the data from the software and to the DEV01 box.
+For now, we're working on ways to circumvent the buggy email server.
+And now I'm teaching myself some SQL
+If this goes well, we should be able to scan directly from the emails being output by the software and get results regardless of whether the email server cooperates or not.
+
+The table in question:
+[Guardian].[Guardian].[MailQueue]
+
+Clearing out the table at the beginning of the test (potentially before every response poll):
+DELETE FROM [Guardian].[Guardian].[MailQueue]
+
+Grabbing each item from the table:
+SELECT * FROM [Guardian].[Guardian].[MailQueue]
+
+Grabbing only emails of a certain variety:
+SELECT * FROM [Guardian].[Guardian].[MailQueue] WHERE CHARINDEX(TARGET,MailBody)  > 0 
+    TARGET =    'UniSeries has detected a condition where'
+                'Warning:  UniSeries has detected an attempt to'
+                
+This seems like a good line to pursue (hopefully)
+Right now I am waiting for the test to complete so I have an expected outcome off of which I can base my searching scripts.
+
+
+These results are initially troubling.
+I received both of the emails the test calls for. I see a total of two sent emails in the SQL table.
+    Which is OK, since the issue was that the email server was inconsistent, not that it wasn't working at all.
+However, I see from the results .pdf that, while the emails were received from the server, the data it contains was incorrect.
+I think I have looped back to a previous issue I had either thought was resolved or I just forgot about.
+    probably the latter
+Let's compare the contents of the safeguard and the baseline files again, like old times.
+
+OK, so, this 3rdSafeguard.txt has 510 entries. These 510 entries match the first 510 entries of the baseline_740011_base.txt
+The six incremental 3sg versions (3rdSafeguard_*.txt) all show the same data set with the same 510 entries.
+This implies that the issue is not one of insufficient wait time, and that the data is representative of every duplicate the server could find.
+
+It's starting to get late and I haven't seen Paul to let him know what has happened with this latest development.
+I also have another test running.
+
+The system should be in a good spot to just leave to run overnight. 
+
+Also: I don't think I've ever seen a situation where the emails have failed to send, but the 3rdSafeguard.txt values are still verified
+    If the system is set up in the way that lately others seem to have been implying it is, then I would assume this is a possibility.
+        After all, isn't the 3rdSafeguard.txt file populated through a direct call to the SQL server?
+    On the contrary, every time the email fails to send, the dupes fail to verify, implying that the list of dupes is somehow related to the success of the email delivery.
+
+It seems as if, potentially, all of the 3rdSafeguard_* files were generated simultaneously?
+I don't know if it's a quirk of the way the file reader opens and closes, or if the loops occur within the same minute, but I may have to reexamine that code when I get a chance
+
+This current run may not finish by 5:00, but I've looked at the updated 3rdSafeguard.txt file
+It has 951 items which match the first items of baseline_740011_alt.txt
+
+
++++++++++++
+23-Oct-2018
++++++++++++
+Last night's test was a full clear success, but I suspect it was mostly just random chance.
+Starting a check-in run
+
+
+Running test 12.4...
+Results:
+	Run Time:		00:42:06
+	Success Totals:	59/61
+	Failed Cases:	42, 43
+No emails received, no content in the 3rdSafeguard.txt file.
+I'm currently messing around with the SQL server commands trying to see if I can find the actual content of the lots
+    That way I may be able to manually confirm what's going on.
+Also, I checked the email triggers, none were there for the third lot.
+
+
+After working on it with Paul for a while, he decided that the easiest thing to do was increase the lot size from 1000 to 20000.
+    This way we would be guaranteed to get at least one duplicate, since the lot numbers are selected randomly from a set of 30000.
+        There are about 30000 total numbers in the data sets, 10000 of which are non duplicate (unique to that data set)
+This whole thing is weird, I have no idea why the data is set up in this way, why the data selection has to be random, why the data sets are unique at all in the first place...
+Anyway, now the test is going to take way more time to run, during which time I can't use my DEV01 box.
+    I'm to set up the Email detection SQL commands while I wait, but that shouldn't take too much time
+    On the other hand, I can only write first drafts of the commands, since I won't be able to test them on the server while it's running, I think.
+Yeah this could end up taking up to 20x as long...
+
+[Annoying issues arising from unexpected difficulties in changing the size of the lot]
+
+Finally got Results:
+	Run Time:		00:37:25
+	Success Totals:	56/56 (/61)
+	Failed Cases:	none
+    Missing Cases:  Initial Lot use case                            (12),
+                    1st Safeguard Off, 2nd Safeguard On use case    (27),
+                    Email Validation                                (42),
+                    Database Validation                             (43),
+                    Dataname excluded from duplicate check use case (58)
+                    (So pretty much anything that was done in UFT)
+                        (Even though I'm pretty sure the stuff that was done out of UFT was broken, too)
+So that wasn't great.
+Paul says expanding the data set at the moment was not worth the effort, so I am now going to revert all the changes I've made today
+    Which is fun.
+Now I'm back trying to get the direct SQL interactions with the Email trigger tables working.
+Starting test to see if I've properly reverted all the changes I made
+
+
+Running test 13...
+On the plus side, Paul showed me how to speed up the rate of product scanning, so the tests might go faster now
+    No idea why that wasn't set to max already 
+        It'll probably bite me when I least expect it.
+The engine appears to have crashed as a result of a connection error
+also, am I still getting the same request/receive size mismatch errors?
+    That would be annoying.
+Aborting, trying again.
+
+Apparently I did not save my changes. This time, I think I did.
+Running test 13.1...
+Results:
+	Run Time:		00:40:17
+	Success Totals:	60/61
+	Failed Cases:	43
+Same old, same old. Email was received, duplicates were detected, but they were the wrong set of duplicates.
+I'll let Paul know, but otherwise I'll start pushing to my git repo and prepping for tonight's testing.
+
+
++++++++++++
+24-Oct-2018
++++++++++++
+Today I'm still working on figuring out why the Quarantine Lot isn't always getting the right duplicates.
+    What I've been doing is finding how to fix the way the numbers are processed such that we guarantee the Quarantine lot triggers a duplicate.
+    But I just have so many questions about the structure of this section that I don't even know what to focus on.
+    
+Questions about the Quarantine Lot:
+My current, likely flawed understanding of what happens during this test:
+    We have large data sets (30,000 numbers) for each of the lots.
+        For two of these sets, 2nd and 3rd, about 20,000 numbers are shared between them 1st lot
+    We pull a random selection of 1000 of these numbers to run and test.
+    The software is supposed to compare the numbers between the lots and check for numbers shared between the lots.
+    Our current problem is with the 3rd set:
+        Sometimes, either no duplicates are detected, or duplicates are detected, but they are not the items we expect
+    
+    1. Why is the data set so large?
+        Isn't the sole purpose of this test to detect whether it has duplicates?
+        Could we use a smaller set to ensure the same numbers are used?
+    2. If minimizing the data set is not an option, why do we need the test to detect the same set of duplicates every time?
+        Since we are pulling a random subset of numbers from the larger superset, how do we expect the list of duplicates to line up every time?
+        Could we remove the check to see if 
+    3. If confirming the same duplicate set each time is crucial, why doesn't the previous test have any issues? What's different?
+        If the 2nd Lot run uses a similar structure, between taking a random subset from a large and not-fully-duplicate superset, what causes it to succeed much more often?
+        
+Before I run more tests, I'd first like to implement the SQL Email checker.
+I have all the relevant batch files, sql scripts, and result files lined up and working, I only need to integrate them into the testing procedures.
+
+I'll need to start by running the EmailTableClear.bat in the setup step
+Then put calls to whichever EmailCheck*.bat is needed into the VE_As. 
+Finally, I'll have to find some way to identify that the corresponding results files have more than 0 items in them.
+    Dang, am I going to be phasing out my EmailScrapperLog.py script?
+        I was kinda proud of that one...
+        
+Added call to run EmailTableClear.bat to SetupEnv (and cleaned code up a bit)
+For now, I'll just modify VE_A_Quarantine and _2ndSafeguard.
+    Should call the script every 5 seconds for a minute or until the end result doesn't match a stored empty table result.
+    I've just commented out the old python section instead of deleting it for now in case this isn't working after a few tries.
+    
+OK, that has been set up, I'll make a run to see how well it works.
+
+
+Running test 14...
+I saw the python shell window and started to freak out a bit, but the python script is still called for the other two VE_As
+    Not sure if I should prioritize getting them on the new method (or if I should do it at all)
+Results:
+	Run Time:		00:32:23
+	Success Totals:	59/61
+	Failed Cases:	42, 43
+The SQL works, from what I can tell..
+    even though 42 didn't work, 27 did work, which shows that it wasn't the script that didn't work.
+So now I'm back to needing to figure out what to try with the Quarantine Lot to get it to work.
+I believe Paul is in a meeting right now, so I guess I can try to think of more ideas for now.
+I'll run another test (to confirm that the SQL email fix works consistently) while I wait and think, I guess.
+
+
+Running test 14.1...
+Got stuck on the "Data Purge Completed Successfully" Window (???)
+Trying again.
+
+
+Running test 14.1.1...
+Results:
+	Run Time:		00:34:30
+	Success Totals:	59/61
+	Failed Cases:	43, 58
+This is different. It looks like the email that was triggered for the Quarantine lot wasn't detected until the 4th lot, which made it fail
+Looks like I will end up needing to change the other two tests to accommodate for the changes to 2 and 3.
+In the meantime, I finished talking with Paul and Alex about the confusion over the Quarantine lot
+They said to keep a watch on the numbers of the 3rdSafeguard.txt results.
+Number of results in 3rdSafeguard.txt: 784
+    matches first 784 numbers of base
+    
+I've been using the improved compare function of the Notepad++ plug-in I installed and I've made an interesting observation
+I currently have 4 stored result files from 740011:
+    baseline_740011_base
+    baseline_740011_alt
+    baseline_740011_base_833
+    baseline_740011_818
+and then this new result I just got
+
+I *had* been operating under the assumption that _base and _alt were completely unique
+but with this new plug-in I can tell that they actually shared most of their numbers, and in order, too
+They seem to both be pulling from the same sequence of items.
+The difference would appear to be which item they start and end with.
+For example, between _base and _alt, they share 784 items out of 1000.
+_alt appears to have 216 items before it begins to match with _base, and then stops where _base goes on for another 216 sequential items.
+    _base_833 is _base minus the last 167 items
+    _818 is _alt minus the first 182 items
+    most recent is _base minus the last 216 items
+So, it would seem as if all of the results I've been getting have been selections from the same 1216 items.
+ _         _  _                 _  _         _ 
+|           ||                   ||           |
+|[216 items]||    [784 items]    ||[216 items]|
+|_         _||_                 _||_         _|
+\_________________            ________________/
+                  \1216 items/
+
+_alt also seems to be close to baseline_sg3.txt?
+Never mind, it's a complete match.
+
+So after showing my findings to the others, they seemed a bit underwhelmed
+    although I guess my hope that one of them would realize what bug was making it do that and knowing how to fix it was a bit unrealistic
+Definitely feels like I'll be able to work better with this, though
+
+I also edited the SQL related batch files so that they stop outputting the info twice.
+    This may impact multiple tests, but I'll keep an eye out for it, and if any of the other tests fail relating to sql result comparison, I'll know how to fix it.
+        and knowing is half the battle
+    Preemptively, I've cut off the second half of all the baseline files I could think of.
+    
+I'll do another test to see what else I get
+
+
+Running test 14.2...
+Results:
+	Run Time:		00:32:39
+	Success Totals:	59/61
+	Failed Cases:	43, 58
+I really ought to fix those other two references to the python script
+    3rdSafeguard:   928 items
+                    Items 217-1096 and (??) 1169-1216
+        That's interesting...
+I'll look further into this tomorrow.
+
+
++++++++++++
+25-Oct-2018
++++++++++++
+Contents of 3rdSafeguard from last night's test:
+    ... nothing? I thought the email detection check passed...
+Damn. I'll run another test and then check the email check logic again...
+
+Running test 14.3...
+Apparently the outlook permissions reset every time the computer is restarted?
+    I hope that didn't mess up the test too bad...
+Results:
+	Run Time:		00:33:13
+	Success Totals:	60/61
+	Failed Cases:	43
+    3rdSafeguard:   empty
+OK, I had an error in the base empty file (no longer needs weird character ?). Fixed it, should properly work now.
+Trying again.
+
+
+Running test 14.4...
+Results:
+	Run Time:		00:32:19
+	Success Totals:	59/61
+	Failed Cases:	43, 58
+    3rdSafeguard:   1000 items, 217-1216, match with _base (?)
+        Then why did 43 fail?
+Oh, I guess for some reason now the weird character () is not showing up at the beginning of the newly generated files.
+Fixing for other baseline files.
+I also need to think of a way to clear out the emails so that lot 4 doesn't detect any, but I still want to know what emails there were.
+ -- Output results to a text file and only clear at beginning of test, then clear table at end of VE_As?
+ -- Create a new table, one untouched that keeps a history of email triggers, and one for manipulation?
+I'd like to be able to create the separate sql table, but I don't know how (or if I have permission), so for now I'll just use the .txt.
+
+OK, I've set that up. Now I need to add a call to EmailTableClear.bat at the end of each VE_A and change the first and last to use the SQL method.
+Also, add EmailCheckCumulative.txt to the environment cleanup at the start of the test.
+
+Alright, let's do another run
+
+
+Running test 14.5...
+... it froze?
+Aborting, trying again.
+
+
+Running test 14.5.1...
+"Failed to start the test application"?????
+Why is DEV01 just not behaving all of a sudden
+trying one more time, otherwise I'll reset the box again I guess
+
+
+Running test 14.5.2...
+Nope.
+Resetting box, trying again.
+
+
+Running Test 14.5.3...
+Seems to have started off much better this time.
+Results:
+	Run Time:		00:36:03
+	Success Totals:	58/61
+	Failed Cases:	12, 43, 58
+    3rdSafeguard:   0 items
+Looks like I might not have properly implemented the SQL into the other two VE_As.
+Also, the email was not received, but 42 passed.
+I guess the logic in all but VE_A_2ndSafeguard needs fixing.
+I did not finish renaming all the references to "EmailCheckEmptyResults" to "EmailCheckEmptyBaseline"
+As a result, it thought it found an email each time (since nothing matched the non-existent file)
+    So, the logic actually was incorrect for VE_A_2ndSafeguard
+Starting next attempt
+    
+
+Running Test 14.6...
+on DEV06: Guardian Disconnection.
+aborting, retrying.
+
+
+Running Test 14.6.1...
+Cannot purge because a lot is open.
+    I have had really bad luck with these tests this afternoon
+Alex helped do some TIPS voodoo and it's working again.
+
+
+Running Test 14.6.2...
+Paul came over to check up, I noticed that the software did not detect duplicates again, he told me to abort.
+
+We modified the input data so that the Quarantine lot might start in the same place as the good lot now
+
+
+Running test 15...
+The test did not like that.
+Results:
+	Run Time:		00:33:44
+	Success Totals:	55/61
+	Failed Cases:	27, 33, 34, 35, 42, 43
+        (27 is the email detector for the second lot, 33-35 are the range imports for third lot, which we had modified)
+Paul went somewhere, I'll let him know when he gets back
+
+This is such an annoying issue because it seems to be rooted in so many areas of the code which are so difficult to work with
+
+The 1216 items are the first 1216 items from both the 2nd and 3rd lot.
+    Including the very first number, which is not the same as in the good lot
+    To be fair I don't always get the first group, usually it's the second and third
+    Whatever it means, the bottom line is that it makes very little sense.
+    
+    
++++++++++++
+26-Oct-2018
++++++++++++
+I kinda want to try editing the .xml file for the carton import to even more closely match the goodlot.
+I can't tell if the SQL Email check is working for the other tests because ILCD is too broken and I haven't been getting good runs on DualFormat
+I think I'll run DF once to take a look.
+
+Had to modify the baseline file to remove that weird  character. I'll see if I have to remove any more.
+Removed the rest of them.
+
+Going to try that .xml edit.
+OK, so I modified the 3rd List_Carton so that it matches the 1st List_Carton for all but the last 999 items.
+The original has been renamed to have "_Original" appended to it.
+Let's run and see what happens.
+
+
+Running test 16...
+I'm not fully banking on this working. What I really want is to be able to check the contents of the numbers that were actually run
+That way I may be able to get a better idea of what's going on.
+Results:
+	Run Time:		00:29:56
+	Success Totals:	61/61
+	Failed Cases:	none
+Unexpected full clear. Trying again.
+
+
+Running test 16.1...
+Results:
+	Run Time:		00:31:25
+	Success Totals:	59/61
+	Failed Cases:	42, 43
+No dupes detected.
+This is a good case where I would love to see the full list of the selected lot numbers.
+Let's dig around in the SQL database and see what I can find.
+
+LotIds:
+GoodLot:    1525
+2SGLot:     1526
+QALot:      1527
+ExLot:      1528
+
+.
+.
+.
+
+OK so I got caught up and did a lot of data grabbing.
+I've found and taken out the set of numbers used in each of the lots (well, the first 3, which I care about)
+I've made two copies of them, with the full numbers and with just the raw IDs without the prefixes
+I've also taken out the raw IDs from the source sets to compare against, finding from where in the set the numbers were taken
+Additionally, I've been holding the lot numbers against the list of recorded duplicates.
+I compared QALotRaw to GoodLotRaw and found that there were indeed no shared values
+What's interesting is that, even though there was no pass, I saw that the QuarantineLot numbers fell square in the RecordedDuplicates range
+My next question: is the QuarantineLot selection fine, but the GoodLot selection inconsistent?
+After comparing 2SGLotRaw to GoodLotRaw, I again saw no overlapping values
+What has been making the first dupe check succeed, then?
+
+Hopefully, running this next test will show if there is any consistency in the way the lots are selected from their sets
+
+
+Running test 16.2...
+Results:
+	Run Time:		00:31:09
+	Success Totals:	59/61
+	Failed Cases:	42, 43
+Grabbing full lists (and the 4th one two for the hell of it)...
+GoodLot:    1529
+2SGLot:     1530
+QALot:      1531
+ExLot:      1532
+
+Last time:
+Selection indices:
+    GoodLot:    6881-7880
+    2SGLot:     2121-3120
+    QALot:      0217-1216
+    ExLot:      (not recorded)
+    
+This time:
+    GoodLot:    0217-1216
+    2SGLot:     0001-0216 and 1217-2000 (what)
+    QALot:      8785-9784
+    ExLot:      4025-5024
+
+So this is not terribly useful. They all appear to select randomly each time.
+I am interested in seeing what a pass on 42 and 43 looks like, though.
+
+I'll keep running tests looking for more info.
+
+
+Running test 16.3...
+Results:
+	Run Time:		00:30:01
+	Success Totals:	61/61
+	Failed Cases:	none
+    3rdSafeguard:   1000 items, 217-1216, match with _base
+Alright cool, let's see what a success looks like in terms of lot contents
+
+GoodLot (1533): 0217-1216
+2SGLot  (1534): 1217-2216
+QALot   (1535): 0217-1216
+ExLot   (1536): 0001-1000
+
+Hmm. This time the selections for GoodLot and QALot lined up, which appears to have caused the success
+
+I am still very confused as to how 2SGLot keeps sending successes, though.
+    Is the check broken, and should be failing?
+I believe that the way 2SG works is this:
+    the requirements for success for 2SG is having no duplicates
+    ****it achieves this by jumping over each previously registered item it comes across.****
+    if it jumps over no items at all, then it still detects no duplicates and passes.
+    if it catches duplicates, it jumps and resumes when it finds a unique result (see test 16.2)
+    Currently, SG2 displays odd behaviour where it always passes
+    This would also be fixed by making the selection bounds consistent.
+    
+Why are we checking random selections against a baseline file?
+Why are we taking random selections at all?
+
+Minimum lot size is 10,000
+    Importing 30,000 currently
+
+The case 43 seems either unnecessary or in need of modification.
+
+The solution (to making the selection bounds consistent) might lie in those excel files
+    Which there are like a million of and I can never keep straight which ones are which...
+    I guess now is the time to get familiar with them
+
+    
+What I can find out about this test's Excel files:
+
+Type 1: FT_Provisioning_Driver Files
+    Location:   C:\Automation\Duplicate Check\FT_Provisioning_Driver
+    Summary:    Called by FT_Provisioning_Driver to set up and conclude each test step run.
+    Contents:   Steps responsible for setting up variables, importing files, and disabling used numbers
+    Examples:   PreLot_Good.xls, PostLot_Good.xls
+    Driver:     FT_Provisioning_Driver selected via the Master .vbs Script RunGuardian commands
+    Notes:      Basically collections of settings which are selected and applied by FT_Provisioning_Driver
+    
+Type 2: ImportFiles
+    Location:   C:\Automation\Duplicate Check\ImportFiles\Functional\Lot_*\
+    Summary:    Master sets or ranges of product numbers. Contents of the run lots are selected from here.
+    Contents:   Long files with product numbers (Lists) and small files with two boundary numbers (Ranges)
+    Examples:   FT-B_List_Carton_10000.xml, FT-B_Range_Carton_10000.xml
+    Driver:     Called by the FT_Provisioning_Driver Files.
+    Notes:      Actually .xml files, but I still tend to forget which these are.
+    
+Type 3: PIMLabTestData
+    Location:   C:\PimLabTestData
+    Summary:    Used to control the creation of the lots
+    Contents:   Excel tabs with procedure steps and parameters to guide the lot creation
+    Examples:   DuplicateCheckPimLabTestData_3level_GoodLot_810.xlsx
+    Driver:     All of the testing steps have in-built references to the PIM file of each. 
+    Notes:      Accessed by the test steps themselves
+
+Throwing that into its own text file for inevitable later confusion
+
+So, even now that I feel more confident in my knowledge of the excel files, it seems as if any of them could hold the vital step.
+I'm going to start by going through the PIM files, since I've been working with the ImportFiles most of this time
+    and because I would be totally happy if I never have to learn the inner workings of FT_Provisioning_Driver
+    
+Cracking open the first PIM file, DuplicateCheckPimLabTestData_3level_GoodLot_810.xlsx
+If I'm being honest this is the one I least expect it to be, but it is still possible
+The thing I see which has the best chance of being what I'm looking for are the "EpcGenStart" values
+    but they are set to a specific number, which wouldn't explain why the selections are random
+I talked to Alex about it and he confirmed: those numbers are used to generate product numbers
+They are passed to the DEV06 box and used to set values for the .ips file, which is in turn responsible for number generation.
+    However, they generate a different set of numbers separate from the ones giving me issues
+        Also they're in hexadecimal, which emphasizes that they are not what I am looking for.
+        
+Let's move back into the InputFiles, but focus on the Ranges instead of just the lists.
+Looking at this, it again looks like the range is in hex and not relevant to what I'm looking for.
+
+OK, let's just bite the bullet and bang my head against FT_Provisioning_Driver for the rest of the day...
+Taking a look at just the PreLot_Good file, I see a tab called Import_FullyRandomList and in it I see it importing the Carton List
+    This will probably be a good start, since it will at least have the same data types in it
+Let's crack open the FT_Provisioning_Driver script and see what we can find...
+So at that step it is still a block of 30,000 items which has yet to be separated into the group of 1,000.
+****Specification: the format I have been referring to is "AI(01)+AI(21)"
+
+I've narrowed it down to evidence of the step that is responsible for picking out the final 1,000 items
+In the Data Viewers>Number Lists Allocation window in the Line Allocation tab, the left-most columns are "Allocated"-, "Returned"-, and "Used SPT Numbers"
+This would appear to be the step where the 30,000 items are narrowed down into 10,000 and then 1,000 items
+    The only way I foresee being able to fix the test would be getting into whichever step this is and modifying it
+
+After sharing my findings with Paul and Alex, they have informed me that the step I am looking for is directly controlled by our product
+The only way to modify the step would be to alter the software itself, since it does not have the capability to do what we expect from it
+Attempting to do so would be modifying the product to fit the test, instead of modifying the test to properly assess the product's abilities
+And so, this section of the test is moot and needs to be completely restructured, since the program does not have the functionality required of it.
+Fun.
+
+
++++++++++++
+29-Oct-2018
++++++++++++
+Overnight results were flawed, I had an excel sheet open which made DEV01 angry.
+Cleared it up and tried getting another run in on this test.
+
+This next run, Guardian is being unresponsive.
+DEV01 is very slow.
+
+I can't get back into DEV01 to try to reboot it.
+
+Had to get Alex to access it through VMWare to reset the system.
+
+After some fiddling with it, DEV01 is back online, I'll try running again.
+
+Run complete, test is exactly where I remember it being. 
+Paul is out sick today, and I don't feel comfortable restructuring a section of the test without his supervision, so I think I may as well switch to ILCD for today.
+
+
++++++++++++
+08-Nov-2018
++++++++++++
+[See DupesTS817.txt for notes regarding the resolution of the final tests]
+
+
++++++++++++
+
+
+
+
+
+
+
+
+
+
+
+Results:
+	Run Time:		
+	Success Totals:	
+	Failed Cases:	

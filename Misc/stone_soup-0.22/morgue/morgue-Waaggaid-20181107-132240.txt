@@ -1,0 +1,205 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+46 Waaggaid the Caller (level 3, -33/36 HPs)
+             Began as a Merfolk Summoner on Nov 7, 2018.
+             Killed from afar by a jackal (37 damage)
+             ... with an exploding inner flame
+             ... hexed by the player character
+             ... on level 3 of the Dungeon.
+             The game lasted 00:11:15 (1897 turns).
+
+Waaggaid the Caller (Merfolk Summoner)              Turns: 1897, Time: 00:11:16
+
+Health: -33/36     AC: 21    Str:  8    XL:     3   Next: 66%
+Magic:  3/6        EV:  2    Int: 15    God:    
+Gold:   50         SH:  0    Dex: 14    Spells: 0/6 levels left
+
+rFire    . . .     SeeInvis .   e - +0 club
+rCold    . . .     Gourm    .   (no shield)
+rNeg     + + +     Faith    .   (armour currently unavailable)
+rPois    +         Spirit   .   (helmet currently unavailable)
+rElec    .         Reflect  .   (cloak currently unavailable)
+rCorr    .         Harm     .   (gloves currently unavailable)
+MR       .....     NoTele   +   (boots currently unavailable)
+Stlth    ++........             (no amulet)
+HPRegen  0.12/turn              (no ring)
+MPRegen  0.10/turn              (no ring)
+
+@: tree-form, very slightly contaminated, invisible
+A: (change form in water), (swift swim), (stealthy swim), deterioration 1
+a: no special abilities
+
+
+You were on level 3 of the Dungeon.
+You were not hungry.
+
+You were a tree.
+
+You visited 1 branch of the dungeon, and saw 3 of its levels.
+
+You collected 50 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ e - a +0 club (weapon)
+Armour
+ a - a +0 robe (melded)
+ i - a +0 pair of boots (melded)
+Comestibles
+ c - 2 rations
+ j - 8 chunks of flesh
+
+
+   Skills:
+ + Level 0.2 Fighting
+ + Level 0.3 Maces & Flails
+ + Level 3.0 Dodging
+ + Level 2.4 Stealth
+ + Level 0.2 Unarmed Combat
+ + Level 2.3 Spellcasting
+ + Level 4.6 Summonings
+
+
+You couldn't memorise any spells.
+You knew the following spells:
+
+ Your Spells              Type           Power        Failure   Level  Hunger
+a - Summon Small Mammal   Summ           ###.         3%          1    #......
+x - Call Canine Familiar  Summ           ###.....     10%         3    ###....
+z - Call Imp              Summ           ###.....     4%          2    ###....
+
+Your spell library contained the following spells:
+
+ Spells                   Type           Power        Failure   Level  Hunger
+ Summon Guardian Golem    Hex/Summ       #.......     24%         3    ###....
+ Summon Ice Beast         Ice/Summ       #.......     63%         4    #####..
+ Summon Lightning Spire   Summ/Air       #.......     63%         4    #####..
+
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (3/15)            
+
+Altars:
+
+
+Innate Abilities, Weirdness & Mutations
+
+((You revert to your normal form in water.))
+((You are very nimble and swift while swimming.))
+((You are very stealthy in the water. (Stealth+)))
+((You are partially covered in iridescent scales. (AC +2)))
+Your body sometimes deteriorates upon taking damage.
+
+
+Message History
+
+The jackal bites you but does no damage.
+You strike the helpless jackal from behind!
+You hit the jackal.
+The jackal is severely wounded.
+The jackal bites you.
+* * * LOW HITPOINT WARNING * * *
+The jackal bites you but does no damage. x2
+You completely miss the jackal.
+The jackal is severely wounded.
+The jackal completely misses you.
+The jackal bites you but does no damage.
+The kobold hits you but does no damage.
+The jackal bites you but does no damage. x2
+The kobold hits you but does no damage.
+A bat comes into view.
+You hit the jackal.
+The jackal explodes!
+The fiery explosion engulfs you!
+Ouch! That really hurt!
+You die...
+
+###############
+#!....K?§hrg..#
+#.....h######.####...
+'............§§r.....
+#......#.####h###....
+#......     .r.    ..
+#......    ##.#.
+#......     #.#.#
+b######     #+# .
+                ..
+                 ..
+
+
+You could see 2 jackals, a hobgoblin (inner flame), a bat, a kobold and a rat
+(inner flame).
+
+Vanquished Creatures
+  A worm (D:2)
+  2 dart slugs
+  2 bats (D:1)
+  A giant cockroach (D:2)
+  A goblin (D:1)
+  2 hobgoblins (D:1)
+  2 kobolds
+  2 frilled lizards (D:1)
+  A rat (D:1)
+14 creatures vanquished.
+
+Vanquished Creatures (collateral kills)
+  An adder (D:2)
+  2 oozes (D:1)
+  A dart slug (D:1)
+  A giant cockroach (D:1)
+  4 hobgoblins
+  4 kobolds (D:1)
+  3 bats
+  A frilled lizard (D:1)
+  3 goblins
+  A rat (D:1)
+21 creatures vanquished.
+
+Grand Total: 35 creatures vanquished
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | Waaggaid the Merfolk Summoner began the quest for the Orb.
+     0 | D:1      | Reached XP level 1. HP: 13/13 MP: 3/3
+   164 | D:1      | Reached XP level 2. HP: 19/19 MP: 1/5
+   168 | D:1      | Learned a level 2 spell: Call Imp
+  1188 | D:1      | Reached XP level 3. HP: 21/24 MP: 6/6
+  1704 | D:2      | Learned a level 3 spell: Call Canine Familiar
+  1862 | D:2      | HP: 1/24 [worm (10)]
+  1881 | D:3      | Gained mutation: Your body sometimes deteriorates upon
+                  | taking damage. [potion of mutation]
+  1881 | D:3      | Gained mutation: You are partially covered in iridescent
+                  | scales. (AC +2) [potion of mutation]
+  1897 | D:3      | Killed from afar by a jackal
+
+Skill      XL: |  1  2  3 |
+---------------+----------+-----
+Dodging        |        3 |  3.0
+Fighting       |          |  0.2
+Maces & Flails |          |  0.3
+Stealth        |          |  2.4
+Unarmed Combat |          |  0.2
+Spellcasting   |          |  2.3
+Summonings     |          |  4.6
+
+Action                   || total
+-------------------------++-------
+Melee: Unarmed           ||     3
+       Club              ||   118
+ Cast: Summon Small Mamm ||    31
+       Call Imp          ||    13
+       Call Canine Famil ||     1
+  Use: Scroll            ||     3
+       Potion            ||     3
+ Stab: Sleeping          ||     3
+       Distracted        ||     1
+       Invisible         ||     2
+  Eat: Chunk             ||     5
+Armor: Robe              ||    47
+       Skin              ||    26
+Dodge: Dodged            ||   171
+

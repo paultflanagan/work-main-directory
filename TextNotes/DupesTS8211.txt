@@ -1,0 +1,784 @@
+Dupes Troubleshooting 8.2.11
+
++++++++++++
+14-Nov-2018
++++++++++++
+While working with 7.40.011 and 8.1.7, I noticed something which Paul and Alex say could be a bug, which we should probably show to Vlad.
+I put together a mini test which should get the system into a state where we can look at the issue better.
+
+Vlad doesn't get back until Friday, so Paul suggested I work on the next test case instead of sitting around until then
+ok i guess
+
+It looks like the next test would be this one
+    Because of the way it appears to be set up, I think it could potentially run into some of the same issues as the previous two.
+I'll try setting it up and if it seems to be the same as 740011 and 817 I'll jump to the next, 830_1stSafeguard
+
+Yeah, looking at the main script it appears to be very similar, using the same provisioning files, but differently named Advisor files.
+I'll try running without looking into those advisor files first.
+Also, the job called for a "OlderAdvisorTest_8211.vbs" instead of "OlderAdvisorTest_821.vbs". 
+    I changed the script, not the filename.
+
+Oh, it looks like the test is actually 8.2.11, not 8.2.1.
+    I'll change the script name and job config to match that.
+Right away, looks like the test is set to run with UFT open, which is not ideal.
+Looks like I need to figure the target machine IP address
+    I'll either need to activate the target machine or redirect it to DEV06, maybe.
+
+I've changed the .vbs script to hide UFT
+
+According to nslookup, the host the script points to, 10.0.3.144, is engadvdev02
+According to the google doc, it should point to WIN7IPC12.
+    I think this is on the 10.0.4.238 server
+Yeah, it's here
+I'd rather not risk kicking someone off of a machine, and it looks like Win7IPC12 is currently unused, so let's take a look at that first.
+
+Setting up this machine:
+Connected to DUPESERVER using COnnectionManager
+Changed the ScreenManager shortcut to specify Diagnostic ("/d") mode
+
+"Screen Manager     Application [Device Manager] could not be started.  Title - [Device Manager], Class - []"
+"Screen Manager     Application [Kepware] could not be started.  Title - [], Class - [KEPOpcServerFrameV5]"
+These might not be essential? I hope?
+
+I've changed the target machine IP address for the GoodLot to match IPC12.
+Let's try a run and see what happens.
+
+"No connection could be made because the target machine actively refused it."
+Did not have VisionSimulator up
+
+"File missing: 'D:\tips\pimlab\DuplicateCheck3Level.ips'"
+Added an .ips file from DEV06
+
+
++++++++++++
+15-Nov-2018
++++++++++++
+Still working on getting this in a good spot.
+Let's try a run
+
+
+Running test 0...
+Test ran through, but I forgot to set up the publishing step
+piping it through manually...
+Results:
+	Run Time:		00:38:30
+	Success Totals:	57/60 (/61 (probably))
+	Failed Cases:	Email Validation (2nd Lot)                      (27)
+                    Email Validation (3rd Lot)                      (42)
+                    Email Validation (4th Lot)                      (57)
+    Missing Cases:  Not actually sure
+    
+I went to check the email logs but I remembered that I haven't set it up to use the SQL interaction yet.
+I guess that's the next thing to do.
+
+I've added in the shared actions
+let's do another run
+
+I stopped it prematurely to fix some of the missing repository object references
+Each action in the FT_Provisioning_Driver makes a call to "objWindow.SwfButton("btnClose").Click" and I don't think it works for any of them
+
+Import_Range
+    Window: Manual Provision Entry
+    Object: Already exists
+        Repo:   GuardianConfigMgr.ManualProvisionEntry.tsr
+        Name:   SwfWindow("Guardian SPT Configuration").SwfButton("btnClose")
+        
+Import_FullyRandomList
+    Window: Manual Provision Entry
+    Object: Already exists
+        Repo:   GuardianConfigMgr.ManualProvisionEntry.tsr
+        Name:   SwfWindow("Guardian SPT Configuration").SwfButton("btnClose")
+        
+Import_AnimalHealth
+    Window: China Animal Health Import
+    Object: Already exists
+        Repo:   GuardianConfigMgr.ChinaAnimalHealth.tsr
+        Name:   SwfWindow("GuardianConfig_ChinaAnimalHealth").SwfButton("btnClose")
+        
+Import_PartialRandomList
+    Window: China SFDA Import
+    Object: Already exists
+        Repo:   GuardianConfigMgr.ChinaSFDAImport.tsr
+        Name:   SwfWindow("Guardian SPT Configuration").SwfButton("btnClose")
+        
+Import_PreprintedLabel
+    Window: Preprinted Label Import
+    Object: Already exists
+        Repo:   GuardianConfigMgr.PreprintedLabelImport.tsr
+        Name:   SwfWindow("Guardian SPT Configuration").SwfButton("btnClose")
+        
+Enter_Range
+    Window: Manual Provision Entry
+    Object: Already exists
+        Repo:   GuardianConfigMgr.PManualProvisionEntry.tsr
+        Name:   SwfWindow("Guardian SPT Configuration").SwfButton("btnClose")
+        
+Request_Numbers
+    Window: Manual Provision Request
+    Object: Already exists
+        Repo:   GuardianConfigMgr.ManualProvisioningRequest.tsr
+        Name:   SwfWindow("Guardian SPT Configuration").SwfButton("btnClose")
+        
+Disable_Numbers
+    Window: Number Ranges Allocation
+    Object: Already exists
+        Repo:   GuardianConfigMgr.PreprintedLabelImport.tsr
+        Name:   SwfWindow("Guardian SPT Configuration").SwfButton("btnClose")
+        
+    Window: Number Lists Allocation
+    Object: Already exists
+        Repo:   GuardianConfigMgr.PreprintedLabelImport.tsr
+        Name:   SwfWindow("Guardian SPT Configuration").SwfButton("btnClose")
+        
+    Window: China SFDA Allocation
+    Object: Already exists
+        Repo:   GuardianConfigMgr.PreprintedLabelImport.tsr
+        Name:   SwfWindow("Guardian SPT Configuration").SwfButton("btnClose")
+        
+    Window: Preprinted Label Import
+    Object: Already exists
+        Repo:   GuardianConfigMgr.PreprintedLabelImport.tsr
+        Name:   SwfWindow("Guardian SPT Configuration").SwfButton("btnClose")
+        
+So that's cool, looks like I don't have to bother with adding any new objects?
+I've added references to the correct objects.
+
+Making a run while I go to lunch
+
+
+Running test 2...
+More issues with the result .pdf generation. This time, the .txt file was successfully transferred to 830QA, but the script had frozen
+Re-running it manually gave no issue, oddly
+Results:
+	Run Time:		00:25:06
+	Success Totals:	57/60 (/61?)
+	Failed Cases:	Import_FullyRandomList [Carton, 2nd Lot]        (21),
+                    Email Validation [2nd Lot]                      (27),
+                    Email Validation [3rd Lot]                      (42)
+
+Again, I can't say for certain if this test is designed to have 61 tests or not.
+It is starting to resemble the previous two tests, though
+    But, it was the 3rd lot email validation that failed here, and not the 4th lot
+The good news is that now I can (hopefully?) use the EmailTable log to see what happened.
+
+Alright, I have determined that the issue with the Import (and with the email validations) is the same one affecting 740011 and 817
+So, let's see if we can find out what happened to the assumed missing test
+    since I'm still not sure if there is supposed to be a test there
+Working under the assumption that they are the same test structure, let's compare this one to 7.40.011's most recent results
+
+
++++++++++++
+16-Nov-2018
++++++++++++
+Today I showed Vlad the demo of the issue we'd been encountering with 7.40.011, 8.1.7, and probably this test as well
+
+He informed Alex and me that the issue did not have anything to do with 1stSafeguard, as we had expected
+Instead, it had to do with an inbuilt catch of the software
+    The aspect causing the issue is *not* the duplicate numbers which had been run by the lot
+    It is the numbers which have been loaded into the system from the first set but left unused by the first lot
+        These unused numbers are then presented by the second data set and cause an error
+Apparently there is no way available to us which would allow us to manipulate this built-in catch 
+
+I might try my earlier idea of making the data sets different sizes:
+
+The minimum size I can work with, for whatever reason, is 10,000 (or maybe 10,010? still not sure 100%)
+
+Short version:  make the good set only have 10,000(/10,010) items, use all of them in lots
+                    perhaps 10,000 future dupes, 10 unique.
+                second set has all 10,000 of the future dupes and then an additional 10,000 unique numbers
+                
+                still 10 pallets, still guarantee that there will be overlap, potentially circumvents Error854
+                
+Worth a try on Monday.
+
+
++++++++++++
+19-Nov-2018
++++++++++++
+Going to be attempting to implement this workaround to Error854
+I have changed all of the associated PIM files to call for 10000 Cartons, 500 Cases, and 10 Pallets
+Now I've change the import data set file for the good lot to have 10010 items
+
+Let's give it a run and hope for the best?
+If something does go wrong, my guess is that it will have to do with that dumb buffer it has where it keeps grabbing new numbers it doesn't need.
+Actually, I think I'll go ahead and throw some extra numbers onto the end of the Quarantine data set.
+Added an additional 5000 items to "FT-B_List_Carton_70000_Short.xml" (which gets transferred to the main file with "81xSetShort.bat")
+Now we do a test run.
+
+
+Running Test (7.40.011)...
+Actually now that I think about it I may need to add some extra non-dupes to the end of the good lot, too
+    I feel like that would defeat the purpose of all this, though...
+    
+So I got a funny little error message from the IPS engine on DEV06...
+"
+IPS Engine Stop
+The following condition(s) have stopped the line:
+CartonGetA1A21Number: 707: Request for initial Block of SPT numbers cannot be satisfied. Requested 10010 and received from Guardian 10010!
+"
+Which is just great...
+This software is really something else
+
+Let's bump the data set up to 10011 just for fun and see what happens...
+
+
+Running Test (7.40.011)...
+So the first lot ran successfully
+But then when it looked like the first lot ran successfully, the second lot appeared to have only 11 available numbers
+    Did it not take from the other data sets?
+After letting it run for a bit, the next run seems to not have this issue
+I'll just let it run to the end
+Results:
+	Run Time:		01:06:29
+	Success Totals:	58/60 (/61)
+	Failed Cases:	Import_FullyRandomList [Carton, 2nd Lot]        (21),
+                    Email Validation [4th Lot]                      (58)
+    Missing Cases:  Email Validation [2nd Lot]                      (27)
+    
+Hang on, I might just be stupid. I added numbers to the end of the Quarantine data set, but that was unnecessary.
+If anything I would have to add to the end of the Good data set.
+
+But I'm not sure why the 2nd data set said it only had 11 available numbers when it should have grabbed from the new file
+Do I need to verify that it is pulling from the correct file?
+
+Just looking at the Provisioning file for the second lot, it appears to point to the correct file
+I've ensured that the target import set for the carton list has 10,000 unique items now
+    Which would have been an issue in and of itself, but I doubt that this was the issue I saw last time.
+    
+Let's run and closely watch the import step for the second lot to verify it takes the right file, I guess
+
+
+Running test (7.40.011)...
+Import failed due on account of Error 854
+
+So right now I guess it's time to just workshop ideas for circumventing this Error
+
+Now let's try just having only one duplicate number
+    Reducing size of the Remove data set to 10012 (I guess) and only having the first number as a duplicate
+    
+Realized I did not copy over the updated Remove lot correctly
+trying again real quick
+Power died in the middle of the run.
+Looks like it knocked out DupeServer as well
+    Powered it back up with Paul's help
+Finally got it all back up
+Trying again
+
+Just kidding the server was doing this weird and immensely annoying thing where the lot was supposedly open on DEV06 so DupeServer couldn't purge
+    But DEV06 could not connect to DupeServer so it was unable to close its current lot or start a new one
+    So DupeServer was stuck unable to interact with DEV06 because it had a lot open and DEV06 was stuck with a lot open because it wasn't connected to DupeServer
+        You know, fun and standard stuff
+After banging my head against it for hours it decided it wanted to work again for seemingly no reason
+
+Let's see what happens when we run, finally.
+Failure to import the file, Error854
+
+Paul suggested an alternative solution, where the import data sets for the following lots are dynamically edited with a SQL script to have the A1A21 contents of the good lot prepended
+This way we will (hopefully) not have to worry about Error854 at all
+First I'll try the other approach (Even Shorter Import File) I put together and then work towards this idea with what remains of today.
+
+Trying the ESIF...
+I'll work on an approach to the Dynamic Data Set idea while I wait for this
+    Probably only need to make the remove data set affected
+    Want the base set to still have as many numbers as it needs to form a successful lot, entirely unique
+    The annoying part will be setting the grabbed numbers in the proper format
+    
+    
++++++++++++
+20-Nov-2018
++++++++++++
+Results from the test I left running when I went home seem tentatively promising, might have successfully gone around Error854.
+I'll want to run another test and keep a closer eye on it, though
+
+
+Running test (7.40.011)...
+There was a meeting that took an hour and when I got back my test was crashed 
+Let's abort it and do some splanchomancy
+Actually, looking at the results page, it doesn't appear to have been too broken
+    All of the steps leading up to the crash had passed, including the problematic import step and the email verification
+Made it up to step 41, and froze during the running of the third lot
+
+Let's try again, I guess?
+
+
+Running test (7.40.011)...
+Results:
+	Run Time:		01:14:10
+	Success Totals:	59/61
+	Failed Cases:	Email Validation [1st Lot]                          (12),
+                    Email Validation [4th Lot]                          (58)
+                    
+Interesting, the email validations for the expected 0 notifications both failed.
+Let's check out the email log.
+Looking at the email log, each email check (including 2 and 3) contains an email stating:
+"
+UniSeries has detected a condition where serial numbers appear to be duplicated.
+Please review the following information and ensure that this does not violate any company serialization policies.
+"
+This is the intended notification text for the third lot, which I guess means something in each lot is triggering the 3rdSafeguard
+    Including Lot 1? Why would that happen if it was the first lot run?
+Ignoring the Lot1 weirdness for a minute, I notice that Lots 1, 2, 3, and 4 all have the same SEQ numbers
+    Which makes sense, since I remember setting them up that way in order to trigger the 3rd safeguard for lot 3
+But earlier Lot 4 never had any issue with this.
+Do I have to change Lot 4's SEQ range to be unique?
+And, back to the Lot 1 weirdness, how could the first lot trigger 3rd Safeguard? Could there perhaps be self-contained duplicates?
+
+
++++++++++++
+21-Nov-2018
++++++++++++
+I ran the test again and it would appear as if the duplication in the first lot may have been a weird fluke 
+After checking the overnight results and running a test first thing getting here in the morning, there were no repeat issues with the first lot
+
+Results:
+	Run Time:		01:16:25
+	Success Totals:	60/61
+	Failed Cases:	Email Validation [Lot 4]                             (58)
+    
+So now I suppose I'll look at the Cumulative Email Log and check what the detected email was
+My guess is that it was the same as last time, and the resolution will be to change the SEQ data range for the 4th data range to not overlap
+Although, an important question (which I do not quite know the answer to) is what the purpose of the 4th lot should be.
+    Is lot 4 designed to be able to handle duplicates in some way?
+According to the README file in the import directory for the Exclude Lot, there are supposed to be no duplicates present in the import files
+I will assume that there are supposed to be no duplicates for it to work around, but I'll ask just in case
+
+Actually at the moment I am having trouble remembering where the SEQ numbers come from...
+
+Ok I found it, it was in the PIM files under the EPCGenStart value
+They were indeed starting at the same spot, I changed them to be unique.
+Let's try again, hopefully we'll get a full clear maybe?
+
+
+Running test (7.40.011)...
+It got all the way to the 4th lot when it threw an error saying "Error:CartonGetGtinNumber: SPT Number not available"
+Also it CycleStop-ed
+But then, looking at the Performance Tree view, it looks like there are still plenty of numbers left available for GetGtin
+Paul helped me just start it back up again, see what happens
+Results:
+	Run Time:		01:41:10
+	Success Totals:	61/61
+	Failed Cases:	none
+Woo
+I really don't want to, but I should probably make a consistency check...
+
+
+Running test (7.40.011 consistency check)...
+Results:
+	Run Time:		01:17:06
+	Success Totals:	61/61
+	Failed Cases:	none
+Awesome, consistency has been verified
+
+Let's give 8.1.7 a shot next
+
+
+Running test (8.1.7)...
+
+
+Turns out today is an early dismissal (I really need to start reading my emails)
+I'll check on Monday, I guess, but I have good expectations
+
+
++++++++++++
+27-Nov-2018
++++++++++++
+I was sick on Monday and the overnight tests were messy
+Let's make a test in 8.1.7
+
+
+Running test (8.1.7)...
+"Failed to start the test application"
+Let's reset the machine (DEV01) I suppose, probably overdue
+Reset the machine
+Trying again
+
+
+Running test (8.1.7)...
+Started up successfully
+I'd reset DEV01, but I forgot to properly set up DEV06
+Let's give it another shot
+
+
+Running test (8.1.7)...
+Results:
+	Run Time:		01:19:42
+	Success Totals:	60/61
+	Failed Cases:	Database Validation [Lot 3]                         (43)
+Interesting, 43 doesn't fail often
+Let's see what happened.
+
+The issue would be seen in the safeguard files, I think
+Odd, the 3rdSafeguard.txt file correctly contains more than zero items
+The at-least-one-duplicate logic appears to be in place as well
+Let's run again and see if it's a fluke?
+
+
+Running test (8.1.7)...
+It doesn't appear to be modifying the target file at all?
+
+Running OverrideQuarantineLot_821 isolated to try to find the issue
+Crashes on the PIM load?
+
+"A general error occurred while importing sheet Setup from file C:\PimLabTestData\DuplicateCheckPimLabTestData_3level_AcceptQuarantine_821.xlsx"
+
+Got the same issue with running the Good lot ..?
+I suspect the issue may be with the associated libraries
+The current usage points to the "C:\Automation\Duplicate Check\Shared\Libraries\PIM Library.vbs" one 
+    This, I believe, is the outdated one which I want to move away from using going forward
+Comparing back to the "C:\Automation\Shared\Libraries\PIM Library.vbs"
+I see that the old, currently used one has in line 444 reference to "Setup,Good1,Good2,Reject1,Reject2,Fault1,Fault2,CleanUp,GridData"
+The updated one refers to only "Setup,Good1,CleanUp,GridData"
+Actually, let's check the 81x and see how it does.
+It points to the same library but it does not crash
+
+Hang on I messed up this is 8.1.7, not 8.2.11.
+Did an isolated run of OverrideQuarantineLot_81x, modified the file no issue
+No idea what's going on
+trying again
+
+
+Running test (8.1.7)...
+Full clear
+Results:
+	Run Time:		01:20:35
+	Success Totals:	61/61
+	Failed Cases:	none
+Alright, sure
+
+It's close enough to the end of the day that I won't get another run in. 
+I might just spend the rest of today rearranging the Jenkins job ordering
+
+
+
++++++++++++
+28-Nov-2018
++++++++++++
+I ran 8.1.7 earlier today and got a full clear.
+
+I feel like I want to just jump over to 8.2.11
+The run for 8.2.11 got stuck in the PIM import step I had noticed yesterday
+Looking closer at the files, it looks like the test looks for PIM files ending with "821"
+    the only ones I have end with 810. I may need to look around for these files.
+It took a while but I think I found them. They were in "C:\Automation\Duplicate Check\Advisor UFT\PIMLabTestData", along with a whole bunch of other PIM files
+    I'll try to remember this in case I'm missing any others in the future
+Copying the "*821.xlsx" files over to the C:\PimLabTestData\
+
+Precursory glance over the files, it is looking like I will have to set the data size values to match the previous tests.
+Now that the files are in place(?), let's pop open WIN7IPC12 and start a test.
+
+
+Running test 0...
+confirmed that it still uses the 1000 item lot sizes, but no crashes yet
+Results:
+	Run Time:		00:42:12
+	Success Totals:	59/60 (/61)
+	Failed Cases:	Email Validation [Lot 3]                            (42)
+    Missing Cases:  Database Validation [Lot 3]                         (43)
+Ok. Let's take a look at the email logs, I suppose
+And also the Lot contents afterwards, probably
+
+It looks like the Quarantine lot email check was skipped
+not sure why
+
+Taking a look at the lot contents for fun I guess
+Pulled the numbers, but I don't actually know what I'm looking for right now.
+
+Let's check the QTPrintLog
+Verified that there was indeed a third lot run
+Doesn't give much other info, however.
+
+Moving on to the Res## files for the UFT jobs
+Hmm, I think it's still using the "QuarantinelLot" vs "QuarantineLot" job
+I want to rip off the Band-aid and just re-name and re-point everything, but I worry that may be too brash.
+How about I take all the references to the extra l one, point them to be the less one l, and rename the original extra l one so the script can't point to it.
+I'm just not looking forward to running the whole test again on the premise of something which I'm not confident will fix it
+    to be fair this is the same issue I had when running all of the other long tests.
+    
+Interestingly I can't tell if the 1000 items is an issue
+I'll keep track of the items in the lots from the previous run and see if it stays consistent, I suppose.
+
+Let's just go ahead and try the renaming thing.
+
+Renamed DuplicateCheckThreeLevel_OverrideQuarantinelLot_821\ to [...]QuarantinelLot_821_old\
+    also edited the other files I could find with that name
+Changed the main script to point to the project without the extra 'l'.
+
+Let's see what happens
+
+
+Running test 1...
+[Lot 3]:    Lot End Failed
+I think it just skipped the step 42 and 43 section
+We need to go in and figure out what's going on there.
+Hopefully I can look into the Res## folders and see what's going on there
+
+Res1 was properly generated in the other folder, not the extra 'l' one.
+According to the HTML, we failed in the initialize step
+The HTML is not very descriptive 
+    no line numbers or anything that useful, all it has is a Step Name and a Description, which in this case only has the file name of the PIM sheet
+        probably the only saving grace is the filename and the specific sheet too, which I would be totally lost without.
+Goes through each sheet successfully (Custom: Data Sheet Load), from Setup to GridData, but then we get to the last step and it fails
+    "Custom: Lot End Failed"
+    
+Searching the PIM library for "Lot End Failed" I found a subroutine called "DevMgrStopLot()"
+    Apparently what triggered this was 
+        "
+        len(sMsg)>0 And Left(sMsg,1) <> "*"
+        "
+    being false, running a 
+        "
+        MyReportEvent micFail, "DevMgr Lot End Failed", sMsg
+        ExitTest
+        "
+    if it were true, it would have run:
+        "
+        MyReportEvent MicPass, "DevMgr Lot End", ""
+        "
+    
+There's another subroutine called "IpsLotEnd(nTimeoutMs)" which is a possible culprit
+
+I'll look into it tomorrow.
+
+
++++++++++++
+29-Nov-2918
++++++++++++
+Got a weird bomb from 8.1.7 last night, so I will make a quick run
+
+
+Running test (8.1.7)...
+Full Clear (01:17:10)
+
+Ok, let's get back to working on the 8.2.11 issue now.
+
+The most annoying part to work with right now is that I don't know exactly where the script is failing.
+I guess maybe I can brute force it?
+I'll work up from IpsLotEnd and DevMgrStopLot, seeing where they are called, trying to see how they go into the InitializeFromData subroutine.
+
+Subroutine Tree in PIM Library:
+Locations of the "Lot End Failed" message:
+    Sub IpsLotEnd(nTimeoutMs)               line 1288
+    Sub DevMgrStopLot()                     line 1334
+    
+Locations of the IpsLotEnd Subroutine:
+    Sub IpsExecCommand(sCommand)            line 634
+    Sub IpsOpen(sDirectory, sStationFiles)  line 1222
+    
+Locations of the DevMgrStopLot Subroutine:
+    Sub IpsExecCommand(sCommand)            line 666
+    
+Locations of the IpsExecCommand Subroutine:
+    Sub RunGridRow()                        line 962
+    
+Locations of the IpsOpen Subroutine:
+    Sub InitializeFromData()                line 496    *
+    
+Locations of the RunGridRow Subroutine:
+    [Nowhere else in the library]
+    
+    
+Cool, so it looks like the issue stems from lines 496->1222->1288 (InitializeFromData -> IpsOpen -> IpsLotEnd)
+
+The logic that leads to this error result:
+len(IpsPimFiles) > 0                            [InitializeFromData; line 496]
+    NOT(len(sMsg)>0 And Left(sMsg,1) <> "*")    [IpsLotEnd; line 1273]
+    [ensures this for 300 seconds]
+        [Report the failure]
+        
+So, what are these variables? What should be happening? What is actually happening?
+I might just have to put in some print statements and run through...
+
+Let's see if I have an idea of what is currently going on.
+"IpsPimFiles" - no idea what this is, actually
+    rather, I have an idea of what it should be, but I don't know how it is set
+My guess: The problem part is the sMsg being received from "VisionSim.IpsLotEnd(nTimeoutMs)"
+    Where is this function? How can I check it? How does it get its result?
+It either returns no result or a result that begins with a '*' (that the 1 leftmost character is a '*')
+    What is the significance of the empty result or an asterisk?
+It keeps waiting for 300 seconds (I think) or until the sMsg is not empty and does not start with a '*'.
+If it still does not meet those criteria, it throws a fail and Exits the Test.
+
+Adding print statements to lines 494, 1273, 1282
+
+Let's see if we can figure out what the actual values are at run time.
+
+
+Running test 2...
+Random(?) crash from Guardian during purge (froze up)
+    I think it was because Win7IPC12 was stuck on an error message
+reloading and trying again
+
+
+Running test 2.1...
+So many strange errors
+First one said that the stored Purge Data procedure did not exist
+The Second said that an Object reference did not have an object instance
+
+What I gather from this is that suddenly there is no Purge procedure
+I'm going to have to ask.
+
+Oh wait, I ran it again and it successfully purged for some reason.
+Cool
+
+
+Running test 2.1.1...
+The print statements don't appear to be breaking the test, so that's good
+3rd Lot Data:
+    IpsPimFiles = DuplicateCheck3Level.ips
+    sMsg = [blank]
+Got to the end of the lot end, "Lot End Failed" message box, clicked through, test continued.
+    It says the lot end failed, but on Win7IPC12 the lot had successfully ended.
+So, I know that it skipped 42 and 43 already. Let's check the results .pdf anyway
+Results:
+	Run Time:		01:07:55
+	Success Totals:	59/59 (/61)
+	Failed Cases:	none
+    Missing Cases:  42, 43
+Yeah, as expected.
+What I need to do now is figure out what this data means.
+In every other lot, the returned sMsg = "Lot Ended"
+
+I think the key will be figuring out what "VisionSim.IpsLotEnd(nTimeoutMs)" means
+
+I asked Alex about it and he said that the person most likely to know about it was Stephen, but he's out right now.
+He suggested I move on to something else for the rest of the day until tomorrow morning, when he might be back in.
+
+
++++++++++++
+30-Nov-2018
++++++++++++
+Running 8.2.11 again to get a fresh example of the issue to show to whomever.
+
+
+Running test 3...
+I think, if I have to run this again before fixing it, I should reduce the duration of the sMsg retries.
+6 minutes feels way too long
+Again, got to the 30 sMsg attempts and then gave a "Lot End Failed" message box.
+Results:
+	Run Time:		01:11:07
+	Success Totals:	59/59 (/61)
+	Failed Cases:	none
+    Missing Cases:  42, 43
+Ok, issue has been reproduced.
+
+Now I just need to find Alex so he can find Stephen for me.
+While I wait, I may as well keep looking through 830FSG.
+
+Didn't end up getting a chance to ask Alex anything, he was pretty much busy and away from his desk all day.
+
+
++++++++++++
+03-Dec-2018
++++++++++++
+Paul's back in, I told him about the VisionSim issue, he knows a couple of people we could ask about it.
+(Changed the Step of the For loop on line 1280 of PIM Library from 1 to 5)
+Here I'd like to outline the issue for clarity when showing whomever:
+
+
+I am having trouble interpreting the output from VisionSim.IpsLotEnd in the InitializeFromData() subroutine from the PIM Library.
+My understanding:
+    the result of VisionSim.IpsLotEnd is put into sMsg, and used to verify whether the Lot end was successful or not.
+        if sMsg is not empty [len(sMsg)>0] and does not start with a '*' [Left(sMsg,1) <> "*"], the Lot end is interpreted as successful.
+    For 3/4 of the lots, the returned message is "Lot Ended"
+    If the lot end is not deemed successful, a MyReportEvent "Lot End Failed" is returned, and the test is exited
+    From what I have seen, Vision Simulator messages starting with a '*' indicate error messages
+What I'm getting:
+    the sMsg variable returned when run at the end of the 3rd lot run is empty, triggering the Failed event and exiting the test
+    However, when 
+My questions:
+    What does it mean when the Vision Simulator returns a blank message?
+    Would it be possible to take a closer look at the code of VisionSim.IpsLotEnd?
+        Where is it located?
+    Why might the sMsg be empty when it appears as if the lot does end successfully?
+    
+Relevant documents:
+    QTPrint Log showing the sMsg results
+    PIM Library contents (Lines 494, 1273, 1282)
+    The Vision Simulator window Log on DEV06
+    
+    
+So it turns out I'm an idiot
+This time I noticed the Vision Simulator window Log on DEV01
+It was saying that there was a "Tcp Error : No connection couble be made because the target machine actively refused it."
+    and then a crazy, weird Error number and message "Wait Error -1", then "Close (10.0.3.144)", and then a repeat of that error
+I looked at the IP address it was trying to access and it didn't match up with any of the other tests.
+Then I checked the IP address of IPC12Win7 and it wasn't what lot 3 had it set to.
+The reason it was crashing and not giving any result was because the RemoteHost IP Address wasn't set to 10.0.4.146 (IPC12Win7)
+
+I'll set it to the correct address and then I'll try another run.
+
+
+Running test 4...
+Did not crash, but the 3rdSafeguard files are empty, implying that no duplicates were detected.
+    might have to do with the data size only being 1000 items.
+Got caught on a "Results8211.bat" file I'd created a while ago.
+Removed the Jenkins call to that file, piped results through manually.
+Results:
+	Run Time:		00:39:38
+	Success Totals:	59/61
+	Failed Cases:	42, 43
+That's better.
+Let's take a look at the lot contents to see if the failures are indeed a result of the small data set sizes, as I suspect
+    if they are, I will just have to model their files after the ones used by the other tests (maybe directly copy?)
+   
+Exported contents of Lots 2858, 2859, 2860, and 2861
+
+Actually, comparing the contents of 2858 and 2860, there is no overlap where the other lots have overlap in the SEQ(?) numbers
+    If I can change the range to be *1???? instead of *3????, I should have the overlap I need
+    
+Interestingly, comparing 2859 to 2858, there appears to have been only 1 duplicate right at the start, and with the AI21 numbers
+The possibility of this being a consistent option would contradict my experience of the inconsistent randomness of the AI21 selection format.
+    How was this accomplished? I'll have to look into the way this was structured next.
+    
+Looking for the range data for the 3rd lot:
+    Found: C:\PimLabTestData\DuplicateCheckPimLabTestData_3level_AcceptQuarantine_821.xlsx
+    CartonEpcGenStart = 100030000
+    Changed to 100010000
+    
+As for the 2nd lot, the setup doesn't appear different from the rest.
+Maybe just being on the more updated system allows for that setup to work with only 1000 items?
+    Maybe it doesn't do the random start point in this version?
+Regardless, it's good and I'm ok with just accepting it I guess.
+
+
+Running test 5...
+Stopped prematurely for some reason...
+Let's check the Console output on Jenkins
+oh, I had one of the PIM files still open...
+
+
+Running test 5.1...
+Someone was logged into engsec830qa and excel crashed.
+Aborting the Report job and retrying
+Results:
+	Run Time:		00:32:57
+	Success Totals:	61/61
+	Failed Cases:	none
+Sweet
+Let's go again for consistency
+
+
+Running test (consistency check)...
+Results:
+	Run Time:		00:33:09
+	Success Totals:	61/61
+	Failed Cases:	none
+Nice
+
+Putting successful .pdf into the PDQA location, moving on to 8.3.0
+
+
++++++++++++
+
+
+
+
+
+
+
+
+
+Results:
+	Run Time:		
+	Success Totals:	
+	Failed Cases:	

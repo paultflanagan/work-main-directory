@@ -1,0 +1,50 @@
+<Environment>
+	<Variable>
+		<Name>App_ExeName</Name>
+		<Value><![CDATA[GuardianSPTConfig.exe]]></Value>
+	</Variable>
+	<Variable>
+		<Name>App_ExePath</Name>
+		<Value><![CDATA[C:\Program Files\Systech International\Guardian SPT Config]]></Value>
+	</Variable>
+	<Variable>
+		<Name>App_Metadata</Name>
+		<Value><![CDATA[C:\Automation\Shared\Libraries\UftGuardianMetadata.xml]]></Value>
+	</Variable>
+	<Variable>
+		<Name>DbServer_AdminId</Name>
+		<Value><![CDATA[GuardAdmin]]></Value>
+	</Variable>
+	<Variable>
+		<Name>DbServer_AdminPwd</Name>
+		<Value><![CDATA[cactus#1]]></Value>
+	</Variable>
+	<Variable>
+		<Name>DbServer_ConnectionString</Name>
+		<Value><![CDATA[Provider=SQLOLEDB;Data Source=$SERVER$;Initial Catalog=Guardian;Persist Security Info=False;User ID=sa;Password=Dnepr&0856]]></Value>
+	</Variable>
+	<Variable>
+		<Name>DbServer_Name</Name>
+		<Value><![CDATA[DupeServer]]></Value>
+	</Variable>
+	<Variable>
+		<Name>DbServer_Pwd</Name>
+		<Value><![CDATA[qa]]></Value>
+	</Variable>
+	<Variable>
+		<Name>DbServer_SysadminId</Name>
+		<Value><![CDATA[sa]]></Value>
+	</Variable>
+	<Variable>
+		<Name>DbServer_SysadminPwd</Name>
+		<Value><![CDATA[Dnepr&0856]]></Value>
+	</Variable>
+	<Variable>
+		<Name>DbServer_UserId</Name>
+		<Value><![CDATA[qa]]></Value>
+	</Variable>
+	<Variable>
+		<Name>Results_File</Name>
+		<Value><![CDATA[C:\Automation\Results.xls]]></Value>
+	</Variable>
+</Environment>

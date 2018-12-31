@@ -1,0 +1,195 @@
+Zentiaana
+
+Level 1 of the Dungeon
+(7, -15, D:1)
+  a +0 dagger
+(8, -17, D:1)
+  a +0 club
+(9, -11, D:1)
+  a stone
+(19, -3, D:1)
+  a +0 club
+(20, -8, D:1)
+  a +0 robe
+(21, 1, D:1)
+  a +0 club
+(48, -3, D:1)
+  a +0 dagger
+(52, -15, D:1)
+  15 stones
+(52, 10, D:1)
+  a +0 club
+  2 stones
+
+Level 2 of the Dungeon
+(0, 0, D:2)
+  a +0 short sword
+(7, -13, D:2)
+  18 stones
+  a +0 club
+(8, -43, D:2)
+  a +0 mace
+(13, -36, D:2)
+  2 javelins
+(17, 9, D:2)
+  a +0 club
+(18, -10, D:2)
+  a +0 club
+(19, -34, D:2)
+  a +0 ring mail
+(22, -23, D:2)
+  a +0 falchion
+(23, -33, D:2)
+  a +0 leather armour
+(25, -9, D:2)
+  a +0 hunting sling
+  15 stones
+(29, -11, D:2)
+  a stone
+(29, 9, D:2)
+  a +0 club
+(30, -12, D:2)
+  a +0 dagger
+  a +0 club
+(31, -12, D:2)
+  3 stones
+  a +0 dagger
+
+Level 3 of the Dungeon
+(0, 0, D:3)
+  4 javelins
+(7, 11, D:3)
+  a +0 leather armour
+(13, 29, D:3)
+  a +0 hand axe
+(15, 31, D:3)
+  a +0 club
+  a +0 whip
+(17, 31, D:3)
+  a +0 flail
+  a +0 ring mail
+(23, 26, D:3)
+  a +0 leather armour
+(25, 8, D:3)
+  a +0 mace
+(25, 35, D:3)
+  a +0 spear
+(27, 18, D:3)
+  a +0 club
+(31, 11, D:3)
+  a stone
+  a +0 dagger
+(31, 13, D:3)
+  a stone
+(31, 24, D:3)
+  a +0 trident
+(32, 10, D:3)
+  a +0 hunting sling
+  8 stones
+(36, 38, D:3)
+  a +0 dagger
+(44, 25, D:3)
+  a +0 short sword
+  a +0 ring mail
+(46, 9, D:3)
+  2 stones
+(46, 10, D:3)
+  a stone
+(47, 16, D:3)
+  a +0 short sword
+(48, -12, D:3)
+  a +0 ring mail
+(57, -10, D:3)
+  a stone
+(57, -1, D:3)
+  a +0 chain mail
+(58, -9, D:3)
+  28 sling bullets
+(58, -8, D:3)
+  a stone
+
+Level 4 of the Dungeon
+(0, 0, D:4)
+  25 bolts
+(3, -2, D:4)
+  a +0 chain mail
+(4, 14, D:4)
+  10 gold pieces
+(5, 13, D:4)
+  8 gold pieces
+(5, 14, D:4)
+  14 gold pieces
+(5, 15, D:4)
+  6 gold pieces
+(6, 13, D:4)
+  6 gold pieces
+(6, 14, D:4)
+  10 gold pieces
+(6, 15, D:4)
+  11 gold pieces
+(9, 7, D:4)
+  18 arrows
+(13, 27, D:4)
+  a +0 spear
+(17, 21, D:4)
+  a +0 short sword
+(23, 27, D:4)
+  a +0 scythe
+  a +0 robe
+(26, 16, D:4)
+  a +0 trident
+(26, 30, D:4)
+  13 bolts
+(42, 29, D:4)
+  a +0 flail
+
+Level 5 of the Dungeon
+[Shop] Fylid's General Store
+  a +0 ring mail (48 gold)
+  a +0 helmet of see invisible (138 gold)
+  a potion of degeneration (12 gold)
+  a +0 dagger (24 gold)
+  a scroll of teleportation (36 gold)
+  14 stones (16 gold)
+  a +2 spear of freezing (208 gold)
+  a scroll of identify (24 gold)
+(0, 0, D:5)
+  a +1 hand axe of electrocution
+(1, 0, D:5)
+  a +0 club
+(3, 0, D:5)
+  a +0 war axe
+(4, -1, D:5)
+  a +0 trident
+(10, -1, D:5)
+  a +0 leather armour
+(12, -18, D:5)
+  25 stones
+(16, -11, D:5)
+  a +1 hand axe of draining
+(17, -3, D:5)
+  a +0 giant spiked club
+(19, -14, D:5)
+  a +0 spear
+(19, -5, D:5)
+  a +0 giant spiked club
+(22, 2, D:5)
+  a +0 leather armour
+(27, -18, D:5)
+  a +0 halberd
+(27, 1, D:5)
+  the +3 leather armour "Tirheac" {rPois Str+4}
+    It affects your strength (+4).
+    It protects you from poison.
+(28, -18, D:5)
+  a +0 spear
+(28, -17, D:5)
+  a +0 whip
+  a +0 robe
+(29, -16, D:5)
+  a +0 spear
+(36, -22, D:5)
+  19 stones
+(45, -26, D:5)
+  a cursed +0 leather armour
+

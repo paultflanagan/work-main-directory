@@ -1,0 +1,425 @@
+Grishum
+
+Level 1 of the Dungeon
+(0, 0, D:1)
+  a +0 club
+(3, -19, D:1)
+  23 arrows
+(9, -9, D:1)
+  a cursed +0 robe
+(17, -7, D:1)
+  a +0 dagger
+(21, -21, D:1)
+  a +0 club
+(32, -10, D:1)
+  a +0 hunting sling
+(35, -8, D:1)
+  20 bolts
+(38, -6, D:1)
+  a +0 dagger
+
+Level 2 of the Dungeon
+(0, 0, D:2)
+  a +0 club
+(8, 35, D:2)
+  a +0 dagger
+(15, 33, D:2)
+  a +0 robe
+  22 arrows
+(17, 15, D:2)
+  22 bolts
+(18, 4, D:2)
+  a +0 club
+(24, 29, D:2)
+  a +0 leather armour
+(26, 16, D:2)
+  a +0 club
+(28, 46, D:2)
+  a +0 whip
+(32, 34, D:2)
+  a +0 club
+(48, 23, D:2)
+  a +0 spear
+
+Level 3 of the Dungeon
+(0, 0, D:3)
+  a +0 dagger
+  a +0 club
+(2, -1, D:3)
+  a +0 club
+  a +0 hunting sling
+(11, -14, D:3)
+  a +0 robe
+(14, -1, D:3)
+  25 arrows
+(14, 5, D:3)
+  a +0 short sword
+(14, 7, D:3)
+  a cursed -2 scythe
+  a +0 robe
+(16, -11, D:3)
+  a +0 dagger
+(20, -7, D:3)
+  a +0 leather armour
+(22, 1, D:3)
+  a +0 leather armour
+(27, -3, D:3)
+  a +0 club
+(30, 17, D:3)
+  a +0 club
+(32, -13, D:3)
+  a +0 rapier
+(34, -15, D:3)
+  a +1 dagger of protection
+  a +0 dagger
+  a +0 robe
+  a cursed -1 hand axe
+  a +0 chain mail
+  a +0 club
+  a +0 dagger
+  a +0 club
+(34, 18, D:3)
+  a +0 club
+(36, 16, D:3)
+  a +0 robe
+
+Level 4 of the Dungeon
+[Shop] Cela's Antique Weapon Shop
+  a +1 hunting sling of freezing (223 gold)
+  a +0 rapier (92 gold)
+  a +0 flail (80 gold)
+  a +0 glaive of protection (225 gold)
+  a +0 rapier (92 gold)
+  a +1 short sword of venom (243 gold)
+  a +0 long sword (80 gold)
+  a +0 club (23 gold)
+  a +0 long sword (80 gold)
+  the +8 flail "Dorem" {flame, *Drain Str+2 Dex+4} (1386 gold)
+    It has been specially enchanted to burn those struck by it, causing extra
+    injury to most foes and up to half again as much damage against particularly
+    susceptible opponents.
+    
+    It affects your strength (+2).
+    It affects your dexterity (+4).
+    It causes draining when unequipped.
+  a +0 club (23 gold)
+  a +0 great mace (149 gold)
+(0, 0, D:4)
+  14 sling bullets
+(4, 7, D:4)
+  a +0 buckler
+(30, 27, D:4)
+  a +0 dagger
+(36, 9, D:4)
+  a +2 chain mail of poison resistance
+(37, 7, D:4)
+  a +0 club
+(38, -16, D:4)
+  a +0 rapier
+(39, 9, D:4)
+  an uncursed ring of teleportation
+  a potion of degeneration
+(41, -9, D:4)
+  a +0 dagger
+(50, -12, D:4)
+  a +0 dagger
+(57, 9, D:4)
+  a +0 falchion
+
+Level 5 of the Dungeon
+(0, 0, D:5)
+  a +0 pair of boots
+(5, 18, D:5)
+  a +0 quarterstaff
+(23, 21, D:5)
+  a +0 leather armour
+  2 tomahawks
+(23, 22, D:5)
+  a +0 dagger
+  a +0 robe
+(24, 22, D:5)
+  a +0 club
+(25, -1, D:5)
+  17 arrows
+(25, 3, D:5)
+  a +0 flail
+(26, 28, D:5)
+  a +0 shortbow
+  14 arrows
+(29, 24, D:5)
+  4 arrows
+(30, -8, D:5)
+  28 arrows
+(30, 0, D:5)
+  a +0 scale mail
+(30, 17, D:5)
+  28 bolts
+(30, 22, D:5)
+  2 arrows
+(30, 25, D:5)
+  an arrow
+(31, 25, D:5)
+  an arrow
+(37, 6, D:5)
+  a +0 rapier
+(43, 11, D:5)
+  the cursed +2 short sword "Xitaoxo" {venom, -Tele rElec Str+3}
+    It poisons the flesh of those it strikes.
+    
+    It affects your strength (+3).
+    It insulates you from electricity.
+    It prevents most forms of teleportation.
+    It has a curse placed upon it.
+
+Level 6 of the Dungeon
+(0, 0, D:6)
+  a +0 scale mail
+(8, -9, D:6)
+  a +0 dagger
+(18, -15, D:6)
+  a +0 spear
+  a +0 whip
+  a +0 spear
+  a +0 ring mail
+  a +0 shield
+(19, -14, D:6)
+  a +0 spear
+(20, -13, D:6)
+  a +0 quarterstaff
+  a +0 spear
+(21, -27, D:6)
+  a +0 hand axe
+  a +0 robe
+(25, -27, D:6)
+  a +0 dagger
+  a +0 robe
+  a +0 battleaxe
+  a +0 chain mail
+(27, -25, D:6)
+  a +0 dagger
+  a +0 robe
+(33, -21, D:6)
+  a book of Geomancy
+(35, -24, D:6)
+  17 sling bullets
+(37, 4, D:6)
+  a +0 scale mail
+(40, -24, D:6)
+  16 sling bullets
+(45, 1, D:6)
+  a +0 dagger
+  a +0 robe
+(45, 2, D:6)
+  a +0 short sword
+(45, 3, D:6)
+  a +0 club
+(48, -13, D:6)
+  24 arrows
+
+Level 7 of the Dungeon
+[Shop] Goluaw's Book Shop
+  a book of Beasts (605 gold)
+  a book of Maledictions (275 gold)
+  a book of Geomancy (385 gold)
+  a book of Dreams (825 gold)
+  a book of Alchemy (825 gold)
+  a book of Conjurations (330 gold)
+  a book of Changes (275 gold)
+  Iqaplunn's Guide on Shifting Lightness (550 gold)
+    Spells                           Type                      Level
+     a - Petrify                      Transmutation/Earth           4
+     b - Lightning Bolt               Conjuration/Air               5
+     c - Blade Hands                  Transmutation                 5
+     d - Deflect Missiles             Charms/Air                    6
+    
+    
+    Trog disapproves of the use of such an item.
+  a book of Death (770 gold)
+(0, 4, D:7)
+  a +0 long sword
+(18, -9, D:7)
+  a book of Cantrips
+(20, -12, D:7)
+  a -3 flail
+  a +1 mace of distortion
+(25, -16, D:7)
+  a +0 trident
+  a +0 leather armour
+(26, -15, D:7)
+  a +0 chain mail
+  a +0 hand axe
+  a +0 mace
+  a +0 chain mail
+(31, -16, D:7)
+  a book of Frost
+(33, -16, D:7)
+  a +0 battleaxe
+(41, 10, D:7)
+  a +0 dagger
+  a +0 robe
+  a +0 leather armour
+  a +0 pair of gloves
+(41, 11, D:7)
+  a +0 ring mail of fire resistance
+(44, 19, D:7)
+  a +0 dagger
+  a +0 robe
+(45, 13, D:7)
+  a +0 pair of gloves
+(46, -1, D:7)
+  a +0 hand axe
+(48, -2, D:7)
+  a +0 hand crossbow
+(51, -3, D:7)
+  a +0 mace
+(51, -2, D:7)
+  a +0 hand axe
+(54, -21, D:7)
+  a cursed +0 dagger
+  a +0 robe
+
+Level 8 of the Dungeon
+(0, 0, D:8)
+  a +0 scale mail
+(0, 20, D:8)
+  a +0 trident
+(7, 10, D:8)
+  a +0 robe
+(12, 19, D:8)
+  a +0 dagger
+  a +0 robe
+(22, 15, D:8)
+  a +0 dagger
+(23, 16, D:8)
+  a +0 halberd
+  a throwing net
+  a +0 scale mail
+(30, 19, D:8)
+  2 arrows
+(32, 20, D:8)
+  2 arrows
+(35, 20, D:8)
+  a +0 shortbow
+  9 arrows
+(46, -3, D:8)
+  a +0 pair of gloves
+(46, 1, D:8)
+  a +0 flail
+(47, 0, D:8)
+  a cursed -2 trident
+(47, 2, D:8)
+  the +5 trident "Rienoot" {vamp, Dex+3}
+    It inflicts no extra harm, but heals its wielder when it wounds a living
+    foe.
+    
+    It affects your dexterity (+3).
+(50, -2, D:8)
+  a book of Power
+(50, 3, D:8)
+  a +0 trident
+(52, -28, D:8)
+  14 bolts
+(59, 25, D:8)
+  a +0 trident
+(59, 26, D:8)
+  a +2 falchion of electrocution
+  a +0 ring mail
+  a +0 mace
+  a +0 dagger
+  a +0 robe
+
+Level 9 of the Dungeon
+(4, -20, D:9)
+  a +0 helmet
+(6, 22, D:9)
+  a potion of degeneration
+(7, 27, D:9)
+  a +0 whip
+(8, -25, D:9)
+  a +0 leather armour
+(12, 13, D:9)
+  a +0 shield
+(17, -21, D:9)
+  a cursed +0 pair of boots
+(23, 8, D:9)
+  a +0 dagger of chaos
+  a +0 robe
+(49, -15, D:9)
+  a +0 rapier
+(57, 17, D:9)
+  a +0 chain mail
+
+Level 10 of the Dungeon
+(0, 0, D:10)
+  a +0 hand axe
+  a +0 leather armour
+(1, 1, D:10)
+  a +0 dagger
+  a +0 robe
+(4, 7, D:10)
+  16 arrows
+(5, -5, D:10)
+  15 arrows
+(7, -4, D:10)
+  a +0 hand axe
+  a cursed -2 chain mail
+(7, 9, D:10)
+  a +0 mace
+  a +0 giant club
+(7, 34, D:10)
+  a +0 long sword
+(9, -2, D:10)
+  19 sling bullets
+(16, -9, D:10)
+  a +0 chain mail
+  a +0 mace
+  a +0 plate armour
+(17, -7, D:10)
+  a +0 dagger
+  a +0 robe
+(20, 11, D:10)
+  an arrow
+(21, 11, D:10)
+  an arrow
+  18 bolts
+(22, 9, D:10)
+  a +0 shortbow
+  20 arrows
+(24, 10, D:10)
+  a +0 helmet
+(24, 35, D:10)
+  a +0 robe
+(25, 25, D:10)
+  a +0 dagger
+(28, 31, D:10)
+  23 bolts
+(29, 25, D:10)
+  a +0 whip
+(29, 29, D:10)
+  a +0 ring mail
+(33, 28, D:10)
+  6 needles of frenzy
+(40, 19, D:10)
+  a +0 robe
+(40, 31, D:10)
+  22 arrows
+
+Level 1 of the Lair of Beasts
+(0, 0, Lair:1)
+  the +4 dagger of the Unstoppable Gods {venom, Dex+2}
+    It poisons the flesh of those it strikes.
+    
+    It affects your dexterity (+2).
+
+Level 2 of the Lair of Beasts
+(0, 0, Lair:2)
+  17 gold pieces
+(7, -6, Lair:2)
+  a water moccasin corpse
+(8, -2, Lair:2)
+  22 gold pieces
+(11, -22, Lair:2)
+  a ration
+(12, -17, Lair:2)
+  a crocodile skeleton
+

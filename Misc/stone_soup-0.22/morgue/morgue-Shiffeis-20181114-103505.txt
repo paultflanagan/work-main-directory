@@ -1,0 +1,170 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+7 Shiffeis the Sneak (level 1, -2/9 HPs)
+             Began as a Spriggan Enchanter on Nov 14, 2018.
+             Slain by a hobgoblin
+             ... wielding a +0 club
+              (5 damage)
+             ... on level 1 of the Dungeon.
+             The game lasted 00:01:19 (136 turns).
+
+Shiffeis the Sneak (Spriggan Enchanter)              Turns: 136, Time: 00:01:19
+
+Health: -2/9       AC:  2    Str:  4    XL:     1   Next: 83%
+Magic:  3/5        EV: 18    Int: 16    God:    
+Gold:   33         SH:  0    Dex: 16    Spells: 4/5 levels left
+
+rFire    . . .     SeeInvis +   a - +1 dagger
+rCold    . . .     Gourm    .   (shield restricted)
+rNeg     . . .     Faith    .   b - +0 robe
+rPois    .         Spirit   .   (helmet restricted)
+rElec    .         Reflect  .   (no cloak)
+rCorr    .         Harm     .   (gloves unavailable)
+MR       .....                  (boots unavailable)
+Stlth    +++.......             (no amulet)
+HPRegen  0.03/turn              (no ring)
+MPRegen  0.09/turn              (no ring)
+
+@: very quick
+A: very small, unfitting armour, see invisible, herbivore, speed 3, slow
+metabolism 2
+a: no special abilities
+
+
+You were on level 1 of the Dungeon.
+You were not hungry.
+
+You visited 1 branch of the dungeon, and saw 1 of its levels.
+
+You collected 33 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +1 dagger (weapon)
+Armour
+ b - a +0 robe (worn)
+Scrolls
+ c - a scroll of remove curse {unknown}
+ e - a scroll of random uselessness {unknown}
+Comestibles
+ d - a ration
+
+
+   Skills:
+ + Level 1.1 Short Blades
+ + Level 3.0 Dodging
+ * Level 4.5 Stealth
+ + Level 2.9 Spellcasting
+ * Level 4.0 Hexes
+
+
+You had 4 spell levels left.
+You knew the following spells:
+
+ Your Spells              Type           Power        Failure   Level  Hunger
+a - Corona                Hex            ###....      3%          1    #......
+
+Your spell library contained the following spells:
+
+ Spells                   Type           Power        Failure   Level  Hunger
+ Confuse                  Hex            ###.....     11%         3    ###....
+ Tukima's Dance           Hex            ###.....     11%         3    ###....
+ Ensorcelled Hibernation  Hex/Ice        #.....       13%         2    ##.....
+ Dazzling Spray           Conj/Hex       #.....       26%         3    ###....
+
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (1/15)            
+
+Altars:
+
+
+Innate Abilities, Weirdness & Mutations
+
+You are very small and have problems with some larger weapons.
+You are too small for most types of armour.
+You have supernaturally acute eyesight. (SInv)
+You are a herbivore.
+You cover ground extremely quickly.
+You need to consume almost no food.
+
+
+Message History
+
+Confirm with . or Enter, or press ? or * to list all spells.
+Aiming: Corona (safe; 3% risk of failure)
+Press: ? - help, Shift-Dir - straight line, f - hobgoblin
+Aim: a hobgoblin, wielding a club (chance to defeat MR: 69%)
+The hobgoblin is outlined in light. The hobgoblin hits you with a club.
+You are too injured to fight recklessly!
+You hit the hobgoblin.
+The hobgoblin is severely wounded.
+The hobgoblin misses you.
+That item cannot be evoked!
+Press: ? - help, v - describe, . - travel, g - get item
+Here: a hobgoblin, wielding a club (severely wounded, softly glowing)
+A club.
+The floor, spattered with blood.
+You completely miss the hobgoblin.
+The hobgoblin is severely wounded.
+A kobold comes into view.
+The hobgoblin hits you with a club.
+Ouch! That really hurt!
+You die...
+
+.
+.                   ###
+.##                 ..
+..#                ..
+#.#              ##. #
+#.#              K. .#
+#.###############.#..##
+..#.#.#.#.#.#.#.#g....#
+##..............@#
+#..........#......#
+##.......#.......##
+#......#....#.....#
+##...#...........##
+#..#...#.#.#.#....#
+##.............[.##
+#...#..#.<.#..#...#
+##...............##
+#....#.#.#.#...#.†#
+##...........#...##
+
+
+You could see a hobgoblin and a kobold (wandering).
+
+Vanquished Creatures
+  2 giant cockroaches (D:1)
+  2 goblins (D:1)
+  2 rats (D:1)
+6 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | Shiffeis the Spriggan Enchanter began the quest for the
+                  | Orb.
+     0 | D:1      | Reached XP level 1. HP: 9/9 MP: 5/5
+   136 | D:1      | Slain by a hobgoblin
+
+Skill      XL: |  1 |
+---------------+----+-----
+Hexes          |  4 |  4.0
+Short Blades   |    |  1.1
+Dodging        |    |  3.0
+Stealth        |    |  4.5
+Spellcasting   |    |  2.9
+
+Action                   || total
+-------------------------++-------
+Melee: Dagger            ||    16
+ Cast: Corona            ||     6
+ Stab: Sleeping          ||     3
+Armor: Robe              ||     2
+Dodge: Dodged            ||    12
+

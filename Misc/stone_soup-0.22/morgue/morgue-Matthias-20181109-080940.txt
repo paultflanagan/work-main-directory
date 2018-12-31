@@ -1,0 +1,407 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+11418 Matthias the Basher (level 11, -1/67 HPs)
+             Began as a Gargoyle Fighter on Nov 8, 2018.
+             Was a High Priest of Okawaru.
+             Killed by Ozocubu's Refrigeration
+             ... invoked by Fannar
+              (14 damage)
+             ... on level 11 of the Dungeon on Nov 9, 2018.
+             The game lasted 00:47:29 (9620 turns).
+
+Matthias the Basher (Gargoyle Fighter)              Turns: 9620, Time: 00:47:31
+
+Health: -1/67      AC: 27    Str: 24    XL:     11   Next: 77%
+Magic:  14/14      EV:  7    Int: 10    God:    Okawaru [*****.]
+Gold:   720        SH: 12    Dex: 10    Spells: 8/15 levels left
+
+rFire    . . .     SeeInvis +   P - +0 flail (crush)
+rCold    . . .     Gourm    .   c - +0 shield
+rNeg     + . .     Faith    .   E - +1 plate armour
+rPois    8         Spirit   .   U - +0 helmet
+rElec    +         Reflect  .   p - +0 cloak
+rCorr    .         Harm     .   S - +1 pair of gloves {Str+3}
+MR       .....                  (no boots)
+Stlth    ..........             s - amulet of regeneration
+HPRegen  0.61/turn              e - ring of poison resistance
+MPRegen  0.14/turn              l - ring of see invisible
+
+@: about to teleport
+A: negative energy resistance 1, electricity resistance, unbreathing,
+petrification resistance, rot immunity, AC +8
+a: Heroism, Finesse, Renounce Religion
+
+
+You were on level 11 of the Dungeon.
+You worshipped Okawaru.
+Okawaru was extremely pleased with you.
+You were not hungry.
+
+You visited 1 branch of the dungeon, and saw 11 of its levels.
+
+You collected 720 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +0 flail
+ G - a cursed -1 shortbow
+ P - a +0 flail of crushing (weapon)
+Missiles
+ g - 177 arrows
+ h - 499 stones (quivered)
+Armour
+ b - a +0 scale mail
+ c - a +0 shield (worn)
+ p - a +0 cloak (worn)
+ z - a +0 pair of gloves
+ E - a +1 plate armour (worn)
+ S - a +1 pair of gloves of strength (worn)
+ U - a +0 helmet (worn)
+ X - a +1 animal skin
+Jewellery
+ e - a ring of poison resistance (left hand)
+ l - a ring of see invisible (right hand)
+ s - an amulet of regeneration (around neck)
+ C - a cursed ring of teleportation
+ F - an uncursed ring of stealth
+ N - a +3 amulet of reflection
+ R - an uncursed amulet of guardian spirit {unknown}
+Wands
+ u - a wand of acid (10)
+ D - a wand of flame (25)
+ M - a wand of iceblast (10)
+ Q - a wand of polymorph (32)
+ V - a wand of digging (15)
+Scrolls
+ j - 2 scrolls of blinking {unknown}
+ k - 4 scrolls of enchant armour
+ n - 14 scrolls of identify
+ q - 2 scrolls of magic mapping
+ t - 2 scrolls of teleportation
+ v - a scroll of immolation {unknown}
+ y - 4 scrolls of amnesia
+ H - a scroll of fear {unknown}
+ J - a scroll of noise
+ L - 2 scrolls of remove curse
+ T - a scroll of holy word {unknown}
+ Y - a scroll of torment {unknown}
+Potions
+ d - a potion of might
+ i - 2 potions of flight {unknown}
+ m - a potion of agility
+ o - 5 potions of curing
+ w - a potion of brilliance
+ x - 2 potions of haste
+ A - a potion of degeneration {unknown}
+ B - 2 potions of berserk rage {unknown}
+ I - a potion of magic {unknown}
+ K - 3 potions of mutation {unknown}
+ W - a potion of lignification {unknown}
+Miscellaneous
+ Z - a sack of spiders
+Comestibles
+ f - 19 rations
+
+
+   Skills:
+ * Level 7.3 Fighting
+ * Level 10.3 Maces & Flails
+ + Level 0.1 Throwing
+ * Level 8.0 Armour
+ * Level 4.3 Dodging
+ * Level 10.2 Shields
+ * Level 2.5 Spellcasting
+ * Level 3.2 Translocations
+ * Level 2.2 Transmutations
+ * Level 3.6 Earth Magic
+ * Level 1.8 Invocations
+
+
+You had 8 spell levels left.
+You knew the following spells:
+
+ Your Spells              Type           Power        Failure   Level  Hunger
+a - Gell's Gravitas       Tloc           #.........   99%         3    ####...
+b - Petrify               Tmut/Erth      #.......     100%        4    #####..
+
+Your spell library contained the following spells:
+
+ Spells                   Type           Power        Failure   Level  Hunger
+ Confusing Touch          Hex            #.....       100%        1    ##.....
+ Confuse                  Hex            #.......     100%        3    ####...
+ Metabolic Englaciation   Hex/Ice        #.........   100%        5    ######.
+ Yara's Violent Unravell  Hex/Tmut       #.........   100%        5    ######.
+
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (11/15)            Temple (0/1) D:5            Lair (0/6) D:9
+   Orc: D:9-12      
+
+Altars:
+Cheibriados
+Elyvilon
+Kikubaaqudgha
+Okawaru
+Ru
+Trog
+Uskayaw
+Vehumet
+Wu Jian
+Xom
+
+Shops:
+D:8 (
+
+Annotations:
+D:11 Fannar
+
+
+Innate Abilities, Weirdness & Mutations
+
+You are resistant to torment.
+Your stone body is resilient. (AC +8)
+You are immune to poison.
+You resist negative energy. (rN+)
+You are resistant to electric shocks. (rElec)
+You can survive without breathing.
+You are immune to petrification.
+You are immune to rotting.
+
+
+Message History
+
+* * * LOW HITPOINT WARNING * * *
+Okay, then.
+Okay, then.
+Okay, then.
+You feel better. You block the ice beast's attack. x2
+You barely miss the ice beast. The ice beast hits you.
+* * * LOW HITPOINT WARNING * * *
+The ice beast freezes you!
+* * * LOW HITPOINT WARNING * * *
+The ice beast barely misses you.
+Okay, then.
+You feel better.
+The ice beast hits you but does no damage.
+You block the ice beast's attack.
+As you read the scroll of teleportation, it crumbles to dust.
+You feel strangely unstable.
+Fannar casts a spell.
+Fannar drains the heat from the surrounding environment!
+You feel very cold.
+You die...
+
+          #......<.#..
+      #.  ######.#...#
+      #.       #.##.##
+      #.       #.##.#
+      #.       #.##.##
+     ##.########.##...
+     #........##.#####
+      #..........#
+      ##.####.#######
+#.######.#  #.........
+#...Y@Ye.#  ##########
+##########
+
+
+You could see Fannar and 2 ice beasts.
+
+Vanquished Creatures
+  2 two-headed ogres (D:9)
+  Nergalle (D:10)
+  An ugly thing (D:11)
+  A centaur zombie (D:10)
+  Joseph (D:10)
+  The ghost of Bellanimi the Magician, a novice DECj of Vehumet (D:6)
+  2 trolls (D:11)
+  Grinder (D:6)
+  2 hippogriffs (D:10)
+  A wyvern (D:10)
+  4 yaks (D:10)
+  A steam dragon (D:10)
+  Grum (D:11)
+  2 hungry ghosts
+  Menkaure (D:5)
+  2 soldier ants (D:8)
+  A water moccasin (D:9)
+  4 orc warriors
+  A black bear (D:10)
+  8 ice beasts
+  2 centaurs
+  4 ogres
+  3 wolves (D:11)
+  A crocodile (D:9)
+  10 big kobolds
+  6 bullfrogs
+  2 scorpions
+  9 killer bees
+  8 wights
+  2 electric eels (D:10)
+  4 crimson imps
+  A bullfrog zombie (D:10)
+  A quasit (D:11)
+  A bullfrog skeleton (D:9)
+  Crazy Yiuf (D:2)
+  2 hounds
+  2 centaur skeletons
+  3 orc priests
+  2 jellies
+  A gnoll shaman (D:4)
+  3 iguanas
+  Ijyb (D:5)
+  8 orc wizards
+  5 worker ants
+  Natasha (thrice) (D:2)
+  A bullfrog simulacrum (D:10)
+  A hound zombie (D:9)
+  2 hound skeletons
+  4 worker ant zombies
+  8 gnolls
+  10 adders
+  2 shadow imps
+  A white imp (D:10)
+  An adder zombie (D:5)
+  An adder skeleton (D:6)
+  A worm (D:2)
+  A dart slug (D:3)
+  5 leopard geckos
+  32 orcs
+  5 giant cockroaches
+  7 goblins
+  9 hobgoblins
+  9 jackals
+  5 quokkas
+  4 ball pythons
+  A ball python skeleton (D:4)
+  5 bats
+  3 frilled lizards
+  57 kobolds
+  2 leopard gecko skeletons
+  2 rats
+302 creatures vanquished.
+
+Vanquished Creatures (others)
+  5 dream sheep (D:7)
+  3 fungi (D:9)
+8 creatures vanquished.
+
+Grand Total: 310 creatures vanquished
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | Matthias the Gargoyle Fighter began the quest for the Orb.
+     0 | D:1      | Reached XP level 1. HP: 14/14 MP: 1/1
+   184 | D:1      | Reached XP level 2. HP: 19/19 MP: 2/2
+  1006 | D:2      | Reached XP level 3. HP: 23/23 MP: 3/3
+  1016 | D:2      | Found a hide-covered altar of Uskayaw.
+  1020 | D:2      | Found an iron altar of Okawaru.
+  1020 | D:2      | Found a sacrificial altar of Ru.
+  1023 | D:2      | Found a radiant altar of Vehumet.
+  1028 | D:2      | Became a worshipper of Warmaster Okawaru
+  1104 | D:2      | Noticed Natasha
+  1114 | D:2      | Killed Natasha
+  1114 | D:2      | Reached XP level 4. HP: 4/29 MP: 4/4
+  1241 | D:2      | Noticed Natasha
+  1252 | D:2      | Killed Natasha
+  1777 | D:2      | Noticed Natasha
+  1783 | D:2      | Killed Natasha
+  1783 | D:2      | Reached XP level 5. HP: 30/33 MP: 5/5
+  1810 | D:2      | Found a runed door.
+  1940 | D:2      | Noticed Crazy Yiuf
+  1948 | D:2      | Killed Crazy Yiuf
+  2108 | D:3      | Reached * piety under Okawaru
+  2436 | D:3      | Reached skill level 1 in Dodging
+  2614 | D:3      | Reached XP level 6. HP: 34/38 MP: 6/6
+  2767 | D:3      | Reached skill level 5 in Shields
+  3034 | D:3      | Reached XP level 7. HP: 42/43 MP: 7/7
+  3114 | D:3      | Reached ** piety under Okawaru
+  3173 | D:3      | Reached skill level 5 in Maces & Flails
+  3542 | D:4      | Reached skill level 5 in Armour
+  3542 | D:4      | Reached XP level 8. HP: 47/48 MP: 8/8
+  3954 | D:4      | Found an ancient bone altar of Kikubaaqudgha.
+  4515 | D:5      | Entered Level 5 of the Dungeon
+  4660 | D:5      | Found a white marble altar of Elyvilon.
+  4738 | D:5      | Noticed Menkaure
+  4746 | D:5      | Killed Menkaure
+  4746 | D:5      | Reached *** piety under Okawaru
+  4919 | D:5      | Found a staircase to the Ecumenical Temple.
+  4953 | D:5      | Found a snail-covered altar of Cheibriados.
+  4975 | D:5      | Noticed Ijyb
+  4987 | D:5      | Killed Ijyb
+  5098 | D:6      | Reached skill level 5 in Fighting
+  5098 | D:6      | Reached XP level 9. HP: 54/54 MP: 9/9
+  5151 | D:6      | Noticed Grinder
+  5177 | D:6      | Killed Grinder
+  5235 | D:6      | Reached skill level 1 in Invocations
+  5827 | D:6      | Found a runed door.
+  5827 | D:6      | Noticed Bellanimi's ghost (novice DECj)
+  5853 | D:6      | Killed Bellanimi's ghost
+  5853 | D:6      | Reached **** piety under Okawaru
+  6032 | D:7      | Found an ornate altar of the Wu Jian Council.
+  6191 | D:7      | Learned a level 3 spell: Gell's Gravitas
+  6196 | D:7      | Learned a level 4 spell: Petrify
+  6297 | D:7      | Found a shimmering altar of Xom.
+  6518 | D:8      | Reached skill level 1 in Translocations
+  6561 | D:8      | Reached XP level 10. HP: 49/60 MP: 10/10
+  6578 | D:8      | Reached skill level 1 in Earth Magic
+  6627 | D:8      | Found Fuggits's Weapon Shop.
+  6845 | D:8      | Found a bloodstained altar of Trog.
+  7134 | D:9      | Reached skill level 1 in Spellcasting
+  7140 | D:9      | Noticed a two-headed ogre
+  7153 | D:9      | Killed a two-headed ogre
+  7153 | D:9      | Reached ***** piety under Okawaru
+  7153 | D:9      | Reached skill level 1 in Transmutations
+  7190 | D:9      | Found a staircase to the Lair.
+  7375 | D:9      | Noticed a two-headed ogre
+  7391 | D:9      | Killed a two-headed ogre
+  7716 | D:10     | Entered Level 10 of the Dungeon
+  7875 | D:10     | Received a gift from Okawaru
+  7875 | D:10     | Reached XP level 11. HP: 66/66 MP: 12/14
+  8460 | D:10     | Noticed Nergalle
+  8535 | D:10     | Killed Nergalle
+  8535 | D:10     | Reached skill level 10 in Maces & Flails
+  8883 | D:10     | Noticed Joseph
+  8898 | D:10     | Killed Joseph
+  9187 | D:11     | Noticed Grum
+  9195 | D:11     | Reached skill level 10 in Shields
+  9214 | D:11     | Killed Grum
+  9262 | D:11     | Noticed a red ugly thing
+  9305 | D:11     | Killed a red ugly thing
+  9572 | D:11     | Noticed Fannar
+  9591 | D:11     | HP: 2/67 [Fannar/bolt of cold (23)]
+  9620 | D:11     | Killed from afar by Fannar
+
+Skill      XL: |  1  2  3  4  5  6  7  8  9 10 11 |
+---------------+----------------------------------+-----
+Shields        |        4        5  6  7  8  9 10 | 10.2
+Maces & Flails |           3     4  5  6  8  9 10 | 10.3
+Armour         |           4        5     6  7  8 |  8.0
+Fighting       |              4        5  6     7 |  7.3
+Dodging        |              1     2     3  4    |  4.3
+Invocations    |                          1       |  1.8
+Translocations |                          1  2  3 |  3.2
+Earth Magic    |                             2  3 |  3.6
+Spellcasting   |                             2    |  2.5
+Transmutations |                             1  2 |  2.2
+Throwing       |                                  |  0.1
+
+Action                   |  1- 3 |  4- 6 |  7- 9 | 10-12 || total
+-------------------------+-------+-------+-------+-------++-------
+Melee: Flail             |    79 |   344 |   700 |   783 ||  1906
+Throw: Stone             |       |       |     2 |       ||     2
+Invok: Heroism           |       |     1 |     3 |     5 ||     9
+       Finesse           |       |       |       |     2 ||     2
+  Use: Potion            |       |     1 |       |     5 ||     6
+       Scroll            |       |       |       |    10 ||    10
+  Eat: Chunk             |     1 |     7 |    19 |    11 ||    38
+       Ration            |       |       |       |     3 ||     3
+Armor: Scale mail        |    67 |   262 |   217 |       ||   546
+       Plate armour      |       |       |   185 |   475 ||   660
+Dodge: Dodged            |    25 |   211 |   211 |   183 ||   630
+Block: Shield            |    57 |   255 |   464 |   415 ||  1191
+

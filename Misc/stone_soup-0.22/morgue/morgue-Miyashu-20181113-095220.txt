@@ -1,0 +1,211 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+150 Miyashu the Gusty (level 5, -1/40 HPs)
+             Began as a Draconian Air Elementalist on Nov 12, 2018.
+             Slain by a phantom (8 damage)
+             ... on level 3 of the Dungeon on Nov 13, 2018.
+             The game lasted 00:15:23 (1918 turns).
+
+Miyashu the Gusty (Draconian Air Elementalist)      Turns: 1918, Time: 00:15:23
+
+Health: -1/40      AC:  6    Str: 10    XL:     5   Next: 10%
+Magic:  0/9        EV: 18    Int: 17    God:    
+Gold:   178        SH:  0    Dex: 16    Spells: 6/9 levels left
+
+rFire    . . .     SeeInvis .   q - +0 whip
+rCold    . . .     Gourm    .   (no shield)
+rNeg     . . .     Faith    .   (armour unavailable)
+rPois    .         Spirit   .   (helmet restricted)
+rElec    .         Reflect  .   k - +0 cloak
+rCorr    .         Harm     .   (no gloves)
+MR       .....                  (no boots)
+Stlth    +++.......             (no amulet)
+HPRegen  0.13/turn              (no ring)
+MPRegen  0.11/turn              (no ring)
+
+@: agile, very slightly contaminated
+A: unfitting armour, cold-blooded, AC +5
+a: no special abilities
+
+
+You were on level 3 of the Dungeon.
+You were not hungry.
+
+You visited 1 branch of the dungeon, and saw 3 of its levels.
+
+You collected 178 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ c - a +0 flail
+ d - a +0 club
+ q - a +0 whip (weapon)
+Armour
+ k - a +0 cloak (worn)
+Wands
+ p - a wand of iceblast (7)
+Scrolls
+ a - 3 scrolls of fear {unknown}
+ e - a scroll of magic mapping {unknown}
+ h - a scroll of identify {unknown}
+ l - a scroll of immolation {unknown}
+ m - a scroll of remove curse {unknown}
+ n - a scroll of noise {unknown}
+Potions
+ g - a potion of flight {unknown}
+ i - a potion of agility
+ j - a potion of cancellation {unknown}
+ o - a potion of heal wounds {unknown}
+Comestibles
+ b - 4 rations
+ r - 8 chunks of flesh
+
+
+   Skills:
+ + Level 1.1 Fighting
+ + Level 1.8 Maces & Flails
+ + Level 2.2 Dodging
+ + Level 2.3 Stealth
+ + Level 2.9 Spellcasting
+ + Level 1.7 Conjurations
+ + Level 3.7 Air Magic
+
+
+You had 6 spell levels left.
+You knew the following spells:
+
+ Your Spells              Type           Power        Failure   Level  Hunger
+a - Shock                 Conj/Air       ##..         6%          1    #......
+b - Swiftness             Chrm/Air       #.......     12%         2    ##.....
+
+Your spell library contained the following spells:
+
+ Spells                   Type           Power        Failure   Level  Hunger
+ Static Discharge         Conj/Air       ##......     17%         3    ###....
+ Airstrike                Air            ###.......   36%         4    #####..
+ Lightning Bolt           Conj/Air       ##........   85%         5    ######.
+
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (3/15)            
+
+Altars:
+Ashenzari
+
+
+Innate Abilities, Weirdness & Mutations
+
+Your plain brown scales are hard. (AC +5)
+You cannot fit into any form of body armour.
+You are cold-blooded and may be slowed by cold attacks.
+
+
+Message History
+
+The phantom is almost destroyed.
+The phantom misses you.
+You closely miss the phantom.
+The phantom is almost destroyed.
+The phantom hits you but does no damage.
+Casting: Shock (safe; 6% risk of failure)
+Confirm with . or Enter, or press ? or * to list all spells.
+Aiming: Shock (safe; 6% risk of failure)
+Press: ? - help, Shift-Dir - straight line, f/p - phantom
+Aim: a phantom (almost destroyed)
+The zap hits the phantom.
+The phantom is almost destroyed.
+The phantom completely misses you.
+You barely miss the phantom.
+The phantom is almost destroyed.
+The phantom blinks!
+You hit the phantom but do no damage.
+The phantom is almost destroyed.
+The phantom hits you!
+You die...
+
+                    #.####......#
+                    ............#
+                     ...#.......#
+                      ...'......#
+       ###################......#
+       +...............÷.........
+       ####..#############..###..
+          #..#    #.######..# #..
+         ###.###  #.........# #..
+         #.._..####'###....## #..
+         #.#)#..@.....#....'..'..
+         #...#.##W....#....####..
+         ##..#.##.....+...... ...
+#####     #..#.##.....#######....
+....#######..#.####+#...      .
+....'.)..[...#.#     .###
+....########.#.#     .#
+....#      #+#.#
+....#
+....#
+....#
+
+
+You could see a phantom.
+
+Vanquished Creatures
+  An orc priest (D:3)
+  3 gnolls (D:2)
+  2 adders
+  5 worms
+  2 dart slugs
+  3 leopard geckos
+  3 orcs (D:3)
+  4 bats
+  A giant cockroach (D:1)
+  10 hobgoblins
+  A quokka (D:2)
+  A ball python (D:3)
+  4 frilled lizards
+  2 goblins
+  5 kobolds
+  5 rats
+52 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | Miyashu the Draconian Air Elementalist began the quest for
+                  | the Orb.
+     0 | D:1      | Reached XP level 1. HP: 14/14 MP: 3/3
+   208 | D:1      | Reached XP level 2. HP: 20/20 MP: 1/5
+   212 | D:1      | Learned a level 2 spell: Swiftness
+  1002 | D:2      | Reached XP level 3. HP: 24/27 MP: 1/6
+  1003 | D:2      | Reached skill level 1 in Maces & Flails
+  1068 | D:2      | Reached XP level 4. HP: 17/34 MP: 1/7
+  1731 | D:3      | Found a shattered altar of Ashenzari.
+  1741 | D:3      | Reached skill level 1 in Fighting
+  1790 | D:3      | Reached XP level 5. HP: 23/40 MP: 1/9
+  1827 | D:3      | Noticed a phantom
+  1918 | D:3      | Slain by a phantom
+
+Skill      XL: |  1  2  3  4 |
+---------------+-------------+-----
+Dodging        |  2          |  2.2
+Maces & Flails |        1    |  1.8
+Stealth        |        2    |  2.3
+Fighting       |           1 |  1.1
+Spellcasting   |             |  2.9
+Conjurations   |             |  1.7
+Air Magic      |             |  3.7
+
+Action                   |  1- 3 |  4- 6 || total
+-------------------------+-------+-------++-------
+Melee: Club              |    34 |    21 ||    55
+       Tailslap          |     7 |     5 ||    12
+       Unarmed           |     1 |       ||     1
+       Whip              |       |    14 ||    14
+ Cast: Shock             |    48 |    59 ||   107
+  Use: Potion            |     1 |     2 ||     3
+  Eat: Chunk             |     1 |     3 ||     4
+Armor: Skin              |    13 |    11 ||    24
+Dodge: Dodged            |    21 |    21 ||    42
+

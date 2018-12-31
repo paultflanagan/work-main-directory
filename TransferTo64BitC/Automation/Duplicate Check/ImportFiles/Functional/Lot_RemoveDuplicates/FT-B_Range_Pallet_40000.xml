@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<SOAP:Envelope xmlns:SOAP="http://schemas.xmlsoap.org/soap/envelope/">
+  <SOAP:Header />
+  <SOAP:Body>
+    <n0:NumberRangeResponseMessage xmlns:n0="http://sap.com/xi/AIN">
+      <ReceivingSystem>SYSTECH</ReceivingSystem>
+      <ActionCode>C</ActionCode>
+      <EncodingType>FTB-SSCC18Pallet</EncodingType>
+      <IDType>GS1_SER</IDType>
+      <Interval>
+        <NumberFrom>0000040000</NumberFrom>
+        <NumberTo>0000069999</NumberTo>
+      </Interval>
+      <ObjectKey>
+        <Name>COMPANYPREFIX</Name>
+        <Value>188002</Value>
+      </ObjectKey>
+      <RandomizedNumberList />
+    </n0:NumberRangeResponseMessage>
+  </SOAP:Body>
+</SOAP:Envelope>

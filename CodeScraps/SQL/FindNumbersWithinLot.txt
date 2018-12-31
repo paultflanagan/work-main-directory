@@ -1,0 +1,5 @@
+/****** Script for SelectTopNRows command from SSMS  ******/
+/*Pulls the full SPTNumber contents with the specified LotId*/
+use Guardian
+SELECT * [SPTNumber]
+  FROM [Guardian].[Guardian].[ProcessedSPTNumbers] WHERE LotId = 0000 /*<- Replace with found LotId*/

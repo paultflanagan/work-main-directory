@@ -1,0 +1,180 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+22 Trissali the Sneak (level 2, 0/13 HPs)
+             Began as a Spriggan Enchanter on Nov 12, 2018.
+             Slain by a jackal (3 damage)
+             ... on level 1 of the Dungeon.
+             The game lasted 00:03:19 (594 turns).
+
+Trissali the Sneak (Spriggan Enchanter)              Turns: 594, Time: 00:03:19
+
+Health: 0/13       AC:  2    Str:  4    XL:     2   Next: 68%
+Magic:  0/7        EV: 18    Int: 16    God:    
+Gold:   21         SH:  0    Dex: 16    Spells: 4/7 levels left
+
+rFire    . . .     SeeInvis +   a - +1 dagger
+rCold    . . .     Gourm    .   (shield restricted)
+rNeg     . . .     Faith    .   b - +0 robe
+rPois    .         Spirit   .   (helmet restricted)
+rElec    .         Reflect  .   (no cloak)
+rCorr    .         Harm     .   (gloves unavailable)
+MR       .....                  (boots unavailable)
+Stlth    ++++......             (no amulet)
+HPRegen  0.04/turn              c - ring of stealth
+MPRegen  0.10/turn              (no ring)
+
+@: very slightly contaminated, very quick
+A: very small, unfitting armour, see invisible, herbivore, speed 3, slow
+metabolism 2
+a: no special abilities
+
+
+You were on level 1 of the Dungeon.
+You were not hungry.
+
+You visited 1 branch of the dungeon, and saw 1 of its levels.
+
+You collected 21 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +1 dagger (weapon)
+Armour
+ b - a +0 robe (worn)
+Jewellery
+ c - a ring of stealth (left hand)
+Comestibles
+ d - 3 rations
+
+
+   Skills:
+ + Level 1.2 Short Blades
+ + Level 3.2 Dodging
+ + Level 5.1 Stealth
+ + Level 3.1 Spellcasting
+ + Level 3.9 Hexes
+ + Level 0.2 Ice Magic
+
+
+You had 4 spell levels left.
+You knew the following spells:
+
+ Your Spells              Type           Power        Failure   Level  Hunger
+a - Corona                Hex            ###....      3%          1    #......
+z - Ensorcelled Hibernat  Hex/Ice        #.....       12%         2    ##.....
+
+Your spell library contained the following spells:
+
+ Spells                   Type           Power        Failure   Level  Hunger
+ Confuse                  Hex            ###.....     11%         3    ###....
+ Tukima's Dance           Hex            ###.....     11%         3    ###....
+ Dazzling Spray           Conj/Hex       #.....       26%         3    ###....
+
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (1/15)            
+
+Altars:
+
+
+Innate Abilities, Weirdness & Mutations
+
+You are very small and have problems with some larger weapons.
+You are too small for most types of armour.
+You have supernaturally acute eyesight. (SInv)
+You are a herbivore.
+You cover ground extremely quickly.
+You need to consume almost no food.
+
+
+Message History
+
+Aiming: Ensorcelled Hibernation (safe; 12% risk of failure)
+Press: ? - help, Shift-Dir - straight line, f - jackal
+Aim: a jackal (chance to defeat MR: 58%)
+You miscast Ensorcelled Hibernation.
+You are very lightly contaminated with residual magic.
+The light around you dims momentarily.
+You hit the jackal.
+The jackal is lightly wounded.
+The jackal misses you.
+You barely miss the jackal.
+The jackal is lightly wounded.
+The jackal bites you.
+* * * LOW HITPOINT WARNING * * *
+You hit the jackal.
+The jackal is severely wounded.
+The jackal closely misses you.
+You barely miss the jackal.
+The jackal is severely wounded.
+The jackal closely misses you. The jackal bites you.
+You die...
+
+###.#.........##.....
+#................#..#
+##.............#.#..#
+ #...............#..#
+ #..##.##.########..#
+ #..................#
+ #.###..........###..
+ #.# #...........#...
+ #.# #...........#.##
+##.###...........#.#.
+#$..@h...........#.#.
+#######..........#.#.
+      #..........#.#(
+     ##.........##†#
+     #.............#
+     #..........####
+     #.####!..###
+     #.   #...#
+     #.   #...#
+     #.   #...#
+          #...#
+
+
+You could see a jackal.
+
+Vanquished Creatures
+  A dart slug (D:1)
+  2 goblins (D:1)
+  4 hobgoblins (D:1)
+  3 jackals (D:1)
+  5 bats (D:1)
+  A frilled lizard (D:1)
+  A kobold (D:1)
+  A rat (D:1)
+18 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | Trissali the Spriggan Enchanter began the quest for the
+                  | Orb.
+     0 | D:1      | Reached XP level 1. HP: 9/9 MP: 5/5
+   201 | D:1      | Reached XP level 2. HP: 12/13 MP: 6/6
+   206 | D:1      | Learned a level 2 spell: Ensorcelled Hibernation
+   358 | D:1      | Reached skill level 5 in Stealth
+   594 | D:1      | Slain by a jackal
+
+Skill      XL: |  1  2 |
+---------------+-------+-----
+Stealth        |     5 |  5.1
+Spellcasting   |     3 |  3.1
+Short Blades   |       |  1.2
+Dodging        |       |  3.2
+Hexes          |       |  3.9
+Ice Magic      |       |  0.2
+
+Action                   || total
+-------------------------++-------
+Melee: Dagger            ||    63
+ Cast: Corona            ||     4
+       Ensorcelled Hiber ||     9
+ Stab: Sleeping          ||     9
+Armor: Robe              ||     4
+Dodge: Dodged            ||    59
+

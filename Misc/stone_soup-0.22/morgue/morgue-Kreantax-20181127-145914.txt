@@ -1,0 +1,285 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+980 Kreantax the Slasher (level 7, -4/53 HPs)
+             Began as a Demonspawn Gladiator on Nov 27, 2018.
+             Slain by Pikel
+             ... wielding a +2 whip of flaming
+              (5 damage)
+             ... on level 6 of the Dungeon.
+             The game lasted 00:14:46 (4814 turns).
+
+Kreantax the Slasher (Demonspawn Gladiator)         Turns: 4814, Time: 00:14:47
+
+Health: -4/53      AC:  6    Str: 16 (19) XL:     7   Next: 96%
+Magic:  7/7        EV: 10    Int:  7 (10) God:    
+Gold:   318        SH:  4    Dex: 13 (16) Spells: 5/6 levels left
+
+rFire    . . .     SeeInvis .   a - +0 long sword
+rCold    + + .     Gourm    .   t - +0 buckler (curse)
+rNeg     . . .     Faith    .   n - +0 scale mail
+rPois    +         Spirit   .   (helmet restricted)
+rElec    +         Reflect  .   (no cloak)
+rCorr    +         Harm     .   (no gloves)
+MR       .....                  (no boots)
+Stlth    +.........             (no amulet)
+HPRegen  0.17/turn              x - ring of ice
+MPRegen  0.10/turn              (no ring)
+
+@: mighty, resistant
+A: horns 1, demonic guardian 1, nightstalker 1
+a: no special abilities
+
+
+You were on level 6 of the Dungeon.
+You were very hungry.
+
+You visited 1 branch of the dungeon, and saw 6 of its levels.
+
+You collected 318 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +0 long sword (weapon)
+Missiles
+ d - 3 throwing nets (quivered)
+Armour
+ b - a +0 leather armour
+ c - a +0 helmet
+ n - a +0 scale mail (worn)
+ t - a cursed +0 buckler (worn)
+ u - a +0 ring mail
+Jewellery
+ x - a ring of ice (left hand)
+Wands
+ i - a wand of flame (21)
+ p - a wand of enslavement (10)
+Scrolls
+ e - 4 scrolls of remove curse {unknown}
+ g - 2 scrolls of amnesia {unknown}
+ h - 3 scrolls of magic mapping {unknown}
+ j - a scroll of fear {unknown}
+ k - 4 scrolls of identify {unknown}
+ l - 3 scrolls of teleportation {unknown}
+ r - a scroll of silence {unknown}
+ s - 2 scrolls of immolation {unknown}
+Potions
+ o - a potion of might
+ v - a potion of flight
+ w - a potion of lignification {unknown}
+Comestibles
+ f - 9 rations
+
+
+   Skills:
+ + Level 3.8 Fighting
+ + Level 6.1 Long Blades
+ + Level 2.1 Throwing
+ + Level 3.4 Armour
+ + Level 3.7 Dodging
+ + Level 1.0 Stealth
+ + Level 2.1 Shields
+ + Level 0.1 Hexes
+
+
+You had 5 spell levels left.
+You knew the following spells:
+
+ Your Spells              Type           Power        Failure   Level  Hunger
+a - Corona                Hex            #......      90%         1    ##.....
+
+Your spell library contained the following spells:
+
+ Spells                   Type           Power        Failure   Level  Hunger
+ Ensorcelled Hibernation  Hex/Ice        #.....       97%         2    ###....
+ Confuse                  Hex            #.......     99%         3    ####...
+ Dazzling Spray           Conj/Hex       #.....       99%         3    ####...
+ Tukima's Dance           Hex            #.......     99%         3    ####...
+
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (6/15)            
+Temple: D:4-7       
+
+Altars:
+Cheibriados
+Gozag
+Beogh
+
+Shops:
+D:4 =
+
+Annotations:
+D:4 3 runed doors, Tronkkor's ghost, amateur HOFi
+D:6 Dowan; Duvessa; Pikel
+
+
+Innate Abilities, Weirdness & Mutations
+
+You have a pair of small horns on your head.
+A weak demonic guardian rushes to your aid.
+You are slightly more attuned to the shadows.
+
+
+Message History
+
+Pikel is lightly wounded.
+Dowan gestures wildly while chanting.
+Dowan blinks! You block Pikel's attack. Your iron imp barely misses Pikel.
+You slash Pikel! You headbutt Pikel.
+Pikel is heavily wounded.
+Pikel hits you with a whip of flaming.
+* * * LOW HITPOINT WARNING * * *
+Pikel burns you.
+* * * LOW HITPOINT WARNING * * *
+Duvessa hits your iron imp with a short sword of speed.
+Duvessa hits your iron imp with a short sword of speed!
+Pikel barely misses you.
+It was a potion of degeneration.
+There was something very wrong with that liquid.
+You feel weakened. You feel dopey. You feel clumsy.
+Your iron imp hits Duvessa but does no damage.
+Duvessa hits your iron imp but does no damage.
+Pikel says, "You'll fetch a fair price!"
+Pikel hits you with a whip of flaming.
+You die...
+
+                 #.
+               ###.########
+               #.e.........
+               #.#.#......#
+               #.#.#......#
+               #@#.#......#
+.   ############K#....#....
+  . ............5e[.e.'....
+ .. .<......#.....§...#....
+..########..#.#..###### ###
+. ..........#.#.....
+#######.....#.#.#####
+....  +.......#.#
+#### ##......##.###
+    .....#........#
+########.##...#.#.#
+
+
+You could see Pikel, Duvessa, Dowan and a friendly iron imp.
+
+Vanquished Creatures
+  Eustachio (D:6)
+  A slave (D:6)
+  An ogre (D:4)
+  A centaur zombie (D:6)
+  An orc wizard (D:5)
+  2 jellies (D:5)
+  An orc priest (D:5)
+  3 hounds
+  An iguana (D:5)
+  4 worker ants
+  A hound skeleton (D:6)
+  6 adders
+  A shadow imp (D:5)
+  An ooze (D:5)
+  4 worms
+  2 dart slugs
+  3 leopard geckos
+  7 orcs
+  4 bats
+  A giant cockroach (D:3)
+  7 goblins
+  A hobgoblin (D:1)
+  8 jackals
+  4 quokkas
+  4 frilled lizards
+  10 kobolds
+  A quokka zombie (D:4)
+  11 rats
+92 creatures vanquished.
+
+Vanquished Creatures (collateral kills)
+  2 slaves (D:6)
+  A centaur (D:5)
+  A bullfrog (D:6)
+  3 crimson imps
+  2 hounds
+  An orc priest (D:5)
+  An adder (D:5)
+  An orc (D:5)
+12 creatures vanquished.
+
+Vanquished Creatures (others)
+  A fungus (D:6)
+1 creature vanquished.
+
+Grand Total: 105 creatures vanquished
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | Kreantax the Demonspawn Gladiator began the quest for the
+                  | Orb.
+     0 | D:1      | Reached XP level 1. HP: 16/16 MP: 1/1
+   126 | D:1      | Gained mutation: You have a pair of small horns on your
+                  | head. [demonic ancestry]
+   126 | D:1      | Reached XP level 2. HP: 21/22 MP: 2/2
+   382 | D:1      | Reached skill level 3 in Long Blades
+   778 | D:2      | Reached XP level 3. HP: 27/27 MP: 3/3
+  1420 | D:3      | Reached skill level 1 in Armour
+  1449 | D:3      | Reached XP level 4. HP: 24/34 MP: 4/4
+  1852 | D:3      | Reached skill level 4 in Long Blades
+  2125 | D:4      | Noticed an ogre
+  2130 | D:4      | Killed an ogre
+  2130 | D:4      | Gained mutation: A weak demonic guardian rushes to your
+                  | aid. [demonic ancestry]
+  2130 | D:4      | Reached XP level 5. HP: 18/39 MP: 5/5
+  2300 | D:4      | Found a runed gate.
+  2300 | D:4      | Noticed Tronkkor's ghost (amateur HOFi)
+  2301 | D:4      | Found a runed gate.
+  2302 | D:4      | Found a runed gate.
+  2367 | D:4      | Found Tionam's Jewellery Shop.
+  2593 | D:4      | Found an opulent altar of Gozag.
+  2823 | D:4      | Found a roughly hewn altar of Beogh.
+  2847 | D:5      | Entered Level 5 of the Dungeon
+  2859 | D:5      | Gained mutation: You are slightly more attuned to the
+                  | shadows. [demonic ancestry]
+  2859 | D:5      | Reached XP level 6. HP: 32/46 MP: 6/6
+  2878 | D:5      | Learned a level 1 spell: Corona
+  2938 | D:5      | Reached skill level 5 in Long Blades
+  2947 | D:5      | Reached skill level 1 in Shields
+  3152 | D:5      | Found the +0 pair of fencer's gloves {+Riposte Dex+3}
+  3699 | D:5      | Reached XP level 7. HP: 29/52 MP: 7/7
+  4351 | D:6      | Noticed Eustachio
+  4368 | D:6      | Killed Eustachio
+  4368 | D:6      | Reached skill level 6 in Long Blades
+  4661 | D:6      | Reached skill level 1 in Stealth
+  4669 | D:6      | Found a snail-covered altar of Cheibriados.
+  4792 | D:6      | Noticed Dowan
+  4799 | D:6      | Noticed Duvessa
+  4801 | D:6      | Noticed Pikel
+  4813 | D:6      | HP: 1/53 [Pikel/whip of flaming (2)]
+  4814 | D:6      | Slain by Pikel
+
+Skill      XL: |  1  2  3  4  5  6  7 |
+---------------+----------------------+-----
+Throwing       |  2                   |  2.1
+Long Blades    |     3     4     5  6 |  6.1
+Dodging        |     3                |  3.7
+Armour         |        1        2  3 |  3.4
+Fighting       |                 3    |  3.8
+Shields        |                 1  2 |  2.1
+Stealth        |                    1 |  1.0
+Hexes          |                      |  0.1
+
+Action                   |  1- 3 |  4- 6 |  7- 9 || total
+-------------------------+-------+-------+-------++-------
+Melee: Long sword        |   115 |   138 |   124 ||   377
+       Headbutt          |    25 |    26 |    31 ||    82
+  Use: Potion            |       |       |     6 ||     6
+  Eat: Chunk             |     2 |     7 |     3 ||    12
+Armor: Leather armour    |    18 |       |       ||    18
+       Scale mail        |    24 |    50 |    40 ||   114
+Dodge: Dodged            |    96 |    69 |    69 ||   234
+Block: Buckler           |       |    22 |    34 ||    56
+Rpst.: Long sword        |    28 |    28 |    18 ||    74
+

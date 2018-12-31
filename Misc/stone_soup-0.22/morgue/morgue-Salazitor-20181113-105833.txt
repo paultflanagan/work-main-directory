@@ -1,0 +1,359 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+4571 Salazitor the Cudgeler (level 10, 0/114 HPs)
+             Began as a Demonspawn Abyssal Knight on Nov 13, 2018.
+             Was an Elder of Lugonu.
+             Slain by an orc
+             ... wielding a +1 mace of holy wrath
+              (2 damage)
+             ... on level 9 of the Dungeon.
+             The game lasted 00:34:28 (9622 turns).
+
+Salazitor the Cudgeler (Demonspawn Abyssal Knight)  Turns: 9622, Time: 00:34:28
+
+Health: 0/114      AC: 25    Str: 14    XL:     10   Next: 18%
+Magic:  12/12      EV:  2    Int: 13    God:    Lugonu [****..]
+Gold:   372        SH: 12    Dex: 20    Spells: 9/9 levels left
+
+rFire    . . .     SeeInvis .   B - +4 flail (protect)
+rCold    . . .     Gourm    .   v - +0 buckler
+rNeg     + + +     Faith    .   (armour currently unavailable)
+rPois    +         Spirit   .   (helmet currently unavailable)
+rElec    .         Reflect  +   (cloak currently unavailable)
+rCorr    .         Harm     .   (gloves currently unavailable)
+MR       .....     NoTele   +   (boots currently unavailable)
+Stlth    ++++++....             n - +5 amulet of reflection
+HPRegen  0.29/turn              (no ring)
+MPRegen  0.13/turn              (no ring)
+
+@: agile, tree-form
+A: nightstalker 2, MP-powered wands
+a: Depart the Abyss, Bend Space, Banish, Corrupt, Renounce Religion
+
+
+You were on level 9 of the Dungeon.
+You worshipped Lugonu.
+Lugonu was greatly pleased with you.
+You were not hungry.
+
+You were a tree.
+
+You visited 2 branches of the dungeon, and saw 10 of its levels.
+You visited the Abyss 1 time.
+
+You collected 372 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +1 mace
+ B - a +4 flail of protection (weapon)
+ J - a +0 lajatang
+Armour
+ b - a +0 leather armour
+ d - a +1 cloak
+ i - a +0 robe
+ k - a +0 ring mail (melded)
+ m - a +0 ring mail
+ u - a +2 helmet
+ v - a +0 buckler (worn)
+ G - a +1 cloak (melded)
+Magical Staves
+ H - an uncursed staff of cold
+Jewellery
+ n - a +5 amulet of reflection (around neck)
+ E - an uncursed amulet of the gourmand
+Wands
+ g - a wand of clouds (6)
+ C - a wand of enslavement (2)
+Scrolls
+ e - 2 scrolls of teleportation {unknown}
+ f - 5 scrolls of identify
+ h - 2 scrolls of remove curse
+ l - a scroll of summoning {unknown}
+ p - a scroll of enchant armour
+ q - a scroll of fear {unknown}
+ r - a scroll of fog {unknown}
+ t - a scroll of magic mapping {unknown}
+ y - 2 scrolls of amnesia
+ A - a scroll of enchant weapon {unknown}
+ D - a scroll of noise {unknown}
+ F - a scroll of immolation {unknown}
+Potions
+ j - a potion of magic
+ o - 2 potions of curing
+Comestibles
+ c - 19 rations
+ I - 2 chunks of flesh
+
+
+   Skills:
+ + Level 5.7 Fighting
+ + Level 7.7 Maces & Flails
+ + Level 4.9 Armour
+ + Level 4.3 Dodging
+ + Level 3.6 Stealth
+ * Level 7.3 Shields
+ + Level 2.8 Invocations
+
+
+You had 9 spell levels left.
+You didn't know any spells.
+Your spell library was empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (9/15)             Temple (1/1) D:5         
+  Lair: D:8-11         Orc: D:9-12      
+
+Altars:
+Ashenzari
+Cheibriados
+Elyvilon
+Hepliaklqana
+Makhleb
+Nemelex Xobeh
+Ru
+Trog
+Uskayaw
+Vehumet
+Yredelemnul
+The Shining One
+
+Annotations:
+D:6 1 runed door, Mishrakknor's ghost, novice DsAK
+D:7 3 runed doors, robloxmaster's ghost, novice GrFi
+
+
+Innate Abilities, Weirdness & Mutations
+
+((You have a pair of small horns on your head.))
+((You are mostly covered in iridescent scales. (AC +4)))
+((Your flesh is cold resistant. (rC+)))
+You are significantly more attuned to the shadows.
+((You have large cloven feet.))
+((You can translocate small distances at will.))
+You expend magic power (3 MP) to strengthen your wands.
+
+
+Message History
+
+It was a potion of agility.
+You feel agile all of a sudden.
+The orc hits you but does no damage. The troll misses you. The troll barely
+The troll claws you but does no damage. The orc hits you but does no damage. x2
+It was a potion of mutation. You feel extremely strange.
+Your feet thicken and deform.
+You feel your magical essence link to your wands.
+You feel jittery.
+You block the orc's attack. You block the troll's attack. The troll claws you
+The troll closely misses you. The orc misses you. The orc closely misses you.
+It was a potion of lignification. You turn into a tree. Your +1 cloak melds
+Your +0 ring mail melds into your body. Your roots penetrate the ground. You
+The troll bites you.
+* * * LOW HITPOINT WARNING * * *
+The troll claws you but does no damage. x2; The orc hits you but does no
+It was a potion of flight. Your roots keep you in place.
+The orc hits you with a mace of holy wrath.
+* * * LOW HITPOINT WARNING * * *
+You convulse.
+You die...
+
+         ...........
+         ...........
+         ........$..
+         .........
+          #.....# ..
+          ##.o?###..
+   .......#..Too#...
+   ...........o.....
+   .................
+    ................
+      #.............
+   ..###.....(......
+   ...#.....<.......
+...........#......##
+..........###.....#
+...........#......#
+
+
+You could see a troll and 4 orcs.
+
+Vanquished Creatures
+  A two-headed ogre (D:8)
+  Pikel (D:6)
+  Prince Ribbit (D:5)
+  Sigmund (D:5)
+  Edmund (D:6)
+  A water moccasin (D:9)
+  A black bear (D:7)
+  3 ice beasts
+  A sky beast (D:8)
+  A phantom (D:4)
+  3 ogres
+  5 centaurs
+  A big kobold (D:8)
+  6 bullfrogs
+  5 wights (D:6)
+  4 howler monkeys
+  3 crimson imps
+  A bullfrog zombie (D:6)
+  5 hounds
+  A jelly (D:5)
+  A bullfrog skeleton (D:6)
+  2 orc priests
+  A centaur zombie (D:5)
+  2 orc wizards
+  5 worker ants
+  Robin (D:3)
+  A howler monkey zombie (D:8)
+  A worker ant zombie (D:5)
+  11 adders
+  A shadow imp (D:6)
+  An ooze (D:3)
+  3 adder skeletons
+  6 worms
+  2 dart slugs (D:3)
+  2 leopard geckos
+  12 orcs
+  6 ball pythons
+  5 giant cockroaches
+  14 goblins
+  5 hobgoblins
+  7 jackals
+  16 kobolds
+  A quokka (D:4)
+  11 bats
+  5 frilled lizards
+  A giant cockroach zombie (D:5)
+  2 leopard gecko skeletons (D:6)
+  A quokka zombie (D:6)
+  5 rats
+177 creatures vanquished.
+
+Vanquished Creatures (others)
+  A centaur (D:8)
+1 creature vanquished.
+
+Grand Total: 178 creatures vanquished
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | Abyss:1  | Salazitor the Demonspawn Abyssal Knight began the quest for
+                  | the Orb.
+     0 | Abyss:1  | Reached XP level 1. HP: 18/18 MP: 2/2
+   110 | Abyss:1  | Noticed a starcursed mass
+   110 | Abyss:1  | Noticed a small abomination
+   111 | D:1      | Escaped the Abyss
+   163 | D:1      | Reached * piety under Lugonu
+   523 | D:1      | Gained mutation: You are slightly more attuned to the
+                  | shadows. [demonic ancestry]
+   523 | D:1      | Reached XP level 2. HP: 19/24 MP: 3/3
+   839 | D:1      | Reached skill level 1 in Dodging
+  1211 | D:1      | Reached XP level 3. HP: 29/29 MP: 5/5
+  1587 | D:2      | Found a glowing golden altar of the Shining One.
+  2053 | D:2      | Found a sparkling altar of Nemelex Xobeh.
+  2216 | D:2      | Reached ** piety under Lugonu
+  2247 | D:2      | Gained mutation: You are significantly more attuned to the
+                  | shadows. [demonic ancestry]
+  2247 | D:2      | Reached XP level 4. HP: 35/35 MP: 6/6
+  3169 | D:3      | Found a basalt altar of Yredelemnul.
+  3180 | D:3      | Reached skill level 1 in Stealth
+  3246 | D:3      | Found a basalt altar of Yredelemnul.
+  3693 | D:3      | Found a hazy altar of Hepliaklqana.
+  3840 | D:3      | Reached XP level 5. HP: 34/41 MP: 7/7
+  3933 | D:3      | Noticed Robin
+  3963 | D:3      | Killed Robin
+  3965 | D:3      | Reached *** piety under Lugonu
+  4254 | D:4      | Noticed a phantom
+  4276 | D:4      | Killed a phantom
+  4276 | D:4      | Reached skill level 1 in Shields
+  4276 | D:4      | Gained mutation: You are partially covered in iridescent
+                  | scales. (AC +2) [demonic ancestry]
+  4276 | D:4      | Reached XP level 6. HP: 12/48 MP: 8/8
+  4311 | D:4      | Noticed a dagger
+  4311 | D:4      | Noticed a dagger
+  4318 | D:4      | Found a hide-covered altar of Uskayaw.
+  4556 | D:4      | Found a snail-covered altar of Cheibriados.
+  4993 | D:5      | Entered Level 5 of the Dungeon
+  5070 | D:5      | Found a staircase to the Ecumenical Temple.
+  5282 | D:5      | Found a shattered altar of Ashenzari.
+  5294 | D:5      | Reached XP level 7. HP: 8/54 MP: 9/9
+  5608 | D:5      | Noticed Sigmund
+  6013 | D:5      | Killed Sigmund
+  6013 | D:5      | Reached skill level 5 in Maces & Flails
+  6033 | D:5      | Found a sacrificial altar of Ru.
+  6118 | D:5      | Gained mutation: Your flesh is cold resistant. (rC+)
+                  | [demonic ancestry]
+  6118 | D:5      | Reached XP level 8. HP: 54/60 MP: 10/10
+  6213 | D:5      | Noticed Prince Ribbit
+  6461 | D:5      | Killed Prince Ribbit
+  7146 | D:6      | Found a white marble altar of Elyvilon.
+  7536 | D:6      | Found a runed door.
+  7536 | D:6      | Noticed Mishrakknor's ghost (novice DsAK)
+  7609 | D:6      | Reached **** piety under Lugonu
+  7619 | D:6      | Reached skill level 5 in Shields
+  7721 | D:6      | Found a radiant altar of Vehumet.
+  7725 | D:6      | Found a burning altar of Makhleb.
+  7895 | D:6      | Noticed Edmund
+  7932 | D:6      | Killed Edmund
+  7932 | D:6      | Gained mutation: You have a pair of small horns on your
+                  | head. [demonic ancestry]
+  7932 | D:6      | Reached XP level 9. HP: 32/67 MP: 11/11
+  8018 | Temple   | Entered the Ecumenical Temple
+  8131 | D:6      | Noticed Pikel
+  8148 | D:6      | Killed Pikel
+  8148 | D:6      | Reached skill level 5 in Fighting
+  8330 | D:7      | Found a runed gate.
+  8330 | D:7      | Found a runed gate.
+  8330 | D:7      | Found a runed gate.
+  8660 | D:7      | Noticed robloxmaster's ghost (novice GrFi)
+  9122 | D:8      | Found a sparkling altar of Nemelex Xobeh.
+  9201 | D:8      | Found a bloodstained altar of Trog.
+  9412 | D:8      | Noticed a two-headed ogre
+  9426 | D:8      | Killed a two-headed ogre
+  9426 | D:8      | Gained mutation: You are mostly covered in iridescent
+                  | scales. (AC +4) [demonic ancestry]
+  9426 | D:8      | Reached XP level 10. HP: 39/76 MP: 12/12
+  9618 | D:9      | HP: 3/76 [troll (5)]
+  9620 | D:9      | Gained mutation: You have large cloven feet. [potion of
+                  | mutation]
+  9620 | D:9      | Gained mutation: You expend magic power (3 MP) to
+                  | strengthen your wands. [potion of mutation]
+  9620 | D:9      | Gained mutation: You can translocate small distances at
+                  | will. [potion of mutation]
+  9622 | D:9      | Slain by an orc
+
+Skill      XL: |  1  2  3  4  5  6  7  8  9 |
+---------------+----------------------------+-----
+Maces & Flails |  2        3     4  5  6  7 |  7.7
+Armour         |     2           3     4    |  4.9
+Dodging        |     1        2        3  4 |  4.3
+Stealth        |           1           2  3 |  3.6
+Shields        |              1  2  3  5  7 |  7.3
+Fighting       |                 4        5 |  5.7
+Invocations    |                            |  2.8
+
+Action                   |  1- 3 |  4- 6 |  7- 9 | 10-12 || total
+-------------------------+-------+-------+-------+-------++-------
+Melee: Mace              |   143 |   297 |   339 |       ||   779
+       Flail             |       |       |   164 |    30 ||   194
+       Headbutt          |       |       |    35 |     3 ||    38
+Invok: Depart the Abyss  |     1 |       |       |       ||     1
+       Bend Space        |       |     1 |       |       ||     1
+  Use: Potion            |       |     1 |     7 |     4 ||    12
+       Scroll            |       |       |     5 |       ||     5
+ Stab: Sleeping          |     6 |     8 |    15 |     4 ||    33
+       Distracted        |       |     1 |       |       ||     1
+  Eat: Chunk             |     4 |    10 |    10 |     2 ||    26
+       Ration            |       |       |     1 |       ||     1
+Armor: Leather armour    |    64 |       |       |       ||    64
+       Ring mail         |     7 |   100 |   141 |    13 ||   261
+       Skin              |       |       |       |     3 ||     3
+Dodge: Dodged            |   110 |   135 |   221 |    28 ||   494
+Block: Other             |       |    43 |       |       ||    43
+       Buckler           |       |    56 |   272 |    30 ||   358
+       Reflection        |       |       |     9 |       ||     9
+

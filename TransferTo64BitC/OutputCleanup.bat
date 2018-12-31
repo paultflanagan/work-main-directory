@@ -1,0 +1,15 @@
+:: Environment Cleanup
+:: Removing any lingering output files from previous runs
+DEL "C:\Automation\Duplicate Check\Results.txt"
+DEL "C:\Automation\ReportFramework\Test_Results\Results.txt"
+DEL "C:\Automation\ReportFramework\Test_Results\Project_Report.txt"
+DEL "C:\Automation\ReportFramework\Test_Results\Project_Report_duplicatecheck.txt"
+DEL "C:\2ndSafeguard.txt"
+DEL "C:\3rdSafeguard.txt"
+DEL "C:\3rdSafeguard_1.txt"
+DEL "C:\3rdSafeguard_2.txt"
+DEL "C:\3rdSafeguard_3.txt"
+DEL "C:\3rdSafeguard_4.txt"
+DEL "C:\3rdSafeguard_5.txt"
+DEL "C:\3rdSafeguard_6.txt"
+echo Y | DEL "C:\Automaation\Duplicate Check\Emails\*.*"

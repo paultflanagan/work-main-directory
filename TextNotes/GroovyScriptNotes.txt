@@ -1,0 +1,198 @@
+Groovy Script Notes
+
++++++++++++
+12-Dec-2018
++++++++++++
+Paul gave me this job to work on while the 8.3.0 test runs in the background
+The Groovy Script, which is like an offshoot of Java, is supposed to grab all the test builds and chart them
+The charting part looks fine, but Paul wanted me to introduce the ability to limit which tests were taken
+    The target was to set up a time frame and particular Jenkins folders options to take from.
+    
+I added code to reduce the time frame to a number of days, but we realized that the script was missing out on some of the jobs
+I've been working on figuring out why, but it has been slow going, since I need to get Paul to use administrator rights to verify each new script version I try to run.
+
+I've just figured out a way to print out each job name, which was hard to do for some reason:
+{"
+import jenkins.model.*
+import hudson.model.*
+
+Jenkins.instance.getAllItems(AbstractItem.class).each {
+  	println(it.fullName)
+  };
+"}
+
+Duplicate Check Report is one of the tests which isn't showing up in the script results, so I'll check to see if it's here
+    if it isn't, it would mean there is an issue with Jenkins finding all of the jobs
+    
+    
+Found:
+hudson.model.FreeStyleProject@1f910d05[Automation/UniSeries/8.4.0/SVT/Duplicate Check Report]
+
+Another successfully processed test, for comparison:
+hudson.model.FreeStyleProject@77444bb7[Automation/UniSeries/8.4.0/SVT/DummyTestPrep]
+
+So, I will assume that the issue is after Jenkins finds all of the jobs
+    Although technically, the Groovy Script uses "Jenkins.instance.getAllItems(Job).each {"
+    I've added a call to that as well
+    
+    
+Ok, this time, the Duplicate Check Report did appear in the final result
+I'm going to add the time constraint back and try again
+    could it have had to do with the imported libraries?
+    I notice that the first script I added imports "jenkins.model.*" where the original only imports "jenkins.model.Jenkins"
+After this I'll try removing that first script without adding back the additional import, and then I'll try adding the import if it does not work.
+But first, 7 day time constraint
+
+
+Still showed up
+removing first script
+{"
+import jenkins.model.*
+import hudson.model.*
+
+Jenkins.instance.getAllItems(AbstractItem.class).each {
+  	println(it.fullName)
+  };
+
+Jenkins.instance.getAllItems(Job).each {
+  	println(it.fullName)
+  };
+"}
+
+
+Did not show up.
+Adding "import jenkins.model.*"
+
+
+... it didn't show up again...
+Adding the first script back again?
+
+
+and it's still gone...
+
+I'm having trouble coming up with the next way I should approach this.
+For a bit I thought it might have something to do with the length of the test?
+    but then I checked and one of the tests that showed up had a run time of less than a minute
+        it didn't have a time-slot marker on the time sheet, but that's another matter; it still showed in the list of builds.
+        
+One other idea I have is that it may have to do with the "triggered" restriction
+It may not count if it was just a downstream job, and not explicitly initiated by the machine on a timed basis?
+But again, I can't find a good way to make sure
+
+I feel like one thing that would help a lot would be to find a good way of getting printed statements from directly within the script.
+But until I figure out a way to do that I'll just be throwing things around in the dark
+
+Found an information page attached to each of the builds called the environment variables
+
+I think I have an idea
+Could it be that if the most recent run was not made by the timer, then it skips it entirely?
+Yeah, I'm 95% certain that is what's going on
+
+I started a manual run of Dual Format and it disappeared from the next run I did
+
+I talked with Paul about it and he said that my idea to figure out how to only get the most recent automated run would be the next thing to shoot for.
+
+
++++++++++++
+13-Dec-2018
++++++++++++
+So, I have figured out why some of the jobs were missing:
+    if a job has had a manual build after its most recent auto build, then it will be dropped from the jobs to process.
+    
+Now I have a new list of priorities:
+1.  See if there is a way to look for the most recent automatic build, and not just drop the job if it wasn't the most recent.
+        this will require some research, as I am not sure how to go about setting this up, specifically which commands would be useful here.
+2.  Find out how to allow for filtering by Jenkins directory
+        I have an idea of how I'd like to start working towards this.
+        Each job has some value which is something like a path string. If I parse each one looking for a variable path string, it should only pick the ones which match.
+3.  Introduce parameterization for the time constraint and target directory.
+        This should also not be too hard.
+        Jenkins has an inbuilt parameterization functionality where you can set values when starting the run, and you can also set default values, too.
+        
+So I suppose the first thing to do will be to find some man pages where I can look through the available commands
+https://javadoc.jenkins.io/hudson/model/Job.html
+seems useful
+
+I see a Job method "getBuilds()" which could be useful
+    Returns a "RunList" (list containing Runs sorted in order of descending recency) object
+I could create a RunList with Job.getBuilds() and iterate through until the first item matching the trigger is found, which would be the most recent one.
+
+I notice that the original script makes an extraneous ".each" level:
+    on line 55, ".getLastBuild()" only ever returns one Run object, so doing "jobBuilds.each" calls each for only one item.
+I've removed this from my updated version.
+
+I implemented a version with the full build history check, but now the script has been running for over 4 minutes when it is usually instantaneous.
+I suspect that command to check the entirety of the build history for every job in our Jenkins server may have been a bit too much work.
+I'll let it run for a bit longer in case the full run time ends up being only 6 minutes, but after that I'll abort and figure out a workaround.
+
+It did manage to get to the end, after 00:05:38
+    not too bad
+I would like to try to make it a bit quicker, though
+I'll go ahead with my next plan to shorten the run time.
+
+
++++++++++++
+14-Dec-2018
++++++++++++
+I tried to shorten the run time by adding a check to the recency of the most recent build of any kind
+    this was an attempt to thin out the total amount of test processing that had to be done
+However, I got an error with attempting to call .getTime() on a null object
+My assumption is that it was the earlier call to it, but I don't know why .getLastBuild() would return a null value
+    Maybe there are some Jobs without any builds?
+Well whatever the reason, I've added a cheap conditional that checks to make sure that lastBuild != null before continuing.
+
+
+Hey, that worked and took the run time all the way down to 2.8 seconds.
+Cool, now that that has been settled, I'll move on to the next goal, which is the filtering by directory
+
+There's a Java method "String.startsWith(String s)" which I plan to try using first 
+The only part I'm less sure of is where I can find the object value that would have the path string.
+I think it's Job.getFullName(), though, so that's what I'll go with first.
+Added a check to the beginning of the result narrowing steps for the next run.
+
+
+Ran with an empty targetPath variable
+did not crash
+
+
+Ran with "Automation" as targetPath variable
+Successfully filtered down to only "Automation\*" jobs
+
+Now let's throw in the Parameterization options
+It should be simple, and I've set it up no issue, but the only problem is that I am not sure how to call the parameters in the script
+my first guess is ${PARAMETER_NAME}
+That did not work. Now trying %PARAMETER_NAME%
+Neither did that...
+
+Looking online I found a snip of code I'll try to refactor
+{"
+import hudson.model.*
+
+def hardcoded_param = "FOOBAR"
+def resolver = build.buildVariableResolver
+def hardcoded_param_value = resolver.resolve(hardcoded_param)
+"}
+
+Already have hudson.model.* imported.
+
+def resolver = build.buildVariableResolver
+def TargetProjectDirectory = resolver.resolve("TARGET_PROJECT_DIRECTORY")
+def RecencyWindow = resolver.resolve("RECENCY_WINDOW")
+
+Then I'll put TargetProjectDirectory and RecencyWindow where the %*%s were.
+Let's run it back
+
+
+The parameters were processed successfully, but the RecencyWindow is giving issue since it is being passed as a string and I can't figure out how to pass integer parameters.
+just adding a .parseInt() to the end of the string
+
+
+Oh, the parameter pass is some weird value which isn't actually a string?
+Oh wait no, I think I had to do "Integer.parseInt(RecencyWindow)"
+
+
+Awesome, script is working just as intended.
+I'll leave this be, at least until something breaks.
+
+
++++++++++++

@@ -1,0 +1,219 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+141 Korbanola the Magician (level 5, 0/39 HPs)
+             Began as a Draconian Wizard on Nov 27, 2018.
+             Killed by divine providence
+             ... invoked by an orc priest
+              (15 damage)
+             ... on level 3 of the Dungeon.
+             The game lasted 00:13:18 (3186 turns).
+
+Korbanola the Magician (Draconian Wizard)           Turns: 3186, Time: 00:13:19
+
+Health: 0/39       AC:  5    Str: 10    XL:     5   Next: 3%
+Magic:  5/11       EV: 12    Int: 18    God:    
+Gold:   74         SH:  0    Dex: 10    Spells: 9/12 levels left
+
+rFire    + . .     SeeInvis .   b - +0 whip (curse)
+rCold    x . .     Gourm    .   (no shield)
+rNeg     . . .     Faith    .   (armour unavailable)
+rPois    .         Spirit   .   a - +0 hat
+rElec    .         Reflect  .   (no cloak)
+rCorr    .         Harm     .   (no gloves)
+MR       .....                  (no boots)
+Stlth    ++........             o - amulet of regeneration
+HPRegen  0.53/turn              p - ring of fire
+MPRegen  0.12/turn              (no ring)
+
+@: no status effects
+A: unfitting armour, cold-blooded, AC +5
+a: no special abilities
+
+
+You were on level 3 of the Dungeon.
+You were not hungry.
+
+You visited 1 branch of the dungeon, and saw 3 of its levels.
+
+You collected 74 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ b - a cursed +0 whip (weapon)
+ e - a +0 club
+ k - a +0 mace
+Missiles
+ d - 115 stones (quivered)
+Armour
+ a - a +0 hat (worn)
+Jewellery
+ o - an amulet of regeneration (around neck)
+ p - a ring of fire (left hand)
+Scrolls
+ f - a scroll of noise {unknown}
+ h - 2 scrolls of remove curse {unknown}
+ j - a scroll of teleportation {unknown}
+Potions
+ g - 2 potions of magic {unknown}
+ l - a potion of curing {unknown}
+ m - a potion of flight {unknown}
+ n - 2 potions of haste
+ q - a potion of brilliance {unknown}
+ r - a potion of degeneration {unknown}
+Comestibles
+ c - 3 rations
+ i - a chunk of flesh
+
+
+   Skills:
+ + Level 0.7 Fighting
+ * Level 1.4 Maces & Flails
+ + Level 2.3 Dodging
+ + Level 1.9 Stealth
+ + Level 4.4 Spellcasting
+ + Level 1.6 Conjurations
+ + Level 1.2 Summonings
+   Level 1.0 Translocations
+
+
+You had 9 spell levels left.
+You knew the following spells:
+
+ Your Spells              Type           Power        Failure   Level  Hunger
+a - Call Imp              Summ           #.......     13%         2    ##.....
+z - Magic Dart            Conj           ##..         7%          1    None
+
+Your spell library contained the following spells:
+
+ Spells                   Type           Power        Failure   Level  Hunger
+ Blink                    Tloc           N/A          14%         2    ##.....
+ Slow                     Hex            #.......     22%         2    ##.....
+ Conjure Flame            Conj/Fire      ##......     30%         3    ###....
+ Mephitic Cloud           Conj/Pois/Air  #.......     34%         3    ###....
+
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (3/15)            
+
+Altars:
+Qazlal
+
+
+Innate Abilities, Weirdness & Mutations
+
+Your plain brown scales are hard. (AC +5)
+You cannot fit into any form of body armour.
+You are cold-blooded and may be slowed by cold attacks.
+
+
+Message History
+
+Casting: Call Imp (safe; 13% risk of failure)
+Confirm with . or Enter, or press ? or * to list all spells.
+A beastly little devil appears in a puff of flame.
+Your crimson imp says, "I yield to your servitude, O magnificent and awesome
+The orc priest calls down the wrath of Beogh upon you.
+Beogh smites you!
+The orc priest calls down the wrath of Beogh upon you.
+Beogh smites you!
+Casting: Call Imp (safe; 13% risk of failure)
+Confirm with . or Enter, or press ? or * to list all spells.
+A beastly little devil appears in a puff of frigid air.
+An orc comes into view.
+The orc hits your crimson imp but does no damage.
+Your crimson imp hits the orc.
+The orc barely misses your crimson imp.
+An orc comes into view. It is wielding a club.
+Your crimson imp barely misses the orc.
+The orc priest invokes the aid of Beogh against you.
+Beogh smites you!
+You die...
+
+        #####
+  #######...#####.
+  .......@555ooooo
+  ########.#######
+   #.......#..
+   #.#####.'.....
+   #.#.....#.....
+   #.#.###.#.....
+   #.#..##.# ....
+   #.......# ....
+##.#.##....#  ...
+...........#
+##.#.......#######
+
+
+You could see 2 orc priests, 2 orcs, 2 friendly crimson imps and a friendly
+white imp.
+
+Vanquished Creatures
+  Jessica (D:2)
+  Robin (D:2)
+  2 adders (D:3)
+  A gnoll (D:1)
+  2 worms (D:3)
+  2 dart slugs (D:1)
+  A leopard gecko (D:3)
+  3 orcs (D:3)
+  5 giant cockroaches
+  13 goblins
+  9 hobgoblins
+  5 kobolds
+  2 quokkas
+  7 bats
+  4 frilled lizards
+  3 rats (D:1)
+61 creatures vanquished.
+
+Vanquished Creatures (collateral kills)
+  An orc (D:3)
+1 creature vanquished.
+
+Grand Total: 62 creatures vanquished
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | Korbanola the Draconian Wizard began the quest for the Orb.
+     0 | D:1      | Reached XP level 1. HP: 14/14 MP: 4/4
+   487 | D:1      | Reached XP level 2. HP: 20/20 MP: 1/6
+   634 | D:1      | Learned a level 2 spell: Call Imp
+   904 | D:1      | Reached XP level 3. HP: 24/26 MP: 5/8
+  1327 | D:2      | Noticed Jessica
+  1344 | D:2      | Killed Jessica
+  1344 | D:2      | Reached skill level 4 in Spellcasting
+  1579 | D:2      | Noticed Robin
+  1701 | D:3      | Reached XP level 4. HP: 33/33 MP: 6/10
+  1778 | D:3      | Reached skill level 1 in Maces & Flails
+  2534 | D:2      | Found a stormy altar of Qazlal.
+  2836 | D:2      | Killed Robin
+  2836 | D:2      | Reached XP level 5. HP: 37/39 MP: 3/11
+  3186 | D:3      | Killed from afar by an orc priest
+
+Skill      XL: |  1  2  3  4 |
+---------------+-------------+-----
+Dodging        |     2       |  2.3
+Spellcasting   |        4    |  4.4
+Maces & Flails |           1 |  1.4
+Fighting       |             |  0.7
+Stealth        |             |  1.9
+Conjurations   |             |  1.6
+Summonings     |             |  1.2
+Translocations |             |  1.0
+
+Action                   |  1- 3 |  4- 6 || total
+-------------------------+-------+-------++-------
+Melee: Unarmed           |     7 |       ||     7
+       Club              |     9 |       ||     9
+       Whip              |     3 |    60 ||    63
+       Tailslap          |       |     7 ||     7
+ Cast: Magic Dart        |    84 |    79 ||   163
+       Call Imp          |     2 |     6 ||     8
+  Eat: Chunk             |     2 |     5 ||     7
+Armor: Skin              |    36 |    14 ||    50
+Dodge: Dodged            |    87 |    55 ||   142
+

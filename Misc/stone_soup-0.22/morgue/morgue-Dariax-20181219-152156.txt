@@ -1,0 +1,150 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+14 Dariax the Poker (level 2, -1/22 HPs)
+             Began as a Merfolk Gladiator on Dec 19, 2018.
+             Slain by a gnoll
+             ... wielding a +0 spear
+              (7 damage)
+             ... on level 1 of the Dungeon.
+             The game lasted 00:01:44 (219 turns).
+
+Dariax the Poker (Merfolk Gladiator)                 Turns: 219, Time: 00:01:44
+
+Health: -1/22      AC:  4    Str: 14    XL:     2   Next: 45%
+Magic:  2/2        EV: 14    Int:  7    God:    
+Gold:   0          SH:  0    Dex: 15    Spells: 1/1 levels left
+
+rFire    . . .     SeeInvis .   a - +0 trident
+rCold    . . .     Gourm    .   (no shield)
+rNeg     . . .     Faith    .   b - +0 leather armour
+rPois    .         Spirit   .   c - +0 helmet
+rElec    .         Reflect  .   (no cloak)
+rCorr    .         Harm     .   (no gloves)
+MR       .....                  (no boots)
+Stlth    +.........             (no amulet)
+HPRegen  0.07/turn              (no ring)
+MPRegen  0.08/turn              (no ring)
+
+@: no status effects
+A: change form in water, swift swim, stealthy swim
+a: no special abilities
+
+
+You were on level 1 of the Dungeon.
+You were not hungry.
+
+You visited 1 branch of the dungeon, and saw 1 of its levels.
+
+Inventory:
+
+Hand Weapons
+ a - a +0 trident (weapon)
+Missiles
+ d - 3 throwing nets (quivered)
+Armour
+ b - a +0 leather armour (worn)
+ c - a +0 helmet (worn)
+ i - a +0 scale mail
+Scrolls
+ e - 2 scrolls of identify {unknown}
+ k - a scroll of amnesia {unknown}
+Potions
+ h - a potion of brilliance {unknown}
+ j - a potion of ambrosia {unknown}
+Comestibles
+ f - 2 rations
+ g - 5 chunks of flesh
+
+
+   Skills:
+ - Level 2.1 Fighting
+ + Level 5.5 Polearms
+ - Level 2.0 Throwing
+ - Level 4.0 Dodging
+
+
+You had one spell level left.
+You didn't know any spells.
+Your spell library was empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (1/15)            
+
+Altars:
+
+Message History
+
+Aim: a dart slug (severely wounded, clinging)
+You reach to attack! You hit the dart slug but do no damage.
+The dart slug is severely wounded.
+You hit the dart slug.
+You kill the dart slug!
+A frilled lizard and a gnoll come into view.
+The gnoll hits you from afar with a spear.
+You are too injured to fight recklessly!
+The gnoll hits you with a spear.
+* * * LOW HITPOINT WARNING * * *
+You hit the gnoll.
+The gnoll is moderately wounded.
+The gnoll misses you.
+You hit the gnoll but do no damage.
+The gnoll is moderately wounded.
+The gnoll closely misses you.
+You hit the gnoll.
+The gnoll is heavily wounded.
+The gnoll hits you with a spear!
+You die...
+
+               #####
+    #########  #...#
+    #.......#  #...#
+   ##.......#  #...### #
+####........#  #........
+............#  #...#....
+#####.......####........
+    #.......##..@g....#
+    ########......#.###
+          #...#.###
+        .....##..#
+       ###.###...#
+        ...  ..#.l
+       ..#.  ## .##
+      ..##      ..
+      ##
+
+
+You could see a gnoll.
+
+Vanquished Creatures
+  A dart slug (D:1)
+  A goblin (D:1)
+  3 hobgoblins (D:1)
+  A kobold (D:1)
+  3 bats (D:1)
+  2 rats (D:1)
+11 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | Dariax the Merfolk Gladiator began the quest for the Orb.
+     0 | D:1      | Reached XP level 1. HP: 16/16 MP: 1/1
+    51 | D:1      | Reached skill level 5 in Polearms
+    52 | D:1      | Reached XP level 2. HP: 21/22 MP: 2/2
+   219 | D:1      | Slain by a gnoll
+
+Skill      XL: |  1 |
+---------------+----+-----
+Polearms       |  5 |  5.5
+Fighting       |    |  2.1
+Throwing       |    |  2.0
+Dodging        |    |  4.0
+
+Action                   || total
+-------------------------++-------
+Melee: Trident           ||    34
+Armor: Leather armour    ||    12
+Dodge: Dodged            ||    26
+

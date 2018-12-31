@@ -1,0 +1,7 @@
+Project##Systech UniSeries##Session Start Time##Pass#0
+Test Machine##ENGADVDEV01 Guardian w/Advisor 8.3.9##Session End Time##Fail#0
+Version##8.3.12##Execution Time hh:mm:ss##N/A#0
+SuiteName##Duplicate Check##Execution Status##Total#0
+Test Browser##N/A##Test URL#N/A##
+#######
+No.#Test Case#Design Doc Reference/Bug or Defect ID#Description#Expected Results##Test Execution Time#Pass/Fail/N/A

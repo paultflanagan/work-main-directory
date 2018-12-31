@@ -1,0 +1,106 @@
+I could maybe make a script that takes a Dupes-Testing Main Directory (~) as a parameter, and then goes down and removes all the extraneous files?
+I could write it, transfer it over to PaulTest3 (and maybe every box I test on going forward?), and run it before I copy files over to my main system for remote storage?
+
+Files that I would want the script to take care of:
+	Snapshot folders	(~\Automation\Duplicate Check\[...]\Snapshot\)
+	Report folders		(~\Automation\Duplicate Check\[...]\Report\)
+	Generated Output files
+		Results.txt				(~\Automation\Duplicate Check\Results.txt, ~\Automation\ReportFramework\Test_Results\Results.txt)
+		Project_Report.txt			(~\Automation\ReportFramework\Test_Results\Project_Report.txt)
+		Project_Report_duplicatecheck.txt	(~\Automation\ReportFramework\Test_Results\Project_Report_duplicatecheck.txt)
+		Email_1.txt (-_2.txt , -_3.txt)		(~\Automation\Duplicate Check\Emails\Email_1.txt (-_2.txt, -_3.txt))
+		
+
+
+Looking at it now, it seems as if a large number of the Snapshot folders are within Report folders (I have found some that aren't)
+It would make sense to delete all Report folders and files and then delete all remaining Snapshot folders and files.
+
+////////
+Hmm, although if I add git to the PaulTest3 box, then I wouldn't have to write a script and could just make use of the .gitignore
+	Sunk cost? I thought it would be too much effort to set up for what it was worth at first. Is it too late now?
+		Is this sunk cost fallacy or the opposite?
+
+could tell git to ignore everything in C,
+but then tell it not to ignore just the files I tell it about
+
+eh but then anytime I create a new item in the base C drive I would have to except it in the .gitignore
+this is one issue of working directly in the C drive, or rather, having any files in the C drive, and not just directories
+
+I guess there aren't too many other files in the C drive to begin with, and anything new would be 
+	So, it's less about the number of files, but more importantly about whether or not the list will change
+		I can just copy and paste the .gitignore list!
+		Put the .gitignore file on git itself!?
+		If/When I modify the .gitignore (once I get it onto a new machine) to exclude a new file I put in only for that new machine, would I want that going onto the remote repo?
+			make .gitignore tell git to ignore the .gitignore itself??!???
+
+Maybe I can just make use of this script for PaulTest3. In the future, on future boxes, I will just connect the C:\ drive to git and push from there.
+////////
+
+Since I would just be using this script for PaulTest3, I guess I don't have to worry about coding it to take a parameter; I can just hard code it specifically for that box.
+
+Probably going to write it in VBS, since that's what I'm most comfortable using to interact with file systems currently.
+
+Protocode:	''''''''''''''''''''''''''''''''''''''''
+
+'Potentially, if I want to make this code more dynamic at a later date, I will only have to change this variable for each new environment.
+'Set Home Directory
+HomePath = "C:"
+
+'Delete the desired files
+DeleteFile(HomePath + "\Automation\Duplicate Check\Results.txt")
+DeleteFile(HomePath + "\Automation\ReportFramework\Test_Results\Results.txt")
+DeleteFile(HomePath + "\Automation\ReportFramework\Test_Results\Project_Report.txt")
+DeleteFile(HomePath + "\Automation\ReportFramework\Test_Results\Project_Report_duplicatecheck.txt")
+DeleteFile(HomePath + "\3rdSafeguard.txt")
+DeleteFile(HomePath + "\Automation\Duplicate Check\Emails\Email_1.txt")
+DeleteFile(HomePath + "\Automation\Duplicate Check\Emails\Email_2.txt")
+DeleteFile(HomePath + "\Automation\Duplicate Check\Emails\Email_3.txt")
+
+'What about the wildcard-y ones?
+'looked up on google, found something that looks useful. See DeleteFileWild below
+DeleteFileWild(HomePath + "\Automation\Duplicate Check\*\Results\*")
+DeleteFileWild(HomePath + "\Automation\Duplicate Check\*\Snapshot\*")
+
+' DESC: Deletes a file, after checking for its existence
+'  strFilename = The path and filename of the file to be deleted
+' NOTE: Does not log any info to result report
+Sub DeleteFile(ByVal strFilename)
+	Dim fso
+	Set fso = CreateObject("Scripting.FileSystemObject")
+	
+	'check for existence of file. If strFilename does not exist, fso.DeleteFile would throw a fatal error, hence the inclusion of this conditional and the omission of an else clause
+	If fso.FileExists(strFilename) Then
+		' delete file 
+		fso.DeleteFile(strFilename)
+	End If
+	
+	Set fso = Nothing
+End Sub
+
+
+' DESC: Deletes all files matching the provided glob.
+'  strFilename = The glob to be deleted
+' NOTE: Does not log any info to result report
+Sub DeleteFileWild(ByVal strFilename)
+	Dim fso
+	Set fso = CreateObject("Scripting.FileSystemObject")
+
+	'check for existence of file. If strFilename does not exist, fso.DeleteFile would throw a fatal error, hence the inclusion of this conditional and the omission of an else clause
+	'this conditional is the part I nabbed from a forum post
+	If Dir(strFilename) <> vbNullString Then
+		' delete file
+		fso.DeleteFile(Dir(strFilename))
+	End If
+
+	Set fso = Nothing
+End Sub
+
+End Protocode:	''''''''''''''''''''''''''''''''''''
+
+Seems like a good start, but I'm not confident in how DeleteFileWild would function. I'll create another file and an environment to workshop it in.
+
+
+
+After trying at it for a while, it looks like what I'm trying to do (with the globular (global?) searching and deleting) isn't feasible in VBS, at least for my level of skill with the language.
+Maybe it would be better as a batch file?
+	I'll have to look into this next time I'm just waiting around.

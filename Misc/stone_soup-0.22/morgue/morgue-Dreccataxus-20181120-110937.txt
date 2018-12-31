@@ -1,0 +1,239 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+266 Dreccataxus the Magician (level 6, -1/47 HPs)
+             Began as a Draconian Wizard on Nov 20, 2018.
+             Slain by a hound (3 damage)
+             ... on level 5 of the Dungeon.
+             The game lasted 00:18:20 (4222 turns).
+
+Dreccataxus the Magician (Draconian Wizard)         Turns: 4222, Time: 00:18:21
+
+Health: -1/47      AC:  9    Str: 11    XL:     6   Next: 0%
+Magic:  8/12       EV: 12    Int: 18    God:    
+Gold:   156        SH:  0    Dex: 10    Spells: 7/13 levels left
+
+rFire    . . .     SeeInvis .   m - +0 whip
+rCold    . . .     Gourm    .   (no shield)
+rNeg     + . .     Faith    .   (armour unavailable)
+rPois    .         Spirit   .   a - +0 hat
+rElec    .         Reflect  .   (no cloak)
+rCorr    .         Harm     .   e - +2 pair of gloves
+MR       +....                  (no boots)
+Stlth    ++........             (no amulet)
+HPRegen  0.15/turn              f - ring of protection from magic
+MPRegen  0.13/turn              k - ring of positive energy
+
+@: very slightly contaminated
+A: unfitting armour, cold-blooded, AC +6
+a: no special abilities
+
+
+You were on level 5 of the Dungeon.
+You were very hungry.
+
+You visited 1 branch of the dungeon, and saw 5 of its levels.
+
+You collected 156 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ b - a +0 club
+ m - a +0 whip (weapon)
+ t - a +0 flail
+Missiles
+ d - 72 stones (quivered)
+Armour
+ a - a +0 hat (worn)
+ e - a +2 pair of gloves (worn)
+Jewellery
+ f - a ring of protection from magic (left hand)
+ k - a ring of positive energy (right hand)
+Scrolls
+ h - a scroll of amnesia
+ i - a scroll of remove curse
+ n - a scroll of identify
+ r - a scroll of immolation
+Potions
+ j - a potion of brilliance
+Comestibles
+ c - 5 rations
+ s - a chunk of flesh
+
+
+   Skills:
+ * Level 1.4 Fighting
+ * Level 1.8 Maces & Flails
+ * Level 2.4 Dodging
+ + Level 2.3 Stealth
+ * Level 4.0 Spellcasting
+ * Level 3.0 Conjurations
+ * Level 1.3 Hexes
+   Level 1.0 Summonings
+   Level 1.0 Translocations
+ + Level 0.1 Air Magic
+
+
+You had 7 spell levels left.
+You knew the following spells:
+
+ Your Spells              Type           Power        Failure   Level  Hunger
+d - Slow                  Hex            #.......     13%         2    ##.....
+x - Mephitic Cloud        Conj/Pois/Air  #.......     28%         3    ###....
+z - Magic Dart            Conj           ##..         4%          1    None
+
+Your spell library contained the following spells:
+
+ Spells                   Type           Power        Failure   Level  Hunger
+ Blink                    Tloc           N/A          14%         2    ##.....
+ Call Imp                 Summ           #.......     14%         2    ##.....
+ Conjure Flame            Conj/Fire      #.......     24%         3    ###....
+
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (5/15)            
+Temple: D:4-7       
+
+Altars:
+
+Annotations:
+D:4 Grinder
+
+
+Innate Abilities, Weirdness & Mutations
+
+Your plain brown scales are hard. (AC +6)
+You cannot fit into any form of body armour.
+You are cold-blooded and may be slowed by cold attacks.
+
+
+Message History
+
+The hound completely misses you.
+The hound barely misses you.
+The hound completely misses you.
+The hound bites you.
+* * * LOW HITPOINT WARNING * * *
+The hound bites you but does no damage.
+There is a stone staircase leading down here.
+The hound bites you.
+* * * LOW HITPOINT WARNING * * *
+The hound bites you but does no damage.
+You climb downwards.
+A worker ant comes into view.
+There is a stone staircase leading up here.
+Okay, then.
+The worker ant twitches its antennae in your direction.
+The hound bites you but does no damage.
+The hound closely misses you.
+The worker ant waves its antennae.
+The hound bites you.
+You die...
+
+     #.  .#
+     #.# .#
+   ###.##.#
+#  #......
+#.##.....###
+#..........
+   #.....#
+   #....<#
+   ###a###
+     #h#####.#
+     #.@.....#
+     #######.#
+
+
+You could see a hound and a worker ant.
+
+Vanquished Creatures
+  An ogre (D:4)
+  A hound (D:4)
+  6 adders
+  3 gnolls (D:3)
+  2 oozes
+  2 worms (D:2)
+  2 dart slugs
+  2 leopard geckos
+  4 orcs
+  13 bats
+  2 giant cockroaches
+  4 goblins
+  12 hobgoblins
+  6 kobolds
+  2 quokkas
+  4 frilled lizards
+  6 rats
+72 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | Dreccataxus the Draconian Wizard began the quest for the
+                  | Orb.
+     0 | D:1      | Reached XP level 1. HP: 14/14 MP: 4/4
+     0 | D:1      | Noticed an iron dragon
+     3 | D:1      | Noticed a golden dragon
+     5 | D:1      | Noticed a large abomination
+     7 | D:1      | Noticed an orb of fire
+     8 | D:1      | Noticed a golden dragon
+     9 | D:1      | Noticed a red draconian
+    12 | D:1      | Noticed an orb of fire
+    12 | D:1      | Noticed a tentacled monstrosity
+    14 | D:1      | Noticed an ice dragon
+    14 | D:1      | Noticed a tentacled monstrosity
+    15 | D:1      | Noticed an orb of fire
+    17 | D:1      | Noticed an orb of fire
+    19 | D:1      | Noticed a large abomination
+    19 | D:1      | Noticed a shadow dragon
+    21 | D:1      | Noticed a shadow dragon
+    21 | D:1      | Noticed a green draconian
+    23 | D:1      | Noticed an iron dragon
+   362 | D:1      | Reached XP level 2. HP: 20/20 MP: 1/6
+   366 | D:1      | Learned a level 2 spell: Slow
+  1507 | D:2      | Reached XP level 3. HP: 26/26 MP: 1/7
+  1833 | D:2      | Learned a level 3 spell: Mephitic Cloud
+  1922 | D:2      | Reached skill level 1 in Hexes
+  1926 | D:2      | Reached XP level 4. HP: 22/33 MP: 1/9
+  3327 | D:3      | Reached skill level 1 in Fighting
+  3461 | D:3      | Reached skill level 1 in Maces & Flails
+  3461 | D:3      | Reached XP level 5. HP: 12/40 MP: 6/10
+  4077 | D:4      | Noticed an ogre
+  4117 | D:4      | Noticed Grinder
+  4182 | D:4      | Killed an ogre
+  4182 | D:4      | Reached skill level 4 in Spellcasting
+  4182 | D:4      | Reached XP level 6. HP: 18/47 MP: 3/12
+  4217 | D:4      | HP: 1/47 [hound (4)]
+  4218 | D:5      | Entered Level 5 of the Dungeon
+  4222 | D:5      | Slain by a hound
+
+Skill      XL: |  1  2  3  4  5 |
+---------------+----------------+-----
+Stealth        |  2             |  2.3
+Dodging        |        2       |  2.4
+Conjurations   |        2     3 |  3.0
+Hexes          |        1       |  1.3
+Fighting       |           1    |  1.4
+Maces & Flails |           1    |  1.8
+Spellcasting   |              4 |  4.0
+Summonings     |                |  1.0
+Translocations |                |  1.0
+Air Magic      |                |  0.1
+
+Action                   |  1- 3 |  4- 6 || total
+-------------------------+-------+-------++-------
+Melee: Whip              |    42 |    93 ||   135
+       Tailslap          |     4 |     8 ||    12
+ Cast: Magic Dart        |    81 |    80 ||   161
+       Slow              |     1 |       ||     1
+       Mephitic Cloud    |       |     7 ||     7
+  Use: Scroll            |       |     6 ||     6
+       Potion            |       |     6 ||     6
+ Stab: Confused          |       |     2 ||     2
+       Invisible         |       |     1 ||     1
+  Eat: Chunk             |     3 |     7 ||    10
+Armor: Skin              |    19 |    76 ||    95
+Dodge: Dodged            |    49 |   151 ||   200
+

@@ -1,0 +1,136 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+0 Plessaria the Magician (level 1, 0/10 HPs)
+             Began as a Deep Elf Wizard on Nov 6, 2018.
+             Slain by a hobgoblin
+             ... wielding a +0 club
+              (5 damage)
+             ... on level 1 of the Dungeon.
+             The game lasted 00:00:25 (39 turns).
+
+Plessaria the Magician (Deep Elf Wizard)              Turns: 39, Time: 00:00:26
+
+Health: 0/10       AC:  2    Str:  4    XL:     1   Next: 0%
+Magic:  5/7        EV: 13    Int: 22    God:    
+Gold:   13         SH:  0    Dex: 13    Spells: 7/8 levels left
+
+rFire    . . .     SeeInvis .   (no weapon)
+rCold    . . .     Gourm    .   (no shield)
+rNeg     . . .     Faith    .   a - +0 robe
+rPois    .         Spirit   .   b - +0 hat
+rElec    .         Reflect  .   (no cloak)
+rCorr    .         Harm     .   (no gloves)
+MR       .....                  (no boots)
+Stlth    ++........             (no amulet)
+HPRegen  0.03/turn              (no ring)
+MPRegen  0.10/turn              (no ring)
+
+@: very slightly contaminated
+A: no striking features
+a: no special abilities
+
+
+You were on level 1 of the Dungeon.
+You were not hungry.
+
+You visited 1 branch of the dungeon, and saw 1 of its levels.
+
+You collected 13 gold pieces.
+
+Inventory:
+
+Armour
+ a - a +0 robe (worn)
+ b - a +0 hat (worn)
+Comestibles
+ d - a ration
+
+
+   Skills:
+ + Level 2.4 Dodging
+ + Level 2.4 Stealth
+ + Level 4.4 Spellcasting
+ + Level 1.1 Conjurations
+   Level 1.1 Summonings
+   Level 1.1 Translocations
+
+
+You had 7 spell levels left.
+You knew the following spells:
+
+ Your Spells              Type           Power        Failure   Level  Hunger
+a - Magic Dart            Conj           #...         7%          1    None
+
+Your spell library contained the following spells:
+
+ Spells                   Type           Power        Failure   Level  Hunger
+ Blink                    Tloc           N/A          11%         2    #......
+ Call Imp                 Summ           #.......     11%         2    #......
+ Slow                     Hex            #.......     16%         2    #......
+ Conjure Flame            Conj/Fire      #.......     26%         3    ##.....
+ Mephitic Cloud           Conj/Pois/Air  #.......     28%         3    ##.....
+
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (1/15)            
+
+Altars:
+
+Message History
+
+Confirm with . or Enter, or press ? or * to list all spells.
+Aiming: Magic Dart (safe; 7% risk of failure)
+Press: ? - help, Shift-Dir - straight line, f - hobgoblin
+Aim: a hobgoblin, wielding a club
+The magic dart hits the hobgoblin.
+The hobgoblin is heavily wounded.
+A rat comes into view.
+The hobgoblin hits you with a club.
+Ouch! That really hurt!
+You are too injured to fight recklessly!
+Casting: Magic Dart (safe; 7% risk of failure)
+Confirm with . or Enter, or press ? or * to list all spells.
+Aiming: Magic Dart (safe; 7% risk of failure)
+Press: ? - help, Shift-Dir - straight line, f/p - hobgoblin
+Aim: a hobgoblin, wielding a club (heavily wounded)
+You miscast Magic Dart.
+You are very lightly contaminated with residual magic.
+Nothing appears to happen. The hobgoblin hits you with a club.
+Ouch! That really hurt!
+You die...
+
+       #.'..(..'[8.#
+       #.#.....#...#
+       #.#.....#####
+     # #.###'###
+     #.#.##...#
+   #.#.#.##.8.#
+   #.....##...#
+. #..###.######
+...    #...#
+###..###..#.##
+......g@.....#
+####............
+...r...##.###...
+####### #.#   #.#
+        #.#     .
+        #.#
+         .#
+
+
+You could see a hobgoblin and a rat.
+
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | Plessaria the Deep Elf Wizard began the quest for the Orb.
+     0 | D:1      | Reached XP level 1. HP: 10/10 MP: 7/7
+    39 | D:1      | Slain by a hobgoblin
+
+Action                   || total
+-------------------------++-------
+ Cast: Magic Dart        ||     1
+

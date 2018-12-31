@@ -1,0 +1,310 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+1740 Zentiaana the Carver (level 9, -2/69 HPs)
+             Began as a Merfolk Chaos Knight on Nov 9, 2018.
+             
+             Slain by Wynk's ghost (14 damage)
+             ... on level 5 of the Dungeon.
+             The game lasted 00:23:42 (4414 turns).
+
+Zentiaana the Carver (Merfolk Chaos Knight)         Turns: 4414, Time: 00:23:42
+
+Health: -2/69      AC:  9    Str: 17    XL:     9   Next: 5%
+Magic:  9/9        EV: 16    Int: 12    God:    Xom [.*....]
+Gold:   279        SH:  0    Dex: 16    Spells: 8/8 levels left
+
+rFire    + . .     SeeInvis .   a - +0 falchion (chaos)
+rCold    . . .     Gourm    .   (no shield)
+rNeg     . . .     Faith    .   b - +2 leather armour
+rPois    .         Spirit   .   f - +0 helmet
+rElec    .         Reflect  .   h - +2 cloak
+rCorr    .         Harm     .   (no gloves)
+MR       .....                  (no boots)
+Stlth    +++.......             (no amulet)
+HPRegen  0.21/turn              p - ring of protection from fire
+MPRegen  0.11/turn              (no ring)
+
+@: mighty
+A: change form in water, swift swim, stealthy swim, blurry vision 2
+a: Renounce Religion
+
+
+You were on level 5 of the Dungeon.
+You worshipped Xom.
+You were a plaything of Xom.
+You were not hungry.
+
+You visited 1 branch of the dungeon, and saw 5 of its levels.
+You also visited: Sewer.
+
+You collected 279 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +0 falchion of chaos (weapon)
+Missiles
+ l - 2 tomahawks (quivered)
+Armour
+ b - a +2 leather armour (worn)
+ f - a +0 helmet (worn)
+ g - a +0 ring mail
+ h - a +2 cloak (worn)
+Jewellery
+ p - a ring of protection from fire (left hand)
+ x - an uncursed amulet of magic regeneration {unknown}
+Scrolls
+ e - a scroll of blinking
+ j - 4 scrolls of identify
+ m - 2 scrolls of teleportation {unknown}
+ n - a scroll of fear {unknown}
+ o - 5 scrolls of remove curse
+ q - a scroll of enchant armour {unknown}
+ t - a scroll of immolation
+ w - a scroll of fog {unknown}
+ y - a scroll of random uselessness {unknown}
+Potions
+ d - a potion of degeneration
+ i - 3 potions of flight
+ r - 4 potions of brilliance
+ s - a potion of berserk rage {unknown}
+ v - a potion of ambrosia
+ z - a potion of curing
+ A - a potion of agility
+Comestibles
+ c - 12 rations
+
+
+   Skills:
+ + Level 5.8 Fighting
+ + Level 8.4 Long Blades
+ + Level 3.0 Armour
+ + Level 6.3 Dodging
+ + Level 5.4 Stealth
+
+
+You had 8 spell levels left.
+You didn't know any spells.
+Your spell library was empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (5/15)             Temple (0/1) D:5         
+
+Altars:
+Xom
+Zin
+
+Shops:
+D:5 *
+
+Annotations:
+D:5 Wynk's ghost, amateur MiFi
+
+
+Innate Abilities, Weirdness & Mutations
+
+You revert to your normal form in water.
+You are very nimble and swift while swimming.
+You are very stealthy in the water. (Stealth+)
+Scrolls take you longer to read.
+
+
+Message History
+
+* * * LOW HITPOINT WARNING * * *
+You feel very sick.
+Something hits you.
+* * * LOW HITPOINT WARNING * * *
+You are more poisoned.
+* * * LOW HITPOINT WARNING * * *
+You feel very sick.
+Something closely misses you.
+You feel better. Something hits you but does no damage.
+You are poisoned.
+Something hits you!
+* * * LOW HITPOINT WARNING * * *
+You are more poisoned.
+You feel better. Something hits you!
+* * * LOW HITPOINT WARNING * * *
+You are lethally poisoned!
+Okay, then.
+You feel better. Something hits you!
+You die...
+"What!? That's it?"
+
+.######.#.....##..#####.#
+................>.#   #.#
+.######.......###.#####.###
+..........#...............#
+.####.......#####.[.....#.#
+....#.#.##.........####.#.##
+..#.#.#.....#...##.######..#
+..#.#.#########............#
+..#.#.#*˜(˜˜˜˜'..#.####.#..#
+..#.#.#########..........#.#
+..#......##.##..@#.###.....#
+#####.....................##
+))..........##.#...........##
+.).......#.....#............#
+..)......#.###...........#..#
+...######### #######........#
+...####### ########........##
+..._.##˜˜###8...8###....####
+.....5..˜˜##.....######.####
+...........'..>..##........#
+###..˜˜...##.....######.##.#
+
+
+There were no monsters in sight!
+
+Vanquished Creatures
+  Sigmund (D:4)
+  Menkaure (D:5)
+  A sky beast (D:5)
+  An ogre (D:5)
+  The ghost of Greaseheel the Slasher, an amateur DrSk (D:3)
+  2 bullfrogs (D:5)
+  6 big kobolds (Sewer)
+  A water moccasin skeleton (D:3)
+  2 crimson imps (D:5)
+  A centaur zombie (D:3)
+  2 hounds (D:5)
+  2 orc priests
+  A worker ant (D:5)
+  A killer bee zombie (D:5)
+  3 gnolls (D:5)
+  11 adders
+  2 adder skeletons
+  5 worms
+  4 leopard geckos
+  9 orcs
+  5 giant cockroaches
+  8 goblins
+  7 hobgoblins
+  14 jackals
+  A quokka (D:3)
+  8 ball pythons
+  13 bats
+  4 frilled lizards
+  16 kobolds
+  A quokka zombie (D:5)
+  9 rats
+143 creatures vanquished.
+
+Vanquished Creatures (collateral kills)
+  An ogre (D:5)
+  A gnoll shaman (D:5)
+  A worker ant (D:5)
+  A jackal (D:5)
+4 creatures vanquished.
+
+Vanquished Creatures (others)
+  2 orcs (D:5)
+2 creatures vanquished.
+
+Grand Total: 149 creatures vanquished
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | Zentiaana the Merfolk Chaos Knight began the quest for the
+                  | Orb.
+     0 | D:1      | Reached XP level 1. HP: 18/18 MP: 1/1
+    73 | D:1      | Reached XP level 2. HP: 22/25 MP: 2/2
+   277 | D:1      | XOM: divination: detect items
+   373 | D:1      | Reached skill level 4 in Long Blades
+   373 | D:1      | Reached XP level 3. HP: 30/30 MP: 3/3
+   543 | D:1      | XOM: cloud trail
+   956 | D:2      | XOM: divination: detect creatures
+   989 | D:2      | Reached skill level 1 in Armour
+  1044 | D:2      | Reached XP level 4. HP: 37/37 MP: 4/4
+  1099 | D:2      | Reached skill level 1 in Stealth
+  1398 | D:2      | XOM: silly message
+  1474 | D:2      | XOM is BORED!
+  1474 | D:2      | XOM: harmless Tloc miscast
+  1534 | D:3      | XOM: silly message
+  1536 | D:3      | Reached XP level 5. HP: 41/42 MP: 5/5
+  1548 | D:3      | XOM: silly message
+  2077 | D:3      | XOM: mild Necr miscast
+  2088 | D:3      | Reached skill level 5 in Long Blades
+  2173 | D:3      | XOM: harmless Hex miscast
+  2333 | D:3      | XOM: harmless Conj miscast
+  2355 | D:3      | Found a large runed door.
+  2355 | D:3      | Found a large runed door.
+  2362 | D:3      | Noticed Greaseheel's ghost (amateur DrSk)
+  2433 | D:3      | XOM: butterfly on damage
+  2443 | D:3      | Reached XP level 6. HP: 27/47 MP: 6/6
+  2466 | D:3      | XOM: god gift: 42 gold pieces
+  2563 | D:3      | XOM: cast spell 'Summon Ice Beast'
+  2583 | D:3      | Killed Greaseheel's ghost
+  2679 | D:4      | Noticed Sigmund
+  2714 | D:4      | XOM: summons friendly crimson imp
+  2716 | D:4      | Killed Sigmund
+  2716 | D:4      | Reached skill level 6 in Long Blades
+  2716 | D:4      | Reached XP level 7. HP: 28/55 MP: 7/7
+  2950 | D:4      | XOM: harmless Conj miscast
+  2958 | D:4      | XOM: mild Hex miscast
+  3160 | D:4      | Found a glowing silver altar of Zin.
+  3196 | D:5      | Entered Level 5 of the Dungeon
+  3230 | D:5      | Noticed Menkaure
+  3242 | D:5      | Killed Menkaure
+  3318 | D:5      | Reached skill level 5 in Fighting
+  3318 | D:5      | Reached skill level 5 in Dodging
+  3384 | D:5      | XOM: summons friendly iron imp
+  3424 | D:5      | Reached XP level 8. HP: 39/62 MP: 8/8
+  3477 | D:5      | Reached skill level 7 in Long Blades
+  3520 | D:5      | XOM: scenery: create altars
+  3538 | D:5      | Found a staircase to the Ecumenical Temple.
+  3563 | D:5      | Found a runed door.
+  3565 | D:5      | XOM: cleaving
+  3567 | D:5      | Noticed Wynk's ghost (amateur MiFi)
+  3572 | D:5      | XOM: divination: magic mapping
+  3620 | D:5      | Found Fylid's General Store.
+  3705 | D:5      | XOM: summons 5 friendly demons
+  3719 | D:5      | Found a glowing drain.
+  3730 | Sewer    | Entered a sewer
+  3815 | Sewer    | XOM: potion effect (brilliance)
+  3838 | Sewer    | Reached skill level 8 in Long Blades
+  3868 | Sewer    | XOM: 2-stop teleportation journey
+  3948 | Sewer    | XOM: noise
+  3950 | Sewer    | Reached skill level 5 in Stealth
+  3970 | Sewer    | XOM: harmless Erth miscast
+  4081 | D:5      | XOM: destruction
+  4089 | D:5      | Reached XP level 9. HP: 57/69 MP: 9/9
+  4380 | D:5      | XOM: give mutations
+  4380 | D:5      | Gained mutation: Scrolls take you a little longer to read.
+                  | [Xom's mischief]
+  4380 | D:5      | Gained mutation: Scrolls take you longer to read. [Xom's
+                  | mischief]
+  4408 | D:5      | HP: 1/69 [something (13)]
+  4413 | D:5      | HP: 1/69 [something (13)]
+  4414 | D:5      | Slain by Wynk's ghost
+
+Skill      XL: |  1  2  3  4  5  6  7  8  9 |
+---------------+----------------------------+-----
+Long Blades    |     4        5  6     8    |  8.4
+Dodging        |        3     4     5  6    |  6.3
+Armour         |        1           2     3 |  3.0
+Stealth        |           1  2     3  5    |  5.4
+Fighting       |           4        5       |  5.8
+
+Action                   |  1- 3 |  4- 6 |  7- 9 || total
+-------------------------+-------+-------+-------++-------
+Melee: Falchion          |   108 |   186 |   282 ||   576
+       Tailslap          |       |       |     9 ||     9
+  Use: Potion            |       |     9 |     9 ||    18
+       Scroll            |       |     3 |       ||     3
+ Stab: Paralysed         |     3 |     3 |    14 ||    20
+       Sleeping          |     1 |     1 |     2 ||     4
+       Petrifying        |     2 |     2 |     1 ||     5
+       Distracted        |     1 |       |     1 ||     2
+       Petrified         |       |     4 |       ||     4
+       Invisible         |       |     1 |       ||     1
+       Confused          |       |       |     1 ||     1
+  Eat: Chunk             |     1 |     5 |     6 ||    12
+Armor: Leather armour    |    45 |    55 |   105 ||   205
+Dodge: Dodged            |    89 |   124 |   193 ||   406
+Rpst.: Falchion          |    22 |    34 |    65 ||   121
+

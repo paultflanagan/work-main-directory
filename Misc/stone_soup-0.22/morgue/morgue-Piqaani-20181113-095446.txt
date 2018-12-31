@@ -1,0 +1,138 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+0 Piqaani the Gusty (level 1, -1/14 HPs)
+             Began as a Draconian Air Elementalist on Nov 13, 2018.
+             Slain by a leopard gecko (4 damage)
+             ... on level 1 of the Dungeon.
+             The game lasted 00:01:00 (20 turns).
+
+Piqaani the Gusty (Draconian Air Elementalist)        Turns: 20, Time: 00:01:01
+
+Health: -1/14      AC:  4    Str: 10    XL:     1   Next: 0%
+Magic:  1/3        EV: 12    Int: 15    God:    
+Gold:   0          SH:  0    Dex: 11    Spells: 3/4 levels left
+
+rFire    . . .     SeeInvis .   (no weapon)
+rCold    . . .     Gourm    .   (no shield)
+rNeg     . . .     Faith    .   (armour unavailable)
+rPois    .         Spirit   .   (helmet restricted)
+rElec    .         Reflect  .   (no cloak)
+rCorr    .         Harm     .   (no gloves)
+MR       .....                  (no boots)
+Stlth    ++........             (no amulet)
+HPRegen  0.04/turn              (no ring)
+MPRegen  0.08/turn              (no ring)
+
+@: very slightly contaminated
+A: unfitting armour, cold-blooded, AC +4
+a: no special abilities
+
+
+You were on level 1 of the Dungeon.
+You were not hungry.
+
+You visited 1 branch of the dungeon, and saw 1 of its levels.
+
+Inventory:
+
+Comestibles
+ b - a ration
+
+
+   Skills:
+ + Level 1.7 Dodging
+ + Level 1.7 Stealth
+ + Level 2.0 Spellcasting
+ + Level 1.0 Conjurations
+ + Level 3.0 Air Magic
+
+
+You had 3 spell levels left.
+You knew the following spells:
+
+ Your Spells              Type           Power        Failure   Level  Hunger
+a - Shock                 Conj/Air       #...         10%         1    #......
+
+Your spell library contained the following spells:
+
+ Spells                   Type           Power        Failure   Level  Hunger
+ Swiftness                Chrm/Air       #.......     19%         2    ###....
+ Static Discharge         Conj/Air       #.......     28%         3    ###....
+ Airstrike                Air            ##........   54%         4    #####..
+ Lightning Bolt           Conj/Air       #.........   95%         5    ######.
+
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (1/15)            
+
+Altars:
+
+
+Innate Abilities, Weirdness & Mutations
+
+Your plain brown scales are hard. (AC +4)
+You cannot fit into any form of body armour.
+You are cold-blooded and may be slowed by cold attacks.
+
+
+Message History
+
+The leopard gecko is severely wounded.
+The leopard gecko completely misses you.
+You completely miss the leopard gecko.
+The leopard gecko is severely wounded.
+The jackal bites you. The leopard gecko bites you.
+You miss the leopard gecko.
+The leopard gecko is severely wounded.
+The jackal bites you but does no damage.
+The leopard gecko misses you. The jackal bites you.
+You barely miss the leopard gecko.
+The leopard gecko is severely wounded.
+The leopard gecko bites you.
+* * * LOW HITPOINT WARNING * * *
+The jackal bites you but does no damage.
+You hit the leopard gecko.
+The leopard gecko is almost dead.
+The jackal closely misses you. The leopard gecko closely misses you.
+The jackal bites you but does no damage.
+The leopard gecko bites you.
+You die...
+
+  #.........# ..##
+  #.........# ...
+  #.........##.#
+ .............#
+.##...........###...
+  ###..............?.
+    #.........#..?...
+    #####..####.#....
+        ##h##   # ...
+         #hl#      ..
+         ##@#       .
+    ........l......
+    ..####.........
+         ..######..
+        #.?
+        ###
+
+
+You could see a leopard gecko, 2 jackals and a frilled lizard.
+
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | Piqaani the Draconian Air Elementalist began the quest for
+                  | the Orb.
+     0 | D:1      | Reached XP level 1. HP: 14/14 MP: 3/3
+    20 | D:1      | Slain by a leopard gecko
+
+Action                   || total
+-------------------------++-------
+Melee: Unarmed           ||     5
+ Cast: Shock             ||     2
+Armor: Skin              ||     4
+Dodge: Dodged            ||     8
+

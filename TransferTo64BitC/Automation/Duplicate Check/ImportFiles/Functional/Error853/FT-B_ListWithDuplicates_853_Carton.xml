@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<SOAP:Envelope xmlns:SOAP="http://schemas.xmlsoap.org/soap/envelope/">
+  <SOAP:Header />
+  <SOAP:Body>
+    <n0:NumberRangeResponseMessage xmlns:n0="http://sap.com/xi/AIN">
+      <ReceivingSystem>SYSTECH</ReceivingSystem>
+      <ActionCode>C</ActionCode>
+      <EncodingType>FTB-AI0121Carton</EncodingType>
+      <IDType>GS1_SER</IDType>
+      <Interval>
+        <NumberFrom />
+        <NumberTo />
+      </Interval>
+      <ObjectKey>
+        <Name>GTIN</Name>
+        <Value>21880020000029</Value>
+      </ObjectKey>
+      <RandomizedNumberList>
+        <SerialNo>1000000001</SerialNo>
+        <SerialNo>1000000002</SerialNo>
+        <SerialNo>1000000003</SerialNo>
+        <SerialNo>1000000004</SerialNo>
+        <SerialNo>1000000005</SerialNo>
+        <SerialNo>1000000006</SerialNo>
+        <SerialNo>1000000007</SerialNo>
+        <SerialNo>1000000008</SerialNo>
+        <SerialNo>1000000009</SerialNo>
+        <SerialNo>1000000010</SerialNo>
+        <SerialNo>1000000011</SerialNo>
+        <SerialNo>1000000012</SerialNo>
+        <SerialNo>1000000013</SerialNo>
+        <SerialNo>1000000014</SerialNo>
+        <SerialNo>1000000010</SerialNo>
+        <SerialNo>1000000016</SerialNo>
+        <SerialNo>1000000017</SerialNo>
+        <SerialNo>1000000018</SerialNo>
+        <SerialNo>1000000019</SerialNo>
+      </RandomizedNumberList>
+    </n0:NumberRangeResponseMessage>
+  </SOAP:Body>
+</SOAP:Envelope>

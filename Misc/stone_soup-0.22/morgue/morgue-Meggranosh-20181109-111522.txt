@@ -1,0 +1,195 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+31 Meggranosh the Skirmisher (level 3, 0/29 HPs)
+             Began as a Demonspawn Abyssal Knight on Nov 9, 2018.
+             Was a Follower of Lugonu.
+             Slain by a frilled lizard (2 damage)
+             ... on level 2 of the Dungeon.
+             The game lasted 00:03:30 (978 turns).
+
+Meggranosh the Skirmisher (DsAK)                     Turns: 978, Time: 00:03:30
+
+Health: 0/29       AC:  3    Str: 12    XL:     3   Next: 7%
+Magic:  4/4        EV: 11    Int: 13    God:    Lugonu [*.....]
+Gold:   80         SH:  0    Dex: 13    Spells: 2/2 levels left
+
+rFire    . . .     SeeInvis .   a - +1 falchion
+rCold    . . .     Gourm    .   (no shield)
+rNeg     . . .     Faith    .   b - +0 leather armour
+rPois    .         Spirit   .   (no helmet)
+rElec    .         Reflect  .   (no cloak)
+rCorr    .         Harm     .   (no gloves)
+MR       .....                  (no boots)
+Stlth    +.........             (no amulet)
+HPRegen  0.09/turn              (no ring)
+MPRegen  0.09/turn              (no ring)
+
+@: no status effects
+A: powered by pain 1
+a: Depart the Abyss, Renounce Religion
+
+
+You were on level 2 of the Dungeon.
+You worshipped Lugonu.
+Lugonu was aware of your devotion.
+You were not hungry.
+
+You visited 1 branch of the dungeon, and saw 2 of its levels.
+You visited the Abyss 1 time.
+
+You collected 80 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +1 falchion (weapon)
+Armour
+ b - a +0 leather armour (worn)
+Jewellery
+ h - a +2 amulet of reflection {unknown}
+Scrolls
+ f - a scroll of amnesia {unknown}
+ j - a scroll of enchant weapon {unknown}
+ k - a scroll of teleportation {unknown}
+ m - 2 scrolls of identify {unknown}
+ n - a scroll of fog {unknown}
+ o - a scroll of remove curse {unknown}
+ q - a scroll of blinking {unknown}
+Potions
+ e - a potion of agility {unknown}
+ g - 2 potions of lignification
+ i - a potion of cancellation {unknown}
+ l - a potion of heal wounds
+ p - a potion of invisibility {unknown}
+Comestibles
+ c - 5 rations
+ d - 8 chunks of flesh
+
+
+   Skills:
+ + Level 3.3 Fighting
+ + Level 2.3 Long Blades
+ + Level 2.2 Armour
+ + Level 1.2 Dodging
+ + Level 0.2 Stealth
+ + Level 2.5 Invocations
+
+
+You had 2 spell levels left.
+You didn't know any spells.
+Your spell library was empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (2/15)            
+
+Altars:
+Nemelex Xobeh
+
+Annotations:
+D:2 Robin
+
+
+Innate Abilities, Weirdness & Mutations
+
+You sometimes gain a little power by taking damage.
+
+
+Message History
+
+You barely miss the goblin.
+The goblin is moderately wounded.
+The goblin hits you but does no damage. The goblin completely misses you. You
+Robin points. "Kill!"
+You closely miss the goblin.
+The goblin is moderately wounded.
+The goblin hits you with a club. x2; The goblin barely misses you.
+You miss the goblin.
+The goblin is moderately wounded.
+The goblin barely misses you. The goblin hits you with a club!
+* * * LOW HITPOINT WARNING * * *
+You slash the goblin!
+You kill the goblin!
+Lugonu accepts your kill.
+The goblin hits you with a club.
+* * * LOW HITPOINT WARNING * * *
+The goblin barely misses you.
+You miss the goblin. The frilled lizard closely misses you. You riposte. You
+The frilled lizard bites you.
+You die...
+
+                 ################
+                 #...............
+                 #.##############
+                 #.#
+         ####    #.#
+         .....   #.#
+         ....gg###.#
+#.#      ....lgl@g.#
+..#      ....gg#####
+####     $....
+....     ....
+####     ...               ######
+...      ..              #.......
+#        #               #.......
+                         #.......
+#                        #.......
+#                        #.......
+##                       #.......
+
+
+You could see Robin, 5 goblins and 2 frilled lizards.
+
+Vanquished Creatures
+  A worm (D:2)
+  A dart slug (D:1)
+  2 ball pythons (D:2)
+  3 bats
+  A giant cockroach (D:1)
+  2 hobgoblins
+  4 kobolds
+  6 goblins
+  5 rats
+25 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | Abyss:1  | Meggranosh the Demonspawn Abyssal Knight began the quest
+                  | for the Orb.
+     0 | Abyss:1  | Reached XP level 1. HP: 18/18 MP: 2/2
+     8 | Abyss:1  | Found a corrupted altar of Lugonu.
+    40 | Abyss:1  | Noticed a thrashing horror
+    46 | Abyss:1  | Noticed a large abomination
+    47 | D:1      | Escaped the Abyss
+   240 | D:1      | Reached * piety under Lugonu
+   251 | D:1      | Gained mutation: You sometimes gain a little power by
+                  | taking damage. [demonic ancestry]
+   251 | D:1      | Reached XP level 2. HP: 11/24 MP: 3/3
+   520 | D:1      | Found a sparkling altar of Nemelex Xobeh.
+   888 | D:2      | Reached skill level 1 in Dodging
+   967 | D:2      | Noticed Robin
+   970 | D:2      | Reached XP level 3. HP: 24/29 MP: 4/4
+   977 | D:2      | HP: 1/29 [goblin/club[Robin] (6)]
+   978 | D:2      | Slain by a frilled lizard
+
+Skill      XL: |  1  2 |
+---------------+-------+-----
+Long Blades    |  2    |  2.3
+Armour         |     2 |  2.2
+Dodging        |     1 |  1.2
+Fighting       |       |  3.3
+Stealth        |       |  0.2
+Invocations    |       |  2.5
+
+Action                   || total
+-------------------------++-------
+Melee: Falchion          ||    69
+Invok: Depart the Abyss  ||     1
+  Use: Potion            ||     2
+ Stab: Sleeping          ||     1
+Armor: Leather armour    ||    22
+Dodge: Dodged            ||    55
+Rpst.: Falchion          ||    17
+

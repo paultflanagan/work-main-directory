@@ -1,0 +1,137 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+0 Krenkaar the Skirmisher (level 1, 0/18 HPs)
+             Began as a Demonspawn Abyssal Knight on Nov 9, 2018.
+             Was a Follower of Lugonu.
+             Slain by a large abomination (3 damage)
+             ... on level 3 of the Abyss.
+             The game lasted 00:01:22 (86 turns).
+
+Krenkaar the Skirmisher (Demonspawn Abyssal Knight)   Turns: 86, Time: 00:01:23
+
+Health: 0/18       AC:  3    Str: 12    XL:     1   Next: 0%
+Magic:  2/2        EV: 11    Int: 13    God:    Lugonu [*.....]
+Gold:   59         SH:  0    Dex: 12    Spells: 0/0 levels left
+
+rFire    . . .     SeeInvis .   a - +1 falchion
+rCold    . . .     Gourm    .   (no shield)
+rNeg     . . .     Faith    .   b - +0 leather armour
+rPois    .         Spirit   .   (no helmet)
+rElec    .         Reflect  .   (no cloak)
+rCorr    .         Harm     .   (no gloves)
+MR       .....                  (no boots)
+Stlth    +.........             (no amulet)
+HPRegen  0.06/turn              (no ring)
+MPRegen  0.08/turn              (no ring)
+
+@: no status effects
+A: no striking features
+a: Depart the Abyss, Renounce Religion
+
+
+You were on level 3 of the Abyss.
+You worshipped Lugonu.
+Lugonu was aware of your devotion.
+You were not hungry.
+
+You visited 0 branches of the dungeon, and saw 0 of its levels.
+You visited the Abyss 1 time.
+
+You collected 59 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +1 falchion (weapon)
+ e - a +2 halberd of freezing
+Armour
+ b - a +0 leather armour (worn)
+ d - a +0 chain mail
+Comestibles
+ c - a ration
+
+
+   Skills:
+ + Level 3.0 Fighting
+ + Level 1.7 Long Blades
+ + Level 1.7 Armour
+ + Level 0.8 Dodging
+ + Level 2.4 Invocations
+
+
+You couldn't memorise any spells.
+You didn't know any spells.
+Your spell library was empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (0/15)            
+
+Altars:
+
+Message History
+
+The raiju moves out of view.
+Found 59 gold pieces.
+You now have 59 gold pieces.
+A small abomination comes into view.
+Found a great mace.
+The small abomination barely misses you.
+You riposte.
+Your leather armour prevents you from hitting the small abomination.
+The raiju barks! You hear a shout!
+A lich comes into view.
+The lich shouts!
+The small abomination hits you.
+The small abomination hits you.
+A white imp comes into view.
+The small abomination hits you!
+* * * LOW HITPOINT WARNING * * *
+The white imp shouts!
+A large abomination comes into view.
+The large abomination hits you.
+You die...
+
+         ##.       ..#
+       ##..   #    . #
+     ###..#   .## ..#
+#     ....# ###.##...
+..##   ...# #.....# #
+.#...###..###.#...#.#
+........X##..#.....#
+     #.@x.hL###h...#
+     #.#....###...##.
+     #....##.#. ......#
+   ..§.##5.#...#....###
+   ####..##......#..#
+     #...#....##...##
+      #...#..## .. .#
+      ##.#....# ...#.#
+        #.#.#.##.#.#..
+        #.#...  # .#  #
+        . ##. .   #
+
+
+You could see a lich, a large abomination, a raiju, a small abomination and a
+white imp.
+
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | Abyss:1  | Krenkaar the Demonspawn Abyssal Knight began the quest for
+                  | the Orb.
+     0 | Abyss:1  | Reached XP level 1. HP: 18/18 MP: 2/2
+    44 | Abyss:3  | Noticed a raiju
+    53 | Abyss:3  | Noticed a small abomination
+    74 | Abyss:3  | Noticed a raiju
+    75 | Abyss:3  | Noticed a lich
+    84 | Abyss:3  | Noticed a large abomination
+    86 | Abyss:3  | Slain by a large abomination
+
+Action                   || total
+-------------------------++-------
+Dodge: Dodged            ||     1
+Rpst.: Falchion          ||     1
+

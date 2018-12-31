@@ -1,0 +1,454 @@
+Dupes Troubleshooting: 8.1.7
+
++++++++++++
+24-Sep-2018
++++++++++++
+Ran off the bat after adding in the EnvPrep, DiagnosticTIPS, and GrdCfgMgrStart scripts.
+Did not open up Guardian.
+Had to update the environment variable for the correct guardian.exe location.
+Also had to update to the correct server name (dupeserver)
+And for some reason the resizing bit had to renamed to have a "_2" appended to the end of the object name?
+Starting next test
+
+
+Running Test 0.1...
+TIPS Diagnostic is not waiting for the window to open before attempting to navigate its menu. Fixing...
+was also not recognizing some of the objects in the object repository?
+Guessing that this is just an old and outdated version of the repository we need. Grabbing the updated one I have stored on PaulTest1 and putting it here.
+Type Mismatch: 'ReadTag'
+	Coded to try to look out for a integer, 1 (boolean?).
+	Alex suggested using quotes, maybe it was looking for "1" the string, not the integer.
+		And if not that, maybe the boolean? Although less likely.
+	I had to associate the library containing the ReadTag function.
+I keep getting an error where it stops waiting for the login button to appear if the startup text box is gone for more than 2 seconds
+	adding an additional conditional to loop while the login button is not there as well
+	
+Can't figure out how to get it to wait properly: I think this box is more sluggish when attempting to open TIPS, so it breaks the wait we've set up.
+Before I break anything else beyond recognition, I'm just going to manually set up TIPS and Guardian before each test.
+
+
+Running Test 0.2...
+"Tcp Error : No connection could be made because the target machine actively refused it."
+Aborting
+Let's take a look at what the UFT script is actually doing.
+
+
+(Guardian = FT_Provisioning_Driver)
+
+Advisor:	PurgeData
+	
+Guardian:	PreLot_Good.xls
+Advisor:	DuplicateCheckThreeLevel_GoodLot_81x
+Guardian:	PostLot_Good.xls
+
+Guardian:	PreLot_Remove.xls
+Advisor:	DuplicateCheckThreeLevel_GoodLot2ndSafeguard_81x
+Guardian:	PostLot_Remove.xls
+
+Guardian:	PreLot_Qaccept.xls
+Advisor:	DuplicateCheckThreeLevel_OverrideQuarantinelLot_81x
+Guardian:	PostLot_Qaccept.xls
+
+Guardian:	PreLot_ExcludeDataname.xls
+Advisor:	DuplicateCheckThreeLevel_GoodLotExDataNames_81x
+Guardian:	PostLot_ExcludeDataname.xls
+
+That's a lot.
+
+
+The Scripts are looking for a remote Host with IP address 10.0.3.137
+Alex is talking to someone, trying to find it myself:
+	Target					10.0.3.137
+	
+	EngAdvDev01 (source)	10.0.3.118
+	EngAdvDev06	(7.40.011)	10.0.3.152
+	EngAdvDev05 			10.0.3.160
+	EngAdvDev04				10.0.3.45
+	EngAdvDev03				10.0.3.87
+	
+	(I realize that I may be knocking people off of their systems, I'll just wait for Alex)
+	
+Turns out that it no longer needed a remote host in the first place.
+I just removed the data in that slot and ran a new test.
+(Will I need to remove it from all the other 3 tests as well? We'll see, I guess)
+
+(Also apparently 10.0.3.137 pointed to a box called EngAdvDev07)
+
+Running Test 0.3...
+Yes, I think I will need to remove the 10.0.3.137 from each test.
+	Getting more connection errors.
+Aborting
+Removing the references to 10.0.3.137 from last 3 tests.
+Done. Starting next test.
+
+
+Running Test 0.4...
+(I will probably have to update the results generation and email scrapping scripts, but let's just see what happens up until then.)
+
+
+
+...
+...
+...
+
+Boiled down to (maybe) NOT UPDATING THE ENVIRONMENT VARIABLES
+
+I wasn't there when the box was reverted to a previous image, and not all of the steps were taken to ensure that the environment was properly set up.
+	I had additionally noticed that other things had not been set up, such as the outlook permissions
+		damn it I should have realized by now
+I seriously need to make a checklist.
+
+
+
++++++++++++
+31-Oct-2018
++++++++++++
+Jumping back in here for a bit while I'm waiting for other people to approve my desire to modify test 7.40.011.
+It seems as if maybe this test wants to run remotely on a separate box, like 740011, but I'm not sure from looking at my notes.
+Let's make a check-in test.
+
+This job doesn't start with the standard Environment Preparatory scripts. Should I add them?
+Hmm, I actually can't find the "OlderAdvisorTest_817.vbs" script that the job calls for, as well.
+Also my earlier notes mention adding the Environment Preparatory scripts to the beginning of this job already
+    Is this the correct job?
+    
+Well anyway, I found a version of the script and put it in the right place. Now I'll add the prep scripts (again(?)) and run.
+
+
+Running test 0...
+Bad run. Console output: "HP Unified Functional Testing: Cannot open test."
+Let's open up the script.
+
+Yeesh, it's referring to UFT procedures which I haven't seen before.
+You know what, I kinda feel like fudging it. Let's just change all the "810"s to "81x"s so it matches what I have above
+    This might be an outdated version of the script
+    
+Running test 0.1...
+It just skipped the Screen Manager setup?
+Without even having the print from that step, like completely skipping it?
+try again
+
+
+Running test 0.1.1...
+[I'll get the results tomorrow morning]
+
+
++++++++++++
+01-Nov-2018
++++++++++++
+Actually no I won't, because I had messed up the syntax for the results.bat script I edited
+It works now, though, so let's run again.
+
+
+Running test 0.1.2...
+Test ran through just fine, but I think I'm missing some of the result processing scripts (namely, PreprocessGuardianResults_817.vbs, at least)
+I'll wait until I see Paul next and ask him where all these files are
+Sent him a Skype message, made my own versions of the files, piped the data along to 830QA and ran Duplicate Check Report to get the results
+Results:
+	Run Time:		00:31:29
+	Success Totals:	59/61
+	Failed Cases:	42, 43
+... deja vu
+Is this test just identical to 740011?
+    Maybe they both use the same standard testing protocol and the only change is the version being run?
+That would make things way simpler
+Paul confirmed that the tests are mostly identical.
+Also, the target files are actually the 810 ones, and I should rename them to be 81x since these files are used for all the 8.1.x versions.
+
+Now we are working on fixing the lot number selection issue
+Potentially looking into using one of the other item IDs (apparently there are like four for each item)
+Starting with the range
+changing the start value to be the same, hopefully will get the same duplicates every time.
+
+The results in 3rdSafeguard.txt contained 2000 entries: 1000 hex numbers, and 1000 of the (01)(21) numbers.
+
+Grabbed the 3rdSafeguard.txt contents and put them into baseline_817_1.txt to compare to next results.
+
+
+Running test 0.2...
+Results:
+	Run Time:		00:30:41
+	Success Totals:	60/61
+	Failed Cases:	43
+I believe that 43 will not pass until these grabbed numbers are fixed, i.e. the baseline is updated.
+
+This selection had the same 1000 hex ID numbers, all lining up, but did not have any of the (01)(21) numbers from the Random selection
+    My guess is that in this case there was just no overlap between the random selections
+
+The random number selections are still random, and so we have no way of ensuring we get a static number of those overlapping each time
+Unless we force it to be zero?
+    If I remember correctly, there is a list that governs which products (which ID types, maybe?) are checked for duplication
+    If I add that product number to the ignored list, I won't ever have to worry about it because it won't be checked in the first place.
+Worth a shot, let's see if I can find it again.
+the "SPT Format Name" is "AI(01)+AI(21)"
+
+Easier solution: make the data sets unique
+
+we made the data sets unique.
+
+Renamed the old sets with "_OldCross" appended.
+
+Seeing if it works
+
+
+Running test 1...
+it skipped over screen manager.
+aborting
+
+appears to have not even tried to run the Screen Manager script, according to QTPrintLog.txt
+It shows up in the console log, but claims completion one second after beginning. 
+Perhaps SetupEnv.vbs starts, then TIPSDiagnostic_Prepare.vbs starts, then SetupEnv kills all UFT before Screen Manager is started?
+
+Issue for another time.
+Trying again.
+
+
+Running test 1.0.1...
+COM surrogate stopped working
+    may have broke, but maybe not.
+    it broke.
+Aborting, retrying.
+
+
+Running test 1.0.2...
+Skipped Screen manager again.
+Aborting, retrying
+
+
+Running test 1.0.3...
+Results:
+	Run Time:		00:36:41
+	Success Totals:	59/61
+	Failed Cases:	27, 43
+Rats.
+Let's check the safeguard files
+
+Oh, I accidentally cut off the footer of the baseline file.
+So that's why 43 failed, but why did 27 fail?
+
+It may be because I have not yet altered the selection range for that lot.
+    I hope it is
+Let's try to fix that
+I found the PIM sheet and modified the start value
+
+
+Running test 2...
+Results:
+	Run Time:		00:32:22
+	Success Totals:	59/61
+	Failed Cases:	27, 43
+3rdSafeguard had like 2 of every number
+possibly because the ranges are all the same now
+I'll look into it tomorrow.
+
+
++++++++++++
+02-Nov-2018
++++++++++++
+Overnight tests bombed again.
+Running 817 again to try to fix the ranges issue
+
+
+Running test 2.1...
+Results:
+	Run Time:		00:31:52
+	Success Totals:	59/61
+	Failed Cases:	27, 43
+So, the good news is that it is detecting the duplicates every time now, it would appear.
+The issue is that something weird is happening with either the second lot's run or the third lot's detection (or both?)
+I believe the second lot is supposed to, using the 2ndSafeguard, skip over any numbers that were previously run.
+In these past runs, the 2ndSafeguard does not seem to be skipping any numbers
+    this is likely the reason the 3rdSafeguard.txt file has two of every entry: one from the first lot, one from the second.
+        if 2ndSafeguard were running properly, it would skip each item in the first lot and have 1000 unique numbers.
+
+The range offered includes 30,000 numbers, so it is not as if it would run out of numbers if it skipped all 1000, like it probably would.
+My first guess is that the 2ndSafeguard is not configured to look out for duplicates of this format.
+
+
++++++++++++
+08-Nov-2018
++++++++++++
+I haven't been taking very good notes for a while because the things I have been working on have been very slow.
+My guess was half-correct, but the truth was worse:
+    because of the way that 2ndSafeguard works, it is completely incompatible with Range data, like the Animal Health.
+So Paul had me try the just-use-a-gigantic-data-set approach, which made the tests take forever (1.5-2.5 hours)
+    in addition to being annoying to deal with during the day, the excessive length was interrupting my nightly runs
+    So, it was another one of those things where I don't think it's the right way to do it, but I have to defer to experience and seniority
+After taking a while to set up the other files to accommodate larger data sets, I've been running tests on the 7.40.011 job
+    I'm taking notes here because these two tests are practically the same and the issue is the same for both.
+    
+The suspicion I have is that the way 2ndSafeguard and random selection work means that the issue cannot be resolved with just using a larger data set.
+    2ndSafeguard jumps over any numbers it finds which were a part of any previous lots.
+The data sets we are using have 30,000 numbers and the lot sizes are 16,000
+If the numbers are duplicated (or if any at all are, I guess), this prevents the second lot from being able to complete a full lot, since the set's duplicates are dropped.
+    For every duplicate number you have in 2ndSafeguard's lot, you need to have a clean number it can swap out for.
+    Minimum SecondLot'sDataSetSize = NumOfDuplicates + LotSize
+    This is what is currently happening: the set size is very large, 
+This would not be an issue if we could pick the data being used (just start with some dupes and then tail it with a full lot's worth of clean)
+    but, we are using random number selection, and since the absolute minimum set size is larger than the lot size, this means there is always a chance of not grabbing any duplicates in the first place.
+
+Restriction:
+The lots have to be the same size
+    Otherwise, I would have the data set have a small section of unique numbers at the end, the first lot be much larger, and the second lot be as big as the unique section
+        This way, the first lot would 0% chance be just unique, and second lot have a small chance of having just unique
+            The actual chance depends on the way the random numbers are selected. From what I've seen, I think just the starting point is random, the rest are sequential
+                In this way, there would be a 1/(DupeSetSize + 1) chance of no overlap (since it would only happen if it picked the first unique number, assuming no wraparound)
+
+Unsure:
+Do the data sets have to be the same size?
+    If not, I would just make the first data set be the lot size, removing the randomness factor by ensuring the same numbers pulled each timne
+        The second set would be twice the lot size with half being unique
+
+My idea:
+Have the set size be twice the lot size, the second half of each set is unique numbers
+This way there is only twice the chance of failure as the lot-different-sizes idea.
+
+Currently the data sets contain 30,000 items
+I would love to be able to reduce that to like 2,000 items, but that seems a bit extreme to do without getting a go ahead
+    That is, even though it would be easier, I predict that I would have to undo those changes
+Instead, let's change the lot size down to 15,000
+We'll see how well this works (or if there's other things I need to change other than the PIM sheets) and then maybe consider shrinking the total size down.
+
+Note: Do not have to change the A(01)A(21) numbers for any lot other than the second one; third lot uses the Animal Health for its dupes
+
+So bad news, the DupeServer and the entire VM Server it was on crashed (power surge, someone tripped over a wire, I dunno)
+That happened around 1:00 and it took me like 3 hours to figure out how to power it back on properly and set up DupeServer the way it was before
+    I had to do it by myself since most everyone I know is gone today
+Now it's 4:00 and I never got a chance to do a full run with the big change I made
+    I swear though if after all this it turns out that the relative lot size wasn't the problem I will get very annoyed.
+Although I suppose getting the full run isn't really what I need; I just need it to get past the second lot to see if it blows up
+    There's always the possibility that some other random thing causes it to blow up, but whatever.
+
+    
++++++++++++
+09-Nov-2018
++++++++++++
+Trying to get a run through today
+The first test triggered an email?
+
+I hadn't finalized the changes to the VerifyEmail_Apps after I moved the files into their own directory.
+I think I fixed them. I'll run again
+
+Changes were fine. On this run, 43 failed (3rd lot database validation) and 27 was missing (2ndSafeguard success check)
+Modified code to fix a logic error, which should fix 43, running again to try to isolate issue with 27.
+Also, I'm going to try to make it so that the email log results are clearer.
+
+
++++++++++++
+12-Nov-2018
++++++++++++
+The only thing weird with the successful tests from the weekend was that the 7.40.011 and 8.1.7 tests only had 60 tests, not 61.
+    If I'm reading the results correctly, I think it's the verification of the 2nd lot results
+    It might just be some error popping up that I'll have to resolve in the UFT script
+
+I'm running a 740011 test first
+
+Need to fix the GetMostRecentLot script
+
+I was running through and I think that there were processing errors with the second lot 
+    I'll have to look into this
+    
+The error message that appears when running the second lot is this:
+"
+CartonGetA1A21Number: 707: Request for Initial Block of SPT numbers cannot be satisfied. Requested 10010 and received from Guardian 0!
+CartonGetGtinNumber: 707: Request for Initial Block of SPT numbers cannot be satisfied. Requested 10010 and received from Guardian 9980!
+"
+I think I need to find the source files of these data types and look for any discrepancies. Maybe either the request size is too big or the files are too small?
+
+I know that A1A21 comes from the FT-B_[List/Range]_[Carton/Case/Pallet]_X0000 files in each ImportFiles subdirectory.
+I can't figure out where the other Gtin format comes from, though; I can't even remember what the format looks like.
+
+Checked on SQL server: it looks like    3018B79887A1204000002710
+It looks like actually the FT-B_Range_... files contain Gtin.
+
+
++++++++++++
+13-Nov-2018
++++++++++++
+Looking at the FT-B_Range_Carton_ files, I don't see anything that looks like it would have caused an issue.
+I'll look at the other range files?
+
+Paul took a look at it, suggested making the ranges larger
+Making it larger did not seem to help
+Was not able to grab a screen shot of the failure, though, so I'll try again.
+
+Temporarily tried reducing the data set sizes to 2000, but for some reason the minimum possible lot size is 10000
+    which, with the solution I'm using, means that the smallest data set size would be 20,000, instead of 30,000.
+    It wouldn't be as wonderfully short as I would hope, but it would be a bit better, I guess.
+        And I'm not doing much else in between tests, so I may as well try setting this up.
+I'll keep the stuff I've got setup.
+Changed the sizes to 20,000 just because
+
+
++++++++++++
+14-Nov-2018
++++++++++++
+Running a test to see what we're up to 
+
+Running test 3...
+Results:
+	Run Time:		01:03:53
+	Success Totals:	58/61
+	Failed Cases:	Import_Range                                    (21),
+                    Email Validation                                (27),
+                    Email Validation                                (58)
+
+Trying again to see if it is consistent
+
+Hooray, now it's randomly failing
+Let's set off one more before I go to lunch.
+
+
+Running test 3.1...
+Results:
+	Run Time:		01:03:23
+	Success Totals:	58/61
+	Failed Cases:	21, 27, 58
+    
+First guess: something happened during that import which offset (or otherwise messed up) the email checks?
+Let's check the results logs for the FT_Provisioning_Driver 
+    should be the third most recent(?)
+I do see a weird thing where each action says "Information - Step   Stop action replay    Description:  Run stopped by user."
+
+Now looking at the Email log, I see emails which say:
+"
+Warning:  UniSeries has detected a condition where serial numbers to be imported into Guardian system appear to be duplicated.
+Duplicates have been detected in the availability serial numbers pool
+"
+Might have something to do with the Safeguard settings?
+
+Paul suggested I look around in the SQL server, so I did, and I found the SQL commands responsible for the Safeguard activation
+Running just the isolated command, it appears to work fine
+I'll do a quick run and check the status once the script attempts to modify it
+
+
+Running test 3.2...
+First lot successfully set both Safeguards to On
+Second Lot successfully set first Safeguard to Off.
+Random carton List failed to import
+
+Alright, at this point the rest of the results don't matter as much.
+
+So after consulting Alex it seems like this might be a bug which might need to be presented to Vlad
+I'll take a few minutes to put together a mini test that will stop at a spot that lets us show the error
+After that, Paul suggested I move on to the next test case instead of waiting around until Friday.
+    
+I've thrown together a shorter test and am running it to make sure it gets to where I want it.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Results:
+	Run Time:		
+	Success Totals:	
+	Failed Cases:	

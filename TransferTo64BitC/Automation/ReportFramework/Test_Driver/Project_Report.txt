@@ -1,0 +1,6 @@
+Project####Session Start Time##Pass#0
+Test Machine####Session End Time##Fail#0
+Version####Execution Time##N/A#0
+SuiteName####Execution Status##Total#0
+Test Browser####Test URL###
+No.#Test Case#Design Doc Reference/Bug or Defect ID#Description#Expected Results##Test Execution Time#Pass/Fail/N/A

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Configuration file with sample test data         -->
+<!--                                                                   -->
+<!-- Systech International Confidential                                -->
+<!--  © Copyright Systech International 2014-2017                      -->
+<!--  The source code for this program is not published or otherwise   -->
+<!--  divested of its trade secrets, irrespective of what has been     -->
+<!--  deposited with the U.S. Copyright Office.                        -->
+<!--                                                                   -->
+<!-- Date      Version  Name            Desc                           -->
+<!-- 20170401  8.3.0    RNiedzwiecki    Initial version  -->
+<UFT>
+  <Data>
+	  <!-- This section shows a sample primary screen -->
+      <TestData test="SampleTestName" name="UseScreenRepositoryName like GuardianConfig_Products">
+	   <!-- attributes:  name="key name" setDialogs="true|false; assists with screens requiring partial data entry followed by Save before remainder of fields/buttons are accessible" -->
+       <DataSet id="0" name="PrimaryKeyName1" setDialogs="true|false">	<!-- initial setup/save -->
+         <Field label="nickname1" name="ObjectRepositoryName1" type="TextBox|DropDown|NumberSpinner|MultiLineTextBox">some field value</Field>
+         <Field label="nickname2" name="ObjectRepositoryName2" type="CheckBox|RadioButton">ON or OFF</Field>
+         <Field label="nickname3" name="ObjectRepositoryName3" type="Calendar|CalendarTime|CalendarRange">yyyy-mm-dd hh-mm-ss</Field>
+		 <!-- ... -->
+       </DataSet>
+       <DataSet id="1" name="PrimaryKeyName2" setDialogs="true"> <!-- final setup/save -->
+		 <!-- ... -->
+       </DataSet>
+	  </TestData>
+	  <!-- This section shows a sample secondary dialog -->
+      <TestData test="SampleTestName" name="UseScreenRepositoryName like dlgSampleDialog">  
+	    <!-- attributes:  parent="key name of parent" -->
+       <DataSet id="0" parent="PrimaryKeyName1">
+         <Field label="nickname4" name="ObjectRepositoryName4" type="TextBox">ERP</Field>
+		 <!-- ... -->
+       </DataSet>
+       <DataSet id="1" parent="PrimaryKeyName2">
+		 <!-- ... -->
+       </DataSet>
+	  </TestData>	  
+  </Data>
+</UFT>
+

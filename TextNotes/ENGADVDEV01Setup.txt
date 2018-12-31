@@ -1,0 +1,93 @@
+Common scripts and what I have changed prior to the copy transfer
+C:\results.vbs
+	Changes:
+		Minor -	commented out the call and closing of an otherwise unused WScript.shell
+C:\results.bat
+	Changes:
+		Major -	changed move target location from C:\Automation\Duplicate Check\ReportFramework\Test_Results\ to C:\Automation\ReportFramework\Test_Results\
+C:\Automation\ReportFramework\Test_Driver\RenameLatestTXTtoduplicatecheck.vbs
+	Changes:
+		Major -	swapped finicky "WscriptObj.currentdirectory" declaration of DriverScriptFrameWorkFolderPath for a hard coded one (to "C:\Automation\ReportFramework\Test_Driver")
+
+Important Locations to copy:
+Probably all of C:\Automation\
+Probably none of C:\jenkins\ or C:\PimLabTestData
+C:\results.vbs
+C:\results.bat
+C:\RunDualFormat.vbs	//I know it won't need it for it's purposes, but it couldn't hurt (too much)
+C:\sg3.bat
+C:\sg2.bat
+
+All of C:\Automation is taking too long.
+It's probably C:\Automation\Duplicate Check\'s many script directories which are slowing the process down
+	Yeah it's over 10x larger than the other two subdirectories combined
+Let's find the scripts I worked with and leave the other ones behind.
+\DuplicateCheckOneLevel_*\	(6 folders)
+\FT_DualFormat_Driver\
+\GrdCfgMgr_StartLogin\
+\PurgeData\
+\SetupEnv\
+\VerifyEmail_App_*\			(5 folders)
+
+\838\
+\Advisor UFT\ 
+\Emails\
+\ImportFiles\
+
+Going to go to lunch soon, I'll copy everything that isn't in C:\Automation\Duplicate Check\ first
+
+So after cutting \Duplicate Check\ down, it says it will take 1 hour 40 minutes, which is a lot, but it's less than the 8 hour estimate, so I guess I'll just find something else to do
+oh cool it went from like 1h15m to 24m.
+Jumped up and is hovering around 1GB/s. Says 6.5m
+Ended up only taking like 10-15m
+
+Changes needed from PaulTest3 version to ENGADVDEV01 version:
+C:\Automation\ReportFramework\Test_Results\Final_results.bat
+	Major -	change "Y:\jenkins\workspace\Automation\UniSeries\System Level Test Container\System Level Report\Project_Report_duplicatecheck.txt"
+			to "Y:\jenkins\workspace\Automation\UniSeries\8.4.0\SVT\Duplicate Check Report\Project_Report_duplicatecheck.txt"
+
+After setting up the files in the system, I took out the prep scripts and put them on Jenkins, like I said I would
+but not as their own jobs, just as additional commands at the beginning of the current job I'm running
+	I think it will do the trick for now, I can ask Paul if he thinks it works as a long term solution later.
+
+Seems to have initiated properly
+	According to the Dupes Setup Word Doc, this particular test takes about 25 minutes to run
+
+
+No .pdf was attached to the result email.
+I realize that I didn't copy the updated version of the .pdf generation script from the old jenkins subdirectory into the new one
+	Could that have been it?
+I will compare the scripts to see if the old one could be broken
+Seems different enough to warrant a fix.
+Copying over updated .vbs script and updating file path variables
+
+
+Forgot to copy over TipsKillAllAuto.cmd (and ScriptForceQuit.bat)
+
+
+I think it is the "qtTest.Run Void True" which allows it to work properly, the true probably signifies that it must wait for the script to complete before continuing
+	NO idea why that isn't a default option feature for any script running command...
+	As a side note, I think that the "void" is where the test name would go
+		but, since the previous command is "qtTest.Open [test_name]", "void" probably tells it to run the open test
+
+Failed to purge, and did not interact with TIPS at all or get past check 7.
+Turned out the VisionSimulator.exe had been removed when we updated the software on the box
+	Added it back in and it is running fine
+
+... did we install python on this box?
+I think we did
+But, I know we did not modify the access privileges for outlook (the dialog box popped up and I had to give it permission)
+
+Froze up, so I killed it, removed the warning setting for outlook, and ran again
+	(this is starting to sound like a DupesTestingLog entry, but I'm in denial: I really don't want this to take long enough to warrant moving over to that file).
+	
+Same issue. Getting Paul's help
+
+Possible lead on a feature I was unaware of:
+	On the server-side .sql manager (which I'd never really interacted with before), for each lot you process, you need to mark certain data types for dupes checking 
+		why that isn't the default, I have no idea
+			Paul says it might be because he updated the server software, which may have reset the configuration
+Anyway, this may explain why we've not been getting dupes confirmation, and may have to do with why I was getting a similar error on the PaulTest3 box.
+	Although it might not, since I was working with that before the software update.
+
+Feels good to be making relatively steady progress, though.

@@ -1,0 +1,206 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+61 Whisperhiss the Sneak (level 3, 0/16 HPs)
+             Began as a Spriggan Enchanter on Nov 6, 2018.
+             Slain by a gnoll
+             ... wielding a +0 spear
+              (2 damage)
+             ... on level 3 of the Dungeon.
+             The game lasted 00:08:34 (1551 turns).
+
+Whisperhiss the Sneak (Spriggan Enchanter)          Turns: 1551, Time: 00:08:35
+
+Health: 0/16       AC:  2    Str:  4    XL:     3   Next: 83%
+Magic:  1/8        EV: 18    Int: 16    God:    
+Gold:   57         SH:  0    Dex: 17    Spells: 5/8 levels left
+
+rFire    . . .     SeeInvis +   a - +1 dagger
+rCold    . . .     Gourm    .   (shield restricted)
+rNeg     . . .     Faith    .   b - +0 robe
+rPois    .         Spirit   .   (helmet restricted)
+rElec    .         Reflect  .   (no cloak)
+rCorr    .         Harm     .   (gloves unavailable)
+MR       .....                  (boots unavailable)
+Stlth    +++.......             (no amulet)
+HPRegen  0.05/turn              (no ring)
+MPRegen  0.11/turn              (no ring)
+
+@: very slightly contaminated, very quick
+A: very small, unfitting armour, see invisible, herbivore, speed 3, slow
+metabolism 2
+a: no special abilities
+
+
+You were on level 3 of the Dungeon.
+You were not hungry.
+
+You visited 1 branch of the dungeon, and saw 3 of its levels.
+
+You collected 57 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +1 dagger (weapon)
+Armour
+ b - a +0 robe (worn)
+Wands
+ k - a wand of polymorph (17)
+Scrolls
+ c - 4 scrolls of amnesia {unknown}
+ g - 3 scrolls of identify {unknown}
+ h - 2 scrolls of enchant armour {unknown}
+ i - a scroll of teleportation {unknown}
+ j - a scroll of magic mapping {unknown}
+Potions
+ e - 2 potions of curing
+ f - a potion of magic {unknown}
+Comestibles
+ d - 3 rations
+
+
+   Skills:
+ + Level 0.3 Fighting
+ + Level 1.7 Short Blades
+ + Level 3.3 Dodging
+ + Level 5.4 Stealth
+ + Level 3.2 Spellcasting
+ + Level 4.2 Hexes
+ + Level 0.3 Ice Magic
+
+
+You had 5 spell levels left.
+You knew the following spells:
+
+ Your Spells              Type           Power        Failure   Level  Hunger
+a - Corona                Hex            ###....      3%          1    None
+z - Ensorcelled Hibernat  Hex/Ice        #.....       11%         2    ##.....
+
+Your spell library contained the following spells:
+
+ Spells                   Type           Power        Failure   Level  Hunger
+ Confuse                  Hex            ###.....     10%         3    ###....
+ Tukima's Dance           Hex            ###.....     10%         3    ###....
+ Dazzling Spray           Conj/Hex       #.....       22%         3    ###....
+
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (3/15)            
+
+Altars:
+Ashenzari
+Hepliaklqana
+Makhleb
+Nemelex Xobeh
+Trog
+
+
+Innate Abilities, Weirdness & Mutations
+
+You are very small and have problems with some larger weapons.
+You are too small for most types of armour.
+You have supernaturally acute eyesight. (SInv)
+You are a herbivore.
+You cover ground extremely quickly.
+You need to consume almost no food.
+
+
+Message History
+
+You hit the gnoll.
+The gnoll is lightly wounded.
+The gnoll misses you.
+Casting: Ensorcelled Hibernation (safe; 11% risk of failure)
+Confirm with . or Enter, or press ? or * to list all spells.
+Aiming: Corona (safe; 3% risk of failure)
+Press: ? - help, Shift-Dir - straight line, f/p - gnoll
+Aim: a gnoll, wielding a spear (lightly wounded, chance to defeat MR: 62%)
+The gnoll struggles to resist. The gnoll closely misses you.
+You hit the gnoll but do no damage. The gnoll hits you with a spear.
+You closely miss the gnoll. The gnoll barely misses you.
+You hit the gnoll.
+The gnoll is moderately wounded.
+The gnoll hits you with a spear.
+* * * LOW HITPOINT WARNING * * *
+You hit the gnoll but do no damage.
+The gnoll is moderately wounded.
+The gnoll closely misses you.
+The gnoll hits you from afar with a spear.
+You die...
+
+. #.#.#.# ### .# ....
+.##.#.#.#.#.##.#.#..#
+....#.#.#.#....#.#..#
+.#....%g#.#......#..#
+.##.#.#.#......# #..#
+...............# #..#
+......#.###...####..#
+...g......')..g.@...#
+......#.###g..#####.#
+......#........... .#
+.#..#g#..######### ##
+.#.##....#
+ #. .....#
+ ## ##....
+     ....g
+      ..#..
+      ...(.g
+
+
+You could see 2 gnolls.
+
+Vanquished Creatures
+  2 gnolls (D:3)
+  2 adders (D:2)
+  A dart slug (D:1)
+  A leopard gecko (D:2)
+  4 bats
+  A giant cockroach (D:2)
+  2 goblins (D:1)
+  4 hobgoblins
+  A kobold (D:2)
+  A ball python (D:1)
+  4 frilled lizards (D:1)
+  A rat (D:1)
+24 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | Whisperhiss the Spriggan Enchanter began the quest for the
+                  | Orb.
+     0 | D:1      | Reached XP level 1. HP: 9/9 MP: 5/5
+   171 | D:1      | Reached XP level 2. HP: 10/13 MP: 2/6
+   496 | D:1      | Learned a level 2 spell: Ensorcelled Hibernation
+   951 | D:2      | Found a burning altar of Makhleb.
+   960 | D:2      | Found a bloodstained altar of Trog.
+   975 | D:2      | Found a hazy altar of Hepliaklqana.
+   984 | D:2      | Found a sparkling altar of Nemelex Xobeh.
+  1091 | D:2      | Reached skill level 5 in Stealth
+  1131 | D:2      | Found a shattered altar of Ashenzari.
+  1197 | D:2      | Reached XP level 3. HP: 14/16 MP: 0/8
+  1222 | D:2      | Noticed a phantom
+  1551 | D:3      | Slain by a gnoll
+
+Skill      XL: |  1  2 |
+---------------+-------+-----
+Hexes          |     4 |  4.2
+Stealth        |     5 |  5.4
+Spellcasting   |     3 |  3.2
+Fighting       |       |  0.3
+Short Blades   |       |  1.7
+Dodging        |       |  3.3
+Ice Magic      |       |  0.3
+
+Action                   || total
+-------------------------++-------
+Melee: Dagger            ||    76
+ Cast: Corona            ||    18
+       Ensorcelled Hiber ||     8
+  Use: Potion            ||     1
+ Stab: Sleeping          ||    13
+Armor: Robe              ||    13
+Dodge: Dodged            ||    71
+

@@ -1,0 +1,29 @@
+10-Oct-2018
+
+State of my Progress on the Duplicate Check Project:
+Test States (for manual runs):
+    Dual Format:            Consistent 100% successful completion runs, ~11 minute run time
+
+Run Review:
+
+All tests begin with calls to a selection from a group of preparatory scripts I've put together: ScriptForcequit.bat, SetupEnv.vbs, TIPSDiagnostic_Prepare.vbs, and GrdCfgMgr_StartLogin.vbs.
+    ScriptForcequit.bat:    closes out any lingering instances of UFT, Wscript, and QtpAutomationAgent.
+    SetupEnv.vbs:           deletes result output files from previous test runs and ensures Guardian and Screen Manager are closed
+    TIPSDiagnostic_Prepare: Opens Screen Manager in Diagnostic mode and logs in as superuser.
+    GrdCfgMgr_StartLogin:   Opens Guardian and logs in to the server as qa.
+
+Dual Format:
+    Procedure:
+        Runs all four of the prep scripts 
+        Purges Data in the server
+        Loads a GoodLot of 100 items, closes out the lot
+        Loads a QuarantineLot of 100 items with some duplicate numbers shared with GoodLot.
+        Attempts to close the lot and looks for the Quarantine Lot Dialog Window to show that the server has detected the duplicates
+        Closes the lot and checks the Duplicate Check inbox for validation of the server-detected duplicates.
+        Ends the script
+        
+Present Issues:
+    Automatic Testing issues across automated testing instances:
+        When running an automatically initiated test, the script is in some cases unable to run UFT scripts.
+            Specific triggers: No remote access window to the working machine, box with remote access to machine is logged out.
+        Current attempted fix: I have been informed that an updated version of HP UFT is available, which is supposedly more compatible with remote testing and will potentially resolve the issue.

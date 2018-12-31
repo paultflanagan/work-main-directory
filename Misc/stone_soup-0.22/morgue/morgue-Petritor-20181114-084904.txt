@@ -1,0 +1,172 @@
+ Dungeon Crawl Stone Soup version 0.22.1 (console) character file.
+
+32 Petritor the Skirmisher (level 3, 0/29 HPs)
+             Began as a Demonspawn Abyssal Knight on Nov 14, 2018.
+             Was a Follower of Lugonu.
+             Slain by an adder (1 damage)
+             ... on level 2 of the Dungeon.
+             The game lasted 00:03:33 (963 turns).
+
+Petritor the Skirmisher (Demonspawn Abyssal Knight)  Turns: 963, Time: 00:03:34
+
+Health: 0/29       AC:  5    Str:  9 (12) XL:     3   Next: 8%
+Magic:  4/4        EV: 11    Int: 17 (18) God:    Lugonu [*.....]
+Gold:   37         SH:  0    Dex: 10 (13) Spells: 2/2 levels left
+
+rFire    . . .     SeeInvis .   g - +0 whip
+rCold    . . .     Gourm    .   (no shield)
+rNeg     . . .     Faith    .   b - +0 leather armour
+rPois    .         Spirit   .   o - +0 helmet
+rElec    .         Reflect  .   (no cloak)
+rCorr    .         Harm     .   (no gloves)
+MR       .....                  (no boots)
+Stlth    +.........             (no amulet)
+HPRegen  0.09/turn              (no ring)
+MPRegen  0.09/turn              (no ring)
+
+@: brilliant, lethally poisoned (0 -> -4)
+A: rugged brown scales 1
+a: Depart the Abyss, Renounce Religion
+
+
+You were on level 2 of the Dungeon.
+You worshipped Lugonu.
+Lugonu was aware of your devotion.
+You were not hungry.
+
+You visited 1 branch of the dungeon, and saw 2 of its levels.
+You visited the Abyss 1 time.
+
+You collected 37 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +1 mace
+ g - a +0 whip (weapon)
+Missiles
+ f - 40 arrows
+Armour
+ b - a +0 leather armour (worn)
+ n - a +0 ring mail
+ o - a +0 helmet (worn)
+Scrolls
+ d - a scroll of identify {unknown}
+ e - 2 scrolls of amnesia {unknown}
+ h - 2 scrolls of teleportation {unknown}
+ i - a scroll of fog {unknown}
+ k - a scroll of remove curse {unknown}
+Comestibles
+ c - 3 rations
+
+
+   Skills:
+ + Level 3.5 Fighting
+ + Level 2.3 Maces & Flails
+ + Level 2.0 Armour
+ + Level 1.0 Dodging
+ + Level 2.4 Invocations
+
+
+You had 2 spell levels left.
+You didn't know any spells.
+Your spell library was empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (2/15)            
+
+Altars:
+
+
+Innate Abilities, Weirdness & Mutations
+
+You are partially covered in rugged brown scales. (AC +1, +3% HP)
+
+
+Message History
+
+* * * LOW HITPOINT WARNING * * *
+You feel sick. The adder barely misses you. The goblin hits you with a club.
+* * * LOW HITPOINT WARNING * * *
+* * * LOW HITPOINT WARNING * * *
+You feel sick. The adder closely misses you. x2
+* * * LOW HITPOINT WARNING * * *
+You feel sick.
+The adder bites you but does no damage.
+You barely miss the adder.
+The adder is moderately wounded.
+* * * LOW HITPOINT WARNING * * *
+You feel sick. The adder closely misses you.
+You barely miss the adder.
+The adder is moderately wounded.
+The adder closely misses you.
+You closely miss the adder.
+The adder is moderately wounded.
+* * * LOW HITPOINT WARNING * * *
+You feel sick. The adder bites you.
+You die...
+
+        ############.#
+        #.....<.....#
+#########.##########.#
+#....@Sg.......#
+#.#######.####.#
+        #.#
+        #..
+        ....
+        #.###
+        ..#
+         ..
+
+
+You could see an adder and a goblin.
+
+Vanquished Creatures
+  An ooze (D:1)
+  2 dart slugs (D:1)
+  A leopard gecko (D:1)
+  6 bats (D:1)
+  A giant cockroach (D:1)
+  4 goblins (D:1)
+  2 hobgoblins (D:1)
+  3 kobolds (D:1)
+  A frilled lizard (D:1)
+  A rat (D:1)
+22 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | Abyss:1  | Petritor the Demonspawn Abyssal Knight began the quest for
+                  | the Orb.
+     0 | Abyss:1  | Reached XP level 1. HP: 18/18 MP: 2/2
+    70 | Abyss:1  | Found a corrupted altar of Lugonu.
+   138 | Abyss:1  | Noticed a lich
+   139 | D:1      | Escaped the Abyss
+   224 | D:1      | Reached skill level 1 in Dodging
+   277 | D:1      | Reached * piety under Lugonu
+   277 | D:1      | Gained mutation: You are partially covered in rugged brown
+                  | scales. (AC +1, +3% HP) [demonic ancestry]
+   277 | D:1      | Reached XP level 2. HP: 12/24 MP: 3/3
+   809 | D:1      | Reached XP level 3. HP: 14/29 MP: 4/4
+   963 | D:2      | HP: 1/29 [poisoned by an adder]
+   963 | D:2      | Slain by an adder
+
+Skill      XL: |  1  2 |
+---------------+-------+-----
+Dodging        |  1    |  1.0
+Maces & Flails |  2    |  2.3
+Armour         |     2 |  2.0
+Fighting       |       |  3.5
+Invocations    |       |  2.4
+
+Action                   || total
+-------------------------++-------
+Melee: Whip              ||   106
+Invok: Depart the Abyss  ||     1
+  Use: Potion            ||     2
+Armor: Leather armour    ||    32
+Dodge: Dodged            ||    76
+
