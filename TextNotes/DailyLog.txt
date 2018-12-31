@@ -1734,3 +1734,6 @@ Hopefully this won't mess up the tests over the weekend too badly.
 Tests went surprisingly well today
 
 Seeing as how this is my last day here, I will spend most of today cleaning everything up and letting Alex know where everything is
+
+8.3.0 marked as clean.
+Diverting attention to code commenting and Transfer of Knowledge.

@@ -1,0 +1,37 @@
+Transfer of Knowledge - Test Summaries
+
+The Duplicate Check Suite contains 7 testing jobs and 1 reporting job.
+Results files of the testing jobs are taken from the Dev01 machine and sent to the 830qa machine for the reporting job to publish.
+
+
+The Tests:
+
+Duplicate Check - Dual Format:
+    Number of test cases:   12
+    Typical Duration:       10 minutes
+    
+Duplicate Check - In Lot Cancel Decom:
+    Number of test cases:   24
+    Typical Duration:       20 minutes
+    
+Duplicate Check - 7.40.011:
+    Number of test cases:   61
+    Typical Duration:       1 hour
+    
+Duplicate Check - 8.1.7:
+    Number of test cases:   61
+    Typical Duration:       1 hour
+    
+Duplicate Check - 8.2.11:
+    Number of test cases:   61
+    Typical Duration:       1 hour
+    
+Duplicate Check 8.3.0 - 1st Safeguard:
+    Number of test cases:   151
+    Typical Duration:       1 hour
+    
+Duplicate Check - Post Lot Quarantine Decom:
+    Number of test cases:   24
+    Typical Duration:       20 minutes
+    
+    

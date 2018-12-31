@@ -2617,6 +2617,7 @@ Messages:
 12/28/2018 15:02:59.858 Guardian (DUPESERVER) not responding
 12/28/2018 15:08:19.858 Guardian (DUPESERVER) not responding
 12/28/2018 15:18:33.858 Guardian (DUPESERVER) not responding
+"}
 
 So that's great
 Going to have to abort the test.
@@ -2629,8 +2630,42 @@ just kidding, suddenly I can close the lot again.
 Well, I never got a chance to complete another run before I had to leave, but hopefully it won't mess up the tests over the weekend.
 
 
++++++++++++
+31-Dec-2018
++++++++++++
+Test 4 Results:
+	Run Time:		01:06:41
+	Success Totals:	151/151
+	Failed Cases:	none
+Hey, cool
+
+Running test (consistency)...
+Results:
+	Run Time:		01:06:08
+	Success Totals:	151/151
+	Failed Cases:	none
+Sweet
+
+Running test (consistency 2)...
+"Guardian SPT Configuration Manager has stopped working"
+Well that's annoying.
+Seems like it's not related to the test itself, though?
+Quick retry
 
 
+Running test (consistency 2.0.1)...
+Results:
+    Run Time:       01:05:29
+    Success Totals: 151/151
+    Failed Cases:   none
+    
+Cool. Let's say that's done.
+
+I'll place this run into its time slot overnight at 4:00 AM (H 04 * * *)
+Next I will finish up code commenting and Transfer of Knowledge.
+
+
++++++++++++
 
 
 
